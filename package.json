@@ -1,0 +1,44 @@
+{
+  "name": "pf9-ui-components",
+  "version": "1.0.0",
+  "description": "Platform9 UI Components",
+  "main": "src/index.js",
+  "repository": "https://github.com/platform9/UI-Components.git",
+  "author": "Platform9, Inc.",
+  "license": "MIT",
+  "keywords": [
+    "Platform9",
+    "ui",
+    "components"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/builder-webpack4": "^6.5.16",
+    "@storybook/manager-webpack4": "^6.5.16",
+    "@storybook/react": "^6.5.16",
+    "@storybook/testing-library": "^0.0.13",
+    "@types/react": "^18.0.27",
+    "babel-loader": "^8.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.9.5"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.2",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.1",
+    "redux-devtools-core": "^1.0.0-4"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  }
+}
