@@ -1,15 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es2017", 
-    "lib": ["esnext", "dom"],
-    "outDir": "lib",
-    "baseUrl": ".",
-    "jsx": "react",
-    "module": "commonjs",
-    "strict": true,  
+    "outDir": "/built",
     "allowJs": true,
     "checkJs": false,
-    "noUnusedLocals": true,
+    "target": "es2017",
+    "baseUrl": ".",
+    "module": "commonjs",
+    "jsx": "react",
+    "noUnusedLocals": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": false,
@@ -22,8 +20,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "noUncheckedIndexedAccess": true,
-    "forceConsistentCasingInFileNames": true,
- 
+    "lib": ["esnext", "dom"],
   },
   "exclude": ["node_modules"],
   "include": [

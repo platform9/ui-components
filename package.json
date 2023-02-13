@@ -12,28 +12,23 @@
     "components"
   ],
   "devDependencies": {
-    "@babel/core": "^7.20.12",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
     "@storybook/addon-interactions": "^6.5.16",
     "@storybook/addon-links": "^6.5.16",
-    "@storybook/builder-webpack4": "^6.5.16",
-    "@storybook/manager-webpack4": "^6.5.16",
+    "@storybook/builder-webpack5": "^6.5.16",
+    "@storybook/manager-webpack5": "^6.5.16",
+    "@storybook/node-logger": "^6.5.16",
+    "@storybook/preset-create-react-app": "^4.1.2",
     "@storybook/react": "^6.5.16",
     "@storybook/testing-library": "^0.0.13",
-    "@types/react": "^18.0.27",
-    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
-    "babel-loader": "^8.3.0",
-    "eslint": "^8.0.1",
-    "eslint-config-standard-with-typescript": "^34.0.0",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-n": "^15.0.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-react": "^7.32.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript": "*"
+    "babel-plugin-named-exports-order": "^0.0.2",
+    "eslint": "^8.33.0",
+    "prettier": "2.8.4",
+    "prop-types": "^15.8.1",
+    "webpack": "^5.75.0"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -41,16 +36,46 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.2",
-    "prettier": "^2.8.3",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.13",
+    "@types/ramda": "^0.28.23",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "ramda": "^0.28.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
+    "react-scripts": "5.0.1",
     "redux": "^4.2.1",
-    "redux-devtools-core": "^1.0.0-4"
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "lint": "./node_modules/.bin/eslint --ext .jsx,.js,.tsx,.ts src",
-    "lint-for-errors": "./node_modules/.bin/eslint --quiet --ext .jsx,.js,.tsx,.ts src",
-    "lint-fix": "./node_modules/.bin/eslint --ext .jsx,.js,.tsx,.ts --quiet --fix src"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
