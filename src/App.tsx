@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from './components'
+import Button from './components/buttons/Button'
 
 // FOR TESTING PURPOSES ONLY
 function App() {

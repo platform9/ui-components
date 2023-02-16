@@ -11,6 +11,3 @@ root.render(
     <App />
   </Provider>,
 )
-
-export * from './components'
-export * from './theme-manager'
