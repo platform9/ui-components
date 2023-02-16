@@ -1,5 +1,5 @@
-import { generateTheme, IPalette, ITypography, ThemeColors } from './theme-manager/themes/helpers'
-import { Components, Typography } from './theme-manager/themes/model'
+import { generateTheme, IPalette, ITypography, ThemeColors } from './themes/helpers'
+import { Components, Typography } from './themes/model'
 
 export const createTheme = (
   palette: IPalette<ThemeColors>,
