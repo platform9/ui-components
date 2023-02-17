@@ -11,3 +11,6 @@ root.render(
     <App />
   </Provider>,
 )
+
+const styleNode = document.createComment('insertion-point-jss')
+document.head.insertBefore(styleNode, document.head.firstChild)
