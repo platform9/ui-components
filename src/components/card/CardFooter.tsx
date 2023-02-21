@@ -1,14 +1,14 @@
 import React from 'react'
 import clsx from 'clsx'
-import useStylesWithTheme from 'src/theme-manager/useStylesWithTheme'
+import makeStylesWithTheme from 'src/theme-manager/makeStylesWithTheme'
 
 export default function CardFooter({ children, className = undefined }) {
-  const classes = useStylesWithTheme(styleCreator)
+  const classes = useStyles()
   return <footer className={clsx('card-footer', classes.footer, className)}>{children}</footer>
 }
 
-const styleCreator = (theme) => ({
+const useStyles = makeStylesWithTheme((theme) => ({
   footer: {
     padding: '8px 24px',
   },
-})
+}))

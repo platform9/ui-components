@@ -1,14 +1,14 @@
 import React from 'react'
 import clsx from 'clsx'
-import useStylesWithTheme from 'src/theme-manager/useStylesWithTheme'
+import makeStylesWithTheme from 'src/theme-manager/makeStylesWithTheme'
 
 export default function CardBody({ children, className = undefined }) {
-  const classes = useStylesWithTheme(styleCreator)
+  const classes = useStyles()
   return <section className={clsx('card-body', classes.body, className)}>{children}</section>
 }
 
-const styleCreator = (theme) => ({
+const useStyles = makeStylesWithTheme((theme) => ({
   body: {
     padding: '16px 32px',
   },
-})
+}))

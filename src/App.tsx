@@ -1,21 +1,37 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core'
-import useStylesWithTheme from './theme-manager/useStylesWithTheme'
+import React, { useMemo } from 'react'
+import { makeStyles } from '@material-ui/styles'
+import makeStylesWithTheme from './theme-manager/makeStylesWithTheme'
 import Button from './components/buttons/TestButton'
 import Card from './components/card/Card'
 import Text from './components/Text'
+import Theme from './theme-manager/themes/model'
+import { createTheme } from '@material-ui/core/styles'
+import { ThemeProvider } from '@material-ui/styles'
+import { useSelector } from 'react-redux'
+import { themeSelector } from './theme-manager/selector'
+
+const useStyles = makeStylesWithTheme((theme: Theme) => ({
+  testCard: {
+    backgroundColor: theme.palette.blue[400],
+  },
+  testText: {
+    color: theme.palette.blue[400],
+  },
+  testButton: {
+    backgroundColor: theme.palette.blue[400],
+    padding: '24px',
+  },
+}))
 
 // FOR TESTING PURPOSES ONLY
 function App() {
-  const classes = useStylesWithTheme(stylesCreator)
-  console.log('app')
-  // const classes = useStyles()
+  const classes = useStyles()
   return (
     <>
-      <Card title="PF9 Card Component" className={classes.testCard}>
+      <Card withCustomBody className={classes.testCard}>
         <div>
           <Text variant="h2" className={classes.testText}>
-            Hello
+            Test
           </Text>
           <Button className={classes.testButton} />
         </div>
@@ -23,30 +39,5 @@ function App() {
     </>
   )
 }
-
-const stylesCreator = (theme) => ({
-  testCard: {
-    backgroundColor: theme.palette.blue[300],
-  },
-  testText: {
-    color: theme.palette.blue[300],
-  },
-  testButton: {
-    backgroundColor: theme.palette.blue[300],
-    padding: '24px',
-  },
-})
-
-// const useStyles = makeStyles({
-//   testCard: {
-//     backgroundColor: 'green',
-//   },
-//   testText: {
-//     color: 'green',
-//   },
-//   testButton: {
-//     color: 'green',
-//   },
-// })
 
 export default App

@@ -1,5 +1,5 @@
 import React, { ReactNode, PropsWithChildren } from 'react'
-import useStylesWithTheme from 'src/theme-manager/useStylesWithTheme'
+import makeStylesWithTheme from 'src/theme-manager/makeStylesWithTheme'
 import clsx from 'clsx'
 import CardHeader from './CardHeader'
 import CardBody from './CardBody'
@@ -28,9 +28,7 @@ function Card({
   className = undefined,
   testId = '',
 }: PropsWithChildren<CardProps>) {
-  const classes = useStylesWithTheme(styleCreator)
-  // const classes = useStyles()
-  console.log('card')
+  const classes = useStyles()
   const titleComponent = getTitleComponent(title)
   const BodyComponent = withCustomBody ? React.Fragment : CardBody
   const FooterComponent = withCustomFooter ? React.Fragment : CardFooter
@@ -47,20 +45,12 @@ function Card({
   )
 }
 
-const styleCreator = (theme) => ({
+const useStyles = makeStylesWithTheme((theme) => ({
   card: {
-    backgroundColor: 'theme.components.card.background',
+    backgroundColor: theme.components.card.background,
     borderRadius: '4px 4px 2px 2px',
     border: `1px solid ${theme.components.card.border}`,
   },
-})
-
-// const useStyles = makeStyles({
-//   card: {
-//     backgroundColor: '#c8dece',
-//     borderRadius: '4px 4px 2px 2px',
-//     border: `1px solid black`,
-//   },
-// })
+}))
 
 export default Card
