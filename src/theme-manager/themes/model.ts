@@ -1,3 +1,4 @@
+import { Theme as DefaultTheme } from '@material-ui/core'
 interface AppTheme {
   components: Components
   palette: Palette
@@ -334,6 +335,6 @@ interface TypographyModel {
 }
 
 // TODO: Check if we need this DefaultTheme from MUI
-// type Theme = DefaultTheme & AppTheme
-type Theme = AppTheme
+type Theme = DefaultTheme & AppTheme
+// type Theme = AppTheme
 export default Theme
