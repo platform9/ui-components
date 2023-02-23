@@ -68,5 +68,7 @@ const {
   },
 })
 
-export { customThemeKey, themeActions }
+const { updateGlobalTheme, updateThemeComponent, updateTheme, clearTheme } = themeActions
+
+export { updateGlobalTheme, updateThemeComponent, updateTheme, clearTheme }
 export default themeReducer
