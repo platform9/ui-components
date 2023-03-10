@@ -1,3 +1,5 @@
+import { Theme as DefaultTheme } from '@material-ui/core'
+
 interface AppTheme {
   components: Components
   palette: Palette
@@ -322,7 +324,7 @@ export interface Typography {
   caption3: TypographyModel
 }
 
-interface TypographyModel {
+export interface TypographyModel {
   fontFamily: string
   fontSize: string
   fontWeight: any
@@ -333,7 +335,5 @@ interface TypographyModel {
   textAlign?: any
 }
 
-// TODO: Check if we need this DefaultTheme from MUI
-// type Theme = DefaultTheme & AppTheme
-type Theme = AppTheme
+type Theme = DefaultTheme & AppTheme
 export default Theme

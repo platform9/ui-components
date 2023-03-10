@@ -1,5 +1,5 @@
 import colors from '../base/colors'
-import { hexToRgbaCss } from '../colorHelpers'
+import { hexToRgbaCss } from '../../../utils/colorHelpers'
 
 export const defaultAlertComponentStyles = {
   primary: {

@@ -2,7 +2,7 @@ import { generateTheme } from '../helpers'
 import colors from '../base/colors'
 import typography from '../base/typography'
 import { Components } from '../model'
-import { hexToRgbaCss } from '../colorHelpers'
+import { hexToRgbaCss } from 'src/utils/colorHelpers'
 import {
   defaultAlertComponentStyles,
   defaultGraphComponentStyles,
@@ -265,7 +265,7 @@ const components: Components = {
   },
 }
 
-const lightTheme = {
+const serenityLightTheme = {
   theme: generateTheme({
     palette: { colors, primary: 'blue', secondary: 'pink', type: 'light', themeKey: 'light' },
     typography: {
@@ -280,4 +280,4 @@ const lightTheme = {
   components,
 }
 
-export default lightTheme
+export default serenityLightTheme

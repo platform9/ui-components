@@ -7,14 +7,14 @@ export function hexToRgbaCss(hex = '', alpha = 1) {
 // From https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
 export function hexToRgb(hex) {
   if (!hex) {
-    return
+    return {}
   }
   if (!hex.includes('#')) {
     hex = `#${hex}`
   }
   if (![4, 7].includes(hex.length)) {
     console.error('invalid hex provided')
-    return
+    return {}
   }
   if (hex.length === 4) {
     hex += hex.slice(1) // make it a 6 char hex
