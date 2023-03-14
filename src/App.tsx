@@ -82,7 +82,9 @@ const App = () => {
     <Provider store={store}>
       <ThemeManager themeActions={themeActions}>
         <Card>
-          <Button variant="secondary">Regular Button</Button>
+          <Button variant="primary">Primary Button</Button>
+          <br />
+          <Button variant="secondary">Secondary Button</Button>
           <CardButton title="Card Button" icon="plus" />
           <Badge variant="primary" text="This is a badge" />
         </Card>
