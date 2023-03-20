@@ -19,11 +19,9 @@
     "sourceMap": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "noUncheckedIndexedAccess": true,
     "lib": ["esnext", "dom"],
+    "types": []
   },
   "exclude": ["node_modules"],
-  "include": [
-    "src"
-  ]
+  "include": ["src/*"]
 }
