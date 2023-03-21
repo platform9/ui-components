@@ -20,11 +20,11 @@ export interface ThemeConfig {
   logoFileName?: string
 }
 
-interface UpdateComponentAction {
+export interface UpdateComponentAction {
   components: ComponentPayload[]
 }
 
-interface ComponentPayload {
+export interface ComponentPayload {
   pathTo: string[]
   value: string
 }

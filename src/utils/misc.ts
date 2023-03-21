@@ -4,7 +4,7 @@ import moment from 'moment'
 import { moizeMaxSize } from 'src/constants'
 // import { pathStr } from 'src/utils/fp'
 
-interface DefaultMoizeOptions {}
+export interface DefaultMoizeOptions {}
 
 export const memoize = <F extends Moizeable, O extends Options = DefaultMoizeOptions>(
   fn: F,

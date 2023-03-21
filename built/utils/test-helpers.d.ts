@@ -1,0 +1,44 @@
+declare const generateTestId: import("moize").Moized<(...params: any[]) => string, Partial<{
+    isDeepEqual: boolean;
+    isPromise: boolean;
+    isReact: boolean;
+    isSerialized: boolean;
+    isShallowEqual: boolean;
+    matchesArg: import("moize").IsEqual;
+    matchesKey: import("moize").IsMatchingKey;
+    maxAge: number;
+    maxArgs: number;
+    maxSize: number;
+    onCacheAdd: import("moize").OnCacheOperation<(...params: any[]) => string>;
+    onCacheChange: import("moize").OnCacheOperation<(...params: any[]) => string>;
+    onCacheHit: import("moize").OnCacheOperation<(...params: any[]) => string>;
+    onExpire: import("moize").OnExpire;
+    profileName: string;
+    serializer: import("moize").Serialize;
+    transformArgs: import("moize").TransformKey;
+    updateCacheForKey: import("moize").UpdateCacheForKey;
+    updateExpire: boolean;
+}> & Partial<{
+    isDeepEqual: boolean;
+    isPromise: boolean;
+    isReact: boolean;
+    isSerialized: boolean;
+    isShallowEqual: boolean;
+    matchesArg: import("moize").IsEqual;
+    matchesKey: import("moize").IsMatchingKey;
+    maxAge: number;
+    maxArgs: number;
+    maxSize: number;
+    onCacheAdd: import("moize").OnCacheOperation<import("moize").Moizeable>;
+    onCacheChange: import("moize").OnCacheOperation<import("moize").Moizeable>;
+    onCacheHit: import("moize").OnCacheOperation<import("moize").Moizeable>;
+    onExpire: import("moize").OnExpire;
+    profileName: string;
+    serializer: import("moize").Serialize;
+    transformArgs: import("moize").TransformKey;
+    updateCacheForKey: import("moize").UpdateCacheForKey;
+    updateExpire: boolean;
+}> & {
+    maxSize: number;
+} & Partial<import("./misc").DefaultMoizeOptions>>;
+export default generateTestId;
