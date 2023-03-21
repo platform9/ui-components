@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "/built",
+    "outDir": "./built",
     "allowJs": true,
     "checkJs": false,
     "target": "es2017",
@@ -22,6 +22,6 @@
     "lib": ["esnext", "dom"],
     "types": []
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "built"],
   "include": ["src/*"]
 }
