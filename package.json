@@ -2,7 +2,7 @@
   "name": "pf9-ui-components",
   "version": "1.0.0",
   "description": "Platform9 UI Components",
-  "main": "src/index.js",
+  "main": "src/index.tsx",
   "repository": "https://github.com/platform9/UI-Components.git",
   "author": "Platform9, Inc.",
   "license": "MIT",
