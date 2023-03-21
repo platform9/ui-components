@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "outDir": "./built",
+    "declaration": true,
+    "declarationDir": "built",
     "allowJs": true,
     "checkJs": false,
     "target": "es2017",
