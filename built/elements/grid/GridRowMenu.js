@@ -28,11 +28,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const clsx_1 = __importDefault(require("clsx"));
-const FontAwesomeIcon_1 = __importDefault(require("src/components/FontAwesomeIcon"));
-const useToggler_1 = __importDefault(require("src/hooks/useToggler"));
-const defaults_1 = require("src/elements/menu/defaults");
-const Menu_1 = __importDefault(require("src/elements/menu/Menu"));
-const MenuItem_1 = __importDefault(require("src/elements/menu/MenuItem"));
+const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
+const useToggler_1 = __importDefault(require("../../hooks/useToggler"));
+const defaults_1 = require("../../elements/menu/defaults");
+const Menu_1 = __importDefault(require("../../elements/menu/Menu"));
+const MenuItem_1 = __importDefault(require("../../elements/menu/MenuItem"));
 const styles_1 = require("@material-ui/styles");
 function GridRowMenu({ item, rowMenuItems, rowMenuDisabled, rowMenuOffset = {}, showRowMenuForSingleRowActions = false, }) {
     const filteredRowMenuItems = rowMenuItems.filter((rowItem) => {

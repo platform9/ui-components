@@ -10,8 +10,8 @@ import {
   useState,
 } from 'react'
 import { difference, equals } from 'ramda'
-import { emptyArr, noop, isNilOrEmpty } from 'src/utils/fp'
-import { memoize } from 'src/utils/misc'
+import { emptyArr, noop, isNilOrEmpty } from '../../..//utils/fp'
+import { memoize } from '../../../utils/misc'
 import { ParsedGridRow } from './useGridRows'
 import GridDefaultActionButton from '../buttons/GridDefaultActionButton'
 

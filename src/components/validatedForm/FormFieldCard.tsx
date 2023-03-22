@@ -1,11 +1,11 @@
 import React, { PropsWithChildren } from 'react'
-import Text from 'src/elements/Text'
-import Card from 'src/elements/card'
+import Text from '../../elements/Text'
+import Card from '../../elements/card'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../../theme-manager/themes/model'
 import clsx from 'clsx'
-import generateTestId from 'src/utils/test-helpers'
-import CardHeader from 'src/elements/card/CardHeader'
+import generateTestId from '../../utils/test-helpers'
+import CardHeader from '../../elements/card/CardHeader'
 
 interface ContainerProps {
   title?: string | JSX.Element

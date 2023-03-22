@@ -12,7 +12,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = require("react");
-const misc_1 = require("src/utils/misc");
+const misc_1 = require("../../../utils/misc");
 const ramda_1 = require("ramda");
 const columnsReducer = ({ visibleColumnKeys, orderedColumnKeys }, { type, payload: { key, targetIdx, columnKeys } }) => {
     switch (type) {

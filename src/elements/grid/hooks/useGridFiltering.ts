@@ -1,9 +1,9 @@
 import { useCallback, useMemo, useReducer, FC, Reducer } from 'react'
-import { ParsedGridRow } from 'src/elements/grid/hooks/useGridRows'
+import { ParsedGridRow } from '../../../elements/grid/hooks/useGridRows'
 import { assocPath, dissocPath, equals } from 'ramda'
-import { isNilOrEmpty, emptyArr } from 'src/utils/fp'
-import { memoize } from 'src/utils/misc'
-import { allKey } from 'src/constants'
+import { isNilOrEmpty, emptyArr } from '../../../utils/fp'
+import { memoize } from '../../../utils/misc'
+import { allKey } from '../../../constants'
 
 interface GridFilterProps<
   F extends Record<string, unknown>,

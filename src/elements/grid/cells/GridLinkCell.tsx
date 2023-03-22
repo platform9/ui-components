@@ -1,6 +1,6 @@
 import React from 'react'
-import { GridCellProps } from 'src/elements/grid/hooks/useGridRows'
-import SimpleLink from 'src/components/SimpleLink'
+import { GridCellProps } from '../../../elements/grid/hooks/useGridRows'
+import SimpleLink from '../../../components/SimpleLink'
 import GridDefaultCell from './GridDefaultCell'
 
 interface BaseGridLinkCellProps<T> {

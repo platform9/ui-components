@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const styles_1 = require("@material-ui/styles");
-const FontAwesomeIcon_1 = __importDefault(require("src/components/FontAwesomeIcon"));
+const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
 const clsx_1 = __importDefault(require("clsx"));
 exports.default = (0, styles_1.styled)(react_1.default.forwardRef((_a, ref) => {
     var { className } = _a, rest = __rest(_a, ["className"]);

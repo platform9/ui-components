@@ -1,4 +1,4 @@
-import { hexToRgbaCss } from 'src/utils/colorHelpers'
+import { hexToRgbaCss } from '../utils/colorHelpers'
 import { Components } from './themes/model'
 
 export const generatePf9ComponentColors = (colors): Components => {

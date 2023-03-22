@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import Dropdown from 'src/elements/dropdown'
+import Dropdown from '../../elements/dropdown'
 import data from '../data/movies-list'
 import { ThemedContainer, Row, Column } from '../containers'
-import MultiDropdown from 'src/elements/dropdown/MultiDropdown'
+import MultiDropdown from '../../elements/dropdown/MultiDropdown'
 
 const items = data.map((movie) => ({
   value: movie,

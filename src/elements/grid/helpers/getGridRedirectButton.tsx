@@ -3,7 +3,7 @@ import React, { useCallback, useMemo } from 'react'
 import { useGridContext } from '../Grid'
 import GridDefaultActionButton, {
   GridDefaultActionButtonProps,
-} from 'src/elements/grid/buttons/GridDefaultActionButton'
+} from '../../../elements/grid/buttons/GridDefaultActionButton'
 
 export default function getGridRedirectButton<T>(
   targetRoute: ((item: T) => string) | string,

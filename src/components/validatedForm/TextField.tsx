@@ -1,6 +1,8 @@
 import React, { useCallback } from 'react'
-import Input, { InputProps } from 'src/elements/input/Input'
-import withFormContext, { PropsWithFormContext } from 'src/components/validatedForm/withFormContext'
+import Input, { InputProps } from '../../elements/input/Input'
+import withFormContext, {
+  PropsWithFormContext,
+} from '../../components/validatedForm/withFormContext'
 
 interface TextFieldProps extends InputProps {
   returnAsString?: boolean

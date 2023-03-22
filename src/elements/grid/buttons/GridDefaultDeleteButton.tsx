@@ -1,9 +1,9 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../../../theme-manager/themes/model'
 import GridDefaultActionButton, {
   GridDefaultActionButtonProps,
-} from 'src/elements/grid/buttons/GridDefaultActionButton'
+} from '../../../elements/grid/buttons/GridDefaultActionButton'
 import clsx from 'clsx'
 
 const useStyles = makeStyles<Theme>((theme) => ({

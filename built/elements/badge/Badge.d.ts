@@ -1,5 +1,5 @@
 import React from 'react';
-import { TooltipProps } from 'src/elements/tooltip/Tooltip';
+import { TooltipProps } from '../../elements/tooltip/Tooltip';
 export type BadgeVariant = 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'unknown' | 'danger' | 'error';
 interface BadgeProps {
     text: string;

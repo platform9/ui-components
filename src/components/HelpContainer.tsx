@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
-import FontAwesomeIcon from 'src/components/FontAwesomeIcon'
+import FontAwesomeIcon from '../components/FontAwesomeIcon'
 import { makeStyles } from '@material-ui/styles'
 import SimpleLink from './SimpleLink'
-import Theme from 'src/theme-manager/themes/model'
-import Tooltip from 'src/elements/tooltip'
+import Theme from '../theme-manager/themes/model'
+import Tooltip from '../elements/tooltip'
 
 interface Props {
   title?: string

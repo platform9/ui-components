@@ -1,10 +1,10 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
-import Text from 'src/elements/Text'
+import Theme from '../../theme-manager/themes/model'
+import Text from '../../elements/Text'
 import clsx from 'clsx'
-import FontAwesomeIcon from 'src/components/FontAwesomeIcon'
-import CopyToClipboard from 'src/components/CopyToClipboard'
+import FontAwesomeIcon from '../../components/FontAwesomeIcon'
+import CopyToClipboard from '../../components/CopyToClipboard'
 
 export interface TooltipProps<T> {
   items: T[]

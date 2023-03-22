@@ -7,18 +7,18 @@ import {
   defaultSortingState,
   defaultSortWith,
   SortingState,
-} from 'src/elements/grid/hooks/useGridSorting'
-import { isNilOrEmpty } from 'src/utils/fp'
-import Grid from 'src/elements/grid'
-import { GridProps, GridViewColumn } from 'src/elements/grid/Grid'
-import { GridFilterSpec, GridGlobalFilterSpec } from 'src/elements/grid/hooks/useGridFiltering'
-import GridDefaultDeleteButton from 'src/elements/grid/buttons/GridDefaultDeleteButton'
-import GridSearchFilter from 'src/elements/grid/GridSearchFilter'
-import { GridBatchActionSpec } from 'src/elements/grid/hooks/useGridSelectableRows'
+} from '../../elements/grid/hooks/useGridSorting'
+import { isNilOrEmpty } from '../../utils/fp'
+import Grid from '../../elements/grid'
+import { GridProps, GridViewColumn } from '../../elements/grid/Grid'
+import { GridFilterSpec, GridGlobalFilterSpec } from '../../elements/grid/hooks/useGridFiltering'
+import GridDefaultDeleteButton from '../../elements/grid/buttons/GridDefaultDeleteButton'
+import GridSearchFilter from '../../elements/grid/GridSearchFilter'
+import { GridBatchActionSpec } from '../../elements/grid/hooks/useGridSelectableRows'
 import { ThemedContainer } from '../containers'
-import Dropdown from 'src/elements/dropdown'
-import GridDefaultActionButton from 'src/elements/grid/buttons/GridDefaultActionButton'
-import { GridRowMenuItemSpec } from 'src/elements/grid/hooks/useGridRowMenu'
+import Dropdown from '../../elements/dropdown'
+import GridDefaultActionButton from '../../elements/grid/buttons/GridDefaultActionButton'
+import { GridRowMenuItemSpec } from '../../elements/grid/hooks/useGridRowMenu'
 
 type GlobalFilters = { search: string }
 

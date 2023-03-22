@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useRef } from 'react'
-import withProgress, { PropsWithProgress } from 'src/components/progress/withProgress'
-import generateTestId from 'src/utils/test-helpers'
-import Dropdown, { DropdownProps } from 'src/elements/dropdown/Dropdown'
+import withProgress, { PropsWithProgress } from '../../components/progress/withProgress'
+import generateTestId from '../../utils/test-helpers'
+import Dropdown, { DropdownProps } from '../../elements/dropdown/Dropdown'
 
 export interface AsyncDropdownProps<V> extends PropsWithProgress<DropdownProps<V>> {
   // @deprecated use "compact" prop instead

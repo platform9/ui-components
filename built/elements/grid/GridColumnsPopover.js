@@ -4,11 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
-const Menu_1 = __importDefault(require("src/elements/menu/Menu"));
-const useToggler_1 = __importDefault(require("src/hooks/useToggler"));
+const Menu_1 = __importDefault(require("../../elements/menu/Menu"));
+const useToggler_1 = __importDefault(require("../../hooks/useToggler"));
 const styles_1 = require("@material-ui/styles");
-const Text_1 = __importDefault(require("src/elements/Text"));
-const Checkbox_1 = __importDefault(require("src/elements/input/Checkbox"));
+const Text_1 = __importDefault(require("../../elements/Text"));
+const Checkbox_1 = __importDefault(require("../../elements/input/Checkbox"));
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
 const styles_2 = require("@material-ui/styles");
 const menuOffset = {

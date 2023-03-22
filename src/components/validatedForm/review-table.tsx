@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
-import Text from 'src/elements/Text'
+import Text from '../../elements/Text'
 import { makeStyles } from '@material-ui/styles'
 import { identity } from 'ramda'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../../theme-manager/themes/model'
 import clsx from 'clsx'
-import generateTestId from 'src/utils/test-helpers'
-import { pathStrOr } from 'src/utils/fp'
-import Divider from 'src/elements/Divider'
+import generateTestId from '../../utils/test-helpers'
+import { pathStrOr } from '../../utils/fp'
+import Divider from '../../elements/Divider'
 
 const useStyles = makeStyles<Theme>((theme) => ({
   reviewTable: {

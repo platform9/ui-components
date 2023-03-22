@@ -29,9 +29,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.useStyles = void 0;
 const react_1 = __importStar(require("react"));
 const styles_1 = require("@material-ui/styles");
-const Text_1 = __importDefault(require("src/elements/Text"));
-const FontAwesomeIcon_1 = __importDefault(require("src/components/FontAwesomeIcon"));
-const dropdown_1 = __importDefault(require("src/elements/dropdown"));
+const Text_1 = __importDefault(require("../../elements/Text"));
+const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
+const dropdown_1 = __importDefault(require("../../elements/dropdown"));
 const ramda_1 = require("ramda");
 const clsx_1 = __importDefault(require("clsx"));
 exports.useStyles = (0, styles_1.makeStyles)((theme) => ({

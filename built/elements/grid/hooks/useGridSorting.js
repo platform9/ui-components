@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.defaultSortingState = exports.defaultSortWith = void 0;
 const react_1 = require("react");
 const ramda_1 = require("ramda");
-const fp_1 = require("src/utils/fp");
+const fp_1 = require("../../../utils/fp");
 const defaultSortWith = (prevValue, nextValue) => (nextValue < prevValue ? -1 : 1);
 exports.defaultSortWith = defaultSortWith;
 exports.defaultSortingState = {

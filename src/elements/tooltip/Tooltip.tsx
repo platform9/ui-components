@@ -8,8 +8,8 @@ import React, {
   useMemo,
 } from 'react'
 import ReactDOM from 'react-dom'
-import Theme from 'src/theme-manager/themes/model'
-import Text from 'src/elements/Text'
+import Theme from '../../theme-manager/themes/model'
+import Text from '../../elements/Text'
 import clsx from 'clsx'
 import {
   getMenuTransform,
@@ -18,10 +18,10 @@ import {
   getMenuBottom,
   getMenuLeft,
 } from '../menu/helpers'
-import { middleRight } from 'src/elements/menu/defaults'
+import { middleRight } from '../../elements/menu/defaults'
 import { styled } from '@material-ui/styles'
-import { debounce, CancellableDebounceFn } from 'src/utils/async'
-import { stopPropagation } from 'src/utils/fp'
+import { debounce, CancellableDebounceFn } from '../../utils/async'
+import { stopPropagation } from '../../utils/fp'
 import { getTooltipTop, getTooltipLeft } from './helpers'
 
 export interface TooltipProps {

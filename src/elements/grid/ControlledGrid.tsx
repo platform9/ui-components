@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react'
-import Grid from 'src/elements/grid/Grid'
-import { GridSortingConfig, GridSortableColumnSpec } from 'src/elements/grid/hooks/useGridSorting'
-import { GridBaseConfig, Accessor, GridColumnSpec } from 'src/elements/grid/hooks/useGridRows'
-import { GridPaginationConfig } from 'src/elements/grid/hooks/useGridPagination'
+import Grid from '../../elements/grid/Grid'
+import { GridSortingConfig, GridSortableColumnSpec } from '../../elements/grid/hooks/useGridSorting'
+import { GridBaseConfig, Accessor, GridColumnSpec } from '../../elements/grid/hooks/useGridRows'
+import { GridPaginationConfig } from '../../elements/grid/hooks/useGridPagination'
 
 type ControlledGridColumn<T, A extends Accessor<T> = Accessor<T>> = GridColumnSpec<T, A> &
   GridSortableColumnSpec

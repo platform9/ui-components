@@ -1,9 +1,9 @@
 // Libs
 import React, { FC, PropsWithChildren } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
-import Text from 'src/elements/Text'
-import generateTestId from 'src/utils/test-helpers'
+import Theme from '../../theme-manager/themes/model'
+import Text from '../../elements/Text'
+import generateTestId from '../../utils/test-helpers'
 
 interface Props {
   message?: string

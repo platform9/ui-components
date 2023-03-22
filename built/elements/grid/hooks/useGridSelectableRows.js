@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-disable react-hooks/rules-of-hooks */
 const react_1 = require("react");
 const ramda_1 = require("ramda");
-const fp_1 = require("src/utils/fp");
-const misc_1 = require("src/utils/misc");
+const fp_1 = require("../../..//utils/fp");
+const misc_1 = require("../../../utils/misc");
 const GridDefaultActionButton_1 = __importDefault(require("../buttons/GridDefaultActionButton"));
 const selectedRowReducer = (selectedRows, { type, payload: { row, rows, multiSelection } }) => {
     const newMap = new Map(type === 'set' ? rows.map((row) => [row.key, row]) : selectedRows);

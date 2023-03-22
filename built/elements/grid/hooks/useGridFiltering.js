@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = require("react");
 const ramda_1 = require("ramda");
-const fp_1 = require("src/utils/fp");
-const misc_1 = require("src/utils/misc");
-const constants_1 = require("src/constants");
+const fp_1 = require("../../../utils/fp");
+const misc_1 = require("../../../utils/misc");
+const constants_1 = require("../../../constants");
 const defaultFilteringState = {
     globalValuesByKey: {},
     valuesByKey: {},

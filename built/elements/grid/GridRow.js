@@ -4,11 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
-const Checkbox_1 = __importDefault(require("src/elements/input/Checkbox"));
-const Radio_1 = __importDefault(require("src/elements/input/Radio"));
-const fp_1 = require("src/utils/fp");
-const misc_1 = require("src/utils/misc");
-const test_helpers_1 = __importDefault(require("src/utils/test-helpers"));
+const Checkbox_1 = __importDefault(require("../../elements/input/Checkbox"));
+const Radio_1 = __importDefault(require("../../elements/input/Radio"));
+const fp_1 = require("../../utils/fp");
+const misc_1 = require("../../utils/misc");
+const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 const GridRowMenu_1 = __importDefault(require("./GridRowMenu"));
 const SelectRowColumn = (0, misc_1.memoizeShallow)(function SelectRowColumn({ className, multiSelection, isSelectable, isSelected, }) {
     if (isSelectable === undefined) {

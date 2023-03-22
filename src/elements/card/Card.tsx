@@ -1,11 +1,11 @@
 import React, { ReactNode, PropsWithChildren } from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../../theme-manager/themes/model'
 import CardHeader from './CardHeader'
 import CardBody from './CardBody'
 import CardFooter from './CardFooter'
-import generateTestId from 'src/utils/test-helpers'
+import generateTestId from '../../utils/test-helpers'
 
 export interface CardProps {
   title?: string | ReactNode

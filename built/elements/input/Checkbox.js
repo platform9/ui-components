@@ -18,8 +18,8 @@ const react_1 = __importDefault(require("react"));
 const clsx_1 = __importDefault(require("clsx"));
 const styles_1 = require("@material-ui/styles");
 const Text_1 = __importDefault(require("../Text"));
-const tooltip_1 = __importDefault(require("src/elements/tooltip"));
-const test_helpers_1 = __importDefault(require("src/utils/test-helpers"));
+const tooltip_1 = __importDefault(require("../../elements/tooltip"));
+const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 function Checkbox(_a) {
     var { id, type = 'checkbox', textWeight = 'heavy', checked, disabled = false, onChange, label = undefined, info = undefined, className = undefined, indeterminate = false, containerComponent = 'div' } = _a, props = __rest(_a, ["id", "type", "textWeight", "checked", "disabled", "onChange", "label", "info", "className", "indeterminate", "containerComponent"]);
     const classes = useStyles({ checked, indeterminate, disabled });

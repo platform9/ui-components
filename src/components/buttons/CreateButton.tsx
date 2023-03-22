@@ -1,6 +1,6 @@
 import React from 'react'
-import Button from 'src/elements/button'
-import generateTestId from 'src/utils/test-helpers'
+import Button from '../../elements/button'
+import generateTestId from '../../utils/test-helpers'
 
 export default function CreateButton({ children, ...rest }) {
   return (

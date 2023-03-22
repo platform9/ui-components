@@ -1,10 +1,10 @@
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../theme-manager/themes/model'
 import React, { useEffect } from 'react'
 import useReactRouter from 'use-react-router'
-import Picklist from 'src/elements/dropdown/AsyncDropdown'
+import Picklist from '../elements/dropdown/AsyncDropdown'
 import SearchBar from './SearchBar'
-import { allKey } from 'src/constants'
+import { allKey } from '../constants'
 
 interface Props<T> {
   data: T[]

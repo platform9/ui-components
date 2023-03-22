@@ -1,10 +1,10 @@
 import React from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../../theme-manager/themes/model'
 import Text from '../Text'
-import Tooltip from 'src/elements/tooltip'
-import generateTestId from 'src/utils/test-helpers'
+import Tooltip from '../../elements/tooltip'
+import generateTestId from '../../utils/test-helpers'
 
 export interface CheckboxProps {
   id?: any

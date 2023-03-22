@@ -1,8 +1,8 @@
 import { allPass, always, both, complement, cond, is, isEmpty, isNil, test } from 'ramda'
-import { isPlainObject, memoize } from 'src/utils/misc'
+import { isPlainObject, memoize } from '../utils/misc'
 import moize from 'moize'
 import jsYaml from 'js-yaml'
-import { isNilOrEmpty } from 'src/utils/fp'
+import { isNilOrEmpty } from '../utils/fp'
 
 export class FieldValidator {
   validate: any

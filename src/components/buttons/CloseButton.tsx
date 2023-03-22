@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/styles'
-import IconButton from 'src/elements/button/IconButton'
-import Tooltip from 'src/elements/tooltip'
+import IconButton from '../../elements/button/IconButton'
+import Tooltip from '../../elements/tooltip'
 
 const useStyles = makeStyles((theme) => ({
   link: {

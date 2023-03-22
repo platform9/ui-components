@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Meta } from '@storybook/react'
 
-import Input from 'src/elements/input/Input'
+import Input from '../../elements/input/Input'
 import { Container, Column, Row } from '../containers'
-import useToggler from 'src/hooks/useToggler'
+import useToggler from '../../hooks/useToggler'
 
 export const DefaultInput = (args) => {
   const [value, setValue] = useState('')

@@ -1,9 +1,9 @@
 import React, { FC, PropsWithChildren } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../theme-manager/themes/model'
 import clsx from 'clsx'
-import Card from 'src/elements/card'
-import { CardProps } from 'src/elements/card/Card'
+import Card from '../elements/card'
+import { CardProps } from '../elements/card/Card'
 
 const useStyles = makeStyles<Theme, Partial<SelectableCardProps>>((theme) => ({
   selectableCard: {

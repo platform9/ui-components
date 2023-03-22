@@ -1,6 +1,6 @@
 import { useCallback, useMemo, Reducer, useReducer, ReactNode, useEffect } from 'react'
 import { ParsedGridRow, ParsedGridCell, GridColumnSpec, GridCellWidth } from './useGridRows'
-import { memoize } from 'src/utils/misc'
+import { memoize } from '../../../utils/misc'
 import { difference, intersection, move, union, symmetricDifference } from 'ramda'
 
 export interface GridManagedColumnSpec<T> extends GridColumnSpec<T> {

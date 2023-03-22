@@ -1,12 +1,12 @@
 import React from 'react'
 
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../../theme-manager/themes/model'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
 import { ButtonProps } from '@material-ui/core'
-import Text from 'src/elements/Text'
-import FontAwesomeIcon from 'src/components/FontAwesomeIcon'
-import { hexToRgbaCss } from 'src/utils/colorHelpers'
+import Text from '../../elements/Text'
+import FontAwesomeIcon from '../../components/FontAwesomeIcon'
+import { hexToRgbaCss } from '../../utils/colorHelpers'
 
 interface Props extends Omit<ButtonProps, 'variant' | 'size'> {
   disabled?: boolean

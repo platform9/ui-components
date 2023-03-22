@@ -7,7 +7,7 @@ exports.lightenDarkenColor = exports.stripUnitFromValue = exports.decodeStr = ex
 const ramda_1 = require("ramda");
 const moize_1 = __importDefault(require("moize"));
 const moment_1 = __importDefault(require("moment"));
-const constants_1 = require("src/constants");
+const constants_1 = require("../constants");
 const memoize = (fn, options = {}) => (0, moize_1.default)(fn, Object.assign({ maxSize: constants_1.moizeMaxSize }, options));
 exports.memoize = memoize;
 /**

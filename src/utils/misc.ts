@@ -1,8 +1,8 @@
 import { path } from 'ramda'
 import moize, { Moizeable, Options } from 'moize'
 import moment from 'moment'
-import { moizeMaxSize } from 'src/constants'
-// import { pathStr } from 'src/utils/fp'
+import { moizeMaxSize } from '../constants'
+// import { pathStr } from '../utils/fp'
 
 export interface DefaultMoizeOptions {}
 

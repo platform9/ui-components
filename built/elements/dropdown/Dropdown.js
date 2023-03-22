@@ -29,7 +29,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const clsx_1 = __importDefault(require("clsx"));
 const ramda_1 = require("ramda");
-const FontAwesomeIcon_1 = __importDefault(require("src/components/FontAwesomeIcon"));
+const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
 const downshift_1 = __importDefault(require("downshift"));
 const DropdownToggle_1 = __importDefault(require("./DropdownToggle"));
 const DropdownMenu_1 = __importDefault(require("./DropdownMenu"));
@@ -38,7 +38,7 @@ const DropdownInput_1 = __importDefault(require("./DropdownInput"));
 const Text_1 = __importDefault(require("../Text"));
 const constants_1 = require("./constants");
 const useStyles_1 = __importDefault(require("./useStyles"));
-const test_helpers_1 = __importDefault(require("src/utils/test-helpers"));
+const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 const helpers_1 = require("./helpers");
 const blankItem = { key: '', label: '', value: null };
 function Dropdown(props) {

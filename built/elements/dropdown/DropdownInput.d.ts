@@ -1,5 +1,5 @@
 import React from 'react';
-import Theme from 'src/theme-manager/themes/model';
+import Theme from '../../theme-manager/themes/model';
 type DropdownInputProps = {
     className?: string;
 };

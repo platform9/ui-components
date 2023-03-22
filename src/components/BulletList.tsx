@@ -1,8 +1,8 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import Text from 'src/elements/Text'
-import Theme from 'src/theme-manager/themes/model'
+import Text from '../elements/Text'
+import Theme from '../theme-manager/themes/model'
 
 interface Props {
   items: Array<string | JSX.Element>

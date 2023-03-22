@@ -5,15 +5,15 @@ import DropdownToggle from './DropdownToggle'
 import DropdownMenu from './DropdownMenu'
 import clsx from 'clsx'
 import DropdownItem from './DropdownItem'
-import FontAwesomeIcon from 'src/components/FontAwesomeIcon'
+import FontAwesomeIcon from '../../components/FontAwesomeIcon'
 import DropdownInput from './DropdownInput'
 import Text from '../Text'
 import useStyles from './useStyles'
 import { dropdownDefaultWidth } from './constants'
 import { defaultItemToString } from './helpers'
 import { pluck, equals } from 'ramda'
-import generateTestId from 'src/utils/test-helpers'
-import { getTypedEmptyArr } from 'src/utils/fp'
+import generateTestId from '../../utils/test-helpers'
+import { getTypedEmptyArr } from '../../utils/fp'
 
 export interface MultiDropdownProps<V, T extends DropdownItemSpec<V> = DropdownItemSpec<V>>
   extends DropdownCommonProps<V, T> {

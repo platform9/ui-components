@@ -1,10 +1,10 @@
 import React from 'react'
-import { withInfoTooltip } from 'src/components/InfoTooltip'
+import { withInfoTooltip } from '../../components/InfoTooltip'
 import { FormControl, FormHelperText } from '@material-ui/core'
-import { compose } from 'src/utils/fp'
-import Text from 'src/elements/Text'
-import KeyValues, { EntryShape } from 'src/components/KeyValues'
-import withFormContext from 'src/components/validatedForm/withFormContext'
+import { compose } from '../../utils/fp'
+import Text from '../../elements/Text'
+import KeyValues, { EntryShape } from '../../components/KeyValues'
+import withFormContext from '../../components/validatedForm/withFormContext'
 
 interface Props {
   id: string

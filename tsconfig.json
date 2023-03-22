@@ -6,7 +6,7 @@
     "allowJs": true,
     "checkJs": false,
     "target": "es2017",
-    "baseUrl": ".",
+    "baseUrl": "./",
     "module": "commonjs",
     "jsx": "react",
     "noUnusedLocals": false,
@@ -22,8 +22,8 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "lib": ["esnext", "dom"],
-    "types": []
+    "types": [],
   },
   "exclude": ["node_modules", "built"],
-  "include": ["src/*"]
+  "include": ["src"]
 }

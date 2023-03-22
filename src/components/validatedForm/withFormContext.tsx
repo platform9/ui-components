@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useCallback, FC, forwardRef, FocusEvent } from 'react'
 import PropTypes from 'prop-types'
-import { ValidatedFormContext } from 'src/components/validatedForm/ValidatedForm'
-import { requiredValidator } from 'src/utils/fieldValidators'
+import { ValidatedFormContext } from '../../components/validatedForm/ValidatedForm'
+import { requiredValidator } from '../../utils/fieldValidators'
 import { isNil } from 'ramda'
-import { memoizedObj } from 'src/utils/misc'
+import { memoizedObj } from '../../utils/misc'
 import clsx from 'clsx'
-import generateTestId from 'src/utils/test-helpers'
-import { pathStr, pathStrOr } from 'src/utils/fp'
+import generateTestId from '../../utils/test-helpers'
+import { pathStr, pathStrOr } from '../../utils/fp'
 
 // @deprecated
 export const ValidatedFormInputPropTypes = {
@@ -15,7 +15,7 @@ export const ValidatedFormInputPropTypes = {
   validations: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   initialValue: PropTypes.any,
 }
-interface ChildrenFnParams<T> {
+export interface ChildrenFnParams<T> {
   id: string
   values?: Record<string, unknown>
   value?: T

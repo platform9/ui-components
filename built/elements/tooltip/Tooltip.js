@@ -28,13 +28,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const react_dom_1 = __importDefault(require("react-dom"));
-const Text_1 = __importDefault(require("src/elements/Text"));
+const Text_1 = __importDefault(require("../../elements/Text"));
 const clsx_1 = __importDefault(require("clsx"));
 const helpers_1 = require("../menu/helpers");
-const defaults_1 = require("src/elements/menu/defaults");
+const defaults_1 = require("../../elements/menu/defaults");
 const styles_1 = require("@material-ui/styles");
-const async_1 = require("src/utils/async");
-const fp_1 = require("src/utils/fp");
+const async_1 = require("../../utils/async");
+const fp_1 = require("../../utils/fp");
 const helpers_2 = require("./helpers");
 // Time to wait before unmounting the tooltip to make it interactive
 const transitionDelayMs = 50;

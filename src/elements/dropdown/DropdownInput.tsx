@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
-import FontAwesomeIcon from 'src/components/FontAwesomeIcon'
+import Theme from '../../theme-manager/themes/model'
+import FontAwesomeIcon from '../../components/FontAwesomeIcon'
 import clsx from 'clsx'
 
 type DropdownInputProps = {

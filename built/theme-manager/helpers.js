@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generatePf9ComponentColors = void 0;
-const colorHelpers_1 = require("src/utils/colorHelpers");
+const colorHelpers_1 = require("../utils/colorHelpers");
 const generatePf9ComponentColors = (colors) => {
     return {
         frame: {

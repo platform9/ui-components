@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Meta } from '@storybook/react'
 
-import Radio from 'src/elements/input/Radio'
-import Card from 'src/elements/card'
+import Radio from '../../elements/input/Radio'
+import Card from '../../elements/card'
 import { Column } from '../containers'
 
 export const DefaultRadio = (args) => {

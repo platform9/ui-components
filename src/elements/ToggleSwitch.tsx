@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
-import Text from 'src/elements/Text'
+import Theme from '../theme-manager/themes/model'
+import Text from '../elements/Text'
 import clsx from 'clsx'
-import generateTestId from 'src/utils/test-helpers'
+import generateTestId from '../utils/test-helpers'
 
 export interface ToggleSwitchProps {
   active: boolean

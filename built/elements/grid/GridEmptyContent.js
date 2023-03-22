@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // Libs
 const react_1 = __importDefault(require("react"));
 const styles_1 = require("@material-ui/styles");
-const Text_1 = __importDefault(require("src/elements/Text"));
-const test_helpers_1 = __importDefault(require("src/utils/test-helpers"));
+const Text_1 = __importDefault(require("../../elements/Text"));
+const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 const useStyles = (0, styles_1.makeStyles)((theme) => ({
     messageContainer: {
         minHeight: ({ defaultHeight }) => `${defaultHeight}px`,

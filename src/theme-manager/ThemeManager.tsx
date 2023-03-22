@@ -3,14 +3,9 @@ import { createTheme } from '@material-ui/core/styles'
 
 import React, { PropsWithChildren, useContext, useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import AppTheme from 'src/theme-manager/themes/model'
+import AppTheme from '../theme-manager/themes/model'
 import { themeSelector } from './selector'
 import * as CSS from 'csstype'
-import { themeActions } from '../store'
-import { defaultThemeState, ThemeReducer } from './createThemeSlice'
-import darkTheme from './themes/modes/dark'
-import colors from './themes/base/colors'
-import { CaseReducerActions, SliceCaseReducers } from '@reduxjs/toolkit/dist/createSlice'
 
 const CustomThemeContext = React.createContext<{
   theme: AppTheme

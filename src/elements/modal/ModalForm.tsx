@@ -1,12 +1,12 @@
-import ValidatedForm from 'src/components/validatedForm/ValidatedForm'
+import ValidatedForm from '../../components/validatedForm/ValidatedForm'
 import React, { PropsWithChildren, useMemo, useRef } from 'react'
 import Modal, { ModalProps } from './Modal'
 import Button from '../button'
 import useReactRouter from 'use-react-router'
 
-import Progress from 'src/components/progress/Progress'
-import Alert from 'src/components/Alert'
-import { Route } from 'src/misc/route'
+import Progress from '../../components/progress/Progress'
+import Alert from '../../components/Alert'
+import { Route } from '../../misc/route'
 
 interface BaseModalFormProps extends Omit<ModalProps, 'open'> {
   submitTitle?: string

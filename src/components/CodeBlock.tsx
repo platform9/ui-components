@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../theme-manager/themes/model'
 import clsx from 'clsx'
 
 interface Props {

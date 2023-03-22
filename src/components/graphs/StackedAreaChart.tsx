@@ -9,11 +9,11 @@ import {
   Tooltip,
 } from 'recharts'
 import { makeStyles, useTheme } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../../theme-manager/themes/model'
 // import { useTheme } from '@material-ui/styles'
-import { pathStr } from 'src/utils/fp'
+import { pathStr } from '../../utils/fp'
 import { useSelector } from 'react-redux'
-import { themeSelector } from 'src/theme-manager/selector'
+import { themeSelector } from '../../theme-manager/selector'
 
 const useStyles = makeStyles((theme: Theme) => ({
   chartContainer: {

@@ -1,8 +1,8 @@
 import React, { PropsWithChildren } from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
-import Text from 'src/elements/Text'
+import Theme from '../theme-manager/themes/model'
+import Text from '../elements/Text'
 
 interface AlertProps {
   variant?: 'primary' | 'success' | 'warning' | 'error'

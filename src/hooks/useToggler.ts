@@ -1,5 +1,5 @@
 import { useReducer, useCallback, Reducer } from 'react'
-import { memoize } from 'src/utils/misc'
+import { memoize } from '../utils/misc'
 
 interface TogglerReducerAction {
   type: 'toggle' | 'assign'

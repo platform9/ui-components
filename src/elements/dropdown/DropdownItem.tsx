@@ -1,8 +1,8 @@
 import React, { PropsWithChildren } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
-import Checkbox from 'src/elements/input/Checkbox'
-import generateTestId from 'src/utils/test-helpers'
+import Theme from '../../theme-manager/themes/model'
+import Checkbox from '../../elements/input/Checkbox'
+import generateTestId from '../../utils/test-helpers'
 
 interface DropdownItemProps {
   isSelected?: boolean

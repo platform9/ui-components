@@ -1,8 +1,8 @@
 import React, { useCallback, useMemo, useState, useEffect } from 'react'
-import { debounce } from 'src/utils/async'
+import { debounce } from '../../utils/async'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
-import Input from 'src/elements/input/Input'
+import Theme from '../../theme-manager/themes/model'
+import Input from '../../elements/input/Input'
 
 export interface GridSearchFilterProps {
   value: string

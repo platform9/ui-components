@@ -1,6 +1,6 @@
 import React, { useReducer, useCallback, ReactNode, Reducer, useEffect } from 'react'
 import Downshift, { ControllerStateAndHelpers, DownshiftProps } from 'downshift'
-import { emptyArr } from 'src/utils/fp'
+import { emptyArr } from '../../utils/fp'
 import { equals, uniq, includes } from 'ramda'
 
 type OnClickHandler = (e: React.MouseEvent<HTMLElement, MouseEvent>) => void

@@ -1,6 +1,6 @@
 import React from 'react'
 import { withStyles } from '@material-ui/styles'
-import Button from 'src/elements/button'
+import Button from '../../elements/button'
 
 const styles = (theme) => ({
   baseButton: {

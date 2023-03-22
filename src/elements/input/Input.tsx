@@ -1,13 +1,13 @@
 import React, { PropsWithChildren, useRef, useMemo, useCallback, ReactNode } from 'react'
-import FontAwesomeIcon from 'src/components/FontAwesomeIcon'
+import FontAwesomeIcon from '../../components/FontAwesomeIcon'
 import { mergeRight } from 'ramda'
 import Text from '../Text'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../../theme-manager/themes/model'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
-import Tooltip from 'src/elements/tooltip'
-import { topMiddle } from 'src/elements/menu/defaults'
-import useToggler from 'src/hooks/useToggler'
+import Tooltip from '../../elements/tooltip'
+import { topMiddle } from '../../elements/menu/defaults'
+import useToggler from '../../hooks/useToggler'
 
 export interface InputIconProps {
   onClick?: () => void

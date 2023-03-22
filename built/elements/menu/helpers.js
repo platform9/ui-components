@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.makeMenuPositionProps = exports.getMenuLeft = exports.getMenuBottom = exports.getMenuRight = exports.getMenuTop = exports.getMenuTransform = void 0;
-const misc_1 = require("src/utils/misc");
+const misc_1 = require("../../utils/misc");
 const getMenuTransform = (scale) => (0, misc_1.memoize)(({ vertAlign, horizAlign }) => {
     const tLeft = horizAlign === 'middle' ? '50%' : '0%';
     const tTop = vertAlign === 'middle' ? '-50%' : '0%';

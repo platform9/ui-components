@@ -1,6 +1,6 @@
-import Tooltip from 'src/elements/tooltip'
+import Tooltip from '../elements/tooltip'
 import React, { PropsWithChildren, PureComponent } from 'react'
-import { memoize } from 'src/utils/misc'
+import { memoize } from '../utils/misc'
 
 interface Props {
   classes?: any

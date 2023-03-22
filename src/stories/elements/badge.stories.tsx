@@ -1,8 +1,8 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
 
-import Card from 'src/elements/card'
-import Badge from 'src/elements/badge'
+import Card from '../../elements/card'
+import Badge from '../../elements/badge'
 import { Row, Column } from '../containers'
 
 export const DefaultBadge = (args) => (

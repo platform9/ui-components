@@ -1,7 +1,9 @@
 import React, { FC, ReactElement } from 'react'
-import withFormContext, { PropsWithFormContext } from 'src/components/validatedForm/withFormContext'
-import { compose } from 'src/utils/fp'
-import withTooltip, { PropsWithTooltip } from 'src/elements/tooltip/withTooltip'
+import withFormContext, {
+  PropsWithFormContext,
+} from '../../components/validatedForm/withFormContext'
+import { compose } from '../../utils/fp'
+import withTooltip, { PropsWithTooltip } from '../../elements/tooltip/withTooltip'
 import { partialRight } from 'ramda'
 
 type BaseDropdownFieldProps<V, P> = {

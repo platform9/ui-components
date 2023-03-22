@@ -1,4 +1,4 @@
-import CodeMirror from 'src/components/codeMirror/CodeMirror'
-import withFormContext from 'src/components/validatedForm/withFormContext'
+import CodeMirror from '../../components/codeMirror/CodeMirror'
+import withFormContext from '../../components/validatedForm/withFormContext'
 
 export default withFormContext(CodeMirror)

@@ -1,12 +1,12 @@
 import React, { forwardRef } from 'react'
 
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../../theme-manager/themes/model'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
 import { ButtonProps } from '@material-ui/core'
-import Tooltip, { TooltipProps } from 'src/elements/tooltip/Tooltip'
-import FontAwesomeIcon from 'src/components/FontAwesomeIcon'
-import { bottomMiddle } from 'src/elements/menu/defaults'
+import Tooltip, { TooltipProps } from '../../elements/tooltip/Tooltip'
+import FontAwesomeIcon from '../../components/FontAwesomeIcon'
+import { bottomMiddle } from '../../elements/menu/defaults'
 
 interface Props extends Omit<ButtonProps, 'variant' | 'size'> {
   disabled?: boolean

@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { GridRowMenuItemsProps, GridRowMenuOffset } from 'src/elements/grid/hooks/useGridRowMenu';
+import { GridRowMenuItemsProps, GridRowMenuOffset } from '../../elements/grid/hooks/useGridRowMenu';
 interface GridRowMenuProps<T> extends GridRowMenuItemsProps<T> {
     item: T;
     rowMenuOffset?: GridRowMenuOffset;

@@ -4,9 +4,9 @@ import useReactRouter from 'use-react-router'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import FontAwesomeIcon from './FontAwesomeIcon'
-import Theme from 'src/theme-manager/themes/model'
-import Text, { TextVariant } from 'src/elements/Text'
-import generateTestId from 'src/utils/test-helpers'
+import Theme from '../theme-manager/themes/model'
+import Text, { TextVariant } from '../elements/Text'
+import generateTestId from '../utils/test-helpers'
 
 type ISimpleLinkVariant = 'error' | 'primary' | 'secondary'
 

@@ -1,8 +1,10 @@
 import React from 'react'
-import withFormContext, { PropsWithFormContext } from 'src/components/validatedForm/withFormContext'
-import ToggleSwitch, { ToggleSwitchProps } from 'src/elements/ToggleSwitch'
+import withFormContext, {
+  PropsWithFormContext,
+} from '../../components/validatedForm/withFormContext'
+import ToggleSwitch, { ToggleSwitchProps } from '../../elements/ToggleSwitch'
 import { withInfoTooltip } from '../InfoTooltip'
-import { compose } from 'src/utils/fp'
+import { compose } from '../../utils/fp'
 
 function ToggleSwitchField({ onChange, value, ...restProps }) {
   return <ToggleSwitch {...restProps} active={!!value} onClick={(value) => onChange(value)} />

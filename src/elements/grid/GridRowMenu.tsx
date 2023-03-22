@@ -1,13 +1,13 @@
 import React, { useCallback } from 'react'
-import { GridRowMenuItemsProps, GridRowMenuOffset } from 'src/elements/grid/hooks/useGridRowMenu'
+import { GridRowMenuItemsProps, GridRowMenuOffset } from '../../elements/grid/hooks/useGridRowMenu'
 import clsx from 'clsx'
-import FontAwesomeIcon from 'src/components/FontAwesomeIcon'
-import useToggler from 'src/hooks/useToggler'
-import { middleLeft } from 'src/elements/menu/defaults'
-import Menu from 'src/elements/menu/Menu'
-import MenuItem from 'src/elements/menu/MenuItem'
+import FontAwesomeIcon from '../../components/FontAwesomeIcon'
+import useToggler from '../../hooks/useToggler'
+import { middleLeft } from '../../elements/menu/defaults'
+import Menu from '../../elements/menu/Menu'
+import MenuItem from '../../elements/menu/MenuItem'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../../theme-manager/themes/model'
 
 interface GridRowMenuProps<T> extends GridRowMenuItemsProps<T> {
   item: T

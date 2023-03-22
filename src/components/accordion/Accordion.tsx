@@ -1,8 +1,8 @@
 import React, { useState, useRef, PropsWithChildren, useEffect, useMemo } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import Theme from 'src/theme-manager/themes/model'
-import useToggler from 'src/hooks/useToggler'
+import Theme from '../../theme-manager/themes/model'
+import useToggler from '../../hooks/useToggler'
 import FontAwesomeIcon from '../FontAwesomeIcon'
 
 interface AccordionProps {

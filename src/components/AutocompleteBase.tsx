@@ -5,9 +5,9 @@ import { withStyles } from '@material-ui/styles'
 import MenuList from '@material-ui/core/MenuList'
 import MenuItem from '@material-ui/core/MenuItem'
 import Paper from '@material-ui/core/Paper'
-import Input from 'src/elements/input'
+import Input from '../elements/input'
 import clsx from 'clsx'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../theme-manager/themes/model'
 
 interface AutocompleteBaseProps {
   suggestions?: string[]

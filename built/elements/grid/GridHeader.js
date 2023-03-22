@@ -6,9 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const clsx_1 = __importDefault(require("clsx"));
 const styles_1 = require("@material-ui/styles");
-const Text_1 = __importDefault(require("src/elements/Text"));
+const Text_1 = __importDefault(require("../../elements/Text"));
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
-const Checkbox_1 = __importDefault(require("src/elements/input/Checkbox"));
+const Checkbox_1 = __importDefault(require("../../elements/input/Checkbox"));
 const GridTableHeading_1 = __importDefault(require("./GridTableHeading"));
 const useStyles = (0, styles_1.makeStyles)((theme) => ({
     gridHead: {

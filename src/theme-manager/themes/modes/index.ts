@@ -1,7 +1,7 @@
-import defaultTheme from 'src/theme-manager/themes/modes/default'
-import lightTheme from 'src/theme-manager/themes/modes/light'
-import darkTheme from 'src/theme-manager/themes/modes/dark'
-import ultraDarkTheme from 'src/theme-manager/themes/modes/ultraDark'
+import defaultTheme from './default'
+import lightTheme from './light'
+import darkTheme from './dark'
+import ultraDarkTheme from './ultraDark'
 
 export { default } from './default'
 

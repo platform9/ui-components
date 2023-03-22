@@ -1,10 +1,10 @@
-import Button from 'src/elements/button'
+import Button from '../elements/button'
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
-import Text from 'src/elements/Text'
+import Theme from '../theme-manager/themes/model'
+import Text from '../elements/Text'
 import SimpleLink from './SimpleLink'
-import generateTestId from 'src/utils/test-helpers'
+import generateTestId from '../utils/test-helpers'
 
 const useStyles = makeStyles((theme: Theme) => ({
   dropdownContainer: {

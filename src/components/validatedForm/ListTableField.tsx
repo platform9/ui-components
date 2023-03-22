@@ -1,10 +1,10 @@
 // TODO: Refactor this to use Grid instead of ListTable
 
 // import React from 'react'
-// import withFormContext from 'src/components/validatedForm/withFormContext'
-// import ListTable from 'src/components/listTable/ListTable'
+// import withFormContext from '../components/validatedForm/withFormContext'
+// import ListTable from '../components/listTable/ListTable'
 // import { ValidatedFormProps } from './model'
-// import { ErrorMessage } from 'src/components/validatedForm/ErrorMessage'
+// import { ErrorMessage } from '../components/validatedForm/ErrorMessage'
 
 // interface Props extends ValidatedFormProps {
 //   value?: string[]

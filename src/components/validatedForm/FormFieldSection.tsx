@@ -1,12 +1,12 @@
 import React, { useMemo, PropsWithChildren, ReactNode } from 'react'
 import { makeStyles, styled } from '@material-ui/styles'
-import { isNumeric } from 'src/utils/misc'
-import generateTestId from 'src/utils/test-helpers'
+import { isNumeric } from '../../utils/misc'
+import generateTestId from '../../utils/test-helpers'
 import clsx from 'clsx'
-import Theme from 'src/theme-manager/themes/model'
-import Text, { TextVariant } from 'src/elements/Text'
+import Theme from '../../theme-manager/themes/model'
+import Text, { TextVariant } from '../../elements/Text'
 import FontAwesomeIcon from '../FontAwesomeIcon'
-import Tooltip from 'src/elements/tooltip'
+import Tooltip from '../../elements/tooltip'
 
 interface InfoModel {
   title: string

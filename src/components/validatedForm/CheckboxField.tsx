@@ -1,7 +1,9 @@
 import React from 'react'
-import Checkbox, { CheckboxProps } from 'src/elements/input/Checkbox'
-import withFormContext, { PropsWithFormContext } from 'src/components/validatedForm/withFormContext'
-import { PropsWithTooltip } from 'src/elements/tooltip/withTooltip'
+import Checkbox, { CheckboxProps } from '../../elements/input/Checkbox'
+import withFormContext, {
+  PropsWithFormContext,
+} from '../../components/validatedForm/withFormContext'
+import { PropsWithTooltip } from '../../elements/tooltip/withTooltip'
 
 function CheckboxField({ value, ...restProps }: CheckboxFieldProps) {
   return (

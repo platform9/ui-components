@@ -1,6 +1,6 @@
 import React from 'react'
-import Text from 'src/elements/Text'
-import { GridCellProps } from 'src/elements/grid/hooks/useGridRows'
+import Text from '../../../elements/Text'
+import { GridCellProps } from '../../../elements/grid/hooks/useGridRows'
 import clsx from 'clsx'
 
 export default function GridDefaultCell<T>({ children, title, className }: GridCellProps<T>) {
