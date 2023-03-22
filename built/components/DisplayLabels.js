@@ -7,7 +7,7 @@ const react_1 = __importDefault(require("react"));
 const ramda_1 = require("ramda");
 const styles_1 = require("@material-ui/styles");
 const toPairs = ramda_1.toPairs;
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     pair: {
         margin: 0,
     },

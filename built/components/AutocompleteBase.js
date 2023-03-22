@@ -1,11 +1,7 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -24,7 +20,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -116,14 +112,14 @@ let AutocompleteBase = class AutocompleteBase extends react_1.PureComponent {
         const { value } = this.state;
         const _a = this.props, { className, classes, suggestions, onChange, initialValue, label, id } = _a, other = __rest(_a, ["className", "classes", "suggestions", "onChange", "initialValue", "label", "id"]);
         const DropdownIcon = react_1.default.createElement(ArrowDropDown_1.default, { className: classes.dropdownButton });
-        return (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.relative, className) },
+        return (react_1.default.createElement("div", { className: clsx_1.default(classes.relative, className) },
             react_1.default.createElement(FormControl_1.default, { className: classes.container, onMouseDown: this.toggleOpen },
                 react_1.default.createElement(input_1.default, Object.assign({ id: id, placeholder: label, value: value, onChange: this.handleChange, onBlur: this.handleClose }, other))),
             this.renderSuggestions(matched)));
     }
 };
 AutocompleteBase = __decorate([
-    (0, styles_1.withStyles)(styles)
+    styles_1.withStyles(styles)
 ], AutocompleteBase);
 exports.default = AutocompleteBase;
 //# sourceMappingURL=AutocompleteBase.js.map

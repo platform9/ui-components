@@ -8,14 +8,14 @@ const clsx_1 = __importDefault(require("clsx"));
 const styles_1 = require("@material-ui/styles");
 const button_1 = __importDefault(require("../elements/button"));
 const test_helpers_1 = __importDefault(require("../utils/test-helpers"));
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     root: {
         marginTop: theme.spacing(3),
     },
 }));
 const SubmitButton = ({ className, children, form }) => {
     const classes = useStyles({});
-    return (react_1.default.createElement(button_1.default, { "data-testid": (0, test_helpers_1.default)(children), className: (0, clsx_1.default)(classes.root, className), type: "submit", variant: "primary", size: "large", form: form }, children));
+    return (react_1.default.createElement(button_1.default, { "data-testid": test_helpers_1.default(children), className: clsx_1.default(classes.root, className), type: "submit", variant: "primary", size: "large", form: form }, children));
 };
 exports.default = SubmitButton;
 //# sourceMappingURL=SubmitButton.js.map

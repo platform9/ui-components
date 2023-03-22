@@ -36,7 +36,7 @@ export interface SelectableParsedGridRow<T> extends ParsedGridRow<T> {
     select?: () => void;
     unselect?: () => void;
 }
-export type SelectionStatus = 'all' | 'some' | 'none';
+export declare type SelectionStatus = 'all' | 'some' | 'none';
 export interface GridBatchActionProps<T> {
     key: string | number;
     label: string | ReactNode;

@@ -11,22 +11,22 @@ function useGridPagination(rows, { initialPage = 1, rowsPerPage = constants_1.de
     if (disablePagination) {
         return [rows, { paginationDisabled: true }];
     }
-    const [pageSize, setPageSize] = (0, react_1.useState)(rowsPerPage);
-    const [page, setPage] = (0, react_1.useState)(initialPage);
-    const pagesCount = (0, react_1.useMemo)(() => {
+    const [pageSize, setPageSize] = react_1.useState(rowsPerPage);
+    const [page, setPage] = react_1.useState(initialPage);
+    const pagesCount = react_1.useMemo(() => {
         return getPagesCount(totalItems, pageSize);
     }, [totalItems, pageSize]);
-    const currentPage = (0, react_1.useMemo)(() => {
+    const currentPage = react_1.useMemo(() => {
         return page > pagesCount ? pagesCount : page;
     }, [page, pagesCount, rows]);
-    const goToPage = (0, react_1.useCallback)(async (page) => {
+    const goToPage = react_1.useCallback(async (page) => {
         const currentPage = page > pagesCount ? pagesCount : page < 1 ? 1 : page;
         if (onPageChange) {
             await onPageChange(currentPage, pageSize);
         }
         setPage(currentPage);
     }, [pagesCount, pageSize]);
-    const updatePageSize = (0, react_1.useCallback)(async (pageSize) => {
+    const updatePageSize = react_1.useCallback(async (pageSize) => {
         if (onPageChange) {
             const pagesCount = getPagesCount(totalItems, pageSize);
             const currentPage = page > pagesCount ? pagesCount : page < 1 ? 1 : page;
@@ -37,21 +37,21 @@ function useGridPagination(rows, { initialPage = 1, rowsPerPage = constants_1.de
         }
         setPageSize(pageSize);
     }, [currentPage]);
-    const goPrevPage = (0, react_1.useCallback)(async () => {
+    const goPrevPage = react_1.useCallback(async () => {
         const prevPage = currentPage > 1 ? currentPage - 1 : 1;
         if (onPageChange) {
             await onPageChange(prevPage, pageSize);
         }
         setPage(prevPage);
     }, [currentPage, pageSize]);
-    const goNextPage = (0, react_1.useCallback)(async () => {
+    const goNextPage = react_1.useCallback(async () => {
         const nextPage = currentPage < pagesCount ? currentPage + 1 : currentPage;
         if (onPageChange) {
             await onPageChange(nextPage, pageSize);
         }
         setPage(nextPage);
     }, [currentPage, pagesCount, pageSize]);
-    const pageRows = (0, react_1.useMemo)(() => {
+    const pageRows = react_1.useMemo(() => {
         if (controlledPagination) {
             return rows;
         }

@@ -84,7 +84,7 @@ const components = {
         activeHandle: colors_1.default.blue[500],
         inactiveHandle: colors_1.default.grey[500],
         disabledHandle: colors_1.default.grey[300],
-        activeTrack: (0, colorHelpers_1.hexToRgbaCss)(colors_1.default.blue[500], 0.1),
+        activeTrack: colorHelpers_1.hexToRgbaCss(colors_1.default.blue[500], 0.1),
         inactiveTrack: colors_1.default.grey[200],
         disabledTrack: colors_1.default.grey[200],
         label: colors_1.default.grey[700],
@@ -259,7 +259,7 @@ const components = {
     },
 };
 const serenityLightTheme = {
-    theme: (0, helpers_1.generateTheme)({
+    theme: helpers_1.generateTheme({
         palette: { colors: colors_1.default, primary: 'blue', secondary: 'pink', type: 'light', themeKey: 'light' },
         typography: {
             fontFamily: '"Eina04"',

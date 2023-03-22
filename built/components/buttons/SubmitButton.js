@@ -25,7 +25,7 @@ const styles = (theme) => ({
 });
 const SubmitButton = (_a) => {
     var { children, classes } = _a, rest = __rest(_a, ["children", "classes"]);
-    return (react_1.default.createElement(button_1.default, Object.assign({ "data-testid": (0, test_helpers_1.default)(children, 'submitbtn'), className: classes.baseButton, type: "submit" }, rest), children || 'Submit'));
+    return (react_1.default.createElement(button_1.default, Object.assign({ "data-testid": test_helpers_1.default(children, 'submitbtn'), className: classes.baseButton, type: "submit" }, rest), children || 'Submit'));
 };
-exports.default = (0, styles_1.withStyles)(styles)(SubmitButton);
+exports.default = styles_1.withStyles(styles)(SubmitButton);
 //# sourceMappingURL=SubmitButton.js.map

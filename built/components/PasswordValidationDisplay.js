@@ -12,7 +12,7 @@ const fieldValidators_1 = require("../utils/fieldValidators");
 const passwordValidatorList = [
     {
         displayText: 'At least 8 characters long',
-        validator: (0, fieldValidators_1.hasMinLength)(8),
+        validator: fieldValidators_1.hasMinLength(8),
     },
     {
         displayText: '1 Lowercase letter',
@@ -34,10 +34,10 @@ const passwordValidatorList = [
 function PasswordValidationDisplay({ values }) {
     const classes = useStyles({});
     return (react_1.default.createElement(Alert_1.default, { title: "Password must contain the following:" },
-        react_1.default.createElement("ul", { className: classes.validationList }, passwordValidatorList.map((record) => (react_1.default.createElement(MenuItem_1.default, { className: classes.validationItem, key: record.displayText, icon: (0, ramda_1.propSatisfies)(record.validator, 'newPassword', values) ? 'check' : 'times', readonly: true }, record.displayText))))));
+        react_1.default.createElement("ul", { className: classes.validationList }, passwordValidatorList.map((record) => (react_1.default.createElement(MenuItem_1.default, { className: classes.validationItem, key: record.displayText, icon: ramda_1.propSatisfies(record.validator, 'newPassword', values) ? 'check' : 'times', readonly: true }, record.displayText))))));
 }
 exports.default = PasswordValidationDisplay;
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     validationList: {
         margin: 0,
         padding: 0,

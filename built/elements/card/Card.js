@@ -16,12 +16,12 @@ function Card({ title, children, footer = undefined, withCustomBody = false, wit
     const titleComponent = getTitleComponent(title);
     const BodyComponent = withCustomBody ? react_1.default.Fragment : CardBody_1.default;
     const FooterComponent = withCustomFooter ? react_1.default.Fragment : CardFooter_1.default;
-    return (react_1.default.createElement("article", { "data-testid": (0, test_helpers_1.default)('cluster', 'status'), className: (0, clsx_1.default)(classes.card, className) },
+    return (react_1.default.createElement("article", { "data-testid": test_helpers_1.default('cluster', 'status'), className: clsx_1.default(classes.card, className) },
         !!titleComponent && titleComponent,
         react_1.default.createElement(BodyComponent, null, children),
         footer && react_1.default.createElement(FooterComponent, null, footer)));
 }
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     card: {
         backgroundColor: theme.components.card.background,
         borderRadius: '4px 4px 2px 2px',

@@ -24,7 +24,7 @@ const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 const GridColumnsPopover_1 = __importDefault(require("./GridColumnsPopover"));
 const tooltip_1 = __importDefault(require("../../elements/tooltip"));
 const ThemeManager_1 = require("../../theme-manager/ThemeManager");
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     gridToolbar: {
         display: 'grid',
         gridAutoFlow: 'column',
@@ -92,7 +92,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
 }));
 const DefaultToolbarContainer = (_a) => {
     var { children, selectedCount } = _a, props = __rest(_a, ["children", "selectedCount"]);
-    const [theme] = (0, ThemeManager_1.useCustomTheme)();
+    const [theme] = ThemeManager_1.useCustomTheme();
     return (react_1.default.createElement(styles_1.ThemeProvider, { theme: selectedCount ? dark_1.default : theme },
         react_1.default.createElement("div", Object.assign({}, props), children)));
 };
@@ -101,27 +101,27 @@ function GridToolbar(props) {
     const { label, columns, columnTogglers, selectedCount, batchActions, globalFilters, filters, onRefresh, extraToolbarContent, clearSelectedRows, multiSelectionEnabled, ToolbarContainer = DefaultToolbarContainer, columnHidingDisabled, showItemsCountInLabel = false, itemsCount = undefined, tooltip = undefined, } = props;
     return (react_1.default.createElement(ToolbarContainer, { selectedCount: selectedCount, className: classes.gridToolbar },
         react_1.default.createElement("div", { className: classes.batchActions },
-            react_1.default.createElement(Text_1.default, { "data-testid": (0, test_helpers_1.default)(label, 'label'), className: classes.label, variant: "subtitle2", component: "p" },
+            react_1.default.createElement(Text_1.default, { "data-testid": test_helpers_1.default(label, 'label'), className: classes.label, variant: "subtitle2", component: "p" },
                 showItemsCountInLabel && itemsCount ? `${label} (${itemsCount})` : label,
                 tooltip && (react_1.default.createElement(tooltip_1.default, { className: classes.tooltip, message: tooltip },
                     react_1.default.createElement(FontAwesomeIcon_1.default, null, "question-circle")))),
             selectedCount ? (react_1.default.createElement(react_1.default.Fragment, null,
                 multiSelectionEnabled ? (react_1.default.createElement(react_1.default.Fragment, null,
-                    react_1.default.createElement(Text_1.default, { "data-testid": (0, test_helpers_1.default)('selected'), variant: "body2", className: classes.selectedCount, component: "p" }, `${selectedCount} Selected`),
-                    react_1.default.createElement(Text_1.default, { "data-testid": (0, test_helpers_1.default)('clear', 'all'), variant: "body2", className: classes.clearBtn, component: "p", onClick: clearSelectedRows }, `Clear All`),
+                    react_1.default.createElement(Text_1.default, { "data-testid": test_helpers_1.default('selected'), variant: "body2", className: classes.selectedCount, component: "p" }, `${selectedCount} Selected`),
+                    react_1.default.createElement(Text_1.default, { "data-testid": test_helpers_1.default('clear', 'all'), variant: "body2", className: classes.clearBtn, component: "p", onClick: clearSelectedRows }, `Clear All`),
                     react_1.default.createElement("div", { className: classes.verticalLine }))) : null, batchActions === null || batchActions === void 0 ? void 0 :
                 batchActions.map((_a) => {
                     var { key, label, triggerAction, BatchActionButton } = _a, props = __rest(_a, ["key", "label", "triggerAction", "BatchActionButton"]);
                     return (react_1.default.createElement(BatchActionButton, Object.assign({}, props, { key: key, onClick: triggerAction }), label));
                 }))) : null),
-        react_1.default.createElement("div", { "data-testid": (0, test_helpers_1.default)('search'), className: classes.tools },
+        react_1.default.createElement("div", { "data-testid": test_helpers_1.default('search'), className: classes.tools },
             globalFilters.map((_a) => {
                 var { key, filterValue, filterValues, updateFilterValue, FilterComponent } = _a, rest = __rest(_a, ["key", "filterValue", "filterValues", "updateFilterValue", "FilterComponent"]);
                 return (react_1.default.createElement(FilterComponent, Object.assign({ key: String(key), value: filterValue, filterValues: filterValues, onChange: updateFilterValue }, rest)));
             }),
             !selectedCount ? (react_1.default.createElement("div", { className: classes.buttons },
                 !columnHidingDisabled && (react_1.default.createElement(GridColumnsPopover_1.default, { columns: columns, columnTogglers: columnTogglers })),
-                react_1.default.createElement(Text_1.default, { "data-testid": (0, test_helpers_1.default)('refresh'), noWrap: true, onClick: onRefresh, component: "div", className: classes.button },
+                react_1.default.createElement(Text_1.default, { "data-testid": test_helpers_1.default('refresh'), noWrap: true, onClick: onRefresh, component: "div", className: classes.button },
                     react_1.default.createElement(FontAwesomeIcon_1.default, null, "sync-alt"),
                     "Refresh"))) : null,
             filters.map((_a) => {

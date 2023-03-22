@@ -18,7 +18,7 @@ function SearchBar({ className, searchTerm, onSearchChange }) {
         return null;
     }
     return (react_1.default.createElement(react_1.default.Fragment, null,
-        react_1.default.createElement(Input_1.default, { "data-testid": (0, test_helpers_1.default)('search'), icon: "search", placeholder: "Search", value: searchTerm, onChange: handleSearch, className: (0, clsx_1.default)(className), type: "search" })));
+        react_1.default.createElement(Input_1.default, { "data-testid": test_helpers_1.default('search'), icon: "search", placeholder: "Search", value: searchTerm, onChange: handleSearch, className: clsx_1.default(className), type: "search" })));
 }
 exports.default = SearchBar;
 // class SearchBar extends PureComponent {

@@ -7,7 +7,7 @@ const react_1 = __importDefault(require("react"));
 const fp_1 = require("../../utils/fp");
 const styles_1 = require("@material-ui/styles");
 const Text_1 = __importDefault(require("../../elements/Text"));
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     root: {
         height: ({ height }) => height,
         display: 'flex',
@@ -76,9 +76,9 @@ const ProgressBar = ({ percent, animated = false, containedPercent = false, widt
     const classes = useStyles({ percent, animated, width, height, variant, color });
     return (react_1.default.createElement("div", { className: classes.root },
         react_1.default.createElement("div", { className: classes.progressContainer },
-            react_1.default.createElement("div", { className: classes.progress }, showPercent && (react_1.default.createElement(Text_1.default, { variant: "body2" }, containedPercent ? (0, fp_1.ensureFunction)(label)(percent) : null)))),
+            react_1.default.createElement("div", { className: classes.progress }, showPercent && (react_1.default.createElement(Text_1.default, { variant: "body2" }, containedPercent ? fp_1.ensureFunction(label)(percent) : null)))),
         showPercent && !containedPercent && (react_1.default.createElement("div", { className: classes.label },
-            react_1.default.createElement(Text_1.default, { variant: "body2" }, (0, fp_1.ensureFunction)(label)(percent))))));
+            react_1.default.createElement(Text_1.default, { variant: "body2" }, fp_1.ensureFunction(label)(percent))))));
 };
 exports.default = ProgressBar;
 //# sourceMappingURL=ProgressBar.js.map

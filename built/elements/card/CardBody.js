@@ -8,10 +8,10 @@ const clsx_1 = __importDefault(require("clsx"));
 const styles_1 = require("@material-ui/styles");
 function CardBody({ children, className = undefined }) {
     const classes = useStyles({});
-    return react_1.default.createElement("section", { className: (0, clsx_1.default)('card-body', classes.body, className) }, children);
+    return react_1.default.createElement("section", { className: clsx_1.default('card-body', classes.body, className) }, children);
 }
 exports.default = CardBody;
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     body: {
         padding: '16px 32px',
     },

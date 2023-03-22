@@ -332,7 +332,7 @@ export declare const capitalizeString: (inputStr?: string) => string;
 export declare const sanitizeUrl: (str?: string) => string;
 export declare const getCookieValue: (name: any) => string;
 export declare const normalizeUsername: (name?: string) => string;
-export declare const indefiniteArticle: (word?: string) => "a" | "an";
+export declare const indefiniteArticle: (word?: string) => "an" | "a";
 export declare const cleanupStacktrace: (stacktrace?: string) => string;
 export declare const compareArrByValue: (key: any, order?: string) => (a: any, b: any) => any;
 export declare const escapeRegex: (str: any) => any;

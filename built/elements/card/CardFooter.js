@@ -8,10 +8,10 @@ const clsx_1 = __importDefault(require("clsx"));
 const styles_1 = require("@material-ui/styles");
 function CardFooter({ children, className = undefined }) {
     const classes = useStyles({});
-    return react_1.default.createElement("footer", { className: (0, clsx_1.default)('card-footer', classes.footer, className) }, children);
+    return react_1.default.createElement("footer", { className: clsx_1.default('card-footer', classes.footer, className) }, children);
 }
 exports.default = CardFooter;
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     footer: {
         padding: '8px 24px',
     },

@@ -12,7 +12,7 @@ const clsx_1 = __importDefault(require("clsx"));
 const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 const CardHeader_1 = __importDefault(require("../../elements/card/CardHeader"));
 const defaultMaxWidth = 932;
-exports.useStyles = (0, styles_1.makeStyles)((theme) => ({
+exports.useStyles = styles_1.makeStyles((theme) => ({
     root: {
         maxWidth: ({ maxWidth = defaultMaxWidth }) => maxWidth,
     },
@@ -45,11 +45,11 @@ exports.useStyles = (0, styles_1.makeStyles)((theme) => ({
         paddingBottom: 1,
     },
 }));
-const FormFieldCard = (props) => {
+exports.FormFieldCard = (props) => {
     const { title, topContent, middleHeader, step, link, className, children } = props;
-    const classes = (0, exports.useStyles)(props);
-    return (react_1.default.createElement(card_1.default, { className: (0, clsx_1.default)(classes.root, className), title: (title || link) && (react_1.default.createElement(CardHeader_1.default, { className: `form-field-card-requirementsTitle ${classes.requirementsTitle}` },
-            react_1.default.createElement("div", { "data-testid": (0, test_helpers_1.default)(title), className: classes.title },
+    const classes = exports.useStyles(props);
+    return (react_1.default.createElement(card_1.default, { className: clsx_1.default(classes.root, className), title: (title || link) && (react_1.default.createElement(CardHeader_1.default, { className: `form-field-card-requirementsTitle ${classes.requirementsTitle}` },
+            react_1.default.createElement("div", { "data-testid": test_helpers_1.default(title), className: classes.title },
                 !!step && (react_1.default.createElement(Text_1.default, { component: "figure", variant: "caption1", className: classes.figureStep }, step)),
                 !!title && react_1.default.createElement(Text_1.default, { variant: "subtitle2" }, title)),
             react_1.default.createElement("div", { className: classes.titleRight },
@@ -58,5 +58,4 @@ const FormFieldCard = (props) => {
         topContent,
         children));
 };
-exports.FormFieldCard = FormFieldCard;
 //# sourceMappingURL=FormFieldCard.js.map

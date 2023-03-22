@@ -1,11 +1,7 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -18,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -32,7 +28,7 @@ const styles_1 = require("@material-ui/styles");
 const react_dropzone_1 = require("react-dropzone");
 const FontAwesomeIcon_1 = __importDefault(require("../components/FontAwesomeIcon"));
 const withFormContext_1 = __importDefault(require("../components/validatedForm/withFormContext"));
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     dropzone: {
         padding: 16,
         background: theme.components.card.background,
@@ -78,7 +74,7 @@ const Warning = ({ children }) => {
     const classes = useStyles({});
     return (react_1.default.createElement(Text_1.default, { variant: "body1", className: classes.errorText }, children));
 };
-const ImageDrop = (0, react_1.forwardRef)((props, ref) => {
+const ImageDrop = react_1.forwardRef((props, ref) => {
     const { onChange, imageUpdater, value, imageData, hasError, errorMessage } = props;
     const classes = useStyles({});
     const clearFile = (e) => {
@@ -86,7 +82,7 @@ const ImageDrop = (0, react_1.forwardRef)((props, ref) => {
         imageUpdater('');
         onChange({});
     };
-    const onDrop = (0, react_1.useCallback)((acceptedFiles) => {
+    const onDrop = react_1.useCallback((acceptedFiles) => {
         const file = acceptedFiles[0];
         const reader = new FileReader();
         reader.onabort = () => console.log('file reading was aborted');
@@ -99,7 +95,7 @@ const ImageDrop = (0, react_1.forwardRef)((props, ref) => {
         };
         reader.readAsArrayBuffer(file);
     }, []);
-    const { getRootProps, getInputProps } = (0, react_dropzone_1.useDropzone)({
+    const { getRootProps, getInputProps } = react_dropzone_1.useDropzone({
         onDrop,
         accept: 'image/jpeg, image/png',
         maxFiles: 1,
@@ -119,5 +115,5 @@ const ImageDrop = (0, react_1.forwardRef)((props, ref) => {
                             " file here to upload")))))),
         hasError && react_1.default.createElement(Warning, null, errorMessage)));
 });
-exports.default = (0, withFormContext_1.default)(ImageDrop);
+exports.default = withFormContext_1.default(ImageDrop);
 //# sourceMappingURL=ImageDrop.js.map

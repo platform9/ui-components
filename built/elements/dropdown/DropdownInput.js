@@ -18,9 +18,9 @@ const react_1 = __importDefault(require("react"));
 const styles_1 = require("@material-ui/styles");
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
 const clsx_1 = __importDefault(require("clsx"));
-exports.default = (0, styles_1.styled)(react_1.default.forwardRef((_a, ref) => {
+exports.default = styles_1.styled(react_1.default.forwardRef((_a, ref) => {
     var { className } = _a, rest = __rest(_a, ["className"]);
-    return (react_1.default.createElement("div", { className: (0, clsx_1.default)(className, 'input') },
+    return (react_1.default.createElement("div", { className: clsx_1.default(className, 'input') },
         react_1.default.createElement(FontAwesomeIcon_1.default, { solid: true, size: "sm" }, "magnifying-glass"),
         react_1.default.createElement("input", Object.assign({}, rest, { ref: ref }))));
 }))(({ theme }) => ({

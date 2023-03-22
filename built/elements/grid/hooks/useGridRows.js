@@ -11,24 +11,24 @@ const maxSize = 100000;
 function itemValueGetter(accessor, item) {
     return typeof accessor === 'function'
         ? accessor(item)
-        : (0, ramda_1.path)(String(accessor).split('.'), item);
+        : ramda_1.path(String(accessor).split('.'), item);
 }
 const useGridRows = ({ uniqueIdentifier, columns, data, }) => {
-    const getMoizedCell = (0, react_1.useCallback)((0, misc_1.memoize)((CellComponent, memoizeCell) => memoizeCell ? (0, misc_1.memoizeShallow)(CellComponent, { maxSize }) : CellComponent), []);
-    const getMoizedRenderCell = (0, react_1.useCallback)((0, misc_1.memoize)((render, memoizeCell) => {
+    const getMoizedCell = react_1.useCallback(misc_1.memoize((CellComponent, memoizeCell) => memoizeCell ? misc_1.memoizeShallow(CellComponent, { maxSize }) : CellComponent), []);
+    const getMoizedRenderCell = react_1.useCallback(misc_1.memoize((render, memoizeCell) => {
         const CellComponent = ({ value, item }) => {
             return render(value, item);
         };
-        return memoizeCell ? (0, misc_1.memoizeShallow)(CellComponent, { maxSize }) : CellComponent;
+        return memoizeCell ? misc_1.memoizeShallow(CellComponent, { maxSize }) : CellComponent;
     }), []);
-    const getItemValue = (0, react_1.useCallback)((0, misc_1.memoize)(itemValueGetter, { maxSize }), []);
-    const getItemValueFormatter = (0, react_1.useCallback)((0, misc_1.memoize)((formatFn, value, item) => () => formatFn ? formatFn(value, item) : value, {
+    const getItemValue = react_1.useCallback(misc_1.memoize(itemValueGetter, { maxSize }), []);
+    const getItemValueFormatter = react_1.useCallback(misc_1.memoize((formatFn, value, item) => () => formatFn ? formatFn(value, item) : value, {
         maxSize,
     }), []);
-    const getRow = (0, react_1.useCallback)((0, misc_1.memoize)((item) => ({
+    const getRow = react_1.useCallback(misc_1.memoize((item) => ({
         key: String(item[uniqueIdentifier]),
         item,
-        getCells: (0, misc_1.memoize)(() => columns.map(({ key, accessor = key, formatFn, render, width, CellComponent = GridDefaultCell_1.default, memoizeCell = true, }) => {
+        getCells: misc_1.memoize(() => columns.map(({ key, accessor = key, formatFn, render, width, CellComponent = GridDefaultCell_1.default, memoizeCell = true, }) => {
             const value = getItemValue(accessor, item);
             // Don't format the value unless explicitly requested (eg when rendering the rows)
             const getFormattedValue = getItemValueFormatter(formatFn, value, item);
@@ -43,7 +43,7 @@ const useGridRows = ({ uniqueIdentifier, columns, data, }) => {
             };
         })),
     }), { maxSize }), [uniqueIdentifier, columns]);
-    return (0, react_1.useMemo)(() => data.map(getRow), [data, getRow]);
+    return react_1.useMemo(() => data.map(getRow), [data, getRow]);
 };
 exports.default = useGridRows;
 //# sourceMappingURL=useGridRows.js.map

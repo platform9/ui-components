@@ -1,11 +1,7 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -18,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -32,14 +28,14 @@ const styles_1 = require("@material-ui/styles");
 const TabContext_1 = require("./TabContext");
 const TabPreview_1 = __importDefault(require("./TabPreview"));
 function Tabs({ route, routeKey = 'tab', activeTab, setActiveTab, onClick, children, previewInHeader, HeaderTitlePortal, }) {
-    const { history, match: { params }, } = (0, use_react_router_1.default)();
+    const { history, match: { params }, } = use_react_router_1.default();
     const classes = useStyles({ previewInHeader });
     const currentTab = route && routeKey ? params[routeKey] : activeTab;
-    const [tabs, setTabs] = (0, react_1.useState)([]);
-    const addTab = (0, react_1.useCallback)((tab) => {
+    const [tabs, setTabs] = react_1.useState([]);
+    const addTab = react_1.useCallback((tab) => {
         setTabs((tabs) => Array.from(new Set([...tabs, tab])));
     }, [setTabs]);
-    const handleClick = (0, react_1.useCallback)((tab) => {
+    const handleClick = react_1.useCallback((tab) => {
         if (!!onClick) {
             onClick(tab);
         }
@@ -50,7 +46,7 @@ function Tabs({ route, routeKey = 'tab', activeTab, setActiveTab, onClick, child
             setActiveTab(tab);
         }
     }, [route, routeKey, params, setActiveTab]);
-    const providerValue = (0, react_1.useMemo)(() => ({
+    const providerValue = react_1.useMemo(() => ({
         activeTab: currentTab,
         addTab,
     }), [currentTab, addTab]);
@@ -61,7 +57,7 @@ function Tabs({ route, routeKey = 'tab', activeTab, setActiveTab, onClick, child
         react_1.default.createElement(TabContext_1.TabContext.Provider, { value: providerValue }, children)));
 }
 exports.default = Tabs;
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     tabsPreviewContainer: {
         display: 'grid',
         gridAutoFlow: 'column',

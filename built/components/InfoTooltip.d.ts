@@ -50,7 +50,7 @@ declare class InfoTooltip extends PureComponent<PropsWithChildren<Props>> {
     }> & {
         maxSize: number;
     } & Partial<import("../utils/misc").DefaultMoizeOptions>>;
-    render(): string | number | boolean | React.ReactFragment | JSX.Element;
+    render(): number | boolean | React.ReactFragment | JSX.Element;
 }
 declare const withInfoTooltip: (Component: any) => React.ForwardRefExoticComponent<Props & React.RefAttributes<unknown>>;
 export { withInfoTooltip };

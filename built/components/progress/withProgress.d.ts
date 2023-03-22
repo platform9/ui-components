@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { ProgressProps } from './Progress';
-export type PropsWithProgress<P> = {
+export declare type PropsWithProgress<P> = {
     loading?: boolean;
     loadingProps?: Omit<ProgressProps, 'loading'>;
 } & P;

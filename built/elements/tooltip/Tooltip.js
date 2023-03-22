@@ -1,11 +1,7 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -18,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -39,30 +35,30 @@ const helpers_2 = require("./helpers");
 // Time to wait before unmounting the tooltip to make it interactive
 const transitionDelayMs = 50;
 // The Tooltip container
-exports.default = (0, styles_1.styled)(({ message, align = defaults_1.middleRight.align, offset = defaults_1.middleRight.offset, origin = 'center center', children, className, customClassName, customBody = undefined, }) => {
-    const tooltipContainerRef = (0, react_1.useRef)();
-    const debounceRef = (0, react_1.useRef)();
-    const [isHovering, setIsHovering] = (0, react_1.useState)(false);
-    const handleMouseOver = (0, react_1.useCallback)(() => {
+exports.default = styles_1.styled(({ message, align = defaults_1.middleRight.align, offset = defaults_1.middleRight.offset, origin = 'center center', children, className, customClassName, customBody = undefined, }) => {
+    const tooltipContainerRef = react_1.useRef();
+    const debounceRef = react_1.useRef();
+    const [isHovering, setIsHovering] = react_1.useState(false);
+    const handleMouseOver = react_1.useCallback(() => {
         var _a;
         (_a = debounceRef.current) === null || _a === void 0 ? void 0 : _a.cancel();
         setIsHovering(true);
     }, []);
-    const handleMouseOut = (0, react_1.useCallback)(() => {
+    const handleMouseOut = react_1.useCallback(() => {
         var _a;
         (_a = debounceRef.current) === null || _a === void 0 ? void 0 : _a.cancel();
-        debounceRef.current = (0, async_1.debounce)(() => {
+        debounceRef.current = async_1.debounce(() => {
             setIsHovering(false);
         }, transitionDelayMs);
         debounceRef.current();
     }, []);
-    const handleMouseClick = (0, react_1.useCallback)(() => {
+    const handleMouseClick = react_1.useCallback(() => {
         var _a;
         // Make sure we are still hovering this element after clicking some element in the container
         // This fixes the issue with elements shown outside the tooltip container (e.g. dropdown menu)
         // not triggering an "onMouseLeave" event when selecting an item
         (_a = debounceRef.current) === null || _a === void 0 ? void 0 : _a.cancel();
-        debounceRef.current = (0, async_1.debounce)(() => {
+        debounceRef.current = async_1.debounce(() => {
             var _a;
             if (isHovering && ((_a = tooltipContainerRef.current) === null || _a === void 0 ? void 0 : _a.matches(':hover')) === false) {
                 setIsHovering(false);
@@ -70,13 +66,13 @@ exports.default = (0, styles_1.styled)(({ message, align = defaults_1.middleRigh
         }, transitionDelayMs);
         debounceRef.current();
     }, [isHovering]);
-    (0, react_1.useEffect)(() => {
+    react_1.useEffect(() => {
         // Cancel debouncing when component gets unmounted
         return () => { var _a; return (_a = debounceRef.current) === null || _a === void 0 ? void 0 : _a.cancel(); };
     }, []);
     const hasCustomBody = !!customBody;
     const hasContent = !!message || hasCustomBody;
-    return (react_1.default.createElement("div", { ref: tooltipContainerRef, className: (0, clsx_1.default)(className, 'tooltip-container'), onMouseEnter: handleMouseOver, onMouseLeave: handleMouseOut, onClick: handleMouseClick },
+    return (react_1.default.createElement("div", { ref: tooltipContainerRef, className: clsx_1.default(className, 'tooltip-container'), onMouseEnter: handleMouseOver, onMouseLeave: handleMouseOut, onClick: handleMouseClick },
         hasContent && isHovering && (react_1.default.createElement(Tooltip, { customClass: customClassName, hasCustomBody: hasCustomBody, origin: origin, align: align, offset: offset, containerElem: tooltipContainerRef.current }, customBody !== null && customBody !== void 0 ? customBody : message)),
         children));
 })({
@@ -85,40 +81,40 @@ exports.default = (0, styles_1.styled)(({ message, align = defaults_1.middleRigh
 // position: 'relative', * prob will not be needed
 // width: 'max-content',
 });
-const TooltipContainer = (0, styles_1.styled)('div')(({ rect, align: { vertical: vertAlign, horizontal: horizAlign }, offset: { vertical: vertOffset, horizontal: horizOffset }, }) => ({
+const TooltipContainer = styles_1.styled('div')(({ rect, align: { vertical: vertAlign, horizontal: horizAlign }, offset: { vertical: vertOffset, horizontal: horizOffset }, }) => ({
     position: 'absolute',
-    top: (0, helpers_2.getTooltipTop)(rect, vertAlign, vertOffset),
-    left: (0, helpers_2.getTooltipLeft)(rect, horizAlign, horizOffset),
+    top: helpers_2.getTooltipTop(rect, vertAlign, vertOffset),
+    left: helpers_2.getTooltipLeft(rect, horizAlign, horizOffset),
 }));
-const Tooltip = (0, styles_1.styled)(({ className, customClass, children, containerElem, align, offset, }) => {
-    const portalElem = (0, react_1.useMemo)(() => document.getElementById('tooltip-portal-root'), []);
-    const [transitionClass, setTransitionClass] = (0, react_1.useState)('transitionStart');
-    (0, react_1.useEffect)(() => {
+const Tooltip = styles_1.styled(({ className, customClass, children, containerElem, align, offset, }) => {
+    const portalElem = react_1.useMemo(() => document.getElementById('tooltip-portal-root'), []);
+    const [transitionClass, setTransitionClass] = react_1.useState('transitionStart');
+    react_1.useEffect(() => {
         setTransitionClass('transitionEnd');
     }, []);
     if (!containerElem)
         return null;
     const rect = containerElem.getBoundingClientRect();
     const content = (react_1.default.createElement(TooltipContainer, { rect: rect, align: align, offset: offset },
-        react_1.default.createElement(Text_1.default, { variant: "body2", component: "div", className: (0, clsx_1.default)(className, customClass, transitionClass), onClick: fp_1.stopPropagation }, children)));
+        react_1.default.createElement(Text_1.default, { variant: "body2", component: "div", className: clsx_1.default(className, customClass, transitionClass), onClick: fp_1.stopPropagation }, children)));
     return react_dom_1.default.createPortal(content, portalElem);
 })(({ theme, align: { vertical: vertAlign, horizontal: horizAlign }, hasCustomBody, origin }) => ({
     '&.transitionStart ': {
         opacity: 0,
-        transform: (0, helpers_1.getMenuTransform)(0)({ vertAlign, horizAlign }),
+        transform: helpers_1.getMenuTransform(0)({ vertAlign, horizAlign }),
     },
     '&.transitionEnd ': {
         opacity: 1,
-        transform: (0, helpers_1.getMenuTransform)(1)({ vertAlign, horizAlign }),
+        transform: helpers_1.getMenuTransform(1)({ vertAlign, horizAlign }),
     },
     position: 'absolute',
     transformOrigin: origin,
     transition: 'opacity .2s ease, transform .2s ease',
     zIndex: 10000,
-    top: (0, helpers_1.getMenuTop)({ vertAlign }),
-    right: (0, helpers_1.getMenuRight)({ horizAlign }),
-    bottom: (0, helpers_1.getMenuBottom)({ vertAlign }),
-    left: (0, helpers_1.getMenuLeft)({ horizAlign }),
+    top: helpers_1.getMenuTop({ vertAlign }),
+    right: helpers_1.getMenuRight({ horizAlign }),
+    bottom: helpers_1.getMenuBottom({ vertAlign }),
+    left: helpers_1.getMenuLeft({ horizAlign }),
     backgroundColor: theme.components.tooltip.background,
     border: 'none',
     borderRadius: 4,

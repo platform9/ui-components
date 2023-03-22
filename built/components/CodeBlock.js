@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const styles_1 = require("@material-ui/styles");
 const clsx_1 = __importDefault(require("clsx"));
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     pre: {
         padding: '6px 10px',
         margin: 0,
@@ -28,7 +28,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
 }));
 const CodeBlock = ({ overflow = false, children, className, fill = false, }) => {
     const styles = useStyles({ fill, overflow });
-    return (react_1.default.createElement("pre", { className: (0, clsx_1.default)(styles.pre, 'thin-scrollbar', className) },
+    return (react_1.default.createElement("pre", { className: clsx_1.default(styles.pre, 'thin-scrollbar', className) },
         react_1.default.createElement("code", null, children)));
 };
 exports.default = CodeBlock;

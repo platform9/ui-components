@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = require("react");
 const TabContext_1 = require("./TabContext");
 function Tab(props) {
-    (0, react_1.useEffect)(() => {
+    react_1.useEffect(() => {
         const { addTab, value, label } = props;
         addTab({ value, label });
     }, []);
@@ -13,5 +13,5 @@ function Tab(props) {
     }
     return children;
 }
-exports.default = (0, TabContext_1.withTabContext)(Tab);
+exports.default = TabContext_1.withTabContext(Tab);
 //# sourceMappingURL=Tab.js.map

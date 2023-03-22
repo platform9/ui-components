@@ -1,5 +1,5 @@
 import React from 'react';
-type DropdownMenuProps = {
+declare type DropdownMenuProps = {
     isOpen: boolean;
     width: number;
     compact?: boolean;

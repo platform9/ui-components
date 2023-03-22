@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const styles_1 = require("@material-ui/styles");
 const constants_1 = require("./constants");
-exports.default = (0, styles_1.makeStyles)((theme) => ({
+exports.default = styles_1.makeStyles((theme) => ({
     dropdownWrapper: {
         position: 'relative',
         margin: 0,

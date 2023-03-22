@@ -1,11 +1,7 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -18,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -77,23 +73,23 @@ const defaultOptions = {
 // to re-define their styles so we can use common variables
 function CodeMirror(_a) {
     var { id, variant, label, value, hasError, errorMessage, onChange, options = {}, info, align = defaults_1.topRight.align, className, showSearchBar = false, extraActions = null, loading = false, showCopyButton = false, showDownloadButton = false, downloadFileName = '', showExpandButton = false, showCollapseButton = false, maxHeight = 350, collapseYaml = false } = _a, restProps = __rest(_a, ["id", "variant", "label", "value", "hasError", "errorMessage", "onChange", "options", "info", "align", "className", "showSearchBar", "extraActions", "loading", "showCopyButton", "showDownloadButton", "downloadFileName", "showExpandButton", "showCollapseButton", "maxHeight", "collapseYaml"]);
-    const codeMirrorInput = (0, react_1.createRef)();
-    const [height, setHeight] = (0, react_1.useState)(maxHeight);
+    const codeMirrorInput = react_1.createRef();
+    const [height, setHeight] = react_1.useState(maxHeight);
     const classes = useStyles({ variant, height });
     const [searchTerm, setSearchTerm] = react_1.default.useState('');
     const [editor, setEditor] = react_1.default.useState(null);
-    const [isModalOpen, setModalOpen] = (0, react_1.useState)(false);
-    const [showCode, setShowCode] = (0, react_1.useState)(!collapseYaml);
-    (0, react_1.useEffect)(() => {
+    const [isModalOpen, setModalOpen] = react_1.useState(false);
+    const [showCode, setShowCode] = react_1.useState(!collapseYaml);
+    react_1.useEffect(() => {
         setHeight(showCode ? maxHeight : 0);
     }, [showCode, collapseYaml]);
-    const handleChange = (0, react_1.useCallback)((editor, data, value) => {
+    const handleChange = react_1.useCallback((editor, data, value) => {
         if (onChange) {
             onChange(value);
         }
     }, [onChange]);
     const combinedOptions = Object.assign(Object.assign({}, defaultOptions), options);
-    const search = (0, react_1.useCallback)(() => {
+    const search = react_1.useCallback(() => {
         if (!editor)
             return;
         const query = new RegExp(searchTerm, 'gi');
@@ -109,12 +105,12 @@ function CodeMirror(_a) {
             editor.scrollIntoView(firstMatchLineNumber);
         }
     }, [editor, searchTerm]);
-    const clearMarks = (0, react_1.useCallback)(() => {
+    const clearMarks = react_1.useCallback(() => {
         if (!editor)
             return;
         editor.doc.getAllMarks().forEach((marker) => marker.clear());
     }, [editor]);
-    (0, react_1.useEffect)(() => {
+    react_1.useEffect(() => {
         clearMarks();
         search();
     }, [searchTerm]);
@@ -128,7 +124,7 @@ function CodeMirror(_a) {
         document.body.appendChild(element);
         element.click();
     };
-    const toggleYamlCardView = (0, react_1.useCallback)(() => setShowCode(!showCode), [showCode, setShowCode]);
+    const toggleYamlCardView = react_1.useCallback(() => setShowCode(!showCode), [showCode, setShowCode]);
     const renderActionsBar = showSearchBar ||
         showCopyButton ||
         showDownloadButton ||
@@ -155,11 +151,11 @@ function CodeMirror(_a) {
             react_1.default.createElement(react_codemirror2_1.Controlled, Object.assign({}, restProps, { 
                 /*
                 // @ts-ignore */
-                ref: codeMirrorInput, className: (0, clsx_1.default)(classes.baseCodeMirror, className), onBeforeChange: handleChange, value: value, options: combinedOptions, editorDidMount: (editor) => setEditor(editor), gutters: classes.gutters })),
+                ref: codeMirrorInput, className: clsx_1.default(classes.baseCodeMirror, className), onBeforeChange: handleChange, value: value, options: combinedOptions, editorDidMount: (editor) => setEditor(editor), gutters: classes.gutters })),
             react_1.default.createElement(ErrorMessage_1.ErrorMessage, { className: classes.errorMsg }, errorMessage))));
 }
 exports.default = CodeMirror;
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     progressOverlay: {
         maxHeight: '50%',
         boxSizing: 'border-box',
@@ -231,7 +227,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
             overflow: 'visible',
             WebkitTapHighlightColor: 'transparent',
             WebkitFontVariantLigatures: 'contextual',
-            fontVariantLigatures: 'none', // Had to change to fix UX-1918
+            fontVariantLigatures: 'none',
         },
         '& .CodeMirror-scrollbar-filler, & .CodeMirror-gutter-filler': {
             backgroundColor: 'white',

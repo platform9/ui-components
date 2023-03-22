@@ -1,11 +1,7 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -18,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -51,17 +47,17 @@ const stateReducer = (state, changes) => {
     }
 };
 const remove = (selectedItems, item) => {
-    return selectedItems.filter((selectedItem) => !(0, ramda_1.equals)(selectedItem, item));
+    return selectedItems.filter((selectedItem) => !ramda_1.equals(selectedItem, item));
 };
 function dropdownReducer(selectedItems, { type, payload }) {
     switch (type) {
         case 'toggleItem':
-            if (!Array.isArray(payload) && (0, ramda_1.includes)(payload, selectedItems)) {
+            if (!Array.isArray(payload) && ramda_1.includes(payload, selectedItems)) {
                 return remove(selectedItems, payload);
             }
             return [...selectedItems, payload];
         case 'select':
-            return (0, ramda_1.uniq)([...selectedItems, payload]);
+            return ramda_1.uniq([...selectedItems, payload]);
         case 'deselect':
             return remove(selectedItems, payload);
         case 'set':
@@ -73,35 +69,35 @@ function dropdownReducer(selectedItems, { type, payload }) {
 }
 function MultiDownshift(_a) {
     var { children, onMultiChange, selectedItems, isControlled = !!selectedItems } = _a, props = __rest(_a, ["children", "onMultiChange", "selectedItems", "isControlled"]);
-    const [locallySelectedItems, dispatch] = (0, react_1.useReducer)(dropdownReducer, selectedItems || fp_1.emptyArr);
-    (0, react_1.useEffect)(() => {
+    const [locallySelectedItems, dispatch] = react_1.useReducer(dropdownReducer, selectedItems || fp_1.emptyArr);
+    react_1.useEffect(() => {
         // This should only happen when locally selected
         // items are out of sync (ie changed by an external agent)
-        if (isControlled && !(0, ramda_1.equals)(selectedItems, locallySelectedItems)) {
+        if (isControlled && !ramda_1.equals(selectedItems, locallySelectedItems)) {
             dispatch({ type: 'set', payload: selectedItems });
         }
     }, [selectedItems]);
-    (0, react_1.useEffect)(() => {
-        if (!isControlled || !(0, ramda_1.equals)(selectedItems, locallySelectedItems)) {
+    react_1.useEffect(() => {
+        if (!isControlled || !ramda_1.equals(selectedItems, locallySelectedItems)) {
             onMultiChange && onMultiChange(locallySelectedItems);
         }
     }, [locallySelectedItems]);
-    const toggleItem = (0, react_1.useCallback)((item) => {
+    const toggleItem = react_1.useCallback((item) => {
         dispatch({ type: 'toggleItem', payload: item });
     }, []);
-    const selectItem = (0, react_1.useCallback)((item) => {
+    const selectItem = react_1.useCallback((item) => {
         dispatch({ type: 'select', payload: item });
     }, []);
-    const selectAll = (0, react_1.useCallback)((items) => {
+    const selectAll = react_1.useCallback((items) => {
         dispatch({ type: 'set', payload: items });
     }, []);
-    const unselectItem = (0, react_1.useCallback)((item) => {
+    const unselectItem = react_1.useCallback((item) => {
         dispatch({ type: 'deselect', payload: item });
     }, []);
-    const clear = (0, react_1.useCallback)(() => {
+    const clear = react_1.useCallback(() => {
         dispatch({ type: 'clear' });
     }, []);
-    const getRemoveButtonProps = (0, react_1.useCallback)((_a = {}) => {
+    const getRemoveButtonProps = react_1.useCallback((_a = {}) => {
         var { onClick = undefined, item = undefined } = _a, props = __rest(_a, ["onClick", "item"]);
         return Object.assign({ onClick: (e) => {
                 // TODO: use something like downshift's composeEventHandlers utility instead
@@ -110,7 +106,7 @@ function MultiDownshift(_a) {
                 unselectItem(item);
             } }, props);
     }, []);
-    const getStateAndHelpers = (0, react_1.useCallback)((downshift) => {
+    const getStateAndHelpers = react_1.useCallback((downshift) => {
         return Object.assign({ getRemoveButtonProps,
             toggleItem,
             selectItem,

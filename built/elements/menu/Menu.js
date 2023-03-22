@@ -1,11 +1,7 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -18,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -44,7 +40,7 @@ const defaults_1 = require("./defaults");
 const helpers_1 = require("./helpers");
 function Menu(_a) {
     var { open = false, anchor, align = defaults_1.bottomLeft.align, offset = defaults_1.bottomLeft.offset, origin = 'center center', unorderedList = false, onClose, className, children } = _a, props = __rest(_a, ["open", "anchor", "align", "offset", "origin", "unorderedList", "onClose", "className", "children"]);
-    const stopClickRef = (0, react_1.useRef)(true);
+    const stopClickRef = react_1.useRef(true);
     const classes = useStyles({
         vertAlign: align.vertical,
         horizAlign: align.horizontal,
@@ -52,12 +48,12 @@ function Menu(_a) {
         horizOffset: offset.horizontal,
         origin,
     });
-    const handleStopClick = (0, react_1.useCallback)((e) => {
+    const handleStopClick = react_1.useCallback((e) => {
         // e.stopPropagation isn't preventing the close cb
         // trying with a flag
         stopClickRef.current = true;
     }, [stopClickRef]);
-    const handleDocumentClick = (0, react_1.useCallback)((e) => {
+    const handleDocumentClick = react_1.useCallback((e) => {
         e.preventDefault();
         e.stopPropagation();
         if (!stopClickRef.current) {
@@ -69,7 +65,7 @@ function Menu(_a) {
             stopClickRef.current = false;
         }
     }, []);
-    (0, react_1.useEffect)(() => {
+    react_1.useEffect(() => {
         if (open) {
             document.addEventListener('click', handleDocumentClick);
         }
@@ -87,15 +83,15 @@ function Menu(_a) {
     }, [open]);
     const menuElement = unorderedList ? 'ul' : 'nav';
     const MenuComponent = react_1.default.createElement(menuElement, {
-        className: (0, clsx_1.default)(classes.menu, 'menu-popover', { active: open }),
+        className: clsx_1.default(classes.menu, 'menu-popover', { active: open }),
         onClick: handleStopClick,
     }, children);
-    return (react_1.default.createElement("div", Object.assign({ className: (0, clsx_1.default)(classes.menuContainer, className) }, props),
+    return (react_1.default.createElement("div", Object.assign({ className: clsx_1.default(classes.menuContainer, className) }, props),
         anchor,
         MenuComponent));
 }
 exports.default = Menu;
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     menuContainer: {
         position: 'relative',
     },
@@ -109,14 +105,14 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         transformOrigin: ({ origin }) => origin,
         transition: 'opacity .2s ease, transform .2s ease',
         zIndex: 100,
-        transform: (0, helpers_1.getMenuTransform)(0),
+        transform: helpers_1.getMenuTransform(0),
         top: helpers_1.getMenuTop,
         right: helpers_1.getMenuRight,
         bottom: helpers_1.getMenuBottom,
         left: helpers_1.getMenuLeft,
         '&.active': {
             opacity: 1,
-            transform: (0, helpers_1.getMenuTransform)(1),
+            transform: helpers_1.getMenuTransform(1),
         },
     },
 }));

@@ -38,7 +38,7 @@ export interface ValidatedFormInputProps<T, P> {
  * the ValidatedForm such as validations and text hints on hover
  */
 export declare function ValidatedFormInput<T, P>({ id, className, initialValue, validateFormOnChange, value, required, validations, onBlur, onChange, children, error, ...rest }: ValidatedFormInputProps<T, P> & P): JSX.Element;
-export type PropsWithFormContext<T, P> = ChildrenFnParams<T> & P;
+export declare type PropsWithFormContext<T, P> = ChildrenFnParams<T> & P;
 /**
  * withFormContext provides access to the form context through props.
  *
@@ -49,4 +49,4 @@ export type PropsWithFormContext<T, P> = ChildrenFnParams<T> & P;
  *
  * @param {Inject the form context into this Component through props.} Input
  */
-export default function withFormContext<T, P>(Input: FC<P & ChildrenFnParams<T>>): React.ForwardRefExoticComponent<React.PropsWithoutRef<Omit<ValidatedFormInputProps<T, P>, "children"> & P> & React.RefAttributes<HTMLElement>>;
+export default function withFormContext<T, P>(Input: FC<P & ChildrenFnParams<T>>): React.ForwardRefExoticComponent<React.PropsWithoutRef<Pick<ValidatedFormInputProps<T, P>, "error" | "value" | "required" | "className" | "id" | "onBlur" | "onChange" | "initialValue" | "validations" | "validateFormOnChange"> & P> & React.RefAttributes<HTMLElement>>;

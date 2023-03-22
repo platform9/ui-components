@@ -9,7 +9,7 @@ const button_1 = __importDefault(require("../../elements/button"));
 const Text_1 = __importDefault(require("../../elements/Text"));
 const card_1 = __importDefault(require("../../elements/card"));
 const containers_1 = require("../containers");
-const DefaultButton = (args) => (react_1.default.createElement(card_1.default, null,
+exports.DefaultButton = (args) => (react_1.default.createElement(card_1.default, null,
     react_1.default.createElement(containers_1.Row, null,
         react_1.default.createElement(containers_1.Column, null,
             react_1.default.createElement(Text_1.default, { variant: "caption1" }, "Primary"),
@@ -52,7 +52,6 @@ const DefaultButton = (args) => (react_1.default.createElement(card_1.default, n
         react_1.default.createElement(containers_1.Column, null,
             react_1.default.createElement(Text_1.default, { variant: "caption1" }, "CTA Loading"),
             react_1.default.createElement(button_1.default, Object.assign({}, args, { loading: true, variant: "cta" }), "Click Me")))));
-exports.DefaultButton = DefaultButton;
 exports.DefaultButton.parameters = {
     docs: {
         source: {

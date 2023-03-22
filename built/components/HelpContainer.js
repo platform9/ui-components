@@ -12,7 +12,7 @@ const colorMap = {
     white: '100',
     black: '700',
 };
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     icon: {
         cursor: ({ isLink }) => (isLink ? 'pointer' : 'default'),
         fontWeight: 300,

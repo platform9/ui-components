@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const styles_1 = require("@material-ui/styles");
-exports.default = (0, styles_1.styled)('button')(({ theme }) => ({
+exports.default = styles_1.styled('button')(({ theme }) => ({
     backgroundColor: 'transparent',
     border: 'none',
     position: 'absolute',

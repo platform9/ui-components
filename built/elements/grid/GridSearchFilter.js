@@ -1,11 +1,7 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -18,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -30,7 +26,7 @@ const react_1 = __importStar(require("react"));
 const async_1 = require("../../utils/async");
 const styles_1 = require("@material-ui/styles");
 const Input_1 = __importDefault(require("../../elements/input/Input"));
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     searchBar: {
         outline: 'none',
         border: 0,
@@ -60,18 +56,18 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
 }));
 function GridSearchFilter({ value: initialValue, onChange }) {
     const classes = useStyles({});
-    const [value, setValue] = (0, react_1.useState)(initialValue);
-    const debouncedUpdateFilterValue = (0, react_1.useMemo)(() => (0, async_1.debounce)(onChange), []);
-    const handleOnChange = (0, react_1.useCallback)(async ({ target: { value } }) => {
+    const [value, setValue] = react_1.useState(initialValue);
+    const debouncedUpdateFilterValue = react_1.useMemo(() => async_1.debounce(onChange), []);
+    const handleOnChange = react_1.useCallback(async ({ target: { value } }) => {
         setValue(value);
         return debouncedUpdateFilterValue(value);
     }, []);
-    (0, react_1.useEffect)(() => {
+    react_1.useEffect(() => {
         return () => {
             debouncedUpdateFilterValue.cancel();
         };
     }, []);
-    const handleClear = (0, react_1.useCallback)(() => {
+    const handleClear = react_1.useCallback(() => {
         setValue('');
     }, []);
     return (

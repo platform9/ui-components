@@ -22,7 +22,7 @@ const Text_1 = __importDefault(require("../../elements/Text"));
 const formatters_1 = require("../../utils/formatters");
 const tooltip_1 = __importDefault(require("../../elements/tooltip"));
 const clsx_1 = __importDefault(require("clsx"));
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     container: {
         position: 'relative',
         display: 'flex',
@@ -65,17 +65,16 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         gap: theme.spacing(),
     },
 }));
-const PieLegend = ({ data }) => {
-    const theme = (0, styles_1.useTheme)();
+exports.PieLegend = ({ data }) => {
+    const theme = styles_1.useTheme();
     const classes = useStyles({});
     const { pieLegend, legendName } = useStyles({});
-    return (react_1.default.createElement("legend", { className: (0, clsx_1.default)(pieLegend, 'pieLegend') }, data &&
+    return (react_1.default.createElement("legend", { className: clsx_1.default(pieLegend, 'pieLegend') }, data &&
         data.map((entry) => (react_1.default.createElement("div", { key: entry.name, className: classes.legendRow },
             react_1.default.createElement(Text_1.default, { component: "span", variant: "caption2", className: classes.legendCount, style: { backgroundColor: theme.components.graph[entry.color] } }, entry.value),
             entry.info ? (react_1.default.createElement(tooltip_1.default, { message: entry.info },
-                react_1.default.createElement(Text_1.default, { component: "span", variant: "caption2", className: legendName }, (0, formatters_1.formattedName)(entry.name)))) : (react_1.default.createElement(Text_1.default, { component: "span", variant: "caption2", className: legendName }, (0, formatters_1.formattedName)(entry.name))))))));
+                react_1.default.createElement(Text_1.default, { component: "span", variant: "caption2", className: legendName }, formatters_1.formattedName(entry.name)))) : (react_1.default.createElement(Text_1.default, { component: "span", variant: "caption2", className: legendName }, formatters_1.formattedName(entry.name))))))));
 };
-exports.PieLegend = PieLegend;
 const PieUsageWidget = (_a) => {
     var { primary, data, className, showPercent = true } = _a, rest = __rest(_a, ["primary", "data", "className", "showPercent"]);
     const { container } = useStyles({});
@@ -96,7 +95,7 @@ const PieUsageWidget = (_a) => {
                 : percent < 0.75
                     ? 'warning'
                     : 'success';
-    return (react_1.default.createElement("div", { className: (0, clsx_1.default)(container, className) },
+    return (react_1.default.createElement("div", { className: clsx_1.default(container, className) },
         react_1.default.createElement(PieGraph_1.default, Object.assign({ data: data, percent: showPercent ? percent : undefined, healthColor: healthColorKey, primary: primary, empty: isEmpty }, rest)),
         react_1.default.createElement(exports.PieLegend, { data: data })));
 };

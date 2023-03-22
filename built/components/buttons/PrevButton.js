@@ -30,7 +30,7 @@ const styles = (theme) => ({
 });
 const PrevButton = (_a) => {
     var { children, classes, disabled } = _a, rest = __rest(_a, ["children", "classes", "disabled"]);
-    return (react_1.default.createElement(button_1.default, Object.assign({}, rest, { "data-testid": (0, test_helpers_1.default)('arrow', 'previous'), className: classes.baseButton, disabled: disabled, variant: "secondary", icon: "arrow-left" }), children || 'Back'));
+    return (react_1.default.createElement(button_1.default, Object.assign({}, rest, { "data-testid": test_helpers_1.default('arrow', 'previous'), className: classes.baseButton, disabled: disabled, variant: "secondary", icon: "arrow-left" }), children || 'Back'));
 };
-exports.default = (0, styles_1.withStyles)(styles)(PrevButton);
+exports.default = styles_1.withStyles(styles)(PrevButton);
 //# sourceMappingURL=PrevButton.js.map

@@ -21,13 +21,13 @@ function Timeline({ items, activeStep = 0, className }) {
         ? 100
         : (timelineElementWidth * activeStep - timelineElementWidth / 2) * 100;
     const classes = useStyles({ progressBarWidth });
-    return (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.timelineContainer, className) },
+    return (react_1.default.createElement("div", { className: clsx_1.default(classes.timelineContainer, className) },
         items.map((label, idx) => (react_1.default.createElement(TimelineItem, { key: label, label: label, active: idx <= activeStep - 1 }))),
         react_1.default.createElement("div", { className: classes.progressBar }),
         react_1.default.createElement("i", { className: classes.arrow })));
 }
 exports.default = Timeline;
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     timelineContainer: {
         display: 'flex',
         position: 'relative',
@@ -61,7 +61,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
             content: `''`,
             width: '10px',
             height: '10px',
-            backgroundColor: ({ active }) => active ? theme.palette.primary.main : (0, colorHelpers_1.hexToRgbaCss)(theme.components.frame.background, 0.75),
+            backgroundColor: ({ active }) => active ? theme.palette.primary.main : colorHelpers_1.hexToRgbaCss(theme.components.frame.background, 0.75),
             border: ({ active }) => active
                 ? `1px solid ${theme.palette.primary.main}`
                 : `1px solid ${theme.palette.grey['500']}`,

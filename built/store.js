@@ -70,14 +70,14 @@ themeHelper.setComponentsTheme((colors) => ({
     },
 }));
 const customTheme = themeHelper.generateCustomTheme();
-const { customThemeKey, themeReducer, themeActions } = (0, createThemeSlice_1.default)(customTheme);
+const { customThemeKey, themeReducer, themeActions } = createThemeSlice_1.default(customTheme);
 exports.customThemeKey = customThemeKey;
 exports.themeReducer = themeReducer;
 exports.themeActions = themeActions;
-const rootReducer = (0, toolkit_1.combineReducers)({
+const rootReducer = toolkit_1.combineReducers({
     [customThemeKey]: themeReducer,
 });
-const store = (0, toolkit_1.configureStore)({
+const store = toolkit_1.configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: false,

@@ -8,7 +8,7 @@ const styles_1 = require("@material-ui/styles");
 const helpers_1 = require("./helpers");
 const clsx_1 = __importDefault(require("clsx"));
 const Text_1 = __importDefault(require("../../elements/Text"));
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     code: {
         display: 'grid',
         alignSelf: 'stretch',
@@ -47,7 +47,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
 function formatLog({ log, idx, lineNumbers }) {
     const bits = log.split(' ').filter((l) => !!l || !!l.trim());
     const elems = bits.map((bit, index) => {
-        const color = (0, helpers_1.discoverText)(bit, index);
+        const color = helpers_1.discoverText(bit, index);
         return (react_1.default.createElement("span", { key: `log-type-${index}`, className: `log-bit log-type-${color}` }, bit));
     });
     return (react_1.default.createElement("div", { key: `log-${idx}`, className: "log-row" },
@@ -56,9 +56,9 @@ function formatLog({ log, idx, lineNumbers }) {
 }
 function LogViewer({ logs, size = 14, lineNumbers = false, className = undefined, extraLines = 'none', }) {
     const classes = useStyles({ size });
-    const logsAsArr = (0, helpers_1.getLogs)(logs);
+    const logsAsArr = helpers_1.getLogs(logs);
     const content = logsAsArr.map((log, idx) => formatLog({ log, idx, lineNumbers }));
-    return (react_1.default.createElement("code", { className: (0, clsx_1.default)(classes.code, className) },
+    return (react_1.default.createElement("code", { className: clsx_1.default(classes.code, className) },
         react_1.default.createElement("pre", { className: classes.pre },
             (extraLines === 'top' || extraLines === 'both') && react_1.default.createElement("div", null, "\u00A0"),
             content,

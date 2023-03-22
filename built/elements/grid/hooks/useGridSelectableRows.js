@@ -41,39 +41,39 @@ const selectedRowReducer = (selectedRows, { type, payload: { row, rows, multiSel
     return newMap;
 };
 const maxSize = 1000000;
-function useGridSelectableRows(rows, { batchActions: rowActionsSpec = fp_1.emptyArr, multiSelection, rowIsSelectableFn, totalItems = rows.length, selectedItems, onSelectChange, isControlled = !!selectedItems, disableRowSelection = (0, fp_1.isNilOrEmpty)(rowActionsSpec) && !isControlled, onRefresh, }) {
+function useGridSelectableRows(rows, { batchActions: rowActionsSpec = fp_1.emptyArr, multiSelection, rowIsSelectableFn, totalItems = rows.length, selectedItems, onSelectChange, isControlled = !!selectedItems, disableRowSelection = fp_1.isNilOrEmpty(rowActionsSpec) && !isControlled, onRefresh, }) {
     if (disableRowSelection) {
         return [rows, { rowsSelectionDisabled: true, batchActionsDisabled: true }];
     }
-    const initialState = (0, react_1.useMemo)(() => new Map(), []);
-    const [selectedRows, dispatch] = (0, react_1.useReducer)(selectedRowReducer, initialState);
-    const [locallySelectedItems, setLocallySelectedItems] = (0, react_1.useState)([]);
-    (0, react_1.useEffect)(() => {
+    const initialState = react_1.useMemo(() => new Map(), []);
+    const [selectedRows, dispatch] = react_1.useReducer(selectedRowReducer, initialState);
+    const [locallySelectedItems, setLocallySelectedItems] = react_1.useState([]);
+    react_1.useEffect(() => {
         setLocallySelectedItems(Array.from(selectedRows.values()).map(({ item }) => item));
     }, [selectedRows, selectedItems]);
-    (0, react_1.useEffect)(() => {
+    react_1.useEffect(() => {
         // This should only happen when locally selected
         // items are out of sync (ie changed by an external agent)
-        if (isControlled && !(0, ramda_1.equals)(selectedItems, locallySelectedItems)) {
+        if (isControlled && !ramda_1.equals(selectedItems, locallySelectedItems)) {
             const selectedRows = rows.filter((row) => selectedItems.includes(row.item));
             dispatch({ type: 'set', payload: { rows: selectedRows } });
         }
     }, [selectedItems, rows]);
-    (0, react_1.useEffect)(() => {
-        if (!isControlled || (0, ramda_1.equals)(selectedItems, locallySelectedItems))
+    react_1.useEffect(() => {
+        if (!isControlled || ramda_1.equals(selectedItems, locallySelectedItems))
             return;
         onSelectChange && onSelectChange(locallySelectedItems);
     }, [locallySelectedItems, onSelectChange]);
-    const getSelectToggler = (0, react_1.useCallback)((0, misc_1.memoize)((row, type) => () => {
+    const getSelectToggler = react_1.useCallback(misc_1.memoize((row, type) => () => {
         dispatch({ type, payload: { row, multiSelection } });
     }, { maxSize }), [multiSelection]);
-    const getRowIsSelectable = (0, react_1.useCallback)((0, misc_1.memoize)((row, isSelected) => {
+    const getRowIsSelectable = react_1.useCallback(misc_1.memoize((row, isSelected) => {
         const isSelectable = rowIsSelectableFn ? rowIsSelectableFn(row.item) : true;
         return Object.assign(Object.assign({}, row), { isSelectable,
             isSelected,
             multiSelection, toggleSelect: isSelectable ? getSelectToggler(row, 'toggle') : fp_1.noop, select: isSelectable ? getSelectToggler(row, 'add') : fp_1.noop, unselect: isSelectable ? getSelectToggler(row, 'remove') : fp_1.noop });
     }, { maxSize }), [multiSelection, rowIsSelectableFn]);
-    const selectableRows = (0, react_1.useMemo)(() => rows.map((row) => {
+    const selectableRows = react_1.useMemo(() => rows.map((row) => {
         const { key } = row;
         const isSelected = selectedRows.has(key);
         if (isSelected) {
@@ -82,18 +82,18 @@ function useGridSelectableRows(rows, { batchActions: rowActionsSpec = fp_1.empty
         }
         return getRowIsSelectable(row, isSelected);
     }), [rows, selectedRows, getRowIsSelectable]);
-    const toggleSelectAll = (0, react_1.useCallback)((rows = selectableRows) => {
+    const toggleSelectAll = react_1.useCallback((rows = selectableRows) => {
         const keys = rows.map(({ key }) => key);
-        if ((0, ramda_1.difference)(keys, Array.from(selectedRows.keys())).length) {
+        if (ramda_1.difference(keys, Array.from(selectedRows.keys())).length) {
             dispatch({ type: 'addSome', payload: { rows } });
             return;
         }
         dispatch({ type: 'removeSome', payload: { rows } });
     }, [selectableRows]);
-    const clearSelectedRows = (0, react_1.useCallback)(() => {
+    const clearSelectedRows = react_1.useCallback(() => {
         dispatch({ type: 'clear', payload: {} });
     }, []);
-    const batchActions = (0, react_1.useMemo)(() => {
+    const batchActions = react_1.useMemo(() => {
         if (!rowActionsSpec) {
             return fp_1.emptyArr;
         }
@@ -131,7 +131,7 @@ function useGridSelectableRows(rows, { batchActions: rowActionsSpec = fp_1.empty
             selectionStatus,
             multiSelectionEnabled: multiSelection,
             rowsSelectionDisabled: false,
-            batchActionsDisabled: (0, fp_1.isNilOrEmpty)(rowActionsSpec),
+            batchActionsDisabled: fp_1.isNilOrEmpty(rowActionsSpec),
             batchActions,
         },
     ];

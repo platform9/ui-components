@@ -8,19 +8,19 @@ const colors_1 = __importDefault(require("../base/colors"));
 const colorHelpers_1 = require("../../../utils/colorHelpers");
 exports.defaultAlertComponentStyles = {
     primary: {
-        background: (0, colorHelpers_1.hexToRgbaCss)(colors_1.default.blue[500], 0.05),
+        background: colorHelpers_1.hexToRgbaCss(colors_1.default.blue[500], 0.05),
         border: colors_1.default.blue[500],
     },
     success: {
-        background: (0, colorHelpers_1.hexToRgbaCss)(colors_1.default.green[500], 0.05),
+        background: colorHelpers_1.hexToRgbaCss(colors_1.default.green[500], 0.05),
         border: colors_1.default.green[500],
     },
     warning: {
-        background: (0, colorHelpers_1.hexToRgbaCss)(colors_1.default.orange[500], 0.05),
+        background: colorHelpers_1.hexToRgbaCss(colors_1.default.orange[500], 0.05),
         border: colors_1.default.orange[500],
     },
     error: {
-        background: (0, colorHelpers_1.hexToRgbaCss)(colors_1.default.red[500], 0.05),
+        background: colorHelpers_1.hexToRgbaCss(colors_1.default.red[500], 0.05),
         border: colors_1.default.red[500],
     },
 };
@@ -41,7 +41,7 @@ exports.defaultGraphComponentStyles = {
     google: colors_1.default.googleYellow[500],
 };
 exports.defaultCodeComponentStyles = {
-    background: (0, colorHelpers_1.hexToRgbaCss)(colors_1.default.codeBlue[500], 0.1),
+    background: colorHelpers_1.hexToRgbaCss(colors_1.default.codeBlue[500], 0.1),
     text: colors_1.default.codeBlue[500],
 };
 //# sourceMappingURL=default-components.js.map

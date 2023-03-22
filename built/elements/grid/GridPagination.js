@@ -1,11 +1,7 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -18,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -34,7 +30,7 @@ const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeI
 const dropdown_1 = __importDefault(require("../../elements/dropdown"));
 const ramda_1 = require("ramda");
 const clsx_1 = __importDefault(require("clsx"));
-exports.useStyles = (0, styles_1.makeStyles)((theme) => ({
+exports.useStyles = styles_1.makeStyles((theme) => ({
     navigation: {
         color: theme.components.typography.passive,
         fontSize: 14,
@@ -114,8 +110,8 @@ exports.useStyles = (0, styles_1.makeStyles)((theme) => ({
 }));
 const pageSizeOptions = [5, 10, 25, 50, 100].map((value) => ({ value }));
 const GridPagination = ({ paginationDisabled, rowsPerPage, currentPage, currentPageItemsCount, pagesCount, itemsCount, updateRowsPerPage, goToPage, goPrevPage, goNextPage, showResultsPerPageDropdown = true, }) => {
-    const classes = (0, exports.useStyles)({});
-    const pageOptions = (0, react_1.useMemo)(() => (0, ramda_1.range)(1, pagesCount + 1).map((value) => ({ value })), [pagesCount]);
+    const classes = exports.useStyles({});
+    const pageOptions = react_1.useMemo(() => ramda_1.range(1, pagesCount + 1).map((value) => ({ value })), [pagesCount]);
     const currentItemNum = (currentPage - 1) * rowsPerPage;
     if (paginationDisabled) {
         return null;
@@ -128,7 +124,7 @@ const GridPagination = ({ paginationDisabled, rowsPerPage, currentPage, currentP
             " of ",
             itemsCount,
             " items"),
-        react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.controls, 'paginationControls') },
+        react_1.default.createElement("div", { className: clsx_1.default(classes.controls, 'paginationControls') },
             react_1.default.createElement(FontAwesomeIcon_1.default, { disabled: currentPage === 1, "aria-hidden": "true", className: classes.navBtn, onClick: goPrevPage }, "angle-left"),
             react_1.default.createElement(Text_1.default, { component: "div", variant: "inputLabel", className: classes.nav },
                 react_1.default.createElement(dropdown_1.default, { className: classes.dropdown, label: "Page", compact: true, items: pageOptions, value: currentPage, onChange: goToPage }),

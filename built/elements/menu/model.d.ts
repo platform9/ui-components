@@ -1,5 +1,5 @@
-export type AlignVertical = 'top' | 'middle' | 'bottom';
-export type AlignHorizontal = 'left' | 'middle' | 'right';
+export declare type AlignVertical = 'top' | 'middle' | 'bottom';
+export declare type AlignHorizontal = 'left' | 'middle' | 'right';
 export interface MenuPlacementProps {
     align?: {
         vertical: AlignVertical;

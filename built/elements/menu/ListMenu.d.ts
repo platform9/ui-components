@@ -1,6 +1,6 @@
 import React from 'react';
 import { IMenuProps } from './Menu';
-type Props = IMenuProps & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
+declare type Props = IMenuProps & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
     list: {
         name: string;
         id: string;

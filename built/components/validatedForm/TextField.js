@@ -1,11 +1,7 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -18,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -42,7 +38,7 @@ const Input_1 = __importDefault(require("../../elements/input/Input"));
 const withFormContext_1 = __importDefault(require("../../components/validatedForm/withFormContext"));
 const TextField = (_a) => {
     var { value, label, hasError, errorMessage, required, variant, onChange, type, returnAsString, getCurrentValue, updateFieldValue, setFieldValue } = _a, restProps = __rest(_a, ["value", "label", "hasError", "errorMessage", "required", "variant", "onChange", "type", "returnAsString", "getCurrentValue", "updateFieldValue", "setFieldValue"]);
-    const handleChange = (0, react_1.useCallback)((e) => {
+    const handleChange = react_1.useCallback((e) => {
         // HTML specs says that <input type="number"> return strings but it's more useful if we
         // convert it to a `Number` to reduce type casting all over the place.
         const strVal = e.target.value;
@@ -54,5 +50,5 @@ const TextField = (_a) => {
     }, [onChange, type]);
     return (react_1.default.createElement(Input_1.default, Object.assign({}, restProps, { label: label && required ? `${label} *` : label, variant: variant, error: errorMessage, value: value !== undefined ? (type === 'number' ? Number(value) : value) : '', onChange: handleChange, type: type })));
 };
-exports.default = (0, withFormContext_1.default)(TextField);
+exports.default = withFormContext_1.default(TextField);
 //# sourceMappingURL=TextField.js.map

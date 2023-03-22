@@ -7,6 +7,6 @@ interface BaseToggleSwitchFieldProps extends Omit<ToggleSwitchProps, 'active'> {
     label?: string;
     onChange?: (value?: boolean) => void;
 }
-export type ToggleSwitchFieldProps = PropsWithFormContext<boolean, BaseToggleSwitchFieldProps>;
+export declare type ToggleSwitchFieldProps = PropsWithFormContext<boolean, BaseToggleSwitchFieldProps>;
 declare const _default: any;
 export default _default;

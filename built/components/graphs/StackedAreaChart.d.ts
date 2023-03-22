@@ -1,5 +1,5 @@
 /// <reference types="react" />
-type AreaChartEntry<T extends string, V extends string> = {
+declare type AreaChartEntry<T extends string, V extends string> = {
     [P in T | V]: any;
 };
 export interface AreaChartType<T> {

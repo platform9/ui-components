@@ -22,10 +22,10 @@ interface GridViewConfig {
     showItemsCountInLabel?: boolean;
     tooltip?: ReactNode;
 }
-export type GridViewColumn<T, A extends Accessor<T> = Accessor<T>> = GridColumnSpec<T, A> & GridSortableColumnSpec & GridManagedColumnSpec<T>;
+export declare type GridViewColumn<T, A extends Accessor<T> = Accessor<T>> = GridColumnSpec<T, A> & GridSortableColumnSpec & GridManagedColumnSpec<T>;
 export interface GridProps<T, GF extends Record<string, unknown> = Record<string, unknown>, F extends Record<string, unknown> = Record<string, unknown>, C extends GridViewColumn<T> = GridViewColumn<T>> extends GridViewConfig, GridBaseConfig<T, C>, GridSortingConfig<C>, GridFilteringConfig<T, GF, F>, GridPaginationConfig, GridRowMenuConfig<T>, GridBatchActionsConfig<T>, GridManagedColumnsConfig<T, C> {
 }
-export type GridContextType<T> = {
+export declare type GridContextType<T> = {
     triggerRefresh?: () => void;
     selectedItems?: T[];
     clearSelectedRows?: () => void;

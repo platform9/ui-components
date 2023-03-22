@@ -8,6 +8,6 @@ export interface IMenuProps extends MenuPlacementProps {
     className?: string;
     onClose?: () => void;
 }
-type Props = IMenuProps & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+declare type Props = IMenuProps & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 export default function Menu({ open, anchor, align, offset, origin, unorderedList, onClose, className, children, ...props }: PropsWithChildren<Props>): JSX.Element;
 export {};

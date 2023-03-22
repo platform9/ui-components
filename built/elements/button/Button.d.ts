@@ -10,6 +10,7 @@ export interface ButtonProps extends Omit<MuiButtonProps, 'variant' | 'color' | 
     tooltip?: string | ReactNode;
     rightIcon?: string;
     solidIcon?: boolean;
+    iconBrand?: boolean;
 }
 declare const _default: any;
 export default _default;

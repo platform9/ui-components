@@ -1,11 +1,7 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -18,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -38,8 +34,8 @@ const tooltip_1 = __importDefault(require("../../elements/tooltip"));
 function FormFieldSection({ title, className, link = undefined, info = undefined, step = undefined, children, errorMessage, textVariant = 'subtitle2', }) {
     const hasInfo = !!info;
     const hasLink = !!link;
-    const classes = (0, exports.useStyles)({});
-    const infoTitle = (0, react_1.useMemo)(() => {
+    const classes = exports.useStyles({});
+    const infoTitle = react_1.useMemo(() => {
         if (!info)
             return null;
         if (typeof info === 'string')
@@ -50,22 +46,22 @@ function FormFieldSection({ title, className, link = undefined, info = undefined
     }, [info]);
     const infoComponent = hasInfo ? (react_1.default.createElement(tooltip_1.default, { message: infoTitle },
         react_1.default.createElement(FontAwesomeIcon_1.default, null, "info-circle"))) : null;
-    return (react_1.default.createElement("fieldset", { className: (0, clsx_1.default)(classes.formFieldSection, className) },
+    return (react_1.default.createElement("fieldset", { className: clsx_1.default(classes.formFieldSection, className) },
         react_1.default.createElement("legend", { className: classes.titleLegend },
-            (0, misc_1.isNumeric)(step) && (react_1.default.createElement(Text_1.default, { component: "figure", variant: "caption1", className: classes.figureStep }, step)),
-            react_1.default.createElement(Text_1.default, { "data-testid": (0, test_helpers_1.default)(title), component: "label", variant: textVariant, className: classes.title },
+            misc_1.isNumeric(step) && (react_1.default.createElement(Text_1.default, { component: "figure", variant: "caption1", className: classes.figureStep }, step)),
+            react_1.default.createElement(Text_1.default, { "data-testid": test_helpers_1.default(title), component: "label", variant: textVariant, className: classes.title },
                 title,
                 " ",
                 infoComponent)),
         react_1.default.createElement("div", { className: classes.spacer }, hasLink && link),
-        react_1.default.createElement("div", { className: (0, clsx_1.default)('content', classes.content) }, children),
+        react_1.default.createElement("div", { className: clsx_1.default('content', classes.content) }, children),
         errorMessage && react_1.default.createElement(Warning, null, errorMessage)));
 }
 exports.default = FormFieldSection;
-const Warning = (0, styles_1.styled)(({ children, className }) => (react_1.default.createElement(Text_1.default, { variant: "body1", className: className }, children)))(({ theme }) => ({
+const Warning = styles_1.styled(({ children, className }) => (react_1.default.createElement(Text_1.default, { variant: "body1", className: className }, children)))(({ theme }) => ({
     color: theme.components.graph.error,
 }));
-exports.useStyles = (0, styles_1.makeStyles)((theme) => ({
+exports.useStyles = styles_1.makeStyles((theme) => ({
     formFieldSection: {
         marginBottom: '32px',
         border: 'none',

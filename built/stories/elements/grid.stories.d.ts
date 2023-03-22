@@ -2,10 +2,10 @@
 import { Meta } from '@storybook/react';
 import { Movie } from '../data/movies-list';
 import { GridProps } from '../../elements/grid/Grid';
-type GlobalFilters = {
+declare type GlobalFilters = {
     search: string;
 };
-type Filters = {
+declare type Filters = {
     year: string;
     genre: string;
 };

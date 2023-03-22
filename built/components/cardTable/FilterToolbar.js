@@ -8,7 +8,7 @@ const styles_1 = require("@material-ui/styles");
 const SearchBar_1 = __importDefault(require("../SearchBar"));
 const RefreshButton_1 = __importDefault(require("../buttons/RefreshButton"));
 const AsyncDropdown_1 = __importDefault(require("../../elements/dropdown/AsyncDropdown"));
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     toolbar: {
         display: 'flex',
         justifyContent: 'space-between',

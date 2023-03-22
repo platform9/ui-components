@@ -8,19 +8,16 @@ const ramda_1 = require("ramda");
 const moize_1 = __importDefault(require("moize"));
 const moment_1 = __importDefault(require("moment"));
 const constants_1 = require("../constants");
-const memoize = (fn, options = {}) => (0, moize_1.default)(fn, Object.assign({ maxSize: constants_1.moizeMaxSize }, options));
-exports.memoize = memoize;
+exports.memoize = (fn, options = {}) => moize_1.default(fn, Object.assign({ maxSize: constants_1.moizeMaxSize }, options));
 /**
  * Memoize using shallow equality to compare cache each key argument
  */
-const memoizeShallow = (fn, options = {}) => (0, moize_1.default)(fn, Object.assign(Object.assign({ maxSize: constants_1.moizeMaxSize }, options), { isShallowEqual: true }));
-exports.memoizeShallow = memoizeShallow;
+exports.memoizeShallow = (fn, options = {}) => moize_1.default(fn, Object.assign(Object.assign({ maxSize: constants_1.moizeMaxSize }, options), { isShallowEqual: true }));
 /**
  * Utility to globally memoize objects such as props or params
  */
-const generateObjMemoizer = () => (0, exports.memoizeShallow)((dep) => dep);
-exports.generateObjMemoizer = generateObjMemoizer;
-exports.memoizedObj = (0, exports.generateObjMemoizer)();
+exports.generateObjMemoizer = () => exports.memoizeShallow((dep) => dep);
+exports.memoizedObj = exports.generateObjMemoizer();
 const memoizePromiseOptions = {
     maxSize: constants_1.moizeMaxSize,
     isShallowEqual: true,
@@ -32,8 +29,8 @@ const memoizePromiseOptions = {
  * Memoizes an async function to prevent the thundering herd problem.
  * This makes duplicate calls (comparing params using shallow equality) to return the same promise.
  */
-const memoizePromise = (asyncFn) => {
-    const memoizedCb = (0, moize_1.default)(asyncFn, memoizePromiseOptions);
+exports.memoizePromise = (asyncFn) => {
+    const memoizedCb = moize_1.default(asyncFn, memoizePromiseOptions);
     return async (...params) => {
         try {
             const result = await memoizedCb(...params);
@@ -47,11 +44,9 @@ const memoizePromise = (asyncFn) => {
         }
     };
 };
-exports.memoizePromise = memoizePromise;
 // Date formatter
 exports.defaultDateFormat = 'MMM Do YYYY, hh:mm A';
-const formatDate = (ts = '', format = exports.defaultDateFormat) => (0, moment_1.default)(ts).format(format);
-exports.formatDate = formatDate;
+exports.formatDate = (ts = '', format = exports.defaultDateFormat) => moment_1.default(ts).format(format);
 const getDurationItemByLabels = (labels) => {
     return [
         { startFnName: 'asMonths', fnName: 'months', label: 'mo' },
@@ -68,13 +63,13 @@ const getDurationItemByLabels = (labels) => {
  * @param {{labels?: string[], renameLabels?: {[key: string]: string}, pluralize?: boolean}} options
  * @returns {function(string): string}
  */
-const durationBetweenDates = ({ labels = ['mo', 'd', 'h', 'm'], renameLabels = {
+exports.durationBetweenDates = ({ labels = ['mo', 'd', 'h', 'm'], renameLabels = {
     mo: 'month',
     d: 'day',
     h: 'hour',
     m: 'minute',
-}, pluralize = true, }) => (0, exports.memoize)((startDateTime, endDateTime = new Date().valueOf()) => {
-    const duration = moment_1.default.duration((0, moment_1.default)(endDateTime).diff((0, moment_1.default)(startDateTime)));
+}, pluralize = true, }) => exports.memoize((startDateTime, endDateTime = new Date().valueOf()) => {
+    const duration = moment_1.default.duration(moment_1.default(endDateTime).diff(moment_1.default(startDateTime)));
     const result = getDurationItemByLabels(labels).reduce((displayStr, curr) => {
         const value = Math.floor(duration[!displayStr ? curr.startFnName : curr.fnName]());
         if (value < 1) {
@@ -94,14 +89,13 @@ const durationBetweenDates = ({ labels = ['mo', 'd', 'h', 'm'], renameLabels = {
     }
     return result;
 });
-exports.durationBetweenDates = durationBetweenDates;
 /**
  * Given a number of seconds returns the number of
  * years, months, days, hours and minutes in a human readable format
  * @param seconds
  * @returns {string}
  */
-const secondsToString = (seconds) => {
+exports.secondsToString = (seconds) => {
     const min = 60;
     const hour = min * 60;
     const day = hour * 24;
@@ -119,20 +113,19 @@ const secondsToString = (seconds) => {
     }, []);
     return results.join(', ');
 };
-exports.secondsToString = secondsToString;
 /**
  * Given a timestamp, returns the years, months, days, hours and minutes in a human readable format
  * @param creationTimeStamp
  * @returns {string}
  */
-exports.calculateAge = (0, exports.memoize)((creationTimestamp) => {
+exports.calculateAge = exports.memoize((creationTimestamp) => {
     if (!creationTimestamp)
         return null;
-    return (0, exports.secondsToString)((0, moment_1.default)().diff(creationTimestamp, 's'));
+    return exports.secondsToString(moment_1.default().diff(creationTimestamp, 's'));
 });
 // A more resilient JSON parsing that should always return {}
 // in error conditions.
-const parseJSON = (str) => {
+exports.parseJSON = (str) => {
     if (typeof str !== 'string') {
         return {};
     }
@@ -145,22 +138,18 @@ const parseJSON = (str) => {
         return {};
     }
 };
-exports.parseJSON = parseJSON;
-const isNumeric = (n) => !Number.isNaN(parseFloat(n)) && Number.isFinite(+n);
-exports.isNumeric = isNumeric;
-const isPlainObject = (obj) => Object(obj) === obj && Object.getPrototypeOf(obj) === Object.prototype;
-exports.isPlainObject = isPlainObject;
+exports.isNumeric = (n) => !Number.isNaN(parseFloat(n)) && Number.isFinite(+n);
+exports.isPlainObject = (obj) => Object(obj) === obj && Object.getPrototypeOf(obj) === Object.prototype;
 const duplicatedSlashesRegexp = new RegExp('(^\\/|[^:\\/]+\\/)\\/+', 'g');
 // Given some path segments returns a properly formatted path similarly to Nodejs path.join()
 // Remove duplicated slashes
 // Does not remove leading/trailing slashes and adds a slash between segments
-const pathJoin = (...pathParts) => []
+exports.pathJoin = (...pathParts) => []
     .concat(...pathParts) // Flatten
     .filter((segment) => !!segment) // Remove empty parts
     .join('/')
     .replace(duplicatedSlashesRegexp, '$1');
-exports.pathJoin = pathJoin;
-const castFuzzyBool = (value) => {
+exports.castFuzzyBool = (value) => {
     const mappings = {
         // JS performs a narrowing cast of ints, bools, and strings to the same key.
         false: false,
@@ -175,109 +164,91 @@ const castFuzzyBool = (value) => {
     }
     return false;
 };
-exports.castFuzzyBool = castFuzzyBool;
-const columnPathLookup = (_path) => (_, row) => (0, ramda_1.path)(_path.split('.'), row);
-exports.columnPathLookup = columnPathLookup;
-const castBoolToStr = (t = 'Enabled', f = 'Not Enabled') => (value) => value ? t : f;
-exports.castBoolToStr = castBoolToStr;
-exports.tryJsonParse = (0, moize_1.default)((val) => (typeof val === 'string' ? JSON.parse(val) : val));
+exports.columnPathLookup = (_path) => (_, row) => ramda_1.path(_path.split('.'), row);
+exports.castBoolToStr = (t = 'Enabled', f = 'Not Enabled') => (value) => value ? t : f;
+exports.tryJsonParse = moize_1.default((val) => (typeof val === 'string' ? JSON.parse(val) : val));
 /**
  * Converts a camelCased string to a string with capitalized words separated by spaces
  * @example "camelCasedExampleString" -> "Camel Cased Example String"
  * @param inputStr
  * @returns {string}
  */
-const uncamelizeString = (inputStr = '') => inputStr
+exports.uncamelizeString = (inputStr = '') => inputStr
     // insert a space before all caps
     .replace(/([A-Z])/g, ' $1')
     // uppercase the first character
     .replace(/^./, (str) => str.toUpperCase());
-exports.uncamelizeString = uncamelizeString;
 /**
  * Converts a snake-case string to camelCase
  * @param inputStr
  */
-const snakeToCamelString = (inputStr) => inputStr.replace(/-([A-Z])/gi, (str) => str.toUpperCase()).replace(/-/g, '');
-exports.snakeToCamelString = snakeToCamelString;
+exports.snakeToCamelString = (inputStr) => inputStr.replace(/-([A-Z])/gi, (str) => str.toUpperCase()).replace(/-/g, '');
 /**
  * Converts a snake-case string to PascalCase
  * @param inputStr
  */
-const snakeToPascalString = (inputStr) => inputStr
+exports.snakeToPascalString = (inputStr) => inputStr
     // uppercase the first character
     .replace(/^./, (str) => str.toUpperCase())
     .replace(/-([A-Z])/gi, (str) => str.toUpperCase())
     .replace(/-/g, '');
-exports.snakeToPascalString = snakeToPascalString;
 /**
  * Capitalize the first letter of the given string
  * @param inputStr
  * @returns {*}
  */
-const capitalizeString = (inputStr = '') => inputStr
+exports.capitalizeString = (inputStr = '') => inputStr
     // uppercase the first character
     .replace(/^./, (str) => str.toUpperCase());
-exports.capitalizeString = capitalizeString;
 /**
  * Transform a string so that it only has alpha-numeric and hypens.  Useful for FQDN's.
  * @param {string} str
  * @returns {string}
  */
-const sanitizeUrl = (str = '') => str
+exports.sanitizeUrl = (str = '') => str
     .replace(/[^a-zA-Z0-9-_.]/g, '-') // replace non-valid url characters with hyphen
     .replace(/^-+/, '') // eliminate leading hyphens
     .replace(/\.+$/, ''); // eliminate trailing dots
-exports.sanitizeUrl = sanitizeUrl;
-const getCookieValue = (name) => {
+exports.getCookieValue = (name) => {
     const val = document.cookie.match('(^|[^;]+)\\s*' + name + '\\s*=\\s*([^;]+)');
     return val ? val.pop() : '';
 };
-exports.getCookieValue = getCookieValue;
-const normalizeUsername = (name = '') => {
+exports.normalizeUsername = (name = '') => {
     if (!name)
         return name;
     // split emails from @ sign and take the left hand side
     const [username] = name.split('@');
     return username;
 };
-exports.normalizeUsername = normalizeUsername;
 // Really simple indefinite article function, does not account for special
 // cases such as 'a user'
-const indefiniteArticle = (word = '') => (/^([aeiou])/i.test(word) ? 'an' : 'a');
-exports.indefiniteArticle = indefiniteArticle;
-const cleanupStacktrace = (stacktrace = '') => stacktrace
+exports.indefiniteArticle = (word = '') => (/^([aeiou])/i.test(word) ? 'an' : 'a');
+exports.cleanupStacktrace = (stacktrace = '') => stacktrace
     .split('\n')
     .filter((res) => !!res.trim())
     .join('\n\n');
-exports.cleanupStacktrace = cleanupStacktrace;
-const compareArrByValue = (key, order = 'asc') => (a, b) => {
+exports.compareArrByValue = (key, order = 'asc') => (a, b) => {
     if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
         return 0;
     }
     const comparison = a[key].localeCompare(b[key]);
     return order === 'desc' ? comparison * -1 : comparison;
 };
-exports.compareArrByValue = compareArrByValue;
 // Simple escape function to sanitize inputs before using in regexes
-const escapeRegex = (str) => {
+exports.escapeRegex = (str) => {
     return str.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 };
-exports.escapeRegex = escapeRegex;
-const add = (value, total) => (value ? parseFloat(value) + parseFloat(total || 0) : total);
-exports.add = add;
+exports.add = (value, total) => (value ? parseFloat(value) + parseFloat(total || 0) : total);
 // export const encodeStr = (str: string) => Buffer.from(str).toString('base64')
-const encodeStr = (str) => btoa(str);
-exports.encodeStr = encodeStr;
+exports.encodeStr = (str) => btoa(str);
 // export const decodeStr = (str: string) => Buffer.from(str, 'base64').toString('ascii')
-const decodeStr = (str) => atob(str); // Buffer doesnt work
-exports.decodeStr = decodeStr;
-const stripUnitFromValue = (value) => {
+exports.decodeStr = (str) => atob(str); // Buffer doesnt work
+exports.stripUnitFromValue = (value) => {
     const hasNumber = /\d/.test(value);
     if (!hasNumber)
         return value;
     return parseFloat(value);
 };
-exports.stripUnitFromValue = stripUnitFromValue;
 // ref:https://css-tricks.com/snippets/javascript/lighten-darken-color/
 function lightenDarkenColor(color, amt) {
     let usePound = false;

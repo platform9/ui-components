@@ -20,6 +20,7 @@ export interface ButtonProps extends Omit<MuiButtonProps, 'variant' | 'color' | 
   tooltip?: string | ReactNode
   rightIcon?: string
   solidIcon?: boolean
+  iconBrand?: boolean
 }
 
 const Button = ({
@@ -33,6 +34,7 @@ const Button = ({
   rightIcon = undefined,
   onClick,
   solidIcon = false,
+  iconBrand = false,
   ...rest
 }: ButtonProps) => {
   const hasRightIcon = !!rightIcon
@@ -76,7 +78,7 @@ const Button = ({
           children
         )}
         {!!rightIcon && !loading && (
-          <FontAwesomeIcon size="md" className="button-icon button-right-icon">
+          <FontAwesomeIcon size="md" brand={iconBrand} className="button-icon button-right-icon">
             {rightIcon}
           </FontAwesomeIcon>
         )}

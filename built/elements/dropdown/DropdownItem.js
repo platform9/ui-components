@@ -18,7 +18,7 @@ const react_1 = __importDefault(require("react"));
 const styles_1 = require("@material-ui/styles");
 const Checkbox_1 = __importDefault(require("../../elements/input/Checkbox"));
 const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     dropdownItem: {
         display: 'flex',
         flexFlow: 'row nowrap',
@@ -44,7 +44,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
 exports.default = react_1.default.forwardRef((props, ref) => {
     const classes = useStyles(props);
     const { children, isSelected, showCheckbox, disableCheckbox } = props, rest = __rest(props, ["children", "isSelected", "showCheckbox", "disableCheckbox"]);
-    return (react_1.default.createElement("li", Object.assign({ "data-testid": (0, test_helpers_1.default)(classes.id, 'cluster', 'value'), ref: ref, className: classes.dropdownItem }, rest),
+    return (react_1.default.createElement("li", Object.assign({ "data-testid": test_helpers_1.default(classes.id, 'cluster', 'value'), ref: ref, className: classes.dropdownItem }, rest),
         showCheckbox ? react_1.default.createElement(Checkbox_1.default, { disabled: disableCheckbox, checked: isSelected }) : null,
         children));
 });

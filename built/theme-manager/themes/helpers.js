@@ -22,9 +22,9 @@ function generateComponentColors({ components = [] }, defaultComponentStyles) {
     for (const component of components) {
         // Is there some easy way to not need to mutate the original object?
         // @ts-ignore
-        newComponentStyles = (0, ramda_1.assocPath)(component.pathTo, 
+        newComponentStyles = ramda_1.assocPath(component.pathTo, 
         // If value is empty value, keep the default
-        component.value || (0, ramda_1.path)(component.pathTo, newComponentStyles), newComponentStyles);
+        component.value || ramda_1.path(component.pathTo, newComponentStyles), newComponentStyles);
     }
     return newComponentStyles;
 }

@@ -10,11 +10,11 @@ const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 function TabPreview({ label, value, isActive, onClick }) {
     const classes = useStyles({ isActive });
     return (react_1.default.createElement("div", { className: classes.tabPreview, onClick: () => onClick(value) },
-        react_1.default.createElement(Text_1.default, { className: classes.tabText, "data-testid": (0, test_helpers_1.default)(label, 'tab'), variant: "subtitle2" }, label),
+        react_1.default.createElement(Text_1.default, { className: classes.tabText, "data-testid": test_helpers_1.default(label, 'tab'), variant: "subtitle2" }, label),
         isActive && react_1.default.createElement("span", { className: classes.activeBorder })));
 }
 exports.default = TabPreview;
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     tabPreview: {
         height: 35,
         display: 'grid',

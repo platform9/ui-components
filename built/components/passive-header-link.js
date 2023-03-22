@@ -7,7 +7,7 @@ const react_1 = __importDefault(require("react"));
 const SimpleLink_1 = __importDefault(require("../components/SimpleLink"));
 const clsx_1 = __importDefault(require("clsx"));
 const styles_1 = require("@material-ui/styles");
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     root: {
         display: 'grid',
         alignItems: 'center',
@@ -43,7 +43,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
 }));
 const PassiveHeaderLink = ({ icon, text, url = undefined, className = undefined, onClick = undefined, }) => {
     const classes = useStyles({});
-    return (react_1.default.createElement(SimpleLink_1.default, { onClick: onClick, src: url, className: (0, clsx_1.default)(classes.root, className), icon: icon, textVariant: "subtitle2", iconPosition: "left" }, text));
+    return (react_1.default.createElement(SimpleLink_1.default, { onClick: onClick, src: url, className: clsx_1.default(classes.root, className), icon: icon, textVariant: "subtitle2", iconPosition: "left" }, text));
 };
 exports.default = PassiveHeaderLink;
 //# sourceMappingURL=passive-header-link.js.map

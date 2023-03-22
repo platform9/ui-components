@@ -27,5 +27,5 @@ const CancelButton = (_a) => {
     const params = Object.assign({ className: classes.baseButton, disabled }, rest);
     return (react_1.default.createElement(button_1.default, Object.assign({ className: classes.baseButton }, params), children || 'Cancel'));
 };
-exports.default = (0, styles_1.withStyles)(styles)(CancelButton);
+exports.default = styles_1.withStyles(styles)(CancelButton);
 //# sourceMappingURL=CancelButton.js.map

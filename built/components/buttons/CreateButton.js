@@ -19,7 +19,7 @@ const button_1 = __importDefault(require("../../elements/button"));
 const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 function CreateButton(_a) {
     var { children } = _a, rest = __rest(_a, ["children"]);
-    return (react_1.default.createElement(button_1.default, Object.assign({ "data-testid": (0, test_helpers_1.default)(children), variant: "primary", icon: "plus" }, rest), children));
+    return (react_1.default.createElement(button_1.default, Object.assign({ "data-testid": test_helpers_1.default(children), variant: "primary", icon: "plus" }, rest), children));
 }
 exports.default = CreateButton;
 //# sourceMappingURL=CreateButton.js.map

@@ -1,11 +1,7 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -18,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -33,9 +29,9 @@ const useInterval_1 = __importDefault(require("../hooks/useInterval"));
 const button_1 = __importDefault(require("../elements/button"));
 const defaultRefreshDuration = 1000 * 60 * 5;
 function PollingData({ loading, onReload, hidden = false, pause = false, pollIntervalMs = 5000, refreshDuration = defaultRefreshDuration, pollingCondition, }) {
-    const [lastIntervalTs, setLastIntervalTs] = (0, react_1.useState)(new Date().valueOf());
-    const [lastFetchTs, setLastFetchTs] = (0, react_1.useState)(new Date().valueOf());
-    const reload = (0, react_1.useCallback)(() => {
+    const [lastIntervalTs, setLastIntervalTs] = react_1.useState(new Date().valueOf());
+    const [lastFetchTs, setLastFetchTs] = react_1.useState(new Date().valueOf());
+    const reload = react_1.useCallback(() => {
         const ts = new Date().valueOf();
         setLastFetchTs(ts);
         setLastIntervalTs(ts);
@@ -48,7 +44,7 @@ function PollingData({ loading, onReload, hidden = false, pause = false, pollInt
     // called in conditionals
     if (!pause) {
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        (0, useInterval_1.default)(() => {
+        useInterval_1.default(() => {
             if (!loading) {
                 setLastIntervalTs(new Date().valueOf());
             }
@@ -61,7 +57,7 @@ function PollingData({ loading, onReload, hidden = false, pause = false, pollInt
     if (hidden) {
         return null;
     }
-    return (react_1.default.createElement(button_1.default, { variant: "tertiary", onClick: pause ? undefined : reload, icon: "sync" }, loading ? 'loading...' : (0, moment_1.default)(lastIntervalTs).fromNow()));
+    return (react_1.default.createElement(button_1.default, { variant: "tertiary", onClick: pause ? undefined : reload, icon: "sync" }, loading ? 'loading...' : moment_1.default(lastIntervalTs).fromNow()));
 }
 exports.default = PollingData;
 //# sourceMappingURL=PollingData.js.map

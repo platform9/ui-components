@@ -20,7 +20,7 @@ const react_router_dom_1 = require("react-router-dom");
 const styles_1 = require("@material-ui/styles");
 const IconButton_1 = __importDefault(require("../../elements/button/IconButton"));
 const tooltip_1 = __importDefault(require("../../elements/tooltip"));
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     link: {
         display: 'block',
     },

@@ -1,11 +1,7 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -18,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -44,22 +40,22 @@ const useToggler_1 = __importDefault(require("../../hooks/useToggler"));
 const FontAwesomeIcon_1 = __importDefault(require("../FontAwesomeIcon"));
 function Accordion(_a) {
     var { id, title, children, open = false, className } = _a, props = __rest(_a, ["id", "title", "children", "open", "className"]);
-    const [active, toggleActive] = (0, useToggler_1.default)(false);
-    const [height, setHeight] = (0, react_1.useState)(0);
-    const content = (0, react_1.useRef)(null);
+    const [active, toggleActive] = useToggler_1.default(false);
+    const [height, setHeight] = react_1.useState(0);
+    const content = react_1.useRef(null);
     const classes = useStyles({ active, height });
-    const titleComponent = (0, react_1.useMemo)(() => (typeof title === 'string' ? react_1.default.createElement("p", { className: classes.accordionTitle }, title) : title), [title]);
-    (0, react_1.useEffect)(() => {
+    const titleComponent = react_1.useMemo(() => (typeof title === 'string' ? react_1.default.createElement("p", { className: classes.accordionTitle }, title) : title), [title]);
+    react_1.useEffect(() => {
         setHeight(open || active ? content.current.scrollHeight : 0); //TODO:CAPI There's a issue here, will need to fix it
     }, [active, children, open]);
-    return (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.accordionContainer, className), id: id },
-        react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.accordionTopBar, 'accordionTopBar'), onClick: toggleActive },
+    return (react_1.default.createElement("div", { className: clsx_1.default(classes.accordionContainer, className), id: id },
+        react_1.default.createElement("div", { className: clsx_1.default(classes.accordionTopBar, 'accordionTopBar'), onClick: toggleActive },
             titleComponent,
             react_1.default.createElement(FontAwesomeIcon_1.default, { solid: true, size: "xs", className: classes.icon }, "chevron-right")),
-        react_1.default.createElement("div", Object.assign({ ref: content, className: (0, clsx_1.default)(classes.accordionContent, 'accordianContent') }, props), children)));
+        react_1.default.createElement("div", Object.assign({ ref: content, className: clsx_1.default(classes.accordionContent, 'accordianContent') }, props), children)));
 }
 exports.default = Accordion;
-const useStyles = (0, styles_1.makeStyles)((theme) => {
+const useStyles = styles_1.makeStyles((theme) => {
     var _a, _b;
     return ({
         accordionContainer: {

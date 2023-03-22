@@ -28,7 +28,7 @@ const styles = (theme) => ({
 });
 const NextButton = (_a) => {
     var { children, classes, showForward = true } = _a, rest = __rest(_a, ["children", "classes", "showForward"]);
-    return (react_1.default.createElement(button_1.default, Object.assign({ "data-testid": (0, test_helpers_1.default)('arrow', 'next'), className: classes.baseButton }, rest, { rightIcon: showForward ? 'arrow-right' : undefined, variant: "tertiary", size: "medium" }), children || 'Next'));
+    return (react_1.default.createElement(button_1.default, Object.assign({ "data-testid": test_helpers_1.default('arrow', 'next'), className: classes.baseButton }, rest, { rightIcon: showForward ? 'arrow-right' : undefined, variant: "tertiary", size: "medium" }), children || 'Next'));
 };
-exports.default = (0, styles_1.withStyles)(styles)(NextButton);
+exports.default = styles_1.withStyles(styles)(NextButton);
 //# sourceMappingURL=NextButton.js.map

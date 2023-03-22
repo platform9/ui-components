@@ -8,12 +8,9 @@ interface BaseCheckboxFieldProps extends Omit<CheckboxProps, 'checked'> {
     label?: string;
     onChange?: (value?: boolean) => void;
 }
-export type CheckboxFieldProps = PropsWithFormContext<boolean, PropsWithTooltip<BaseCheckboxFieldProps>>;
-declare const _default: React.ForwardRefExoticComponent<Omit<import("../../components/validatedForm/withFormContext").ValidatedFormInputProps<boolean, import("../../components/validatedForm/withFormContext").ChildrenFnParams<boolean> & {
+export declare type CheckboxFieldProps = PropsWithFormContext<boolean, PropsWithTooltip<BaseCheckboxFieldProps>>;
+declare const _default: React.ForwardRefExoticComponent<Pick<import("./withFormContext").ValidatedFormInputProps<boolean, PropsWithFormContext<boolean, PropsWithTooltip<BaseCheckboxFieldProps>>>, "error" | "value" | "required" | "className" | "id" | "onBlur" | "onChange" | "initialValue" | "validations" | "validateFormOnChange"> & import("./withFormContext").ChildrenFnParams<boolean> & {
     tooltip?: React.ReactNode;
-    tooltipProps?: Omit<import("../../elements/tooltip/Tooltip").TooltipProps, "message">;
-} & BaseCheckboxFieldProps>, "children"> & import("../../components/validatedForm/withFormContext").ChildrenFnParams<boolean> & {
-    tooltip?: React.ReactNode;
-    tooltipProps?: Omit<import("../../elements/tooltip/Tooltip").TooltipProps, "message">;
+    tooltipProps?: Pick<import("../../elements/tooltip/Tooltip").TooltipProps, "offset" | "align" | "origin" | "customClassName" | "customBody">;
 } & BaseCheckboxFieldProps & React.RefAttributes<HTMLElement>>;
 export default _default;

@@ -14,8 +14,8 @@ export interface GridCellProps<T, V = unknown> {
     children?: ReactNode;
     className?: string;
 }
-export type GridCellWidth = 'small' | 'medium' | 'large' | number;
-export type Accessor<T> = string | keyof T | ((item: T) => unknown);
+export declare type GridCellWidth = 'small' | 'medium' | 'large' | number;
+export declare type Accessor<T> = string | keyof T | ((item: T) => unknown);
 export interface GridColumnSpec<T, A extends Accessor<T> = Accessor<T>, V = A extends keyof T ? T[A] : A extends (item: T) => unknown ? ReturnType<A> : unknown> {
     key: keyof T | string;
     label: ReactNode;
@@ -41,5 +41,5 @@ export interface ParsedGridCell<T, V = unknown> {
     getFormattedValue: () => string;
     CellComponent: FC<GridCellProps<T, V>>;
 }
-declare const useGridRows: <T>({ uniqueIdentifier, columns, data, }: GridBaseConfig<T, GridColumnSpec<T, Accessor<T>, (string extends infer T_1 ? T_1 extends string ? T_1 extends keyof T ? T[T_1] : T_1 extends (item: T) => unknown ? ReturnType<T_1> : unknown : never : never) | (keyof T extends infer T_2 ? T_2 extends keyof T ? T_2 extends keyof T ? T[T_2] : T_2 extends (item: T) => unknown ? ReturnType<T_2> : unknown : never : never) | (((item: T) => unknown) extends infer T_3 ? T_3 extends (item: T) => unknown ? T_3 extends keyof T ? T[T_3] : T_3 extends (item: T) => unknown ? ReturnType<T_3> : unknown : never : never)>>) => ParsedGridRow<T>[];
+declare const useGridRows: <T>({ uniqueIdentifier, columns, data, }: GridBaseConfig<T, GridColumnSpec<T, Accessor<T>, (string extends keyof T ? T[keyof T & string] : unknown) | (keyof T extends keyof T ? T[keyof T] : keyof T extends (item: T) => unknown ? ReturnType<((item: T) => unknown) & keyof T> : unknown) | ((item: T) => unknown extends keyof T ? T[keyof T & ((item: T) => unknown)] : unknown)>>) => ParsedGridRow<T>[];
 export default useGridRows;

@@ -1,11 +1,7 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -18,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -44,10 +40,10 @@ const Tooltip_1 = __importDefault(require("../../elements/tooltip/Tooltip"));
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
 const defaults_1 = require("../../elements/menu/defaults");
 const defaultTooltipProps = Object.assign(Object.assign({}, defaults_1.bottomMiddle), { origin: 'right top' });
-exports.default = (0, react_1.forwardRef)((_a, ref) => {
+exports.default = react_1.forwardRef((_a, ref) => {
     var { className = undefined, onClick, icon = undefined, info = undefined, children, disabled = false, size = '2x', solid = true, tooltipProps = defaultTooltipProps } = _a, props = __rest(_a, ["className", "onClick", "icon", "info", "children", "disabled", "size", "solid", "tooltipProps"]);
     const classes = useStyles({});
-    const content = (react_1.default.createElement("button", Object.assign({ className: (0, clsx_1.default)(classes.button, className, { disabled }), onClick: disabled ? undefined : onClick, ref: ref }, props),
+    const content = (react_1.default.createElement("button", Object.assign({ className: clsx_1.default(classes.button, className, { disabled }), onClick: disabled ? undefined : onClick, ref: ref }, props),
         react_1.default.createElement(FontAwesomeIcon_1.default, { className: classes.icon, size: size, solid: solid }, icon || children)));
     if (!info) {
         return content;
@@ -60,7 +56,7 @@ exports.default = (0, react_1.forwardRef)((_a, ref) => {
  badgeColor
  badgeTextColor
  */
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     button: {
         display: 'flex',
         alignItems: 'center',
