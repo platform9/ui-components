@@ -1,12 +1,12 @@
 import React, { PropsWithChildren, useCallback, useMemo } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
-import Card from 'src/elements/card'
-// import { useCustomTheme } from 'src/themes/ThemeManager'
+import Theme from '../theme-manager/themes/model'
+import Card from '../elements/card'
+// import { useCustomTheme } from '../themes/ThemeManager'
 
-import Dropdown from 'src/elements/dropdown'
-import { ThemeLabels, themesByKey } from 'src/theme-manager/themes/modes'
-import { useCustomTheme } from 'src/theme-manager/ThemeManager'
+import Dropdown from '../elements/dropdown'
+import { ThemeLabels, themesByKey } from '../theme-manager/themes/modes'
+import { useCustomTheme } from '../theme-manager/ThemeManager'
 
 interface StyleProps {
   padding?: string | number

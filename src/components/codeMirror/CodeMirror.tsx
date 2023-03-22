@@ -1,20 +1,20 @@
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import CopyToClipboard from 'src/components/CopyToClipboard'
-import Progress from 'src/components/progress/Progress'
-import Card from 'src/elements/card'
-import CardHeader from 'src/elements/card/CardHeader'
-import { topLeft, topRight } from 'src/elements/menu/defaults'
-import Text from 'src/elements/Text'
-import { ErrorMessage } from 'src/components/validatedForm/ErrorMessage'
+import CopyToClipboard from '../../components/CopyToClipboard'
+import Progress from '../../components/progress/Progress'
+import Card from '../../elements/card'
+import CardHeader from '../../elements/card/CardHeader'
+import { topLeft, topRight } from '../../elements/menu/defaults'
+import Text from '../../elements/Text'
+import { ErrorMessage } from '../../components/validatedForm/ErrorMessage'
 import React, { createRef, useCallback, useEffect, useState } from 'react'
 import { Controlled as BaseCodeMirror, ICodeMirror } from 'react-codemirror2'
 import SearchBar from '../SearchBar'
-import Theme from 'src/theme-manager/themes/model'
-import Tooltip from 'src/elements/tooltip'
-import FontAwesomeIcon from 'src/components/FontAwesomeIcon'
+import Theme from '../../theme-manager/themes/model'
+import Tooltip from '../../elements/tooltip'
+import FontAwesomeIcon from '../../components/FontAwesomeIcon'
 import CodeMirrorModal from './CodeMirrorModal'
-import Button from 'src/elements/button'
+import Button from '../../elements/button'
 
 require('codemirror/mode/yaml/yaml')
 require('codemirror/mode/javascript/javascript')
@@ -41,7 +41,7 @@ const defaultOptions = {
 export type AlignVertical = 'top' | 'middle' | 'bottom'
 export type AlignHorizontal = 'left' | 'middle' | 'right'
 
-interface Props extends ICodeMirror {
+export interface Props extends ICodeMirror {
   id?: string
   variant?: string
   label?: string | React.ReactNode

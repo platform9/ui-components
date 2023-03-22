@@ -1,8 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles'
-import Theme from 'src/theme-manager/themes/model'
-import Text from 'src/elements/Text'
+import Theme from '../theme-manager/themes/model'
+import Text from '../elements/Text'
 import React from 'react'
-import { hexToRgbaCss } from 'src/utils/colorHelpers'
+import { hexToRgbaCss } from '../utils/colorHelpers'
 import clsx from 'clsx'
 
 interface Props {

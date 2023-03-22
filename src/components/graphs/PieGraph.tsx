@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { PieChart, Pie, Cell } from 'recharts'
 import { useTheme } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../../theme-manager/themes/model'
 
 export interface PieDataEntry {
   value: number

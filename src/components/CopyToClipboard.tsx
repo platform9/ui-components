@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useRef, useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
-// import useParams from 'src/hooks/useParams'
-import Theme from 'src/theme-manager/themes/model'
+// import useParams from '../hooks/useParams'
+import Theme from '../theme-manager/themes/model'
 import FontAwesomeIcon from './FontAwesomeIcon'
 import clsx from 'clsx'
 

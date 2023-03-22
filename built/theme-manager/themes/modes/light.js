@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const helpers_1 = require("../helpers");
 const colors_1 = __importDefault(require("../base/colors"));
 const typography_1 = __importDefault(require("../base/typography"));
-const colorHelpers_1 = require("src/utils/colorHelpers");
+const colorHelpers_1 = require("../../../utils/colorHelpers");
 const default_components_1 = require("./default-components");
 const components = {
     frame: {

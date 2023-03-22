@@ -1,7 +1,7 @@
 import React from 'react'
 import { PieUsageWidgetProps, PieLegend } from './PieUsageWidget'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../../theme-manager/themes/model'
 import PieGraph from '../graphs/PieGraph'
 
 const useStyles = makeStyles<Theme>((theme) => ({

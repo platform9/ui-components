@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Meta } from '@storybook/react'
 
-import ToggleSwitch from 'src/elements/ToggleSwitch'
-import Card from 'src/elements/card'
+import ToggleSwitch from '../../elements/ToggleSwitch'
+import Card from '../../elements/card'
 import { Column } from '../containers'
 
 export const DefaultToggleSwitch = (args) => {

@@ -16,14 +16,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const styles_1 = require("@material-ui/styles");
-const FontAwesomeIcon_1 = __importDefault(require("src/components/FontAwesomeIcon"));
-const Text_1 = __importDefault(require("src/elements/Text"));
-const dark_1 = __importDefault(require("src/theme-manager/themes/modes/dark"));
-const test_helpers_1 = __importDefault(require("src/utils/test-helpers"));
+const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
+const Text_1 = __importDefault(require("../../elements/Text"));
+const dark_1 = __importDefault(require("../../theme-manager/themes/modes/dark"));
+const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 // import { useCustomTheme } from 'core/themes/ThemeManager'
 const GridColumnsPopover_1 = __importDefault(require("./GridColumnsPopover"));
-const tooltip_1 = __importDefault(require("src/elements/tooltip"));
-const ThemeManager_1 = require("src/theme-manager/ThemeManager");
+const tooltip_1 = __importDefault(require("../../elements/tooltip"));
+const ThemeManager_1 = require("../../theme-manager/ThemeManager");
 const useStyles = (0, styles_1.makeStyles)((theme) => ({
     gridToolbar: {
         display: 'grid',

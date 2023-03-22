@@ -6,10 +6,10 @@ import ThemeManager from './theme-manager/ThemeManager'
 import Card from './elements/card'
 import Badge from './elements/badge'
 import Grid, { GridViewColumn } from './elements/grid/Grid'
-import data, { Movie } from 'src/stories/data/movies-list'
+import data, { Movie } from './stories/data/movies-list'
 import { without } from 'ramda'
-import { GridBatchActionSpec } from 'src/elements/grid/hooks/useGridSelectableRows'
-import GridDefaultDeleteButton from 'src/elements/grid/buttons/GridDefaultDeleteButton'
+import { GridBatchActionSpec } from './elements/grid/hooks/useGridSelectableRows'
+import GridDefaultDeleteButton from './elements/grid/buttons/GridDefaultDeleteButton'
 import Button from './elements/button/Button'
 
 // For testing purposes only. This is just to simulate what the

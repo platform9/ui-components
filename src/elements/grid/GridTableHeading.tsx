@@ -1,8 +1,8 @@
 import React, { PropsWithChildren } from 'react'
 import { styled } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
-import { GridCellWidth } from 'src/elements/grid/hooks/useGridRows'
-import { switchCase } from 'src/utils/fp'
+import Theme from '../../theme-manager/themes/model'
+import { GridCellWidth } from '../../elements/grid/hooks/useGridRows'
+import { switchCase } from '../../utils/fp'
 
 export default styled(({ sortingDisabled, width, children, ...props }) => (
   <th {...props}>{children}</th>

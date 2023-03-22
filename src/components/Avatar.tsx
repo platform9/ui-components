@@ -1,8 +1,8 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import generateTestId from 'src/utils/test-helpers'
-import Theme from 'src/theme-manager/themes/model'
+import generateTestId from '../utils/test-helpers'
+import Theme from '../theme-manager/themes/model'
 
 interface Props {
   displayName: string

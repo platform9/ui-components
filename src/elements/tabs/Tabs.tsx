@@ -2,12 +2,12 @@ import React, { useCallback, useState, useMemo, PropsWithChildren } from 'react'
 import useReactRouter from 'use-react-router'
 import { makeStyles } from '@material-ui/styles'
 
-import Theme from 'src/theme-manager/themes/model'
-import { Route } from 'src/misc/route'
+import Theme from '../../theme-manager/themes/model'
+import { Route } from '../../misc/route'
 import { TabContext } from './TabContext'
 import TabPreview from './TabPreview'
 
-// import { HeaderTitlePortal } from 'src/elements/header/portals'
+// import { HeaderTitlePortal } from '../elements/header/portals'
 
 interface Props {
   // Use these props if getting active tab from url

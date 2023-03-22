@@ -1,7 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
-import generateTestId from 'src/utils/test-helpers'
-import Input from 'src/elements/input/Input'
+import generateTestId from '../utils/test-helpers'
+import Input from '../elements/input/Input'
 
 interface Props {
   className?: string

@@ -1,6 +1,6 @@
 import React from 'react'
-import { GridCellProps } from 'src/elements/grid/hooks/useGridRows'
-import Text from 'src/elements/Text'
+import { GridCellProps } from '../../../elements/grid/hooks/useGridRows'
+import Text from '../../../elements/Text'
 
 export type ArrayElement<ArrayType extends readonly unknown[]> =
   ArrayType extends readonly (infer ElementType)[] ? ElementType : never

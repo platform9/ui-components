@@ -1,6 +1,6 @@
 import React from 'react'
 import { toPairs as ToPairs } from 'ramda'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../theme-manager/themes/model'
 import { makeStyles } from '@material-ui/styles'
 const toPairs: any = ToPairs
 const useStyles = makeStyles((theme: Theme) => ({

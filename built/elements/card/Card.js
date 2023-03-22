@@ -9,7 +9,7 @@ const styles_1 = require("@material-ui/styles");
 const CardHeader_1 = __importDefault(require("./CardHeader"));
 const CardBody_1 = __importDefault(require("./CardBody"));
 const CardFooter_1 = __importDefault(require("./CardFooter"));
-const test_helpers_1 = __importDefault(require("src/utils/test-helpers"));
+const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 const getTitleComponent = (title) => typeof title === 'string' ? react_1.default.createElement(CardHeader_1.default, null, title) : title;
 function Card({ title, children, footer = undefined, withCustomBody = false, withCustomFooter = false, className = undefined, }) {
     const classes = useStyles({});

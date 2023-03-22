@@ -2,9 +2,9 @@ import React, { FC, PropsWithChildren } from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
 
-import Button from 'src/elements/button'
-import Theme from 'src/theme-manager/themes/model'
-import generateTestId from 'src/utils/test-helpers'
+import Button from '../elements/button'
+import Theme from '../theme-manager/themes/model'
+import generateTestId from '../utils/test-helpers'
 
 const useStyles = makeStyles<Theme>((theme) => ({
   root: {

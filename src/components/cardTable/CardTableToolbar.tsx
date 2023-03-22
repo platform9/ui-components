@@ -1,14 +1,14 @@
 import { Toolbar } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
-import SearchBar from 'src/components/SearchBar'
+import SearchBar from '../../components/SearchBar'
 import React, { useMemo } from 'react'
-import Picklist from 'src/elements/dropdown/AsyncDropdown'
+import Picklist from '../../elements/dropdown/AsyncDropdown'
 import PropTypes from 'prop-types'
-import { projectAs } from 'src/utils/fp'
-import FontAwesomeIcon from 'src/components/FontAwesomeIcon'
-import Text from 'src/elements/Text'
-import Tooltip from 'src/elements/tooltip'
-import Theme from 'src/theme-manager/themes/model'
+import { projectAs } from '../../utils/fp'
+import FontAwesomeIcon from '../../components/FontAwesomeIcon'
+import Text from '../../elements/Text'
+import Tooltip from '../../elements/tooltip'
+import Theme from '../../theme-manager/themes/model'
 
 const useStyles = makeStyles<Theme>((theme) => ({
   root: {

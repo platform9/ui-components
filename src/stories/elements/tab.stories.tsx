@@ -1,10 +1,10 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
 
-import Tabs from 'src/elements/tabs'
-import Tab from 'src/elements/tabs/Tab'
-import Text from 'src/elements/Text'
-// import { routes } from 'src/utils/routes'
+import Tabs from '../../elements/tabs'
+import Tab from '../../elements/tabs/Tab'
+import Text from '../../elements/Text'
+// import { routes } from '../utils/routes'
 
 export const TabsPreview = (args) => (
   // <Tabs route={routes.notifications.list}>

@@ -17,9 +17,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const clsx_1 = __importDefault(require("clsx"));
 const styles_1 = require("@material-ui/styles");
-const Text_1 = __importDefault(require("src/elements/Text"));
-const FontAwesomeIcon_1 = __importDefault(require("src/components/FontAwesomeIcon"));
-const colorHelpers_1 = require("src/utils/colorHelpers");
+const Text_1 = __importDefault(require("../../elements/Text"));
+const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
+const colorHelpers_1 = require("../../utils/colorHelpers");
 const CardButton = (_a) => {
     var { onClick, title, message, icon = undefined, disabled = false, className = undefined } = _a, props = __rest(_a, ["onClick", "title", "message", "icon", "disabled", "className"]);
     const classes = useStyles({});

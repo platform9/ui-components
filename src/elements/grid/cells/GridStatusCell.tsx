@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
-import { GridCellProps } from 'src/elements/grid/hooks/useGridRows'
-import Badge, { BadgeVariant } from 'src/elements/badge/Badge'
+import { GridCellProps } from '../../../elements/grid/hooks/useGridRows'
+import Badge, { BadgeVariant } from '../../../elements/badge/Badge'
 
 export interface StatusCellModel {
   variant: BadgeVariant

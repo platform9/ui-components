@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { LoadingGifs } from 'src/constants';
+import { LoadingGifs } from '../../constants';
 export interface ProgressProps {
     loading: boolean;
     overlay?: boolean;

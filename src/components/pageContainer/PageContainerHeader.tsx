@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { PageContext } from 'src/components/pageContainer/PageContainer'
+import { PageContext } from '../../components/pageContainer/PageContainer'
 
 const PageContainerHeader = ({ children }) => {
   const { extraHeaderContainer } = React.useContext(PageContext)

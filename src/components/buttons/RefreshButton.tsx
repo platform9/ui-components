@@ -1,9 +1,9 @@
 import React from 'react'
-import Text from 'src/elements/Text'
-import generateTestId from 'src/utils/test-helpers'
+import Text from '../../elements/Text'
+import generateTestId from '../../utils/test-helpers'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
-import FontAwesomeIcon from 'src/components/FontAwesomeIcon'
+import Theme from '../../theme-manager/themes/model'
+import FontAwesomeIcon from '../../components/FontAwesomeIcon'
 
 const useStyles = makeStyles<Theme>((theme) => ({
   button: {

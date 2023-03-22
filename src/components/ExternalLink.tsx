@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react'
-import SimpleLink from 'src/components/SimpleLink'
+import SimpleLink from '../components/SimpleLink'
 
 interface Props {
   // This should be an external link that includes the http(s) and the FQDN.

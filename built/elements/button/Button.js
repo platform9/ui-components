@@ -18,11 +18,11 @@ const react_1 = __importDefault(require("react"));
 const clsx_1 = __importDefault(require("clsx"));
 const styles_1 = require("@material-ui/styles");
 const Text_1 = __importDefault(require("../Text"));
-const test_helpers_1 = __importDefault(require("src/utils/test-helpers"));
-const Progress_1 = __importDefault(require("src/components/progress/Progress"));
-const FontAwesomeIcon_1 = __importDefault(require("src/components/FontAwesomeIcon"));
-const InfoTooltip_1 = require("src/components/InfoTooltip");
-const fp_1 = require("src/utils/fp");
+const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
+const Progress_1 = __importDefault(require("../../components/progress/Progress"));
+const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
+const InfoTooltip_1 = require("../../components/InfoTooltip");
+const fp_1 = require("../../utils/fp");
 const Button = (_a) => {
     var { variant = 'primary', size = 'medium', className = undefined, children, disabled = false, loading = false, icon = undefined, rightIcon = undefined, onClick, solidIcon = false } = _a, rest = __rest(_a, ["variant", "size", "className", "children", "disabled", "loading", "icon", "rightIcon", "onClick", "solidIcon"]);
     const hasRightIcon = !!rightIcon;

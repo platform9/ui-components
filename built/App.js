@@ -34,9 +34,9 @@ const ThemeManager_1 = __importDefault(require("./theme-manager/ThemeManager"));
 const card_1 = __importDefault(require("./elements/card"));
 const badge_1 = __importDefault(require("./elements/badge"));
 const Grid_1 = __importDefault(require("./elements/grid/Grid"));
-const movies_list_1 = __importDefault(require("src/stories/data/movies-list"));
+const movies_list_1 = __importDefault(require("./stories/data/movies-list"));
 const ramda_1 = require("ramda");
-const GridDefaultDeleteButton_1 = __importDefault(require("src/elements/grid/buttons/GridDefaultDeleteButton"));
+const GridDefaultDeleteButton_1 = __importDefault(require("./elements/grid/buttons/GridDefaultDeleteButton"));
 const Button_1 = __importDefault(require("./elements/button/Button"));
 // For testing purposes only. This is just to simulate what the
 // app consuming this plugin would look like

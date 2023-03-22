@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
-import Tooltip, { TooltipProps } from 'src/elements/tooltip/Tooltip'
-import { topMiddle } from 'src/elements/menu/defaults'
+import Theme from '../../theme-manager/themes/model'
+import Tooltip, { TooltipProps } from '../../elements/tooltip/Tooltip'
+import { topMiddle } from '../../elements/menu/defaults'
 
-import Text from 'src/elements/Text'
-import { lightenDarkenColor, memoize } from 'src/utils/misc'
-import generateTestId from 'src/utils/test-helpers'
+import Text from '../../elements/Text'
+import { lightenDarkenColor, memoize } from '../../utils/misc'
+import generateTestId from '../../utils/test-helpers'
 import clsx from 'clsx'
 
 export type BadgeVariant =

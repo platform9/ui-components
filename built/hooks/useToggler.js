@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = require("react");
-const misc_1 = require("src/utils/misc");
+const misc_1 = require("../utils/misc");
 const toggleReducer = (state, { type, payload }) => {
     switch (type) {
         case 'toggle':

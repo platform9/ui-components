@@ -1,13 +1,13 @@
 import React, { FC, useCallback } from 'react'
-import Radio from 'src/elements/input/Radio'
+import Radio from '../../elements/input/Radio'
 import { makeStyles } from '@material-ui/styles'
-import { withInfoTooltip } from 'src/components/InfoTooltip'
-import { compose } from 'src/utils/fp'
-import withFormContext from 'src/components/validatedForm/withFormContext'
+import { withInfoTooltip } from '../../components/InfoTooltip'
+import { compose } from '../../utils/fp'
+import withFormContext from '../../components/validatedForm/withFormContext'
 import { ValidatedFormProps } from './model'
-import generateTestId from 'src/utils/test-helpers'
-import Text from 'src/elements/Text'
-import Theme from 'src/theme-manager/themes/model'
+import generateTestId from '../../utils/test-helpers'
+import Text from '../../elements/Text'
+import Theme from '../../theme-manager/themes/model'
 export enum Orientation {
   Row = 'row',
   Column = 'column',

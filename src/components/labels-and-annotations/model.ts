@@ -1,5 +1,5 @@
 // import { Taint } from 'app/plugins/infrastructure/components/clusters/capi/configs/model'
-import { BadgeVariant } from 'src/elements/badge/Badge'
+import { BadgeVariant } from '../../elements/badge/Badge'
 
 interface BadgeInfo {
   text: string

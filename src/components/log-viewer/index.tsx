@@ -1,9 +1,9 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { getLogs, discoverText } from './helpers'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../../theme-manager/themes/model'
 import clsx from 'clsx'
-import Text from 'src/elements/Text'
+import Text from '../../elements/Text'
 
 const useStyles = makeStyles<Theme, { size: number }>((theme) => ({
   code: {

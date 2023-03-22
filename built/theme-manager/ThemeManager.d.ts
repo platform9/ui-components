@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import AppTheme from 'src/theme-manager/themes/model';
+import AppTheme from '../theme-manager/themes/model';
 import * as CSS from 'csstype';
 export declare const CustomThemeConsumer: React.Consumer<{
     theme: AppTheme;

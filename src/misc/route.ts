@@ -1,5 +1,5 @@
 import URLPattern from 'url-pattern'
-import { memoize } from 'src/utils/misc'
+import { memoize } from '../utils/misc'
 
 interface GenericKVP {
   [key: string]: string

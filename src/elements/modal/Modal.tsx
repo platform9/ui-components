@@ -2,11 +2,11 @@ import React, { PropsWithChildren, useMemo, useCallback, useRef, useEffect, useS
 import ReactDOM from 'react-dom'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import Theme from 'src/theme-manager/themes/model'
-import Text from 'src/elements/Text'
-import { hexToRgbaCss } from 'src/utils/colorHelpers'
-// import DocumentMeta from 'src/components/DocumentMeta'
-import generateTestId from 'src/utils/test-helpers'
+import Theme from '../../theme-manager/themes/model'
+import Text from '../../elements/Text'
+import { hexToRgbaCss } from '../../utils/colorHelpers'
+// import DocumentMeta from '../components/DocumentMeta'
+import generateTestId from '../../utils/test-helpers'
 
 export interface ModalProps {
   open: boolean

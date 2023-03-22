@@ -1,11 +1,11 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
-import Button from 'src/elements/button'
-import { BatchActionButtonProps } from 'src/elements/grid/hooks/useGridSelectableRows'
-import { ButtonProps } from 'src/elements/button/Button'
-import Tooltip from 'src/elements/tooltip'
-import { topMiddle } from 'src/elements/menu/defaults'
+import Theme from '../../../theme-manager/themes/model'
+import Button from '../../../elements/button'
+import { BatchActionButtonProps } from '../../../elements/grid/hooks/useGridSelectableRows'
+import { ButtonProps } from '../../../elements/button/Button'
+import Tooltip from '../../../elements/tooltip'
+import { topMiddle } from '../../../elements/menu/defaults'
 import clsx from 'clsx'
 
 export type GridDefaultActionButtonProps<T> = ButtonProps & BatchActionButtonProps<T>

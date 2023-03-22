@@ -2,8 +2,8 @@
 import React, { useState, useCallback } from 'react'
 import moment from 'moment'
 
-import useInterval from 'src/hooks/useInterval'
-import Button from 'src/elements/button'
+import useInterval from '../hooks/useInterval'
+import Button from '../elements/button'
 
 interface Props {
   loading: boolean

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { ParsedGridRow } from 'src/elements/grid/hooks/useGridRows';
+import { ParsedGridRow } from '../../../elements/grid/hooks/useGridRows';
 interface GridFilterProps<F extends Record<string, unknown>, K extends keyof F = keyof F, V = F[K]> {
     key: K;
     updateFilterValue: FilterValueChangeHandler<V>;

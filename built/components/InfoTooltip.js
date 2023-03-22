@@ -38,9 +38,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.withInfoTooltip = void 0;
-const tooltip_1 = __importDefault(require("src/elements/tooltip"));
+const tooltip_1 = __importDefault(require("../elements/tooltip"));
 const react_1 = __importStar(require("react"));
-const misc_1 = require("src/utils/misc");
+const misc_1 = require("../utils/misc");
 class InfoTooltip extends react_1.PureComponent {
     constructor() {
         super(...arguments);

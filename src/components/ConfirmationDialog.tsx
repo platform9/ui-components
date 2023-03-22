@@ -1,8 +1,8 @@
 import React from 'react'
-import Button from 'src/elements/button'
+import Button from '../elements/button'
 import Alert from './Alert'
-import Modal from 'src/elements/modal'
-import Text from 'src/elements/Text'
+import Modal from '../elements/modal'
+import Text from '../elements/Text'
 
 interface IConfirmationDialog {
   loading?: boolean

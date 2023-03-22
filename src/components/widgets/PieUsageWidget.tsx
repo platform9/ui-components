@@ -1,11 +1,11 @@
 import React from 'react'
-import PieGraph, { PieDataEntry } from 'src/components/graphs/PieGraph'
+import PieGraph, { PieDataEntry } from '../../components/graphs/PieGraph'
 import { makeStyles, useTheme } from '@material-ui/styles'
 
-import Text from 'src/elements/Text'
-import { formattedName } from 'src/utils/formatters'
-import Theme from 'src/theme-manager/themes/model'
-import Tooltip from 'src/elements/tooltip'
+import Text from '../../elements/Text'
+import { formattedName } from '../../utils/formatters'
+import Theme from '../../theme-manager/themes/model'
+import Tooltip from '../../elements/tooltip'
 import clsx from 'clsx'
 
 export interface PieUsageWidgetProps {

@@ -1,11 +1,11 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
-import { isNilOrEmpty } from 'src/utils/fp'
-import { GridCellProps } from 'src/elements/grid/hooks/useGridRows'
-import Text from 'src/elements/Text'
-import Tooltip from 'src/elements/tooltip'
-import { topMiddle } from 'src/elements/menu/defaults'
+import Theme from '../../../theme-manager/themes/model'
+import { isNilOrEmpty } from '../../../utils/fp'
+import { GridCellProps } from '../../../elements/grid/hooks/useGridRows'
+import Text from '../../../elements/Text'
+import Tooltip from '../../../elements/tooltip'
+import { topMiddle } from '../../../elements/menu/defaults'
 
 export default function GridStatusMessageCell<T>({ value: status }: GridCellProps<T, any>) {
   const classes = useStyles({})

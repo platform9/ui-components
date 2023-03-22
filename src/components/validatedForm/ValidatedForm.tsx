@@ -1,12 +1,12 @@
 import { withStyles } from '@material-ui/styles'
-import { assocPathStr, dissocPathStr, pathEqStr, pathStr } from 'src/utils/fp'
+import { assocPathStr, dissocPathStr, pathEqStr, pathStr } from '../../utils/fp'
 import clsx from 'clsx'
-import FormFieldSection from 'src/components/validatedForm/FormFieldSection'
-import { parseValidator } from 'src/utils/fieldValidators'
+import FormFieldSection from '../../components/validatedForm/FormFieldSection'
+import { parseValidator } from '../../utils/fieldValidators'
 import { assocPath, dissocPath, identity, pipe, toPairs } from 'ramda'
 import React, { ComponentType, PureComponent } from 'react'
 import { withRouter } from 'react-router-dom'
-import { memoize } from 'src/utils/misc'
+import { memoize } from '../../utils/misc'
 import ValidatedFormDebug from './ValidatedFormDebug'
 
 export const ValidatedFormContext = React.createContext<any>({})

@@ -1,7 +1,7 @@
 import React, { useRef, useCallback, useMemo } from 'react'
 import clsx from 'clsx'
 import { isNil } from 'ramda'
-import FontAwesomeIcon from 'src/components/FontAwesomeIcon'
+import FontAwesomeIcon from '../../components/FontAwesomeIcon'
 import Downshift from 'downshift'
 import DropdownCommonProps, { DropdownItemSpec } from './DropdownCommonProps'
 import DropdownToggle from './DropdownToggle'
@@ -11,7 +11,7 @@ import DropdownInput from './DropdownInput'
 import Text from '../Text'
 import { dropdownDefaultWidth, defaultAllKey, defaultNoneKey } from './constants'
 import useStyles from './useStyles'
-import generateTestId from 'src/utils/test-helpers'
+import generateTestId from '../../utils/test-helpers'
 import { defaultItemToString } from './helpers'
 
 export interface DropdownProps<V, T extends DropdownItemSpec<V> = DropdownItemSpec<V>>

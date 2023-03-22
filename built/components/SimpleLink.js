@@ -43,8 +43,8 @@ const use_react_router_1 = __importDefault(require("use-react-router"));
 const styles_1 = require("@material-ui/styles");
 const clsx_1 = __importDefault(require("clsx"));
 const FontAwesomeIcon_1 = __importDefault(require("./FontAwesomeIcon"));
-const Text_1 = __importDefault(require("src/elements/Text"));
-const test_helpers_1 = __importDefault(require("src/utils/test-helpers"));
+const Text_1 = __importDefault(require("../elements/Text"));
+const test_helpers_1 = __importDefault(require("../utils/test-helpers"));
 const getColor = (variant, theme) => {
     if (variant === 'error') {
         return theme.components.graph.error;

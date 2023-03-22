@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
-import Text from 'src/elements/Text'
+import Theme from '../theme-manager/themes/model'
+import Text from '../elements/Text'
 
 const useStyles = makeStyles((theme: Theme) => ({
   column: {

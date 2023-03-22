@@ -1,4 +1,4 @@
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../../theme-manager/themes/model'
 import { makeStyles } from '@material-ui/styles'
 import { dropdownDefaultWidth } from './constants'
 

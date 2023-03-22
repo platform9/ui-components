@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../theme-manager/themes/model'
 import React from 'react'
 
 const useStyles = makeStyles((theme: Theme) => ({

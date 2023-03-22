@@ -1,9 +1,9 @@
 import { makeStyles } from '@material-ui/styles'
-import { allKey } from 'src/constants'
-import Theme from 'src/theme-manager/themes/model'
+import { allKey } from '../../constants'
+import Theme from '../../theme-manager/themes/model'
 import { compose, pathOr } from 'ramda'
 import React, { useCallback, useMemo, useState } from 'react'
-import { pathStrOr } from 'src/utils/fp'
+import { pathStrOr } from '../../utils/fp'
 import Progress from '../progress/Progress'
 import FilterToolbar from './FilterToolbar'
 

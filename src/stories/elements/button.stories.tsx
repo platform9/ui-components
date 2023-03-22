@@ -1,9 +1,9 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
 
-import Button from 'src/elements/button'
-import Text from 'src/elements/Text'
-import Card from 'src/elements/card'
+import Button from '../../elements/button'
+import Text from '../../elements/Text'
+import Card from '../../elements/card'
 import { Row, Column } from '../containers'
 
 export const DefaultButton = (args) => (

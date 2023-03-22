@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import { makeStyles, withStyles } from '@material-ui/styles'
-import Text from 'src/elements/Text'
+import Text from '../elements/Text'
 import clsx from 'clsx'
 import { path } from 'ramda'
 import HelpContainer from './HelpContainer'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../theme-manager/themes/model'
 
 export interface IDetailFields<T> {
   id: string

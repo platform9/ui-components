@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
-import { ensureFunction } from 'src/utils/fp'
+import { ensureFunction } from '../../utils/fp'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
-import Text from 'src/elements/Text'
+import Theme from '../../theme-manager/themes/model'
+import Text from '../../elements/Text'
 
 type LabelRenderProp = (value: string) => string
 

@@ -16,9 +16,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const styles_1 = require("@material-ui/styles");
-const button_1 = __importDefault(require("src/elements/button"));
-const tooltip_1 = __importDefault(require("src/elements/tooltip"));
-const defaults_1 = require("src/elements/menu/defaults");
+const button_1 = __importDefault(require("../../../elements/button"));
+const tooltip_1 = __importDefault(require("../../../elements/tooltip"));
+const defaults_1 = require("../../../elements/menu/defaults");
 const clsx_1 = __importDefault(require("clsx"));
 function GridDefaultActionButton(_a) {
     var { className, disabled, children, onClick, icon, solidIcon = true, tooltip } = _a, rest = __rest(_a, ["className", "disabled", "children", "onClick", "icon", "solidIcon", "tooltip"]);

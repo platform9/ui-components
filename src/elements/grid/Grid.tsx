@@ -1,7 +1,7 @@
 import React, { ReactNode, useMemo, useContext, FC, PropsWithChildren } from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
-import Theme, { TypographyModel } from 'src/theme-manager/themes/model'
+import Theme, { TypographyModel } from '../../theme-manager/themes/model'
 import useGridRows, { GridBaseConfig, GridColumnSpec, Accessor } from './hooks/useGridRows'
 import useGridRowMenu, { GridRowMenuConfig } from './hooks/useGridRowMenu'
 import GridEmptyContent from './GridEmptyContent'

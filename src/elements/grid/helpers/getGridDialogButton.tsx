@@ -2,10 +2,10 @@ import React, { useCallback, FC, useMemo } from 'react'
 import GridDefaultActionButton, {
   GridDefaultActionButtonProps,
 } from '../buttons/GridDefaultActionButton'
-import useToggler from 'src/hooks/useToggler'
-import { useGridContext } from 'src/elements/grid/Grid'
+import useToggler from '../../../hooks/useToggler'
+import { useGridContext } from '../../../elements/grid/Grid'
 import { ThemeProvider } from '@material-ui/styles'
-import { useCustomTheme } from 'src/theme-manager/ThemeManager'
+import { useCustomTheme } from '../../../theme-manager/ThemeManager'
 
 export interface GridDialogProps<T> {
   onClose: (success?: boolean) => void

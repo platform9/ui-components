@@ -2,7 +2,7 @@ import { generateTheme } from '../helpers'
 import colors from '../base/colors'
 import typography from '../base/typography'
 import { Components } from '../model'
-import { hexToRgbaCss } from 'src/utils/colorHelpers'
+import { hexToRgbaCss } from '../../../utils/colorHelpers'
 import {
   defaultAlertComponentStyles,
   defaultGraphComponentStyles,

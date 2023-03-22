@@ -40,7 +40,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const clsx_1 = __importDefault(require("clsx"));
 const styles_1 = require("@material-ui/styles");
-const misc_1 = require("src/utils/misc");
+const misc_1 = require("../utils/misc");
 const getStyleClass = (0, misc_1.memoize)((light, solid, brand, regular, thin, duotone) => {
     if (solid) {
         return 'fa-solid';

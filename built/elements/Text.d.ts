@@ -1,5 +1,5 @@
 import React from 'react';
-import typography from 'src/theme-manager/themes/base/typography';
+import typography from '../theme-manager/themes/base/typography';
 export type TextVariant = keyof typeof typography;
 interface TextProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     className?: string;

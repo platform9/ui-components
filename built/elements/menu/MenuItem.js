@@ -39,11 +39,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const styles_1 = require("@material-ui/styles");
-const Text_1 = __importDefault(require("src/elements/Text"));
-const FontAwesomeIcon_1 = __importDefault(require("src/components/FontAwesomeIcon"));
-const SimpleLink_1 = __importDefault(require("src/components/SimpleLink"));
+const Text_1 = __importDefault(require("../../elements/Text"));
+const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
+const SimpleLink_1 = __importDefault(require("../../components/SimpleLink"));
 const clsx_1 = __importDefault(require("clsx"));
-const test_helpers_1 = __importDefault(require("src/utils/test-helpers"));
+const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 function MenuItem(_a) {
     var { component = 'li', textVariant = 'body2', icon = undefined, iconPlacement = 'start', iconProps = {}, src = undefined, onClick, className, readonly = false, children } = _a, props = __rest(_a, ["component", "textVariant", "icon", "iconPlacement", "iconProps", "src", "onClick", "className", "readonly", "children"]);
     const classes = useStyles({ iconPlacement, readonly });

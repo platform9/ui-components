@@ -1,12 +1,12 @@
 // Libs
 import React, { PropsWithChildren } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../theme-manager/themes/model'
 
-import Text from 'src/elements/Text'
-import generateTestId from 'src/utils/test-helpers'
-import CardBody from 'src/elements/card/CardBody'
-import Card from 'src/elements/card'
+import Text from '../elements/Text'
+import generateTestId from '../utils/test-helpers'
+import CardBody from '../elements/card/CardBody'
+import Card from '../elements/card'
 
 interface Props {
   message?: string

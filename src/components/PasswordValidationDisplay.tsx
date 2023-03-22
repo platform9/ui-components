@@ -1,9 +1,9 @@
 import React from 'react'
 import { propSatisfies } from 'ramda'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
-import MenuItem from 'src/elements/menu/MenuItem'
-import Alert from 'src/components/Alert'
+import Theme from '../theme-manager/themes/model'
+import MenuItem from '../elements/menu/MenuItem'
+import Alert from '../components/Alert'
 
 import {
   hasOneSpecialChar,
@@ -11,7 +11,7 @@ import {
   hasOneUpperChar,
   hasOneLowerChar,
   hasMinLength,
-} from 'src/utils/fieldValidators'
+} from '../utils/fieldValidators'
 
 interface IValidator {
   displayText: string

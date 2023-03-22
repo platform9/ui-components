@@ -1,10 +1,10 @@
 import React, { FC, PropsWithChildren, useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Divider } from '@material-ui/core'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../../theme-manager/themes/model'
 import clsx from 'clsx'
 import FontAwesomeIcon from '../FontAwesomeIcon'
-import Text from 'src/elements/Text'
+import Text from '../../elements/Text'
 
 const useIconInfoStyles = makeStyles<Theme, { spacer: boolean }>((theme: Theme) => ({
   alertTitle: {

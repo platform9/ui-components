@@ -1,5 +1,5 @@
 import { FC, useMemo, ReactNode, useCallback } from 'react'
-import { memoize, memoizeShallow } from 'src/utils/misc'
+import { memoize, memoizeShallow } from '../../../utils/misc'
 import { path } from 'ramda'
 import GridDefaultCell from '../cells/GridDefaultCell'
 

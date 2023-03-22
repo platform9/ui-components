@@ -1,9 +1,9 @@
 import React, { useEffect, PropsWithChildren } from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
+import Theme from '../theme-manager/themes/model'
 
-import Text from 'src/elements/Text'
+import Text from '../elements/Text'
 interface Props {
   title: string
   icon: React.ReactNode

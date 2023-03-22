@@ -1,4 +1,4 @@
-import { memoize } from 'src/utils/misc'
+import { memoize } from '../../utils/misc'
 import { AlignVertical, AlignHorizontal } from './model'
 
 export const getMenuTransform = (scale) =>

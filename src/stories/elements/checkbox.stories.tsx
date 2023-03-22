@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Meta } from '@storybook/react'
 
-import Checkbox from 'src/elements/input/Checkbox'
-import Card from 'src/elements/card'
+import Checkbox from '../../elements/input/Checkbox'
+import Card from '../../elements/card'
 import { Column } from '../containers'
 
 export const DefaultCheckbox = (args) => {

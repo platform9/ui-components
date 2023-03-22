@@ -1,7 +1,7 @@
 import { Reducer, useCallback, useMemo, useReducer } from 'react'
 import { ParsedGridRow } from './useGridRows'
 import { reverse, sort } from 'ramda'
-import { pathStr } from 'src/utils/fp'
+import { pathStr } from '../../../utils/fp'
 
 export type OrderDirection = 'asc' | 'desc'
 

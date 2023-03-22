@@ -28,11 +28,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const styles_1 = require("@material-ui/styles");
-const Tooltip_1 = __importDefault(require("src/elements/tooltip/Tooltip"));
-const defaults_1 = require("src/elements/menu/defaults");
-const Text_1 = __importDefault(require("src/elements/Text"));
-const misc_1 = require("src/utils/misc");
-const test_helpers_1 = __importDefault(require("src/utils/test-helpers"));
+const Tooltip_1 = __importDefault(require("../../elements/tooltip/Tooltip"));
+const defaults_1 = require("../../elements/menu/defaults");
+const Text_1 = __importDefault(require("../../elements/Text"));
+const misc_1 = require("../../utils/misc");
+const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 const clsx_1 = __importDefault(require("clsx"));
 const defaultTooltipProps = Object.assign(Object.assign({}, defaults_1.topMiddle), { origin: 'right bottom' });
 const defaultVariant = 'default';

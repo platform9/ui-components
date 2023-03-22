@@ -1,9 +1,9 @@
 import { makeStyles } from '@material-ui/styles'
 import React from 'react'
-import Theme from 'src/theme-manager/themes/model'
-import Modal from 'src/elements/modal'
+import Theme from '../../theme-manager/themes/model'
+import Modal from '../../elements/modal'
 import CodeMirror from './CodeMirror'
-import Button from 'src/elements/button'
+import Button from '../../elements/button'
 
 export default function CodeMirrorModal({
   label,

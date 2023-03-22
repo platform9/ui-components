@@ -1,0 +1,275 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const helpers_1 = require("../helpers");
+const colors_1 = __importDefault(require("../base/colors"));
+const typography_1 = __importDefault(require("../base/typography"));
+const default_components_1 = require("./default-components");
+const components = {
+    frame: {
+        background: colors_1.default.grey[900],
+        accentBackground: colors_1.default.grey[900],
+    },
+    header: {
+        background: 'transparent',
+    },
+    sidebar: {
+        background: colors_1.default.grey[900],
+        border: colors_1.default.grey[800],
+        activeBackground: colors_1.default.grey[800],
+        text: colors_1.default.grey[500],
+        activeIcon: colors_1.default.grey[100],
+        activeText: colors_1.default.grey[100],
+        hoverText: colors_1.default.grey[100],
+        spinLogoFill: colors_1.default.grey[100],
+    },
+    scrollbar: {
+        track: 'transparent',
+        thumb: colors_1.default.grey[700],
+    },
+    breadcrumb: {
+        text: colors_1.default.grey[300],
+        activeText: colors_1.default.grey['000'],
+        disabledText: colors_1.default.grey[600],
+        hoverBackground: colors_1.default.grey[750],
+    },
+    tab: {
+        text: colors_1.default.grey[500],
+        activeText: colors_1.default.grey[200],
+        activeBackground: colors_1.default.blue[500],
+        border: colors_1.default.grey[700],
+    },
+    tooltip: {
+        background: colors_1.default.grey['000'],
+        border: colors_1.default.grey[200],
+        text: colors_1.default.grey[900],
+        copyBackground: colors_1.default.grey[300],
+    },
+    accordion: {
+        background: colors_1.default.grey[750],
+        border: colors_1.default.grey[650],
+        activeBackground: colors_1.default.grey[700],
+    },
+    wizard: {
+        step: {
+            bubbleBackground: colors_1.default.grey[800],
+            bubbleActiveBackground: colors_1.default.blue[500],
+            bubbleText: colors_1.default.grey[500],
+            bubbleActiveText: colors_1.default.grey[100],
+            bubbleLabel: colors_1.default.grey[500],
+            bubbleActiveLabel: colors_1.default.grey[100],
+            bubbleBorder: colors_1.default.grey[800],
+        },
+        multiStep: {
+            bubbleBackground: 'transparent',
+            bubbleText: colors_1.default.grey[300],
+            bubbleBorder: colors_1.default.grey[700],
+        },
+    },
+    table: {
+        background: colors_1.default.grey[800],
+        hoverBackground: colors_1.default.grey[750],
+        border: colors_1.default.grey[900],
+        headColor: colors_1.default.grey[300],
+        toolbar: colors_1.default.grey[800],
+        toolbarColor: colors_1.default.grey['000'],
+        activeToolbar: colors_1.default.grey[700],
+        activeToolbarColor: colors_1.default.grey['000'],
+        toolbarPassiveColor: colors_1.default.grey[300],
+    },
+    toggleSwitch: {
+        activeHandle: colors_1.default.blue[500],
+        inactiveHandle: colors_1.default.grey[500],
+        disabledHandle: colors_1.default.grey[500],
+        activeTrack: colors_1.default.blue[900],
+        inactiveTrack: colors_1.default.grey[200],
+        disabledTrack: colors_1.default.grey[700],
+        label: colors_1.default.grey[100],
+        hoverLabel: colors_1.default.grey['000'],
+        disabledLabel: colors_1.default.grey[700],
+    },
+    checkbox: {
+        border: colors_1.default.grey[500],
+        background: 'transparent',
+        color: colors_1.default.grey[100],
+        selectedBorder: colors_1.default.blue[500],
+        selectedBackground: colors_1.default.blue[500],
+        selectedColor: colors_1.default.grey['000'],
+        hoverBackground: colors_1.default.grey[700],
+        disabledBackground: colors_1.default.grey[500],
+        disabledBorder: colors_1.default.grey[500],
+        disabledColor: colors_1.default.grey[500],
+    },
+    typography: {
+        default: colors_1.default.grey[300],
+        active: colors_1.default.grey[100],
+        passive: colors_1.default.grey[500],
+    },
+    iconButton: {
+        background: colors_1.default.grey[900],
+        border: colors_1.default.grey[700],
+        color: colors_1.default.grey[300],
+        activeBackground: colors_1.default.grey[750],
+        activeBorder: colors_1.default.grey[700],
+        activeColor: colors_1.default.grey[200],
+        disabledBackground: colors_1.default.grey[700],
+        disabledBorder: colors_1.default.grey[700],
+        disabledColor: colors_1.default.grey[600],
+        badgeColor: colors_1.default.red[500],
+        badgeTextColor: colors_1.default.grey['000'],
+    },
+    button: {
+        primary: {
+            background: colors_1.default.blue[500],
+            border: colors_1.default.blue[500],
+            color: colors_1.default.grey[100],
+            activeBackground: colors_1.default.blue[700],
+            activeBorder: colors_1.default.blue[700],
+            activeColor: colors_1.default.grey[100],
+            disabledBackground: colors_1.default.grey[700],
+            disabledBorder: colors_1.default.grey[700],
+            disabledColor: colors_1.default.grey[500],
+        },
+        secondary: {
+            background: colors_1.default.grey[800],
+            border: colors_1.default.grey[700],
+            color: colors_1.default.grey[100],
+            activeBackground: colors_1.default.grey[800],
+            activeBorder: colors_1.default.grey[600],
+            activeColor: colors_1.default.grey[100],
+            disabledBackground: colors_1.default.grey[800],
+            disabledBorder: colors_1.default.grey[700],
+            disabledColor: colors_1.default.grey[500],
+        },
+        tertiary: {
+            background: colors_1.default.grey[200],
+            border: colors_1.default.grey[200],
+            color: colors_1.default.grey[800],
+            activeBackground: colors_1.default.grey['000'],
+            activeBorder: colors_1.default.grey['000'],
+            activeColor: colors_1.default.grey[800],
+            disabledBackground: colors_1.default.grey[700],
+            disabledBorder: colors_1.default.grey[700],
+            disabledColor: colors_1.default.grey[500],
+        },
+        cta: {
+            background: colors_1.default.pink[300],
+            border: colors_1.default.pink[300],
+            color: colors_1.default.grey[200],
+            activeBackground: colors_1.default.pink[300],
+            activeBorder: colors_1.default.pink[300],
+            activeColor: colors_1.default.grey['000'],
+            disabledBackground: colors_1.default.grey[700],
+            disabledBorder: colors_1.default.grey[700],
+            disabledColor: colors_1.default.grey[500],
+        },
+    },
+    input: {
+        label: {
+            color: colors_1.default.grey[100],
+            disabled: colors_1.default.grey[600],
+            hint: colors_1.default.grey[500],
+        },
+        frame: {
+            background: 'transparent',
+            disabledBackground: colors_1.default.grey[700],
+            border: colors_1.default.grey[700],
+            activeBorder: colors_1.default.grey[200],
+            color: colors_1.default.grey[100],
+            placeholder: colors_1.default.grey[300],
+            disabledPlaceholder: colors_1.default.grey[600],
+        },
+        error: colors_1.default.red[500],
+        success: colors_1.default.blue[500],
+    },
+    dropdown: {
+        background: colors_1.default.grey[800],
+        color: colors_1.default.grey[100],
+        border: colors_1.default.grey[700],
+        selectedBackground: colors_1.default.grey[900],
+        activeBackground: colors_1.default.grey[900],
+        selectedColor: colors_1.default.grey[100],
+        error: colors_1.default.red[500],
+    },
+    card: {
+        background: colors_1.default.grey[800],
+        text: colors_1.default.grey[300],
+        shadow: colors_1.default.grey[100],
+        border: colors_1.default.grey[900],
+        passiveText: colors_1.default.grey[500],
+        activeBackground: colors_1.default.grey[700],
+        activeBorder: colors_1.default.grey[700],
+    },
+    selectableCard: {
+        background: 'transparent',
+        text: colors_1.default.grey[200],
+        shadow: colors_1.default.grey[100],
+        border: colors_1.default.grey[600],
+        passiveText: colors_1.default.grey[500],
+        activeBackground: colors_1.default.blue[500],
+        activeBorder: colors_1.default.blue[500],
+    },
+    alert: default_components_1.defaultAlertComponentStyles,
+    badge: {
+        default: {
+            color: colors_1.default.grey[100],
+            background: colors_1.default.grey[600],
+        },
+        primary: {
+            color: colors_1.default.blue[100],
+            background: colors_1.default.blue[500],
+        },
+        secondary: {
+            color: colors_1.default.pink[100],
+            background: colors_1.default.pink[500],
+        },
+        success: {
+            color: colors_1.default.green[100],
+            background: colors_1.default.green[500],
+        },
+        warning: {
+            color: colors_1.default.yellow[100],
+            background: colors_1.default.yellow[700],
+        },
+        unknown: {
+            color: colors_1.default.grey[100],
+            background: colors_1.default.grey[500],
+        },
+        danger: {
+            color: colors_1.default.orange[100],
+            background: colors_1.default.orange[500],
+        },
+        error: {
+            color: colors_1.default.red[100],
+            background: colors_1.default.red[500],
+        },
+    },
+    graph: Object.assign({ stroke: colors_1.default.grey[800], tray: colors_1.default.grey[900], default: colors_1.default.grey[300] }, default_components_1.defaultGraphComponentStyles),
+    code: default_components_1.defaultCodeComponentStyles,
+    stepper: {
+        bubbleBackground: colors_1.default.grey[900],
+        bubbleActiveBackground: colors_1.default.blue[500],
+        bubbleText: colors_1.default.grey[300],
+        bubbleActiveText: colors_1.default.grey[100],
+        bubbleBorder: colors_1.default.grey[900],
+        line: colors_1.default.grey[900],
+    },
+};
+const ultraDarkTheme = {
+    theme: (0, helpers_1.generateTheme)({
+        palette: { colors: colors_1.default, primary: 'blue', secondary: 'pink', type: 'dark', themeKey: 'ultra-dark' },
+        typography: {
+            fontFamily: '"Eina04"',
+            fontSize: 14,
+            fontWeightLight: 300,
+            fontWeightRegular: 400,
+            fontWeightMedium: 500,
+            typography: typography_1.default,
+        },
+    }),
+    components,
+};
+exports.default = ultraDarkTheme;
+//# sourceMappingURL=ultraDark.js.map

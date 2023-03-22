@@ -1,8 +1,8 @@
 import { FC, useMemo, ReactNode } from 'react'
-import { emptyArr } from 'src/utils/fp'
+import { emptyArr } from '../../../utils/fp'
 import { ParsedGridRow } from './useGridRows'
-import GridDefaultActionButton from 'src/elements/grid/buttons/GridDefaultActionButton'
-import { memoize } from 'src/utils/misc'
+import GridDefaultActionButton from '../../../elements/grid/buttons/GridDefaultActionButton'
+import { memoize } from '../../../utils/misc'
 
 export interface GridRowMenuConfig<T> {
   rowMenuItems?: Array<GridRowMenuItemSpec<T>>

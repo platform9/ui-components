@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
-import Theme from 'src/theme-manager/themes/model'
-import AutocompleteBase from 'src/components/AutocompleteBase'
+import Theme from '../theme-manager/themes/model'
+import AutocompleteBase from '../components/AutocompleteBase'
 import uuid from 'uuid'
 import { assoc, omit } from 'ramda'
 import { makeStyles } from '@material-ui/styles'
-import FontAwesomeIcon from 'src/components/FontAwesomeIcon'
-import Text from 'src/elements/Text'
-import withTooltip from 'src/elements/tooltip/withTooltip'
+import FontAwesomeIcon from '../components/FontAwesomeIcon'
+import Text from '../elements/Text'
+import withTooltip from '../elements/tooltip/withTooltip'
 
 export interface EntryShape {
   key: string

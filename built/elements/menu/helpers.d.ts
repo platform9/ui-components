@@ -41,7 +41,7 @@ export declare const getMenuTransform: (scale: any) => import("moize").Moized<({
     updateExpire: boolean;
 }> & {
     maxSize: number;
-} & Partial<import("src/utils/misc").DefaultMoizeOptions>>;
+} & Partial<import("../../utils/misc").DefaultMoizeOptions>>;
 export declare const getMenuTop: import("moize").Moized<({ vertAlign, vertOffset }: any) => string, Partial<{
     isDeepEqual: boolean;
     isPromise: boolean;
@@ -84,7 +84,7 @@ export declare const getMenuTop: import("moize").Moized<({ vertAlign, vertOffset
     updateExpire: boolean;
 }> & {
     maxSize: number;
-} & Partial<import("src/utils/misc").DefaultMoizeOptions>>;
+} & Partial<import("../../utils/misc").DefaultMoizeOptions>>;
 export declare const getMenuRight: import("moize").Moized<({ horizAlign, horizOffset }: any) => string, Partial<{
     isDeepEqual: boolean;
     isPromise: boolean;
@@ -127,7 +127,7 @@ export declare const getMenuRight: import("moize").Moized<({ horizAlign, horizOf
     updateExpire: boolean;
 }> & {
     maxSize: number;
-} & Partial<import("src/utils/misc").DefaultMoizeOptions>>;
+} & Partial<import("../../utils/misc").DefaultMoizeOptions>>;
 export declare const getMenuBottom: import("moize").Moized<({ vertAlign, vertOffset }: any) => string, Partial<{
     isDeepEqual: boolean;
     isPromise: boolean;
@@ -170,7 +170,7 @@ export declare const getMenuBottom: import("moize").Moized<({ vertAlign, vertOff
     updateExpire: boolean;
 }> & {
     maxSize: number;
-} & Partial<import("src/utils/misc").DefaultMoizeOptions>>;
+} & Partial<import("../../utils/misc").DefaultMoizeOptions>>;
 export declare const getMenuLeft: import("moize").Moized<({ horizAlign, horizOffset }: any) => string, Partial<{
     isDeepEqual: boolean;
     isPromise: boolean;
@@ -213,7 +213,7 @@ export declare const getMenuLeft: import("moize").Moized<({ horizAlign, horizOff
     updateExpire: boolean;
 }> & {
     maxSize: number;
-} & Partial<import("src/utils/misc").DefaultMoizeOptions>>;
+} & Partial<import("../../utils/misc").DefaultMoizeOptions>>;
 export declare const makeMenuPositionProps: (va: AlignVertical, ha: AlignHorizontal, vo: number, ho: number) => {
     align: {
         vertical: AlignVertical;

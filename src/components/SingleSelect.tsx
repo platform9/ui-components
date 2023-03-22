@@ -8,8 +8,8 @@ import SearchIcon from '@material-ui/icons/Search'
 import Fuse from 'fuse.js'
 import { FormHelperText } from '@material-ui/core'
 import clsx from 'clsx'
-import Text from 'src/elements/Text'
-import Theme from 'src/theme-manager/themes/model'
+import Text from '../elements/Text'
+import Theme from '../theme-manager/themes/model'
 import RadioFields from './validatedForm/radio-fields'
 
 const FUSE_OPTIONS = {

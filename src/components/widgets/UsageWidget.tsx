@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Theme from 'src/theme-manager/themes/model'
-import SemiCircleGraph from 'src/components/graphs/SemiCircleGraph'
-import Text from 'src/elements/Text'
-import Card from 'src/elements/card'
-import CardBody from 'src/elements/card/CardBody'
+import Theme from '../../theme-manager/themes/model'
+import SemiCircleGraph from '../../components/graphs/SemiCircleGraph'
+import Text from '../../elements/Text'
+import Card from '../../elements/card'
+import CardBody from '../../elements/card/CardBody'
 
 const defaultStats = { current: 0, max: 0, percent: 0 }
 
