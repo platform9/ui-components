@@ -38,7 +38,7 @@ const Button = (_a) => {
         react_1.default.createElement(Text_1.default, { className: clsx_1.default('button-text', classes.buttonText, {
                 [classes.iconText]: hasLeftIcon || hasRightIcon,
             }), component: "div", variant: spanTextVariant },
-            !!icon && !loading && (react_1.default.createElement(FontAwesomeIcon_1.default, { size: "md", solid: solidIcon, className: "button-icon" }, icon)),
+            !!icon && !loading && (react_1.default.createElement(FontAwesomeIcon_1.default, { size: "md", brand: iconBrand, solid: solidIcon, className: "button-icon" }, icon)),
             loading ? (react_1.default.createElement(Progress_1.default, { inline: true, overlay: false, message: null, loading: true, inlineClassName: classes.inheritColors })) : (children),
             !!rightIcon && !loading && (react_1.default.createElement(FontAwesomeIcon_1.default, { size: "md", brand: iconBrand, className: "button-icon button-right-icon" }, rightIcon)))));
 };

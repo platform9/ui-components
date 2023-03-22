@@ -62,7 +62,7 @@ const Button = ({
         variant={spanTextVariant}
       >
         {!!icon && !loading && (
-          <FontAwesomeIcon size="md" solid={solidIcon} className="button-icon">
+          <FontAwesomeIcon size="md" brand={iconBrand} solid={solidIcon} className="button-icon">
             {icon}
           </FontAwesomeIcon>
         )}
