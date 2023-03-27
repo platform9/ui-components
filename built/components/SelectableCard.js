@@ -18,7 +18,7 @@ const react_1 = __importDefault(require("react"));
 const styles_1 = require("@material-ui/styles");
 const clsx_1 = __importDefault(require("clsx"));
 const card_1 = __importDefault(require("../elements/card"));
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     selectableCard: {
         cursor: 'pointer',
         border: ({ active }) => active
@@ -38,7 +38,7 @@ const SelectableCard = (props) => {
             return onClick(id);
     };
     return (react_1.default.createElement("div", { onClick: handleClick },
-        react_1.default.createElement(card_1.default, Object.assign({}, rest, { className: clsx_1.default(classes.selectableCard, className) }), children)));
+        react_1.default.createElement(card_1.default, Object.assign({}, rest, { className: (0, clsx_1.default)(classes.selectableCard, className) }), children)));
 };
 exports.default = SelectableCard;
 //# sourceMappingURL=SelectableCard.js.map

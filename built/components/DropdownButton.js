@@ -9,7 +9,7 @@ const styles_1 = require("@material-ui/styles");
 const Text_1 = __importDefault(require("../elements/Text"));
 const SimpleLink_1 = __importDefault(require("./SimpleLink"));
 const test_helpers_1 = __importDefault(require("../utils/test-helpers"));
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     dropdownContainer: {
         display: 'inline-block',
         position: 'relative',
@@ -55,8 +55,8 @@ const useStyles = styles_1.makeStyles((theme) => ({
 const DropdownButton = ({ links, addText }) => {
     const classes = useStyles({});
     return (react_1.default.createElement("div", { className: classes.dropdownContainer },
-        react_1.default.createElement(button_1.default, { rightIcon: "angle-down", "data-testid": test_helpers_1.default(addText) }, addText),
-        react_1.default.createElement("ul", { className: classes.dropdown }, links.map((link) => (react_1.default.createElement("li", { "data-testid": test_helpers_1.default(link.label), key: link.label },
+        react_1.default.createElement(button_1.default, { rightIcon: "angle-down", "data-testid": (0, test_helpers_1.default)(addText) }, addText),
+        react_1.default.createElement("ul", { className: classes.dropdown }, links.map((link) => (react_1.default.createElement("li", { "data-testid": (0, test_helpers_1.default)(link.label), key: link.label },
             react_1.default.createElement(SimpleLink_1.default, { src: link.link, textDecoration: "none" },
                 react_1.default.createElement(Text_1.default, { variant: "caption1", className: classes.dropdownLink }, link.label))))))));
 };

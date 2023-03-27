@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -14,7 +18,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -37,15 +41,15 @@ const react_1 = __importStar(require("react"));
 const withProgress_1 = __importDefault(require("../../components/progress/withProgress"));
 const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 const Dropdown_1 = __importDefault(require("../../elements/dropdown/Dropdown"));
-const DropdownWithProgress = withProgress_1.default(Dropdown_1.default, {
+const DropdownWithProgress = (0, withProgress_1.default)(Dropdown_1.default, {
     inline: true,
     overlay: true,
 });
 function AsyncDropdown(_a) {
     var { showAll = false, formField = false, compact = !formField, selectFirst = false, onChange, items, loading, loadingProps } = _a, props = __rest(_a, ["showAll", "formField", "compact", "selectFirst", "onChange", "items", "loading", "loadingProps"]);
-    const isDataLoadedOnceRef = react_1.useRef(false);
+    const isDataLoadedOnceRef = (0, react_1.useRef)(false);
     // Select first item when data is loaded, ie when "loading" switches from false to true (once)
-    react_1.useEffect(() => {
+    (0, react_1.useEffect)(() => {
         // TODO: Bug here where if there is a value existing, and the dropdown rerenders (for
         // example when switching wizard steps), selectFirst will reset the value
         if (selectFirst && !isDataLoadedOnceRef.current && !loading && items.length) {
@@ -53,7 +57,7 @@ function AsyncDropdown(_a) {
             onChange(items[0].value);
         }
     }, [!!loading]);
-    return (react_1.default.createElement(DropdownWithProgress, Object.assign({ items: items, loading: loading, loadingProps: loadingProps, onChange: onChange, compact: compact, "data-testid": test_helpers_1.default('dropdown', 'bar'), showAll: showAll }, props)));
+    return (react_1.default.createElement(DropdownWithProgress, Object.assign({ items: items, loading: loading, loadingProps: loadingProps, onChange: onChange, compact: compact, "data-testid": (0, test_helpers_1.default)('dropdown', 'bar'), showAll: showAll }, props)));
 }
 exports.default = AsyncDropdown;
 //# sourceMappingURL=AsyncDropdown.js.map

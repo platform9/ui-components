@@ -32,5 +32,5 @@ const defaultTooltipProps = {
         horizontal: 'right',
     },
 };
-exports.default = fp_1.compose(ramda_1.partialRight(withTooltip_1.default, [defaultTooltipProps]), withFormContext_1.default)(DropdownField);
+exports.default = (0, fp_1.compose)((0, ramda_1.partialRight)(withTooltip_1.default, [defaultTooltipProps]), withFormContext_1.default)(DropdownField);
 //# sourceMappingURL=DropdownField.js.map

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generatePf9ComponentColors = void 0;
 const colorHelpers_1 = require("../utils/colorHelpers");
-exports.generatePf9ComponentColors = (colors) => {
+const generatePf9ComponentColors = (colors) => {
     return {
         frame: {
             background: colors.grey[100],
@@ -79,7 +79,7 @@ exports.generatePf9ComponentColors = (colors) => {
             activeHandle: colors.blue[500],
             inactiveHandle: colors.grey[500],
             disabledHandle: colors.grey[300],
-            activeTrack: colorHelpers_1.hexToRgbaCss(colors.blue[500], 0.1),
+            activeTrack: (0, colorHelpers_1.hexToRgbaCss)(colors.blue[500], 0.1),
             inactiveTrack: colors.grey[200],
             disabledTrack: colors.grey[200],
             label: colors.grey[700],
@@ -209,19 +209,19 @@ exports.generatePf9ComponentColors = (colors) => {
         },
         alert: {
             primary: {
-                background: colorHelpers_1.hexToRgbaCss(colors.blue[500], 0.05),
+                background: (0, colorHelpers_1.hexToRgbaCss)(colors.blue[500], 0.05),
                 border: colors.blue[500],
             },
             success: {
-                background: colorHelpers_1.hexToRgbaCss(colors.green[500], 0.05),
+                background: (0, colorHelpers_1.hexToRgbaCss)(colors.green[500], 0.05),
                 border: colors.green[500],
             },
             warning: {
-                background: colorHelpers_1.hexToRgbaCss(colors.orange[500], 0.05),
+                background: (0, colorHelpers_1.hexToRgbaCss)(colors.orange[500], 0.05),
                 border: colors.orange[500],
             },
             error: {
-                background: colorHelpers_1.hexToRgbaCss(colors.red[500], 0.05),
+                background: (0, colorHelpers_1.hexToRgbaCss)(colors.red[500], 0.05),
                 border: colors.red[500],
             },
         },
@@ -279,7 +279,7 @@ exports.generatePf9ComponentColors = (colors) => {
             google: colors.googleYellow[500],
         },
         code: {
-            background: colorHelpers_1.hexToRgbaCss(colors.codeBlue[500], 0.1),
+            background: (0, colorHelpers_1.hexToRgbaCss)(colors.codeBlue[500], 0.1),
             text: colors.codeBlue[500],
         },
         stepper: {
@@ -292,4 +292,5 @@ exports.generatePf9ComponentColors = (colors) => {
         },
     };
 };
+exports.generatePf9ComponentColors = generatePf9ComponentColors;
 //# sourceMappingURL=helpers.js.map

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { TooltipProps } from './Tooltip';
-export declare type PropsWithTooltip<P> = {
+export type PropsWithTooltip<P> = {
     tooltip?: string | React.ReactNode;
     tooltipProps?: Omit<TooltipProps, 'message'>;
 } & P;

@@ -10,13 +10,13 @@ const Text_1 = __importDefault(require("../elements/Text"));
 function Alert({ variant = 'primary', title, message, id = undefined, className = undefined, children, maxWidth, }) {
     const classes = useStyles({ variant, maxWidth });
     const msgComponent = typeof message === 'string' ? react_1.default.createElement(Text_1.default, { variant: "body2" }, message) : message;
-    return (react_1.default.createElement("article", { id: id, className: clsx_1.default(classes.alert, className) },
+    return (react_1.default.createElement("article", { id: id, className: (0, clsx_1.default)(classes.alert, className) },
         title && (react_1.default.createElement(Text_1.default, { className: classes.alertTitle, variant: "caption1", component: "h5" }, title)),
         msgComponent,
         children));
 }
 exports.default = Alert;
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     alert: {
         backgroundColor: ({ variant }) => theme.components.alert[variant].background,
         width: '100%',

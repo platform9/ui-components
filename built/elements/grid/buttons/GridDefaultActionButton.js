@@ -23,14 +23,14 @@ const clsx_1 = __importDefault(require("clsx"));
 function GridDefaultActionButton(_a) {
     var { className, disabled, children, onClick, icon, solidIcon = true, tooltip } = _a, rest = __rest(_a, ["className", "disabled", "children", "onClick", "icon", "solidIcon", "tooltip"]);
     const classes = useStyles({ disabled });
-    const button = (react_1.default.createElement(button_1.default, Object.assign({}, rest, { className: clsx_1.default(classes.btn, className), icon: icon, variant: "secondary", disabled: disabled, onClick: onClick, solidIcon: solidIcon }), children));
+    const button = (react_1.default.createElement(button_1.default, Object.assign({}, rest, { className: (0, clsx_1.default)(classes.btn, className), icon: icon, variant: "secondary", disabled: disabled, onClick: onClick, solidIcon: solidIcon }), children));
     if (tooltip) {
         return (react_1.default.createElement(tooltip_1.default, { message: tooltip, align: defaults_1.topMiddle.align, offset: defaults_1.topMiddle.offset }, button));
     }
     return button;
 }
 exports.default = GridDefaultActionButton;
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     btn: {
         opacity: ({ disabled = false }) => (disabled ? 0.5 : 1),
         '& > .button-text > .button-icon': {

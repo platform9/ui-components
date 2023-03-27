@@ -11,9 +11,9 @@ interface IRouteOptions {
     metadata?: Record<string, string | boolean>;
     tab?: string;
 }
-declare type OptionalGenericKVP = GenericKVP | null | void;
-declare type OptionalParamType<T extends OptionalGenericKVP> = T extends null ? void | GenericKVP : T & GenericKVP;
-declare type RouterPathFn<T extends OptionalGenericKVP> = (params: OptionalParamType<T>, urlBase?: string) => string;
+type OptionalGenericKVP = GenericKVP | null | void;
+type OptionalParamType<T extends OptionalGenericKVP> = T extends null ? void | GenericKVP : T & GenericKVP;
+type RouterPathFn<T extends OptionalGenericKVP> = (params: OptionalParamType<T>, urlBase?: string) => string;
 export declare class Route<T extends OptionalGenericKVP = null> {
     id: string;
     url: string;

@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -14,7 +18,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -77,6 +81,7 @@ const columns = [
         width: 'medium',
         formatFn: (value) => value.join(', '),
         sortFn: (genresA, genresB) => genresA.join('-').localeCompare(genresB.join('-')),
+        // Explicitly typing the column gives strongly typed arguments
     },
     {
         key: 'plot',
@@ -121,13 +126,13 @@ const globalFilters = [
         FilterComponent: GridSearchFilter_1.default,
     },
 ];
-const years = ramda_1.uniq(movies_list_1.default.map(({ year }) => +year).sort((a, b) => a - b)).map((year) => ({
+const years = (0, ramda_1.uniq)(movies_list_1.default.map(({ year }) => +year).sort((a, b) => a - b)).map((year) => ({
     value: year,
 }));
 const YearFilter = (props) => {
     return react_1.default.createElement(dropdown_1.default, Object.assign({}, props, { label: "Years:", compact: true, showAll: true, allKey: "", items: years }));
 };
-const genres = ramda_1.uniq(movies_list_1.default.map(({ genres }) => genres).flat()).map((genre) => ({
+const genres = (0, ramda_1.uniq)(movies_list_1.default.map(({ genres }) => genres).flat()).map((genre) => ({
     value: genre,
 }));
 const GenreFilter = (props) => {
@@ -150,12 +155,12 @@ const itemActionsReducer = (items, { type, payload: { selectedItems } }) => {
             return movies_list_1.default;
         case 'remove':
         default:
-            return ramda_1.without(selectedItems, items);
+            return (0, ramda_1.without)(selectedItems, items);
     }
 };
-exports.UncontrolledGrid = (args) => {
-    const [items, dispatch] = react_1.useReducer(itemActionsReducer, movies_list_1.default);
-    const batchActions = react_1.useMemo(() => [
+const UncontrolledGrid = (args) => {
+    const [items, dispatch] = (0, react_1.useReducer)(itemActionsReducer, movies_list_1.default);
+    const batchActions = (0, react_1.useMemo)(() => [
         {
             handleAction: (selectedItems) => {
                 if (confirm('Are you sure?')) {
@@ -170,6 +175,7 @@ exports.UncontrolledGrid = (args) => {
     return (react_1.default.createElement(containers_1.ThemedContainer, null,
         react_1.default.createElement(grid_1.default, Object.assign({}, args, { extraToolbarContent: react_1.default.createElement(GridDefaultActionButton_1.default, { onClick: () => alert('Add Dialog placeholder') }, "Add Movie"), label: "Label", uniqueIdentifier: "id", columns: columns, data: items, globalFilters: globalFilters, filters: filters, multiSelection: true, batchActions: batchActions, rowMenuItems: rowMenuItems, onRefresh: () => dispatch({ type: 'refresh', payload: {} }) }))));
 };
+exports.UncontrolledGrid = UncontrolledGrid;
 async function awaitSeconds(seconds = 1) {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -178,19 +184,19 @@ async function awaitSeconds(seconds = 1) {
     });
 }
 const rowsPerPage = 10;
-exports.AsyncGrid = (args) => {
-    const [loadingCount, setLoadingCount] = react_1.useState(0);
-    const [currentPage, setCurrentPage] = react_1.useState(1);
-    const [pageSize, setPageSize] = react_1.useState(rowsPerPage);
-    const [filterValues, setFilterValues] = react_1.useState({
+const AsyncGrid = (args) => {
+    const [loadingCount, setLoadingCount] = (0, react_1.useState)(0);
+    const [currentPage, setCurrentPage] = (0, react_1.useState)(1);
+    const [pageSize, setPageSize] = (0, react_1.useState)(rowsPerPage);
+    const [filterValues, setFilterValues] = (0, react_1.useState)({
         search: null,
         year: null,
         genres: null,
     });
-    const [{ orderBy, orderDirection }, setSorting] = react_1.useState(useGridSorting_1.defaultSortingState);
-    const [loading, setLoading] = react_1.useState(false);
-    const [items, dispatch] = react_1.useReducer(itemActionsReducer, movies_list_1.default);
-    const batchActions = react_1.useMemo(() => [
+    const [{ orderBy, orderDirection }, setSorting] = (0, react_1.useState)(useGridSorting_1.defaultSortingState);
+    const [loading, setLoading] = (0, react_1.useState)(false);
+    const [items, dispatch] = (0, react_1.useReducer)(itemActionsReducer, movies_list_1.default);
+    const batchActions = (0, react_1.useMemo)(() => [
         {
             handleAction: async (selectedItems) => {
                 if (confirm('Are you sure?')) {
@@ -203,17 +209,17 @@ exports.AsyncGrid = (args) => {
             BatchActionButton: GridDefaultDeleteButton_1.default,
         },
     ], []);
-    const dummyLoadDataAsync = react_1.useCallback(async () => {
+    const dummyLoadDataAsync = (0, react_1.useCallback)(async () => {
         setLoading(true);
         await awaitSeconds();
         setLoading(false);
         setLoadingCount(loadingCount + 1);
     }, [loadingCount]);
-    const handleRefresh = react_1.useCallback(async () => {
+    const handleRefresh = (0, react_1.useCallback)(async () => {
         dispatch({ type: 'refresh', payload: {} });
         await dummyLoadDataAsync();
     }, []);
-    const asyncGlobalFilters = react_1.useMemo(() => [
+    const asyncGlobalFilters = (0, react_1.useMemo)(() => [
         {
             key: 'search',
             initialValue: '',
@@ -228,7 +234,7 @@ exports.AsyncGrid = (args) => {
             },
         },
     ], [filterValues]);
-    const asyncFilters = react_1.useMemo(() => [
+    const asyncFilters = (0, react_1.useMemo)(() => [
         {
             columnKey: 'year',
             initialValue: '',
@@ -249,22 +255,22 @@ exports.AsyncGrid = (args) => {
             },
         },
     ], [filterValues]);
-    const handlePageChange = react_1.useCallback((page, pageSize) => {
+    const handlePageChange = (0, react_1.useCallback)((page, pageSize) => {
         setCurrentPage(page);
         setPageSize(pageSize);
     }, [currentPage, pageSize]);
-    const handleSortBy = react_1.useCallback((sortedBy, sortedDirection) => {
+    const handleSortBy = (0, react_1.useCallback)((sortedBy, sortedDirection) => {
         setSorting({ orderBy: sortedBy, orderDirection: sortedDirection });
     }, []);
-    const getParsedData = react_1.useCallback(() => {
+    const getParsedData = (0, react_1.useCallback)(() => {
         const globalFilteredItems = asyncGlobalFilters.reduce((items, { key, equalityComparerFn = ramda_1.equals }) => {
-            if (!fp_1.isNilOrEmpty(filterValues[key])) {
+            if (!(0, fp_1.isNilOrEmpty)(filterValues[key])) {
                 return items.filter((item) => equalityComparerFn(item, filterValues[key]));
             }
             return items;
         }, items);
         const filteredItems = asyncFilters.reduce((items, { columnKey, equalityComparerFn = ramda_1.equals }) => {
-            if (!fp_1.isNilOrEmpty(filterValues[columnKey])) {
+            if (!(0, fp_1.isNilOrEmpty)(filterValues[columnKey])) {
                 return items.filter((item) => equalityComparerFn(item[columnKey], filterValues[columnKey]));
             }
             return items;
@@ -277,28 +283,29 @@ exports.AsyncGrid = (args) => {
             const { disableSorting = false, sortFn = useGridSorting_1.defaultSortWith } = sortByColumn;
             const sortedItemsTmp = disableSorting
                 ? items
-                : ramda_1.sort((a, b) => sortFn(b[orderBy], a[orderBy]), items);
-            return orderDirection === 'desc' ? ramda_1.reverse(sortedItemsTmp) : sortedItemsTmp;
+                : (0, ramda_1.sort)((a, b) => sortFn(b[orderBy], a[orderBy]), items);
+            return orderDirection === 'desc' ? (0, ramda_1.reverse)(sortedItemsTmp) : sortedItemsTmp;
         })(filteredItems);
         const startIdx = (currentPage - 1) * pageSize;
         const endIdx = startIdx + pageSize;
         return sortedItems.slice(startIdx, endIdx);
     }, [items, filterValues, orderBy, orderDirection, currentPage, pageSize]);
-    const parsedData = react_1.useMemo(() => {
+    const parsedData = (0, react_1.useMemo)(() => {
         if (!loadingCount) {
             return [];
         }
         return getParsedData();
     }, [loadingCount, items]);
-    react_1.useEffect(() => {
+    (0, react_1.useEffect)(() => {
         dummyLoadDataAsync();
     }, []);
-    react_1.useEffect(() => {
+    (0, react_1.useEffect)(() => {
         dummyLoadDataAsync();
     }, [filterValues, currentPage, pageSize, orderBy, orderDirection]);
     return (react_1.default.createElement(containers_1.ThemedContainer, null,
         react_1.default.createElement(grid_1.default, Object.assign({}, args, { extraToolbarContent: react_1.default.createElement(GridDefaultActionButton_1.default, { onClick: () => alert('Add Dialog placeholder') }, "Add Movie"), label: "Label", totalItems: items.length, rowsPerPage: rowsPerPage, loading: loading, controlledPagination: true, controlledSorting: true, onPageChange: handlePageChange, onSortChange: handleSortBy, uniqueIdentifier: "id", columns: columns, data: parsedData, globalFilters: asyncGlobalFilters, filters: asyncFilters, batchActions: batchActions, rowMenuItems: rowMenuItems, onRefresh: handleRefresh, multiSelection: true }))));
 };
+exports.AsyncGrid = AsyncGrid;
 exports.UncontrolledGrid.parameters = {
     docs: {
         source: {

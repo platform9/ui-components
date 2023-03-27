@@ -18,7 +18,7 @@ const react_1 = __importDefault(require("react"));
 const styles_1 = require("@material-ui/styles");
 const GridDefaultActionButton_1 = __importDefault(require("../../../elements/grid/buttons/GridDefaultActionButton"));
 const clsx_1 = __importDefault(require("clsx"));
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     btn: {
         '& > .button-text > .button-icon': {
             color: theme.components.graph.error,
@@ -34,7 +34,7 @@ const useStyles = styles_1.makeStyles((theme) => ({
 function GridDefaultDeleteButton(_a) {
     var { children = 'Delete', onClick, className } = _a, rest = __rest(_a, ["children", "onClick", "className"]);
     const classes = useStyles({});
-    return (react_1.default.createElement(GridDefaultActionButton_1.default, Object.assign({}, rest, { icon: "trash-alt", className: clsx_1.default(className, classes.btn), onClick: onClick }), children));
+    return (react_1.default.createElement(GridDefaultActionButton_1.default, Object.assign({}, rest, { icon: "trash-alt", className: (0, clsx_1.default)(className, classes.btn), onClick: onClick }), children));
 }
 exports.default = GridDefaultDeleteButton;
 //# sourceMappingURL=GridDefaultDeleteButton.js.map

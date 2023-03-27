@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { ControllerStateAndHelpers, DownshiftProps } from 'downshift';
-declare type OnClickHandler = (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+type OnClickHandler = (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 interface DownshiftChildrenProps<T> extends ControllerStateAndHelpers<T> {
     getRemoveButtonProps: (args: {
         onClick: OnClickHandler;

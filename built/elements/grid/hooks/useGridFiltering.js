@@ -13,16 +13,16 @@ function filteringReducer(state, { type, payload: { global, key, value } }) {
     const basePath = global ? 'globalValuesByKey' : 'valuesByKey';
     switch (type) {
         case 'update':
-            return ramda_1.assocPath([basePath, key], value, state);
+            return (0, ramda_1.assocPath)([basePath, key], value, state);
         case 'clear':
-            return ramda_1.dissocPath([basePath, key], state);
+            return (0, ramda_1.dissocPath)([basePath, key], state);
         case 'clearAll':
         default:
             return defaultFilteringState;
     }
 }
 function useGridFiltering(rows, { onClearFilters, globalFilters: globalFilterSpecs = fp_1.emptyArr, filters: filterSpecs = fp_1.emptyArr, }) {
-    const initialFilteringState = react_1.useMemo(() => {
+    const initialFilteringState = (0, react_1.useMemo)(() => {
         return {
             globalValuesByKey: globalFilterSpecs.reduce((acc, { key, initialValue }) => {
                 acc[key] = initialValue;
@@ -34,53 +34,53 @@ function useGridFiltering(rows, { onClearFilters, globalFilters: globalFilterSpe
             }, {}),
         };
     }, []);
-    const [{ globalValuesByKey, valuesByKey }, dispatch] = react_1.useReducer(filteringReducer, initialFilteringState);
-    const filterHandlers = react_1.useMemo(() => filterSpecs.reduce((acc, { columnKey, onChange }) => {
+    const [{ globalValuesByKey, valuesByKey }, dispatch] = (0, react_1.useReducer)(filteringReducer, initialFilteringState);
+    const filterHandlers = (0, react_1.useMemo)(() => filterSpecs.reduce((acc, { columnKey, onChange }) => {
         if (onChange) {
             acc[columnKey] = onChange;
         }
         return acc;
     }, {}), [filterSpecs]);
-    const globalFilterHandlers = react_1.useMemo(() => globalFilterSpecs.reduce((acc, { key, onChange }) => {
+    const globalFilterHandlers = (0, react_1.useMemo)(() => globalFilterSpecs.reduce((acc, { key, onChange }) => {
         if (onChange) {
             acc[key] = onChange;
         }
         return acc;
     }, {}), [globalFilterSpecs]);
-    const getFilterUpdater = react_1.useCallback(misc_1.memoize((key) => async (value) => {
+    const getFilterUpdater = (0, react_1.useCallback)((0, misc_1.memoize)((key) => async (value) => {
         dispatch({ type: 'update', payload: { key, value } });
         if (filterHandlers[key]) {
             return filterHandlers[key](value);
         }
     }), [filterHandlers]);
-    const getFilterClearFn = react_1.useCallback(misc_1.memoize((key) => () => {
+    const getFilterClearFn = (0, react_1.useCallback)((0, misc_1.memoize)((key) => () => {
         dispatch({ type: 'clear', payload: { key } });
         if (filterHandlers[key]) {
             return filterHandlers[key](null);
         }
     }), [filterHandlers]);
-    const getGlobalFilterUpdater = react_1.useCallback(misc_1.memoize((key) => (value) => {
+    const getGlobalFilterUpdater = (0, react_1.useCallback)((0, misc_1.memoize)((key) => (value) => {
         dispatch({ type: 'update', payload: { key, global: true, value } });
         if (globalFilterHandlers[key]) {
             return globalFilterHandlers[key](value);
         }
     }), [globalFilterHandlers]);
-    const getGlobalFilterClearFn = react_1.useCallback(misc_1.memoize((key) => () => {
+    const getGlobalFilterClearFn = (0, react_1.useCallback)((0, misc_1.memoize)((key) => () => {
         dispatch({ type: 'clear', payload: { key, global: true } });
         if (globalFilterHandlers[key]) {
             return globalFilterHandlers[key](null);
         }
     }), [globalFilterHandlers]);
-    const clearFilters = react_1.useCallback(async () => {
+    const clearFilters = (0, react_1.useCallback)(async () => {
         dispatch({ type: 'clearAll' });
         if (onClearFilters) {
             return onClearFilters();
         }
     }, [onClearFilters]);
-    const globalFilteredRows = react_1.useMemo(() => {
+    const globalFilteredRows = (0, react_1.useMemo)(() => {
         return globalFilterSpecs.reduce((rows, { key, controlled, equalityComparerFn = ramda_1.equals, allowEmpty = false }) => {
             if (globalValuesByKey[key] !== undefined &&
-                (allowEmpty || !fp_1.isNilOrEmpty(globalValuesByKey[key]))) {
+                (allowEmpty || !(0, fp_1.isNilOrEmpty)(globalValuesByKey[key]))) {
                 if (controlled || globalValuesByKey[key] === constants_1.allKey) {
                     return rows;
                 }
@@ -89,10 +89,10 @@ function useGridFiltering(rows, { onClearFilters, globalFilters: globalFilterSpe
             return rows;
         }, rows);
     }, [globalFilterSpecs, rows, globalValuesByKey]);
-    const filteredRows = react_1.useMemo(() => {
+    const filteredRows = (0, react_1.useMemo)(() => {
         return filterSpecs.reduce((rows, { columnKey, controlled, equalityComparerFn = ramda_1.equals, allowEmpty = false }) => {
             if (valuesByKey[String(columnKey)] !== undefined &&
-                (allowEmpty || !fp_1.isNilOrEmpty(valuesByKey[String(columnKey)]))) {
+                (allowEmpty || !(0, fp_1.isNilOrEmpty)(valuesByKey[String(columnKey)]))) {
                 if (controlled || valuesByKey[String(columnKey)] === constants_1.allKey) {
                     return rows;
                 }
@@ -104,7 +104,7 @@ function useGridFiltering(rows, { onClearFilters, globalFilters: globalFilterSpe
             return rows;
         }, globalFilteredRows);
     }, [filterSpecs, globalFilteredRows, valuesByKey]);
-    const globalFilters = react_1.useMemo(() => {
+    const globalFilters = (0, react_1.useMemo)(() => {
         return globalFilterSpecs.map(({ key, FilterComponent }) => ({
             key,
             updateFilterValue: getGlobalFilterUpdater(key),
@@ -114,7 +114,7 @@ function useGridFiltering(rows, { onClearFilters, globalFilters: globalFilterSpe
             FilterComponent,
         }));
     }, [globalValuesByKey]);
-    const filters = react_1.useMemo(() => {
+    const filters = (0, react_1.useMemo)(() => {
         return filterSpecs.map(({ columnKey, FilterComponent }) => ({
             key: columnKey,
             updateFilterValue: getFilterUpdater(columnKey),

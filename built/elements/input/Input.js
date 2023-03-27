@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -14,7 +18,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -47,14 +51,14 @@ const defaultIconProps = {
 };
 const Input = (_a) => {
     var { className = undefined, compact = false, variant = 'light', mask = undefined, icon = undefined, iconProps = undefined, placeholder = '', label = '', info = '', children, value, onChange, disabled = false, error = '' } = _a, rest = __rest(_a, ["className", "compact", "variant", "mask", "icon", "iconProps", "placeholder", "label", "info", "children", "value", "onChange", "disabled", "error"]);
-    const maskRef = react_1.useRef();
-    const width = react_1.useMemo(() => {
+    const maskRef = (0, react_1.useRef)();
+    const width = (0, react_1.useMemo)(() => {
         var _a, _b;
         return ((_b = (_a = maskRef === null || maskRef === void 0 ? void 0 : maskRef.current) === null || _a === void 0 ? void 0 : _a.getBoundingClientRect()) === null || _b === void 0 ? void 0 : _b.width) || 0;
     }, [maskRef.current, mask]);
-    const [focused, toggleFocused] = useToggler_1.default(false);
-    const allIconProps = react_1.useMemo(() => ramda_1.mergeRight(defaultIconProps, iconProps || {}), [iconProps]);
-    const handleChange = react_1.useCallback((event) => {
+    const [focused, toggleFocused] = (0, useToggler_1.default)(false);
+    const allIconProps = (0, react_1.useMemo)(() => (0, ramda_1.mergeRight)(defaultIconProps, iconProps || {}), [iconProps]);
+    const handleChange = (0, react_1.useCallback)((event) => {
         if (onChange) {
             onChange(event);
         }
@@ -65,7 +69,7 @@ const Input = (_a) => {
         onChange(event);
         toggleFocused();
     };
-    const handleFocusToggle = react_1.useCallback(() => {
+    const handleFocusToggle = (0, react_1.useCallback)(() => {
         toggleFocused();
     }, [toggleFocused]);
     const classes = useStyles({
@@ -83,21 +87,21 @@ const Input = (_a) => {
     if (mask && !!value) {
         extraContent = (react_1.default.createElement(Text_1.default, { variant: "inputPlaceholder", ref: maskRef, className: classes.maskText }, mask));
     }
-    return (react_1.default.createElement("div", { className: clsx_1.default(classes.wrapper, className) },
-        label && (react_1.default.createElement(Text_1.default, { variant: "inputLabel", className: clsx_1.default(classes.label, 'label') }, label)),
+    return (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.wrapper, className) },
+        label && (react_1.default.createElement(Text_1.default, { variant: "inputLabel", className: (0, clsx_1.default)(classes.label, 'label') }, label)),
         info && (react_1.default.createElement(tooltip_1.default, { message: info || label || placeholder, align: defaults_1.topMiddle.align, offset: defaults_1.topMiddle.offset, origin: "right center", className: classes.info },
             react_1.default.createElement(Text_1.default, { variant: "inputLabel", className: classes.hint },
                 react_1.default.createElement(FontAwesomeIcon_1.default, null, "question-circle"),
                 "Hint"))),
-        react_1.default.createElement("div", { className: clsx_1.default(classes.inputFrame, 'inputFrame') },
-            icon && (react_1.default.createElement(FontAwesomeIcon_1.default, { className: clsx_1.default(classes.icon, 'icon'), onClick: allIconProps.onClick }, icon)),
+        react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.inputFrame, 'inputFrame') },
+            icon && (react_1.default.createElement(FontAwesomeIcon_1.default, { className: (0, clsx_1.default)(classes.icon, 'icon'), onClick: allIconProps.onClick }, icon)),
             extraContent,
-            react_1.default.createElement("input", Object.assign({}, rest, { onFocus: handleFocusToggle, onBlur: handleFocusOut, value: value, onChange: handleChange, placeholder: placeholder || label, className: clsx_1.default(classes.input, 'input', {
+            react_1.default.createElement("input", Object.assign({}, rest, { onFocus: handleFocusToggle, onBlur: handleFocusOut, value: value, onChange: handleChange, placeholder: placeholder || label, className: (0, clsx_1.default)(classes.input, 'input', {
                     'input-disabled': disabled,
                 }) }), children)),
         !!error && (react_1.default.createElement(Text_1.default, { variant: "body2", className: classes.error }, error))));
 };
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     wrapper: {
         display: 'grid',
         maxWidth: 400,

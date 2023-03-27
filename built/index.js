@@ -1,8 +1,5 @@
 "use strict";
-// import React from 'react'
-// import ReactDOM from 'react-dom/client'
-// import App from './App'
-// import './app.css'
-// import './static/fontawesome/css/all.min.css'
+// To test the components, uncomment the code below and render the component(s)
+// you want to test in App.tsx
 Object.defineProperty(exports, "__esModule", { value: true });
 //# sourceMappingURL=index.js.map

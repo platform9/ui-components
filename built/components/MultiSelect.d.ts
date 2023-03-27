@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-declare type Option = {
+type Option = {
     value: string;
     label: string;
 };

@@ -10,7 +10,7 @@ const styles_1 = require("@material-ui/styles");
 const fp_1 = require("../../utils/fp");
 const react_redux_1 = require("react-redux");
 const selector_1 = require("../../theme-manager/selector");
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     chartContainer: {
         '& g.recharts-cartesian-grid-horizontal > line:last-child': {
             display: 'none',
@@ -20,9 +20,9 @@ const useStyles = styles_1.makeStyles((theme) => ({
 // Todo: Instead of a set width and height, also allow for percents
 function StackedAreaChart({ values, width = 600, height = 400, keys, xAxis, verticalAxisLines = false, horizontalAxisLines = true, responsive = false, responsiveHeight = 250, CustomTooltip = undefined, }) {
     // old theme to access palette
-    const theme = styles_1.useTheme();
+    const theme = (0, styles_1.useTheme)();
     // const themeStore = useSelector(prop<string, ThemeReducer>('theme'))
-    const themeStore = react_redux_1.useSelector(selector_1.themeSelector);
+    const themeStore = (0, react_redux_1.useSelector)(selector_1.themeSelector);
     const classes = useStyles({});
     const renderAreaChart = () => {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
@@ -42,7 +42,7 @@ function StackedAreaChart({ values, width = 600, height = 400, keys, xAxis, vert
                     style: { transform: 'translate(-12px, 0px)' },
                 }, tickSize: 8, allowDataOverflow: true }),
             react_1.default.createElement(recharts_1.Tooltip, { cursor: { stroke: 'rgba(96, 96, 96, 0.5)', strokeDasharray: '6' /* strokeWidth: 6 */ }, content: CustomTooltip }),
-            keys.map(({ name, color }) => (react_1.default.createElement(recharts_1.Area, { key: name, type: "monotone", dataKey: name, stackId: "1", stroke: fp_1.pathStr(color, theme.palette), strokeWidth: 2, fill: fp_1.pathStr(color, theme.palette), activeDot: { strokeWidth: 4, r: 8, stroke: 'rgba(96, 96, 96, 0.5)' } })))));
+            keys.map(({ name, color }) => (react_1.default.createElement(recharts_1.Area, { key: name, type: "monotone", dataKey: name, stackId: "1", stroke: (0, fp_1.pathStr)(color, theme.palette), strokeWidth: 2, fill: (0, fp_1.pathStr)(color, theme.palette), activeDot: { strokeWidth: 4, r: 8, stroke: 'rgba(96, 96, 96, 0.5)' } })))));
     };
     return responsive ? (react_1.default.createElement(recharts_1.ResponsiveContainer, { width: "100%", height: responsiveHeight, className: classes.chartContainer }, renderAreaChart())) : (react_1.default.createElement("div", { className: classes.chartContainer }, renderAreaChart()));
 }

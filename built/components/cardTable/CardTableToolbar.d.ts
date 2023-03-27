@@ -24,14 +24,14 @@ declare const CardTableToolbar: {
         onRefresh: PropTypes.Requireable<(...args: any[]) => any>;
         searchTerm: PropTypes.Requireable<string>;
         title: PropTypes.Requireable<string>;
-        filters: PropTypes.Requireable<PropTypes.ReactElementLike | PropTypes.InferProps<{
+        filters: PropTypes.Requireable<NonNullable<PropTypes.ReactElementLike | PropTypes.InferProps<{
             field: PropTypes.Validator<string>;
             label: PropTypes.Requireable<string>;
             type: PropTypes.Validator<string>;
             render: PropTypes.Requireable<(...args: any[]) => any>;
             filterWith: PropTypes.Requireable<(...args: any[]) => any>;
             items: PropTypes.Requireable<any[]>;
-        }>[]>;
+        }>[]>>;
         filterValues: PropTypes.Requireable<object>;
         onFilterUpdate: PropTypes.Requireable<(...args: any[]) => any>;
     };

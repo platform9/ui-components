@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -14,7 +18,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -29,7 +33,7 @@ const Text_1 = __importDefault(require("../elements/Text"));
 function ProductInfoPage({ title, footerTitle = undefined, className, children, icon, actions = [], componentDidMountFn, componentWillUnmountFn, }) {
     const classes = useStyles();
     //   const dispatch = useDispatch()
-    react_1.useEffect(() => {
+    (0, react_1.useEffect)(() => {
         componentDidMountFn && componentDidMountFn();
         return () => {
             componentWillUnmountFn && componentWillUnmountFn();
@@ -42,16 +46,16 @@ function ProductInfoPage({ title, footerTitle = undefined, className, children, 
     //     }
     //   }, [])
     return (react_1.default.createElement("div", { className: classes.productInfoPage },
-        react_1.default.createElement("article", { className: clsx_1.default(classes.productInfoContent, className) },
-            react_1.default.createElement(Text_1.default, { variant: "h2", component: "header", className: clsx_1.default('product-info-title', classes.productInfoTitle) }, title),
-            react_1.default.createElement("div", { className: clsx_1.default('product-info-body', classes.productInfoBody) }, children),
-            react_1.default.createElement("figure", { className: clsx_1.default('product-info-figure', classes.productInfoFigure) }, icon),
-            react_1.default.createElement("footer", { className: clsx_1.default('product-info-footer', classes.productInfoFooter) },
+        react_1.default.createElement("article", { className: (0, clsx_1.default)(classes.productInfoContent, className) },
+            react_1.default.createElement(Text_1.default, { variant: "h2", component: "header", className: (0, clsx_1.default)('product-info-title', classes.productInfoTitle) }, title),
+            react_1.default.createElement("div", { className: (0, clsx_1.default)('product-info-body', classes.productInfoBody) }, children),
+            react_1.default.createElement("figure", { className: (0, clsx_1.default)('product-info-figure', classes.productInfoFigure) }, icon),
+            react_1.default.createElement("footer", { className: (0, clsx_1.default)('product-info-footer', classes.productInfoFooter) },
                 footerTitle ? (react_1.default.createElement(Text_1.default, { variant: "caption2", className: classes.productInfoFooterTitle }, footerTitle)) : null,
                 actions))));
 }
 exports.default = ProductInfoPage;
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     '@global': {
         'html .content-main': {
             gridAutoRows: '1fr',

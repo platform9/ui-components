@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -14,7 +18,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -27,8 +31,8 @@ const react_1 = __importStar(require("react"));
 const Input_1 = __importDefault(require("../../elements/input/Input"));
 const containers_1 = require("../containers");
 const useToggler_1 = __importDefault(require("../../hooks/useToggler"));
-exports.DefaultInput = (args) => {
-    const [value, setValue] = react_1.useState('');
+const DefaultInput = (args) => {
+    const [value, setValue] = (0, react_1.useState)('');
     const updateValue = (event) => {
         const value = event.target.value;
         setValue(value);
@@ -50,6 +54,7 @@ exports.DefaultInput = (args) => {
             react_1.default.createElement(containers_1.Column, { padding: "20px 0px 40px 0px", variant: "frame" },
                 react_1.default.createElement(Input_1.default, Object.assign({}, args, { label: "Disabled", placeholder: "Placeholder label", icon: "search", info: "This is the help message", disabled: true, value: "Disabled with a value" }))))));
 };
+exports.DefaultInput = DefaultInput;
 exports.DefaultInput.parameters = {
     docs: {
         source: {
@@ -73,13 +78,13 @@ const MyComponent = () => {
 exports.DefaultInput.args = {
     disabled: false,
 };
-exports.PasswordInput = (args) => {
-    const [value, setValue] = react_1.useState('');
+const PasswordInput = (args) => {
+    const [value, setValue] = (0, react_1.useState)('');
     const updateValue = (event) => {
         const value = event.target.value;
         setValue(value);
     };
-    const [isPasswordHidden, toggleIsPasswordHidden] = useToggler_1.default(true);
+    const [isPasswordHidden, toggleIsPasswordHidden] = (0, useToggler_1.default)(true);
     const handleIconClick = () => {
         toggleIsPasswordHidden();
     };
@@ -94,6 +99,7 @@ exports.PasswordInput = (args) => {
             react_1.default.createElement(containers_1.Column, { padding: "20px 0px 40px 0px", variant: "frame" },
                 react_1.default.createElement(Input_1.default, Object.assign({}, args, { label: "Password", placeholder: "Your Password", type: isPasswordHidden ? 'password' : 'text', icon: isPasswordHidden ? 'eye' : 'eye-slash', iconProps: iconProps, info: "Please enter your current password. If you've forgotten it, try forgot password.", value: value, onChange: updateValue }))))));
 };
+exports.PasswordInput = PasswordInput;
 exports.PasswordInput.args = {
     disabled: false,
 };

@@ -304,5 +304,5 @@ export interface TypographyModel {
     letterSpacing: string;
     textAlign?: any;
 }
-declare type Theme = DefaultTheme & AppTheme;
+type Theme = DefaultTheme & AppTheme;
 export default Theme;

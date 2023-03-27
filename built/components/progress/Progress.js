@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -14,7 +18,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -57,7 +61,7 @@ const imageMap = {
     },
     [constants_1.LoadingGifs.Ellipsis]: Ellipsis_1.default,
 };
-const getLoadingImage = misc_1.memoize((inline, imageType, themeType) => {
+const getLoadingImage = (0, misc_1.memoize)((inline, imageType, themeType) => {
     if (inline) {
         return imageMap[constants_1.LoadingGifs.Ellipsis];
     }
@@ -67,12 +71,12 @@ const getLoadingImage = misc_1.memoize((inline, imageType, themeType) => {
 function Progress(_a) {
     var { children } = _a, props = __rest(_a, ["children"]);
     const { loading = false, overlay = false, inline = false, renderLoadingImage = true, renderContentOnMount = true, message = 'Loading', loadingImage = constants_1.LoadingGifs.BlueTiles, loadingImageHeight = defaultLoaderHeight, inlineClassName, className, } = props;
-    const theme = styles_1.useTheme();
+    const theme = (0, styles_1.useTheme)();
     const classes = useStyles(props);
-    const [state, setState] = react_1.useState({
+    const [state, setState] = (0, react_1.useState)({
         loadedOnce: false,
     });
-    react_1.useEffect(() => {
+    (0, react_1.useEffect)(() => {
         if (props.loading) {
             return;
         }
@@ -85,22 +89,22 @@ function Progress(_a) {
         : react_1.default.Fragment;
     const shouldRenderStatus = loading;
     const shouldNotRenderContent = !children || (!renderContentOnMount && !state.loadedOnce);
-    return (react_1.default.createElement("div", { className: clsx_1.default(classes.root, 'progress-root', {
+    return (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.root, 'progress-root', {
             [classes.rootInline]: inline,
         }) },
-        shouldRenderStatus && (react_1.default.createElement("div", { className: clsx_1.default(classes.status, 'progress-status', {
+        shouldRenderStatus && (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.status, 'progress-status', {
                 [classes.statusOverlayed]: overlay && loading && (renderContentOnMount || state.loadedOnce),
             }) },
             renderLoadingImage && (react_1.default.createElement(LoadingImageComponent, { className: classes.img, height: loadingImageHeight })),
-            message && (react_1.default.createElement(Text_1.default, { className: clsx_1.default(classes.message, inlineClassName), variant: inline ? 'body2' : 'subtitle2' }, message)))),
-        !shouldNotRenderContent && (react_1.default.createElement("div", { className: clsx_1.default(classes.content, className, 'progressContent', {
+            message && (react_1.default.createElement(Text_1.default, { className: (0, clsx_1.default)(classes.message, inlineClassName), variant: inline ? 'body2' : 'subtitle2' }, message)))),
+        !shouldNotRenderContent && (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.content, className, 'progressContent', {
                 loading,
                 [classes.hiddenContent]: loading && !overlay,
                 [classes.contentLoading]: loading,
             }) }, children))));
 }
 exports.default = Progress;
-const useStyles = styles_2.makeStyles((theme) => ({
+const useStyles = (0, styles_2.makeStyles)((theme) => ({
     root: {
         display: 'grid',
         position: 'relative',

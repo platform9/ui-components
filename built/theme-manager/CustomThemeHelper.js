@@ -25,12 +25,12 @@ class CustomThemeHelper {
     constructor(colorsDefinition = colors_1.default, typographyDefinition = typography_1.default) {
         this.colorPaletteOptions = defaultColorPaletteOptions;
         this.typographyOptions = defaultTypographyOptions;
-        this.colorsDefinition = ramda_1.mergeRight(colors_1.default, colorsDefinition);
-        this.typographyDefinition = ramda_1.mergeRight(typography_1.default, typographyDefinition);
-        this.components = helpers_1.generatePf9ComponentColors(this.colorsDefinition);
+        this.colorsDefinition = (0, ramda_1.mergeRight)(colors_1.default, colorsDefinition);
+        this.typographyDefinition = (0, ramda_1.mergeRight)(typography_1.default, typographyDefinition);
+        this.components = (0, helpers_1.generatePf9ComponentColors)(this.colorsDefinition);
     }
     setColorPaletteOptions({ primary = defaultColorPaletteOptions.primary, secondary = defaultColorPaletteOptions.secondary, type = defaultColorPaletteOptions.type, themeKey = defaultColorPaletteOptions.themeKey, }) {
-        this.colorPaletteOptions = ramda_1.mergeDeepRight(this.colorPaletteOptions, {
+        this.colorPaletteOptions = (0, ramda_1.mergeDeepRight)(this.colorPaletteOptions, {
             primary,
             secondary,
             type,
@@ -47,11 +47,11 @@ class CustomThemeHelper {
         };
     }
     setComponentsTheme(componentsStyleGenerator) {
-        this.components = ramda_1.mergeDeepRight(this.components, componentsStyleGenerator(this.colorsDefinition));
+        this.components = (0, ramda_1.mergeDeepRight)(this.components, componentsStyleGenerator(this.colorsDefinition));
     }
     generateCustomTheme() {
         return {
-            theme: helpers_2.generateTheme({
+            theme: (0, helpers_2.generateTheme)({
                 palette: Object.assign({ colors: this.colorsDefinition }, this.colorPaletteOptions),
                 typography: Object.assign({ typography: this.typographyDefinition }, this.typographyOptions),
             }),

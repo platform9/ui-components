@@ -9,7 +9,7 @@ const tabs_1 = __importDefault(require("../../elements/tabs"));
 const Tab_1 = __importDefault(require("../../elements/tabs/Tab"));
 const Text_1 = __importDefault(require("../../elements/Text"));
 // import { routes } from '../utils/routes'
-exports.TabsPreview = (args) => (
+const TabsPreview = (args) => (
 // <Tabs route={routes.notifications.list}>
 react_1.default.createElement(tabs_1.default, { activeTab: "tab-1" },
     react_1.default.createElement(Tab_1.default, { value: "tab-1", label: "Tab 1" },
@@ -18,6 +18,7 @@ react_1.default.createElement(tabs_1.default, { activeTab: "tab-1" },
         react_1.default.createElement(Text_1.default, null, "I am tab 2")),
     react_1.default.createElement(Tab_1.default, { value: "tab-3", label: "Tab 3" },
         react_1.default.createElement(Text_1.default, null, "I am tab 3"))));
+exports.TabsPreview = TabsPreview;
 exports.TabsPreview.parameters = {
     docs: {
         source: {

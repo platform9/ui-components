@@ -23,5 +23,5 @@ function ToggleSwitchField(_a) {
     var { onChange, value } = _a, restProps = __rest(_a, ["onChange", "value"]);
     return react_1.default.createElement(ToggleSwitch_1.default, Object.assign({}, restProps, { active: !!value, onClick: (value) => onChange(value) }));
 }
-exports.default = fp_1.compose(InfoTooltip_1.withInfoTooltip, withFormContext_1.default)(ToggleSwitchField);
+exports.default = (0, fp_1.compose)(InfoTooltip_1.withInfoTooltip, withFormContext_1.default)(ToggleSwitchField);
 //# sourceMappingURL=ToggleSwitchField.js.map

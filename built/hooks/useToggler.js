@@ -12,15 +12,15 @@ const toggleReducer = (state, { type, payload }) => {
     }
 };
 function useToggler(initialValue = false) {
-    const [active, dispatch] = react_1.useReducer(toggleReducer, initialValue);
-    const toggle = react_1.useCallback(() => dispatch({
+    const [active, dispatch] = (0, react_1.useReducer)(toggleReducer, initialValue);
+    const toggle = (0, react_1.useCallback)(() => dispatch({
         type: 'toggle',
     }), []);
-    const setValue = react_1.useCallback((value) => dispatch({
+    const setValue = (0, react_1.useCallback)((value) => dispatch({
         type: 'assign',
         payload: value,
     }), []);
-    const getValueSetter = react_1.useCallback(misc_1.memoize((value) => () => setValue(value)), []);
+    const getValueSetter = (0, react_1.useCallback)((0, misc_1.memoize)((value) => () => setValue(value)), []);
     return [active, toggle, setValue, getValueSetter];
 }
 exports.default = useToggler;

@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -14,7 +18,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -52,7 +56,7 @@ const getColor = (variant, theme) => {
         return theme.palette.primary.main;
     }
 };
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     root: {
         cursor: 'pointer',
         '&:hover': {
@@ -72,11 +76,11 @@ const useStyles = styles_1.makeStyles((theme) => ({
 // We need to destructure staticContext even though we are not using it in order to
 // work around this issue: https://github.com/ReactTraining/react-router/issues/4683
 // We need to use `forwardRef` as a workaround of an issue with material-ui Tooltip https://github.com/gregnb/mui-datatables/issues/595
-const SimpleLink = react_1.forwardRef((_a, ref) => {
+const SimpleLink = (0, react_1.forwardRef)((_a, ref) => {
     var { onClick, src, children, staticContext, className, icon, variant, textVariant = 'body2', textDecoration = 'underline', label, lineClamp, iconPosition = 'right' } = _a, rest = __rest(_a, ["onClick", "src", "children", "staticContext", "className", "icon", "variant", "textVariant", "textDecoration", "label", "lineClamp", "iconPosition"]);
     const classes = useStyles({ variant, textDecoration, iconPosition });
-    const { history } = use_react_router_1.default();
-    const handleClick = react_1.useCallback((e) => {
+    const { history } = (0, use_react_router_1.default)();
+    const handleClick = (0, react_1.useCallback)((e) => {
         // Prevent links inside of a table row from triggering row selection.
         e.stopPropagation();
         if (onClick) {
@@ -91,10 +95,10 @@ const SimpleLink = react_1.forwardRef((_a, ref) => {
         }
         // Any path that starts with http should be treated as an external link
     }, [src, history, onClick]);
-    return (react_1.default.createElement(core_1.Link, Object.assign({ className: clsx_1.default(className, classes.root), ref: ref, href: src || null, onClick: handleClick, "data-testid": test_helpers_1.default(children) }, rest),
-        !!icon && iconPosition === 'left' && (react_1.default.createElement(FontAwesomeIcon_1.default, { className: clsx_1.default(classes.icon, 'icon') }, icon)),
-        textVariant ? (react_1.default.createElement(Text_1.default, { variant: textVariant, lineClamp: lineClamp, component: "span", className: clsx_1.default('simple-link-text', classes.text) }, children || src)) : (children || src),
-        !!icon && iconPosition === 'right' && (react_1.default.createElement(FontAwesomeIcon_1.default, { className: clsx_1.default(classes.icon, 'icon') }, icon))));
+    return (react_1.default.createElement(core_1.Link, Object.assign({ className: (0, clsx_1.default)(className, classes.root), ref: ref, href: src || null, onClick: handleClick, "data-testid": (0, test_helpers_1.default)(children) }, rest),
+        !!icon && iconPosition === 'left' && (react_1.default.createElement(FontAwesomeIcon_1.default, { className: (0, clsx_1.default)(classes.icon, 'icon') }, icon)),
+        textVariant ? (react_1.default.createElement(Text_1.default, { variant: textVariant, lineClamp: lineClamp, component: "span", className: (0, clsx_1.default)('simple-link-text', classes.text) }, children || src)) : (children || src),
+        !!icon && iconPosition === 'right' && (react_1.default.createElement(FontAwesomeIcon_1.default, { className: (0, clsx_1.default)(classes.icon, 'icon') }, icon))));
 });
 exports.default = SimpleLink;
 //# sourceMappingURL=SimpleLink.js.map

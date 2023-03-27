@@ -2,16 +2,17 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.debounce = exports.clearDebounceMemory = void 0;
 const timeoutMap = new Map();
-exports.clearDebounceMemory = (fn) => {
+const clearDebounceMemory = (fn) => {
     if (timeoutMap.has(fn)) {
         const id = timeoutMap.get(fn);
         clearTimeout(id);
     }
 };
+exports.clearDebounceMemory = clearDebounceMemory;
 function debounce(fn, ms = 500, setTimeout = global.setTimeout) {
     let id;
     const debouncedFn = async (...args) => {
-        exports.clearDebounceMemory(fn);
+        (0, exports.clearDebounceMemory)(fn);
         return new Promise((resolve) => {
             id = setTimeout(() => {
                 timeoutMap.delete(fn);

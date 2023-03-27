@@ -1,6 +1,6 @@
 /// <reference types="react" />
 import { GridCellProps } from '../../../elements/grid/hooks/useGridRows';
-export declare type ArrayElement<ArrayType extends readonly unknown[]> = ArrayType extends readonly (infer ElementType)[] ? ElementType : never;
+export type ArrayElement<ArrayType extends readonly unknown[]> = ArrayType extends readonly (infer ElementType)[] ? ElementType : never;
 interface BaseGridArrayCellProps<K extends unknown[]> {
     nameFn: (item: ArrayElement<K>) => string;
 }

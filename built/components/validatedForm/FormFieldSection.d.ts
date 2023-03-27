@@ -14,5 +14,5 @@ interface Props {
     textVariant?: TextVariant;
 }
 export default function FormFieldSection({ title, className, link, info, step, children, errorMessage, textVariant, }: PropsWithChildren<Props>): JSX.Element;
-export declare const useStyles: (props?: any) => Record<string, string>;
+export declare const useStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<string>;
 export {};

@@ -14,7 +14,7 @@ interface ReviewRow<T> {
         value: any;
     }>;
 }
-declare type GenericObject = Record<string, any>;
+type GenericObject = Record<string, any>;
 interface Props<T = GenericObject> {
     data: T;
     columns: Array<ReviewRow<T>>;

@@ -11,7 +11,7 @@ const tooltip_1 = __importDefault(require("../../../elements/tooltip"));
 const defaults_1 = require("../../../elements/menu/defaults");
 function GridStatusMessageCell({ value: status }) {
     const classes = useStyles({});
-    if (fp_1.isNilOrEmpty(status) || status.state === 'Running')
+    if ((0, fp_1.isNilOrEmpty)(status) || status.state === 'Running')
         return null;
     const reason = status.reason || '';
     const message = status.message || '';
@@ -23,7 +23,7 @@ function GridStatusMessageCell({ value: status }) {
             message)));
 }
 exports.default = GridStatusMessageCell;
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     clampText: {
         maxWidth: 400,
     },

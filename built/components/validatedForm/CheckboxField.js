@@ -21,5 +21,5 @@ function CheckboxField(_a) {
     var { value } = _a, restProps = __rest(_a, ["value"]);
     return (react_1.default.createElement(Checkbox_1.default, Object.assign({}, restProps, { textWeight: "light", checked: !!value })));
 }
-exports.default = withFormContext_1.default(CheckboxField);
+exports.default = (0, withFormContext_1.default)(CheckboxField);
 //# sourceMappingURL=CheckboxField.js.map

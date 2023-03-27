@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -14,7 +18,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -50,7 +54,7 @@ const GridToolbar_1 = __importDefault(require("./GridToolbar"));
 const Progress_1 = __importDefault(require("../../components/progress/Progress"));
 const useGridSelectableRows_1 = __importDefault(require("./hooks/useGridSelectableRows"));
 const useGridManagedColumns_1 = __importDefault(require("./hooks/useGridManagedColumns"));
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     noTableBorder: {
         borderColor: 'transparent !important',
         borderWidth: '0 !important',
@@ -112,32 +116,32 @@ exports.GridContext = react_1.default.createContext({});
  * Convenience shortcut for `useContext<GridContextType<T>>(GridContext)`
  */
 function useGridContext() {
-    return react_1.useContext(exports.GridContext);
+    return (0, react_1.useContext)(exports.GridContext);
 }
 exports.useGridContext = useGridContext;
 function Grid(configProps) {
     var _a;
     const classes = useStyles(configProps);
     const { onRefresh, emptyContent = 'No data found', disableToolbar = false, extraToolbarContent, loading = false, loadingMessage, compact, label, ToolbarContainer, showItemsCountInLabel, tooltip, } = configProps;
-    const rows = useGridRows_1.default(configProps);
-    const [rowsWithActions, rowActionsProps] = useGridRowMenu_1.default(rows, configProps);
-    const [selectableRows, rowBatchActionsProps] = useGridSelectableRows_1.default(rowsWithActions, configProps);
-    const [filteredRows, filteringProps] = useGridFiltering_1.default(selectableRows, configProps);
-    const [sortedRows, sortingProps] = useGridSorting_1.default(filteredRows, configProps);
-    const [pageRows, paginationProps] = useGridPagination_1.default(sortedRows, configProps);
-    const [colManagedRows, columnProps] = useGridManagedColumns_1.default(pageRows, configProps);
-    const contextValue = react_1.useMemo(() => ({
+    const rows = (0, useGridRows_1.default)(configProps);
+    const [rowsWithActions, rowActionsProps] = (0, useGridRowMenu_1.default)(rows, configProps);
+    const [selectableRows, rowBatchActionsProps] = (0, useGridSelectableRows_1.default)(rowsWithActions, configProps);
+    const [filteredRows, filteringProps] = (0, useGridFiltering_1.default)(selectableRows, configProps);
+    const [sortedRows, sortingProps] = (0, useGridSorting_1.default)(filteredRows, configProps);
+    const [pageRows, paginationProps] = (0, useGridPagination_1.default)(sortedRows, configProps);
+    const [colManagedRows, columnProps] = (0, useGridManagedColumns_1.default)(pageRows, configProps);
+    const contextValue = (0, react_1.useMemo)(() => ({
         triggerRefresh: onRefresh,
         selectedItems: rowBatchActionsProps.selectedItems,
         clearSelectedRows: rowBatchActionsProps.clearSelectedRows,
     }), [onRefresh, rowBatchActionsProps.selectedItems, rowBatchActionsProps.clearSelectedRows]);
     return (react_1.default.createElement(Progress_1.default, { overlay: true, loading: loading, message: loadingMessage },
         react_1.default.createElement(exports.GridContext.Provider, { value: contextValue },
-            react_1.default.createElement("div", { className: clsx_1.default(classes.gridContainer, 'grid-container', {
+            react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.gridContainer, 'grid-container', {
                     [classes.noTableBorder]: (!colManagedRows.length && compact) || (compact && disableToolbar),
                 }) },
                 disableToolbar ? null : (react_1.default.createElement(GridToolbar_1.default, Object.assign({ ToolbarContainer: ToolbarContainer, compact: compact, label: label, showItemsCountInLabel: showItemsCountInLabel, itemsCount: paginationProps === null || paginationProps === void 0 ? void 0 : paginationProps.itemsCount, onRefresh: onRefresh, extraToolbarContent: extraToolbarContent, tooltip: tooltip }, columnProps, filteringProps, rowBatchActionsProps))),
-                react_1.default.createElement("section", { className: clsx_1.default(classes.gridBody, 'thin-scrollbar') }, colManagedRows.length ? (react_1.default.createElement("table", { className: classes.grid },
+                react_1.default.createElement("section", { className: (0, clsx_1.default)(classes.gridBody, 'thin-scrollbar') }, colManagedRows.length ? (react_1.default.createElement("table", { className: classes.grid },
                     react_1.default.createElement(GridHeader_1.default, Object.assign({}, columnProps, sortingProps, rowBatchActionsProps, { rowMenuItemsLength: (_a = rowActionsProps.rowMenuItems) === null || _a === void 0 ? void 0 : _a.length, pageRows: pageRows })),
                     react_1.default.createElement("tbody", null, colManagedRows.map((_a, index) => {
                         var { key } = _a, rowProps = __rest(_a, ["key"]);
