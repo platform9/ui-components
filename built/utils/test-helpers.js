@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const misc_1 = require("./misc");
-const generateTestId = misc_1.memoize((...params) => params
+const generateTestId = (0, misc_1.memoize)((...params) => params
     .join('-')
     .toLowerCase()
     .replace(/[^0-9a-z]/gi, '-')

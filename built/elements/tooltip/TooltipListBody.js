@@ -11,7 +11,7 @@ const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeI
 const CopyToClipboard_1 = __importDefault(require("../../components/CopyToClipboard"));
 function TooltipListBody({ items, className, nameKey, renderIcon, }) {
     const classes = useStyles({});
-    return (react_1.default.createElement("ul", { className: clsx_1.default(classes.tooltipListBody, className) }, items.map((item, idx) => (react_1.default.createElement(TooltipListItem, { key: idx, item: item, nameKey: nameKey, isFirst: idx === 0, isLast: idx === items.length - 1, Icon: renderIcon })))));
+    return (react_1.default.createElement("ul", { className: (0, clsx_1.default)(classes.tooltipListBody, className) }, items.map((item, idx) => (react_1.default.createElement(TooltipListItem, { key: idx, item: item, nameKey: nameKey, isFirst: idx === 0, isLast: idx === items.length - 1, Icon: renderIcon })))));
 }
 exports.default = TooltipListBody;
 function TooltipListItem(props) {
@@ -20,14 +20,14 @@ function TooltipListItem(props) {
     const text = nameKey ? item[nameKey] : item;
     // eslint-disable-next-line no-extra-boolean-cast
     const iconContent = !!Icon ? (react_1.default.createElement("div", { className: classes.copyContainer },
-        react_1.default.createElement(Icon, Object.assign({}, item, { className: clsx_1.default(classes.tooltipText, classes.tooltipCopyIcon) })))) : (react_1.default.createElement(CopyToClipboard_1.default, { copyText: text, copyIcon: false, inline: false, triggerWithChild: true },
+        react_1.default.createElement(Icon, Object.assign({}, item, { className: (0, clsx_1.default)(classes.tooltipText, classes.tooltipCopyIcon) })))) : (react_1.default.createElement(CopyToClipboard_1.default, { copyText: text, copyIcon: false, inline: false, triggerWithChild: true },
         react_1.default.createElement("div", { className: classes.copyContainer },
-            react_1.default.createElement(FontAwesomeIcon_1.default, { size: "md", className: clsx_1.default(classes.tooltipText, classes.tooltipCopyIcon) }, "copy"))));
+            react_1.default.createElement(FontAwesomeIcon_1.default, { size: "md", className: (0, clsx_1.default)(classes.tooltipText, classes.tooltipCopyIcon) }, "copy"))));
     return (react_1.default.createElement("li", { className: classes.tooltipListItem },
         react_1.default.createElement(Text_1.default, { variant: "body2", className: classes.tooltipText, noWrap: true }, text),
         iconContent));
 }
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     tooltipListBody: {
         margin: 0,
         padding: 0,

@@ -13,6 +13,7 @@ interface Props extends Omit<ButtonProps, 'variant' | 'size'> {
   icon?: string
   title?: string
   message?: string
+  solidIcon?: boolean
 }
 
 const CardButton = ({
@@ -22,6 +23,7 @@ const CardButton = ({
   icon = undefined,
   disabled = false,
   className = undefined,
+  solidIcon = true,
   ...props
 }: Props) => {
   const classes = useStyles({})
@@ -31,7 +33,7 @@ const CardButton = ({
       onClick={disabled ? undefined : onClick}
       {...props}
     >
-      <FontAwesomeIcon className={classes.icon} solid>
+      <FontAwesomeIcon className={classes.icon} solid={solidIcon}>
         {icon}
       </FontAwesomeIcon>
       <Text variant="subtitle2" className={classes.title}>

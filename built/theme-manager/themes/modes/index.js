@@ -3,13 +3,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.themesByKey = exports.ThemeLabels = void 0;
+exports.themesByKey = exports.ThemeLabels = exports.default = void 0;
 const default_1 = __importDefault(require("./default"));
 const light_1 = __importDefault(require("./light"));
 const dark_1 = __importDefault(require("./dark"));
 const ultraDark_1 = __importDefault(require("./ultraDark"));
 var default_2 = require("./default");
-Object.defineProperty(exports, "default", { enumerable: true, get: function () { return default_2.default; } });
+Object.defineProperty(exports, "default", { enumerable: true, get: function () { return __importDefault(default_2).default; } });
 var ThemeLabels;
 (function (ThemeLabels) {
     ThemeLabels["default"] = "Default";

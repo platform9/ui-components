@@ -26,6 +26,6 @@ interface PropsWithOpenFlag extends BaseModalFormProps {
     open: boolean;
     route?: undefined;
 }
-declare type ModalFormProps = PropsWithOpenRoute | PropsWithOpenFlag;
+type ModalFormProps = PropsWithOpenRoute | PropsWithOpenFlag;
 export default function ModalForm({ children, onSubmit, disableSubmit, submitTitle, fieldSetter, submitting, loading, loadingMessage, error, customErrorComponent, route, open, withAddonManager, initialValues, ...props }: PropsWithChildren<ModalFormProps>): JSX.Element;
 export {};

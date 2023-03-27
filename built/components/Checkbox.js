@@ -15,9 +15,9 @@ const styles = (theme) => ({
     },
 });
 const Checked = ({ classes }) => (react_1.default.createElement(FontAwesomeIcon_1.default, { className: classes.checked, size: "xs", solid: true }, "check-square"));
-const StyledChecked = styles_1.withStyles(styles)(Checked);
+const StyledChecked = (0, styles_1.withStyles)(styles)(Checked);
 const UnChecked = () => react_1.default.createElement(FontAwesomeIcon_1.default, { size: "xs" }, "square");
 const Indeterminate = () => react_1.default.createElement(IndeterminateCheckBox_1.default, null);
-const Checkbox = (props) => (react_1.default.createElement(core_1.Checkbox, Object.assign({ "data-testid": test_helpers_1.default(props.name), icon: react_1.default.createElement(UnChecked, null), checkedIcon: react_1.default.createElement(StyledChecked, null), indeterminateIcon: react_1.default.createElement(Indeterminate, null) }, props)));
+const Checkbox = (props) => (react_1.default.createElement(core_1.Checkbox, Object.assign({ "data-testid": (0, test_helpers_1.default)(props.name), icon: react_1.default.createElement(UnChecked, null), checkedIcon: react_1.default.createElement(StyledChecked, null), indeterminateIcon: react_1.default.createElement(Indeterminate, null) }, props)));
 exports.default = Checkbox;
 //# sourceMappingURL=Checkbox.js.map

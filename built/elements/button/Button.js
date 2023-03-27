@@ -30,19 +30,19 @@ const Button = (_a) => {
     const isDropdown = rightIcon === 'angle-down';
     const classes = useStyles({ variant, size, hasLeftIcon, isDropdown, hasRightIcon });
     const spanTextVariant = size === 'large' ? 'buttonPrimary' : 'buttonSecondary';
-    return (react_1.default.createElement("button", Object.assign({ "data-testid": test_helpers_1.default(children), className: clsx_1.default(classes.button, className, {
+    return (react_1.default.createElement("button", Object.assign({ "data-testid": (0, test_helpers_1.default)(children), className: (0, clsx_1.default)(classes.button, className, {
             disabled,
             loading,
             [classes.isDropdown]: !!isDropdown,
         }), disabled: disabled || loading, onClick: disabled || loading ? undefined : onClick }, rest),
-        react_1.default.createElement(Text_1.default, { className: clsx_1.default('button-text', classes.buttonText, {
+        react_1.default.createElement(Text_1.default, { className: (0, clsx_1.default)('button-text', classes.buttonText, {
                 [classes.iconText]: hasLeftIcon || hasRightIcon,
             }), component: "div", variant: spanTextVariant },
             !!icon && !loading && (react_1.default.createElement(FontAwesomeIcon_1.default, { size: "md", brand: iconBrand, solid: solidIcon, className: "button-icon" }, icon)),
             loading ? (react_1.default.createElement(Progress_1.default, { inline: true, overlay: false, message: null, loading: true, inlineClassName: classes.inheritColors })) : (children),
             !!rightIcon && !loading && (react_1.default.createElement(FontAwesomeIcon_1.default, { size: "md", brand: iconBrand, className: "button-icon button-right-icon" }, rightIcon)))));
 };
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     isDropdown: {
         minWidth: 150,
     },
@@ -130,5 +130,5 @@ const useStyles = styles_1.makeStyles((theme) => ({
         },
     },
 }));
-exports.default = fp_1.compose(InfoTooltip_1.withInfoTooltip)(Button);
+exports.default = (0, fp_1.compose)(InfoTooltip_1.withInfoTooltip)(Button);
 //# sourceMappingURL=Button.js.map

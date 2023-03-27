@@ -8,14 +8,14 @@ const fp_1 = require("../../../utils/fp");
 const GridDefaultActionButton_1 = __importDefault(require("../../../elements/grid/buttons/GridDefaultActionButton"));
 const misc_1 = require("../../../utils/misc");
 function useGridRowMenu(rows, { rowMenuItems: rowActionsSpec = fp_1.emptyArr, onRefresh, rowMenuOffset = {}, showRowMenuForSingleRowActions, }) {
-    const rowMenuItems = react_1.useMemo(() => {
+    const rowMenuItems = (0, react_1.useMemo)(() => {
         return rowActionsSpec.map(({ cond, RowMenuButton = GridDefaultActionButton_1.default, label, refreshAfterSuccess, onComplete, handleClick, icon, hideIfDisabled = false, }, idx) => ({
             key: idx,
             RowMenuButton,
             icon,
             label,
             hideIfDisabled,
-            getIsDisabled: misc_1.memoize((currentItem) => cond && !cond(currentItem)),
+            getIsDisabled: (0, misc_1.memoize)((currentItem) => cond && !cond(currentItem)),
             triggerAction: async (currentItem) => {
                 const success = handleClick ? await handleClick(currentItem) : true;
                 if (success && refreshAfterSuccess && onRefresh) {

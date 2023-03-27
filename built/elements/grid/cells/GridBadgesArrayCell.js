@@ -26,7 +26,7 @@ function createGridBadgesArrayCell({ badgeVariant, maxItems, }) {
     };
 }
 exports.createGridBadgesArrayCell = createGridBadgesArrayCell;
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     cell: {
         display: 'grid',
         gridAutoFlow: 'column',

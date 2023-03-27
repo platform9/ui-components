@@ -5,6 +5,7 @@ interface Props extends Omit<ButtonProps, 'variant' | 'size'> {
     icon?: string;
     title?: string;
     message?: string;
+    solidIcon?: boolean;
 }
-declare const CardButton: ({ onClick, title, message, icon, disabled, className, ...props }: Props) => JSX.Element;
+declare const CardButton: ({ onClick, title, message, icon, disabled, className, solidIcon, ...props }: Props) => JSX.Element;
 export default CardButton;

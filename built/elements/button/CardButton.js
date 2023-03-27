@@ -21,14 +21,14 @@ const Text_1 = __importDefault(require("../../elements/Text"));
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
 const colorHelpers_1 = require("../../utils/colorHelpers");
 const CardButton = (_a) => {
-    var { onClick, title, message, icon = undefined, disabled = false, className = undefined } = _a, props = __rest(_a, ["onClick", "title", "message", "icon", "disabled", "className"]);
+    var { onClick, title, message, icon = undefined, disabled = false, className = undefined, solidIcon = true } = _a, props = __rest(_a, ["onClick", "title", "message", "icon", "disabled", "className", "solidIcon"]);
     const classes = useStyles({});
-    return (react_1.default.createElement("button", Object.assign({ className: clsx_1.default(classes.button, className, { disabled }), onClick: disabled ? undefined : onClick }, props),
-        react_1.default.createElement(FontAwesomeIcon_1.default, { className: classes.icon, solid: true }, icon),
+    return (react_1.default.createElement("button", Object.assign({ className: (0, clsx_1.default)(classes.button, className, { disabled }), onClick: disabled ? undefined : onClick }, props),
+        react_1.default.createElement(FontAwesomeIcon_1.default, { className: classes.icon, solid: solidIcon }, icon),
         react_1.default.createElement(Text_1.default, { variant: "subtitle2", className: classes.title }, title),
         react_1.default.createElement(Text_1.default, { variant: "body1", className: classes.body }, message)));
 };
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     button: {
         boxSizing: 'border-box',
         padding: '16px 16px 16px 24px',
@@ -51,11 +51,13 @@ const useStyles = styles_1.makeStyles((theme) => ({
         '&:hover': {
             backgroundColor: theme.components.iconButton.activeBackground,
             borderColor: theme.components.iconButton.activeBorder,
+            // color: theme.components.iconButton.activeColor,
         },
         '&.disabled': {
             cursor: 'not-allowed',
             backgroundColor: theme.components.iconButton.disabledBackground,
             borderColor: theme.components.iconButton.disabledBorder,
+            // color: theme.components.iconButton.disabledColor,
         },
     },
     icon: {
@@ -67,7 +69,7 @@ const useStyles = styles_1.makeStyles((theme) => ({
         gridArea: 'card-button-icon',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: colorHelpers_1.hexToRgbaCss(theme.components.button.primary.background, 0.1),
+        backgroundColor: (0, colorHelpers_1.hexToRgbaCss)(theme.components.button.primary.background, 0.1),
         color: theme.components.button.primary.background,
     },
     title: {

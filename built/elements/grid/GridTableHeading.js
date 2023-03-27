@@ -17,14 +17,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const styles_1 = require("@material-ui/styles");
 const fp_1 = require("../../utils/fp");
-exports.default = styles_1.styled((_a) => {
+exports.default = (0, styles_1.styled)((_a) => {
     var { sortingDisabled, width, children } = _a, props = __rest(_a, ["sortingDisabled", "width", "children"]);
     return (react_1.default.createElement("th", Object.assign({}, props), children));
 })(({ theme, width = 'small', sortingDisabled }) => ({
     position: 'relative',
     border: 0,
     margin: 0,
-    minWidth: fp_1.switchCase({
+    minWidth: (0, fp_1.switchCase)({
         small: 80,
         medium: 160,
         large: 340,

@@ -11,7 +11,7 @@ const clsx_1 = __importDefault(require("clsx"));
 const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 const fp_1 = require("../../utils/fp");
 const Divider_1 = __importDefault(require("../../elements/Divider"));
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     reviewTable: {
         borderSpacing: '8px',
         tableLayout: 'fixed',
@@ -43,11 +43,11 @@ const useStyles = styles_1.makeStyles((theme) => ({
 }));
 const DataRow = ({ label, value, data, renderArray = false, render = ramda_1.identity, key, jointRender = undefined, }) => {
     const classes = useStyles({});
-    return (react_1.default.createElement("tr", { "data-testid": test_helpers_1.default(label, 'row') },
-        react_1.default.createElement("td", { "data-testid": test_helpers_1.default(label, 'fieldname'), className: classes.rowLabel },
+    return (react_1.default.createElement("tr", { "data-testid": (0, test_helpers_1.default)(label, 'row') },
+        react_1.default.createElement("td", { "data-testid": (0, test_helpers_1.default)(label, 'fieldname'), className: classes.rowLabel },
             react_1.default.createElement(Text_1.default, { variant: "body2", component: "span" }, label)),
-        react_1.default.createElement("td", { "data-testid": test_helpers_1.default(label, 'fieldvalue') },
-            react_1.default.createElement(Text_1.default, { variant: "caption1", className: clsx_1.default(classes.rowValue, value === 'Not Enabled' && classes.disabledText), component: "span", key: key }, !renderArray && Array.isArray(value)
+        react_1.default.createElement("td", { "data-testid": (0, test_helpers_1.default)(label, 'fieldvalue') },
+            react_1.default.createElement(Text_1.default, { variant: "caption1", className: (0, clsx_1.default)(classes.rowValue, value === 'Not Enabled' && classes.disabledText), component: "span", key: key }, !renderArray && Array.isArray(value)
                 ? value.map((val, idx) => (react_1.default.createElement(Text_1.default, { key: idx, variant: "caption1" },
                     jointRender
                         ? jointRender(val, data)
@@ -67,25 +67,25 @@ const FormReviewTable = ({ data, columns, className }) => {
         if (hide && hide(data)) {
             continue;
         }
-        const value = fp_1.pathStrOr('-', id, data);
+        const value = (0, fp_1.pathStrOr)('-', id, data);
         if (header) {
-            elems.push(react_1.default.createElement("th", { "data-testid": test_helpers_1.default(id, 'title'), className: classes.header },
+            elems.push(react_1.default.createElement("th", { "data-testid": (0, test_helpers_1.default)(id, 'title'), className: classes.header },
                 react_1.default.createElement(Text_1.default, { component: "span", className: classes.bold }, header),
                 react_1.default.createElement(Text_1.default, { component: "span", className: classes.subHeader }, subHeader)));
         }
         if (insertDivider) {
             // We have a new section, insert a divider
-            elems.push(react_1.default.createElement("tr", { "data-testid": test_helpers_1.default(column.id, 'divider'), key: `${column.id}-divider` },
+            elems.push(react_1.default.createElement("tr", { "data-testid": (0, test_helpers_1.default)(column.id, 'divider'), key: `${column.id}-divider` },
                 react_1.default.createElement("td", { colSpan: 2 },
                     react_1.default.createElement(Divider_1.default, { className: classes.divider }))));
         }
         if (column.title) {
-            elems.push(react_1.default.createElement("th", { "data-testid": test_helpers_1.default(column.id, 'title'), className: classes.rowLabel },
+            elems.push(react_1.default.createElement("th", { "data-testid": (0, test_helpers_1.default)(column.id, 'title'), className: classes.rowLabel },
                 react_1.default.createElement(Text_1.default, { variant: "caption1" }, column.title)));
         }
         elems.push(RowComponent ? (react_1.default.createElement(RowComponent, Object.assign({ key: `row-${id}-${value}` }, column, { value: value }))) : (react_1.default.createElement(DataRow, Object.assign({ key: `row-${id}-${value}` }, column, { value: value, data: data }))));
     }
-    return (react_1.default.createElement("table", { className: clsx_1.default(className, classes.reviewTable) },
+    return (react_1.default.createElement("table", { className: (0, clsx_1.default)(className, classes.reviewTable) },
         react_1.default.createElement("tbody", null, elems)));
 };
 exports.default = FormReviewTable;

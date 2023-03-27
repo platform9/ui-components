@@ -1,1 +1,1 @@
-{"version":3,"file":"DropdownLabel.js","sourceRoot":"","sources":["../../../src/elements/dropdown/DropdownLabel.tsx"],"names":[],"mappings":";;AAAA,gDAA4C;AAE5C,kBAAe,eAAM,CAAC,OAAO,CAAC,CAAC;IAC7B,UAAU,EAAE,MAAM;IAClB,OAAO,EAAE,OAAO;IAChB,YAAY,EAAE,EAAE;CACjB,CAAC,CAAA"}
+{"version":3,"file":"DropdownLabel.js","sourceRoot":"","sources":["../../../src/elements/dropdown/DropdownLabel.tsx"],"names":[],"mappings":";;AAAA,gDAA4C;AAE5C,kBAAe,IAAA,eAAM,EAAC,OAAO,CAAC,CAAC;IAC7B,UAAU,EAAE,MAAM;IAClB,OAAO,EAAE,OAAO;IAChB,YAAY,EAAE,EAAE;CACjB,CAAC,CAAA"}

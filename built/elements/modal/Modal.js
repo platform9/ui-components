@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -14,7 +18,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -49,9 +53,9 @@ function Modal(_a) {
     const animationDuration = panel === 'drawer' ? 350 : 200;
     const hasFooter = !!footer;
     const classes = useStyles({ hasFooter, slideFrom, panel, animationDuration, maxWidth });
-    const containerElem = react_1.useMemo(() => document.getElementById(anchorId), [anchorId]);
-    const [openState, setOpenState] = react_1.useState(false);
-    react_1.useEffect(() => {
+    const containerElem = (0, react_1.useMemo)(() => document.getElementById(anchorId), [anchorId]);
+    const [openState, setOpenState] = (0, react_1.useState)(false);
+    (0, react_1.useEffect)(() => {
         if (open && !openState) {
             // give the first render cycle time before kicking off the animation
             setTimeout(() => {
@@ -65,28 +69,28 @@ function Modal(_a) {
             }, animationDuration);
         }
     }, [open]);
-    const handleBackdropClick = react_1.useCallback((e) => {
+    const handleBackdropClick = (0, react_1.useCallback)((e) => {
         onBackdropClick ? onBackdropClick(e) : onClose(e);
     }, [onClose, onBackdropClick]);
     if (!open && !openState) {
         return null;
     }
-    const infoComponent = !info ? null : typeof info === 'string' ? (react_1.default.createElement(Text_1.default, { "data-testid": test_helpers_1.default('test', 'completion', 'status'), variant: "body1" }, info)) : (info);
-    const content = (react_1.default.createElement("div", { className: clsx_1.default(classes.modalPage, {
+    const infoComponent = !info ? null : typeof info === 'string' ? (react_1.default.createElement(Text_1.default, { "data-testid": (0, test_helpers_1.default)('test', 'completion', 'status'), variant: "body1" }, info)) : (info);
+    const content = (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.modalPage, {
             [classes.isNotOpen]: !open,
             [classes.isOpen]: openState && open,
         }) },
-        react_1.default.createElement("div", { className: clsx_1.default({
+        react_1.default.createElement("div", { className: (0, clsx_1.default)({
                 [classes.overlay]: showOverlay,
             }), onClick: handleBackdropClick }),
-        react_1.default.createElement("article", Object.assign({ onClick: onClick, className: clsx_1.default(className, classes.modalContainer, { open: openState && open }) }, rest),
-            (title || infoComponent) && (react_1.default.createElement(Text_1.default, { "data-testid": test_helpers_1.default(title, 'grid', 'text'), component: "header", variant: "h4", className: clsx_1.default('modal-header', classes.gridContainer, classes.modalHeader) },
+        react_1.default.createElement("article", Object.assign({ onClick: onClick, className: (0, clsx_1.default)(className, classes.modalContainer, { open: openState && open }) }, rest),
+            (title || infoComponent) && (react_1.default.createElement(Text_1.default, { "data-testid": (0, test_helpers_1.default)(title, 'grid', 'text'), component: "header", variant: "h4", className: (0, clsx_1.default)('modal-header', classes.gridContainer, classes.modalHeader) },
                 react_1.default.createElement("div", null,
                     react_1.default.createElement("span", null, title),
                     entityName && react_1.default.createElement("span", { className: classes.entityName }, ` (${entityName})`)),
                 infoComponent)),
-            react_1.default.createElement("section", { className: clsx_1.default('modal-body', classes.modalBody) }, children),
-            hasFooter && (react_1.default.createElement(Text_1.default, { component: "footer", className: clsx_1.default('modal-footer', classes.gridContainer, classes.modalFooter) }, footer)))));
+            react_1.default.createElement("section", { className: (0, clsx_1.default)('modal-body', classes.modalBody) }, children),
+            hasFooter && (react_1.default.createElement(Text_1.default, { component: "footer", className: (0, clsx_1.default)('modal-footer', classes.gridContainer, classes.modalFooter) }, footer)))));
     return react_dom_1.default.createPortal(content, containerElem);
 }
 exports.default = Modal;
@@ -95,7 +99,7 @@ const getTranslateAxis = (slideFrom, value) => {
     const posNegAxis = slideFrom === 'left' || slideFrom === 'top' ? '-' : '';
     return `translate${translateAxis}(${posNegAxis}${value}${value === 0 ? '' : '%'})`;
 };
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     modalPage: {
         position: 'fixed',
         top: 0,
@@ -126,7 +130,7 @@ const useStyles = styles_1.makeStyles((theme) => ({
         bottom: 0,
         left: 0,
         right: 0,
-        backgroundColor: colorHelpers_1.hexToRgbaCss(theme.components.frame.background, 0.75),
+        backgroundColor: (0, colorHelpers_1.hexToRgbaCss)(theme.components.frame.background, 0.75),
         zIndex: 1,
         cursor: 'pointer',
     },

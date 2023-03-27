@@ -24,7 +24,7 @@ exports.defaultThemeState = {
 };
 exports.themeKey = 'theme';
 const createThemeSlice = (theme = exports.defaultThemeState) => {
-    const { name: customThemeKey, reducer: themeReducer, actions: themeActions, } = toolkit_1.createSlice({
+    const { name: customThemeKey, reducer: themeReducer, actions: themeActions, } = (0, toolkit_1.createSlice)({
         name: exports.themeKey,
         initialState: theme,
         reducers: {
@@ -32,11 +32,11 @@ const createThemeSlice = (theme = exports.defaultThemeState) => {
                 return Object.assign(Object.assign({}, state), { global: payload });
             },
             updateThemeComponent: (state, { payload }) => {
-                return Object.assign(Object.assign({}, state), { components: helpers_1.generateComponentColors(payload, state.components) });
+                return Object.assign(Object.assign({}, state), { components: (0, helpers_1.generateComponentColors)(payload, state.components) });
             },
             // @ts-ignore
             updateTheme: (state, { payload }) => {
-                return ramda_1.mergeLeft(payload, state);
+                return (0, ramda_1.mergeLeft)(payload, state);
             },
             clearTheme: () => {
                 return default_1.default;

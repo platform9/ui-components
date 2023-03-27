@@ -1,5 +1,5 @@
 import { ParsedGridRow } from './useGridRows';
-export declare type OrderDirection = 'asc' | 'desc';
+export type OrderDirection = 'asc' | 'desc';
 export interface SortingState {
     orderBy: string;
     orderDirection: OrderDirection;

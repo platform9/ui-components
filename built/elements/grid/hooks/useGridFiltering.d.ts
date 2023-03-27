@@ -13,7 +13,7 @@ export interface GridFilteringProps<GF extends Record<string, unknown>, F extend
     globalFilters: GridFilterProps<GF>[];
     filters: GridFilterProps<F>[];
 }
-declare type FilterValueChangeHandler<V = unknown> = (value: V) => void | Promise<void>;
+type FilterValueChangeHandler<V = unknown> = (value: V) => void | Promise<void>;
 export interface GridFilterComponentProps<V, F> {
     value: V;
     onChange: (value: V) => void;

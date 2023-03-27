@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -14,7 +18,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -37,7 +41,7 @@ const react_1 = __importStar(require("react"));
 const styles_1 = require("@material-ui/styles");
 const clsx_1 = __importDefault(require("clsx"));
 const Text_1 = __importDefault(require("../elements/Text"));
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     table: {
         borderSpacing: ({ rowSpacing }) => `0px ${rowSpacing}px`,
         width: '100%',
@@ -73,13 +77,13 @@ const useStyles = styles_1.makeStyles((theme) => ({
 const KeyValue = ({ pair, limitValueLength = false, alignKeyRight = true }) => {
     const { key = '', value = '', render = null } = pair || {};
     const classes = useStyles({ alignKeyRight });
-    const [showAll, setShowAll] = react_1.useState(false);
+    const [showAll, setShowAll] = (0, react_1.useState)(false);
     const valueToShow = limitValueLength && !showAll && value.length > 350 ? value.substring(0, 350) : value;
     return (react_1.default.createElement(Text_1.default, { variant: "body2", component: "tr", key: key },
-        react_1.default.createElement("td", { className: clsx_1.default(classes.td, classes.key) },
+        react_1.default.createElement("td", { className: (0, clsx_1.default)(classes.td, classes.key) },
             key,
             ":"),
-        render ? (react_1.default.createElement("td", { className: clsx_1.default(classes.td, classes.value) }, render(value))) : (react_1.default.createElement("td", { className: clsx_1.default(classes.td, classes.value) },
+        render ? (react_1.default.createElement("td", { className: (0, clsx_1.default)(classes.td, classes.value) }, render(value))) : (react_1.default.createElement("td", { className: (0, clsx_1.default)(classes.td, classes.value) },
             react_1.default.createElement(Text_1.default, { variant: "body2", component: "div" }, valueToShow),
             limitValueLength && value.length > 350 && (react_1.default.createElement("div", { className: classes.showMoreButton, onClick: () => setShowAll(!showAll) },
                 react_1.default.createElement(Text_1.default, { className: classes.showMoreText, variant: "caption1" }, showAll ? 'Show Less' : 'Show More')))))));

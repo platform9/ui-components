@@ -15,18 +15,18 @@ const menuOffset = {
     vertical: 0,
     horizontal: -100,
 };
-const GridColumnsButton = styles_2.styled(({ className, onClick }) => (react_1.default.createElement(Text_1.default, { noWrap: true, onClick: onClick, component: "div", className: className },
+const GridColumnsButton = (0, styles_2.styled)(({ className, onClick }) => (react_1.default.createElement(Text_1.default, { noWrap: true, onClick: onClick, component: "div", className: className },
     react_1.default.createElement(FontAwesomeIcon_1.default, null, "gear"),
     "Customize")))(({ theme }) => (Object.assign(Object.assign({}, theme.typography.inputTable), { display: 'grid', gridAutoFlow: 'column', cursor: 'pointer', alignItems: 'center', padding: theme.spacing(1, 2), borderRadius: 4, gap: 8, '&:hover': {
         backgroundColor: theme.components.table.hoverBackground,
     } })));
 function GridColumnsPopover({ columnTogglers }) {
     const classes = useStyles({});
-    const [isOpen, toggleIsOpen] = useToggler_1.default();
+    const [isOpen, toggleIsOpen] = (0, useToggler_1.default)();
     return (react_1.default.createElement(Menu_1.default, { id: "grid-columns-menu", origin: "top right", offset: menuOffset, className: classes.menu, anchor: react_1.default.createElement(GridColumnsButton, { onClick: toggleIsOpen }), open: isOpen, onClose: toggleIsOpen }, columnTogglers.map(({ key, label, visible, disabled, toggleColumn }) => (react_1.default.createElement(Checkbox_1.default, { key: key, label: label, disabled: disabled, checked: visible, onChange: toggleColumn })))));
 }
 exports.default = GridColumnsPopover;
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     menu: {
         '& .menu-popover': {
             minWidth: 150,

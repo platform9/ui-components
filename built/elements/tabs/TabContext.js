@@ -9,7 +9,8 @@ exports.TabContext = react_1.default.createContext({
     activeTab: null,
     addTab: (fields) => null,
 });
-exports.withTabContext = (Component) => (props) => {
+const withTabContext = (Component) => (props) => {
     return (react_1.default.createElement(exports.TabContext.Consumer, null, ({ activeTab, addTab }) => react_1.default.createElement(Component, Object.assign({}, props, { activeTab: activeTab, addTab: addTab }))));
 };
+exports.withTabContext = withTabContext;
 //# sourceMappingURL=TabContext.js.map

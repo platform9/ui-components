@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -14,7 +18,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -44,7 +48,7 @@ const fp_1 = require("../../utils/fp");
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
 const Text_1 = __importDefault(require("../../elements/Text"));
 const tooltip_1 = __importDefault(require("../../elements/tooltip"));
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     root: {
         paddingRight: theme.spacing(1),
         marginBottom: theme.spacing(1),
@@ -104,9 +108,9 @@ const FilterDropdown = ({ field, type = '', label = '', onChange, value = '', it
 };
 const CardTableToolbar = ({ title, sorting = [], orderDirection, orderBy, filters = [], filterValues, onSortChange, onDirectionSwitch, onFilterUpdate, onRefresh, onSearchChange, searchTerm, }) => {
     const classes = useStyles({});
-    const sortDirection = react_1.useMemo(() => onDirectionSwitch && (react_1.default.createElement("div", null,
+    const sortDirection = (0, react_1.useMemo)(() => onDirectionSwitch && (react_1.default.createElement("div", null,
         react_1.default.createElement(FontAwesomeIcon_1.default, { className: classes.button, solid: true, size: "lg", "aria-label": "Change direction", onClick: onDirectionSwitch }, orderDirection === 'asc' ? 'arrow-down' : 'arrow-up'))), [orderDirection, onDirectionSwitch]);
-    const refreshButton = react_1.useMemo(() => onRefresh && (react_1.default.createElement(tooltip_1.default, { message: "Refresh" },
+    const refreshButton = (0, react_1.useMemo)(() => onRefresh && (react_1.default.createElement(tooltip_1.default, { message: "Refresh" },
         react_1.default.createElement(FontAwesomeIcon_1.default, { className: classes.button, solid: true, size: "lg", "aria-label": "Refresh list", onClick: onRefresh }, 'sync'))), [onRefresh]);
     return (react_1.default.createElement(core_1.Toolbar, { className: classes.root },
         title && (react_1.default.createElement("div", null,
@@ -124,7 +128,7 @@ const CardTableToolbar = ({ title, sorting = [], orderDirection, orderBy, filter
                 : filters),
             react_1.default.createElement("div", { className: classes.controls },
                 sorting.length && (react_1.default.createElement(react_1.default.Fragment, null,
-                    react_1.default.createElement(AsyncDropdown_1.default, { className: classes.sortBy, disabled: false, showAll: false, name: 'sort', label: 'Sort By', items: fp_1.projectAs({ label: 'label', value: 'field' }, sorting), value: orderBy || '', onChange: onSortChange }),
+                    react_1.default.createElement(AsyncDropdown_1.default, { className: classes.sortBy, disabled: false, showAll: false, name: 'sort', label: 'Sort By', items: (0, fp_1.projectAs)({ label: 'label', value: 'field' }, sorting), value: orderBy || '', onChange: onSortChange }),
                     sortDirection)),
                 onSearchChange && (react_1.default.createElement(SearchBar_1.default, { className: classes.search, onSearchChange: onSearchChange, searchTerm: searchTerm })),
                 refreshButton))));
@@ -135,7 +139,7 @@ exports.filterSpecPropType = prop_types_1.default.shape({
     type: prop_types_1.default.oneOf(['select', 'multiselect', 'checkbox', 'custom']).isRequired,
     render: prop_types_1.default.func,
     filterWith: prop_types_1.default.func,
-    items: prop_types_1.default.array,
+    items: prop_types_1.default.array, // Array of possible values (only when using select/multiselect)
 });
 CardTableToolbar.propTypes = {
     orderDirection: prop_types_1.default.oneOf(['asc', 'desc']),

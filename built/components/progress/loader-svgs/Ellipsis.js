@@ -14,7 +14,7 @@ const inlineEllipsisStyle = {
     backgroundRepeat: 'initial initial',
 };
 function Ellipsis({ className = undefined }) {
-    return (react_1.default.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", className: clsx_1.default('loading-ellipsis-animation', className), style: inlineEllipsisStyle, width: "29px", height: "29px", viewBox: "0 0 100 100", preserveAspectRatio: "xMidYMid" },
+    return (react_1.default.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", className: (0, clsx_1.default)('loading-ellipsis-animation', className), style: inlineEllipsisStyle, width: "29px", height: "29px", viewBox: "0 0 100 100", preserveAspectRatio: "xMidYMid" },
         react_1.default.createElement("circle", { cx: "84", cy: "50", r: "10", fill: "#00abe8" },
             react_1.default.createElement("animate", { attributeName: "r", repeatCount: "indefinite", dur: "0.7352941176470588s", calcMode: "spline", keyTimes: "0;1", values: "9;0", keySplines: "0 0.5 0.5 1", begin: "0s" }),
             react_1.default.createElement("animate", { attributeName: "fill", repeatCount: "indefinite", dur: "2.941176470588235s", calcMode: "discrete", keyTimes: "0;0.25;0.5;0.75;1", values: "#00abe8;#82d4f2;#cceffc;#82d4f2;#00abe8", begin: "0s" })),

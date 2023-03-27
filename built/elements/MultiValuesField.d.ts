@@ -7,5 +7,5 @@ interface Props {
     placeholderText?: string;
     onChange: (value: string[]) => void;
 }
-declare const _default: React.ForwardRefExoticComponent<Pick<import("../components/validatedForm/withFormContext").ValidatedFormInputProps<unknown, Props>, "error" | "value" | "required" | "className" | "id" | "onBlur" | "onChange" | "initialValue" | "validations" | "validateFormOnChange"> & Props & React.RefAttributes<HTMLElement>>;
+declare const _default: React.ForwardRefExoticComponent<Omit<import("../components/validatedForm/withFormContext").ValidatedFormInputProps<unknown, Props>, "children"> & Props & React.RefAttributes<HTMLElement>>;
 export default _default;

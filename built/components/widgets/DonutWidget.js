@@ -18,7 +18,7 @@ const react_1 = __importDefault(require("react"));
 const PieUsageWidget_1 = require("./PieUsageWidget");
 const styles_1 = require("@material-ui/styles");
 const PieGraph_1 = __importDefault(require("../graphs/PieGraph"));
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     container: {
         position: 'relative',
         display: 'flex',

@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -14,7 +18,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -56,7 +60,7 @@ const withTooltip_1 = __importDefault(require("../elements/tooltip/withTooltip")
 const FUSE_OPTIONS = {
     keys: ['value', 'label'],
 };
-const useStyles = styles_1.makeStyles((theme) => styles_1.createStyles({
+const useStyles = (0, styles_1.makeStyles)((theme) => (0, styles_1.createStyles)({
     container: {
         position: 'relative',
         display: 'flex',
@@ -124,18 +128,18 @@ const useStyles = styles_1.makeStyles((theme) => styles_1.createStyles({
 }));
 const getOptionsHeight = (maxOptions) => maxOptions * 28;
 // @deprecated Please use MultiDropdown instead
-exports.default = withTooltip_1.default(function MultiSelect({ id, label, hasError, required, errorMessage, options, value: selectedValues = fp_1.emptyArr, onChange, maxOptions, maxHeight, sortSelectedFirst, className, showSelectDeselectAllOption, loading, }) {
+exports.default = (0, withTooltip_1.default)(function MultiSelect({ id, label, hasError, required, errorMessage, options, value: selectedValues = fp_1.emptyArr, onChange, maxOptions, maxHeight, sortSelectedFirst, className, showSelectDeselectAllOption, loading, }) {
     const classes = useStyles({});
-    const [term, setTerm] = react_1.useState('');
-    const fuse = react_1.useMemo(() => new fuse_js_1.default(options, FUSE_OPTIONS), [options]);
+    const [term, setTerm] = (0, react_1.useState)('');
+    const fuse = (0, react_1.useMemo)(() => new fuse_js_1.default(options, FUSE_OPTIONS), [options]);
     // Change visibleOptions when we receive async changes to options.
     // `options` is originally `[]` during most async data loading.
-    const sortedOptions = react_1.useMemo(() => {
+    const sortedOptions = (0, react_1.useMemo)(() => {
         const visibleOptions = term ? fuse.search(term) : options;
         const sortBySelected = (a, b) => selectedValues.includes(b.value) && selectedValues.includes(a.value) ? 1 : -1;
         return sortSelectedFirst ? visibleOptions.sort(sortBySelected) : visibleOptions;
     }, [term, fuse, selectedValues, sortSelectedFirst]);
-    const toggleOption = react_1.useCallback((value) => {
+    const toggleOption = (0, react_1.useCallback)((value) => {
         const updatedValues = selectedValues.includes(value)
             ? selectedValues.filter((currentValue) => currentValue !== value)
             : [...selectedValues, value];
@@ -159,7 +163,7 @@ exports.default = withTooltip_1.default(function MultiSelect({ id, label, hasErr
     const controls = showSelectDeselectAllOption ? (react_1.default.createElement("div", { className: classes.controls },
         showSelectDeselectAllOption && (react_1.default.createElement(Checkbox_1.default, { color: "primary", className: classes.selectDeselectCheckbox, icon: react_1.default.createElement(CheckBoxOutlineBlank_1.default, { className: classes.checkboxSize }), checked: selectedValues.length > 0, checkedIcon: react_1.default.createElement(icons_1.IndeterminateCheckBox, { className: classes.checkboxSize }), onChange: handleSelectDeselectChange })),
         react_1.default.createElement(SearchField, { classes: classes, term: term, onSearchChange: setTerm, onHitEnter: onHitEnter }))) : (react_1.default.createElement(SearchField, { classes: classes, term: term, onSearchChange: setTerm, onHitEnter: onHitEnter }));
-    return (react_1.default.createElement(Progress_1.default, { loading: loading, className: clsx_1.default('MuiFormControl-root', className) },
+    return (react_1.default.createElement(Progress_1.default, { loading: loading, className: (0, clsx_1.default)('MuiFormControl-root', className) },
         react_1.default.createElement(FormControl_1.default, { className: classes.container, id: id, error: hasError, style: { maxHeight: maxHeight || 350 } },
             label && (react_1.default.createElement(Text_1.default, { className: classes.label, variant: "caption1" }, required ? `${label} *` : label)),
             controls,
@@ -185,6 +189,6 @@ const SearchField = ({ classes, term, onSearchChange, onHitEnter }) => {
 };
 const Option = (_a) => {
     var { classes, label, onChange } = _a, checkboxProps = __rest(_a, ["classes", "label", "onChange"]);
-    return (react_1.default.createElement(FormControlLabel_1.default, { "data-testid": test_helpers_1.default('multi', 'select'), label: label, onClick: onChange, control: react_1.default.createElement(Checkbox_1.default, Object.assign({ color: "primary", className: classes.checkbox, icon: react_1.default.createElement(CheckBoxOutlineBlank_1.default, { className: classes.checkboxSize }), checkedIcon: react_1.default.createElement(CheckBox_1.default, { className: classes.checkboxSize }) }, checkboxProps)), classes: { root: classes.formControlLabelRoot, label: classes.optionLabel } }));
+    return (react_1.default.createElement(FormControlLabel_1.default, { "data-testid": (0, test_helpers_1.default)('multi', 'select'), label: label, onClick: onChange, control: react_1.default.createElement(Checkbox_1.default, Object.assign({ color: "primary", className: classes.checkbox, icon: react_1.default.createElement(CheckBoxOutlineBlank_1.default, { className: classes.checkboxSize }), checkedIcon: react_1.default.createElement(CheckBox_1.default, { className: classes.checkboxSize }) }, checkboxProps)), classes: { root: classes.formControlLabelRoot, label: classes.optionLabel } }));
 };
 //# sourceMappingURL=MultiSelect.js.map

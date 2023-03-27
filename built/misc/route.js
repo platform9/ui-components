@@ -46,10 +46,10 @@ class Route {
 }
 exports.Route = Route;
 Route.routes = [];
-Route.find = misc_1.memoize((pathname) => {
+Route.find = (0, misc_1.memoize)((pathname) => {
     return Route.getRoutes().find((r) => !!r.pattern.match(pathname));
 });
-Route.findRouteById = misc_1.memoize((id) => {
+Route.findRouteById = (0, misc_1.memoize)((id) => {
     return Route.getRoutes().find((r) => r.id === id);
 });
 /*

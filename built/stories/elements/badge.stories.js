@@ -8,7 +8,7 @@ const react_1 = __importDefault(require("react"));
 const card_1 = __importDefault(require("../../elements/card"));
 const badge_1 = __importDefault(require("../../elements/badge"));
 const containers_1 = require("../containers");
-exports.DefaultBadge = (args) => (react_1.default.createElement(card_1.default, null,
+const DefaultBadge = (args) => (react_1.default.createElement(card_1.default, null,
     react_1.default.createElement(containers_1.Row, null,
         react_1.default.createElement(containers_1.Column, null,
             react_1.default.createElement(badge_1.default, { variant: "default", text: "label=annotation", bold: false })),
@@ -26,6 +26,7 @@ exports.DefaultBadge = (args) => (react_1.default.createElement(card_1.default, 
             react_1.default.createElement(badge_1.default, { variant: "danger", text: "Danger" })),
         react_1.default.createElement(containers_1.Column, null,
             react_1.default.createElement(badge_1.default, { variant: "error", text: "Error" })))));
+exports.DefaultBadge = DefaultBadge;
 exports.DefaultBadge.parameters = {
     docs: {
         source: {

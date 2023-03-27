@@ -14,7 +14,7 @@ function CodeMirrorModal({ label, value, open = false, onClose, showOverlay = tr
             react_1.default.createElement(button_1.default, { variant: "secondary", onClick: onClose }, "Close")) }, open && (react_1.default.createElement(CodeMirror_1.default, { className: classes.codeMirror, id: `YamlTemplateBlock-${label}`, value: value, showCopyButton: showCopyButton, showSearchBar: showSearchBar, showDownloadButton: showDownloadButton, maxHeight: 700 }))));
 }
 exports.default = CodeMirrorModal;
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     modal: {
         '& .modal-body': {
             padding: 0,

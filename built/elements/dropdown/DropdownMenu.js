@@ -17,7 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const styles_1 = require("@material-ui/styles");
 const clsx_1 = __importDefault(require("clsx"));
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     dropdownMenu: {
         opacity: ({ isOpen }) => (isOpen ? 1 : 0),
         maxHeight: ({ isOpen }) => (isOpen ? '20rem' : '1rem'),
@@ -45,6 +45,6 @@ const useStyles = styles_1.makeStyles((theme) => ({
 exports.default = react_1.default.forwardRef((props, ref) => {
     const { isOpen, children, compact } = props, rest = __rest(props, ["isOpen", "children", "compact"]);
     const classes = useStyles(props);
-    return (react_1.default.createElement("ul", Object.assign({ className: clsx_1.default(classes.dropdownMenu, 'dropdownMenu') }, rest, { ref: ref }), children));
+    return (react_1.default.createElement("ul", Object.assign({ className: (0, clsx_1.default)(classes.dropdownMenu, 'dropdownMenu') }, rest, { ref: ref }), children));
 });
 //# sourceMappingURL=DropdownMenu.js.map

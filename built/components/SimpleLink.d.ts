@@ -1,6 +1,6 @@
 import React, { ComponentType, PropsWithChildren } from 'react';
 import { TextVariant } from '../elements/Text';
-declare type ISimpleLinkVariant = 'error' | 'primary' | 'secondary';
+type ISimpleLinkVariant = 'error' | 'primary' | 'secondary';
 interface Props {
     src?: string;
     staticContext?: any;

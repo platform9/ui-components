@@ -1,6 +1,6 @@
 import { ThemeColors } from './themes/helpers';
 import { Components, Typography } from './themes/model';
-declare type ComponentsStyleGenerator = (colors: ThemeColors) => CustomComponentStyles;
+type ComponentsStyleGenerator = (colors: ThemeColors) => CustomComponentStyles;
 interface CustomComponentStyles {
     [componentName: string]: any;
 }

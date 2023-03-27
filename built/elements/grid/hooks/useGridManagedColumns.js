@@ -19,7 +19,7 @@ const columnsReducer = ({ visibleColumnKeys, orderedColumnKeys }, { type, payloa
         case 'changeOrder':
             return {
                 visibleColumnKeys,
-                orderedColumnKeys: ramda_1.move(orderedColumnKeys.indexOf(key), targetIdx, orderedColumnKeys),
+                orderedColumnKeys: (0, ramda_1.move)(orderedColumnKeys.indexOf(key), targetIdx, orderedColumnKeys),
             };
         case 'toggleColumn': {
             if (visibleColumnKeys.includes(key)) {
@@ -55,8 +55,8 @@ const getColumnsOrder = ({ columnsOrder = [], columnSpecs = [] }) => {
     }
     // If there is a difference between saved columns and column spec, remove columns
     // that are no longer in the spec and add in any new columns in the spec
-    if (ramda_1.symmetricDifference(columnsOrder, keysList).length) {
-        return ramda_1.union(ramda_1.intersection(columnsOrder, keysList), keysList);
+    if ((0, ramda_1.symmetricDifference)(columnsOrder, keysList).length) {
+        return (0, ramda_1.union)((0, ramda_1.intersection)(columnsOrder, keysList), keysList);
     }
     return columnsOrder;
 };
@@ -73,13 +73,13 @@ const getVisibleColumns = ({ visibleColumns = [], columnSpecs = [], columnsOrder
     // If there is a difference between saved visible columns and visible columns from the spec,
     // remove columns that are no longer in the spec and add in any visible columns that were
     // not present in the full (visible & non-visible) saved list
-    if (ramda_1.symmetricDifference(visibleColumns, visibleKeys).length) {
-        return ramda_1.union(ramda_1.intersection(visibleColumns, visibleKeys), ramda_1.difference(visibleKeys, columnsOrder));
+    if ((0, ramda_1.symmetricDifference)(visibleColumns, visibleKeys).length) {
+        return (0, ramda_1.union)((0, ramda_1.intersection)(visibleColumns, visibleKeys), (0, ramda_1.difference)(visibleKeys, columnsOrder));
     }
     return visibleColumns;
 };
 function useGridManagedColumns(rows, { columns: columnSpecs, onColumnsChange, columnsOrder, visibleColumns, disableColumnOrdering, disableColumnHiding, }) {
-    const initialState = react_1.useMemo(() => {
+    const initialState = (0, react_1.useMemo)(() => {
         return {
             orderedColumnKeys: (!disableColumnOrdering && getColumnsOrder({ columnsOrder, columnSpecs })) ||
                 columnSpecs.map(({ key }) => key),
@@ -93,19 +93,19 @@ function useGridManagedColumns(rows, { columns: columnSpecs, onColumnsChange, co
                 }, []),
         };
     }, []);
-    const [{ orderedColumnKeys, visibleColumnKeys }, dispatch] = react_1.useReducer(columnsReducer, initialState);
-    react_1.useEffect(() => {
+    const [{ orderedColumnKeys, visibleColumnKeys }, dispatch] = (0, react_1.useReducer)(columnsReducer, initialState);
+    (0, react_1.useEffect)(() => {
         if (!onColumnsChange)
             return;
         onColumnsChange(visibleColumnKeys, orderedColumnKeys);
     }, [visibleColumnKeys, orderedColumnKeys]);
-    const getColumnToggler = react_1.useCallback(misc_1.memoize((key) => () => {
+    const getColumnToggler = (0, react_1.useCallback)((0, misc_1.memoize)((key) => () => {
         dispatch({ type: 'toggleColumn', payload: { key } });
     }), []);
-    const getColumnReorderer = react_1.useCallback(misc_1.memoize((key) => (targetIdx) => {
+    const getColumnReorderer = (0, react_1.useCallback)((0, misc_1.memoize)((key) => (targetIdx) => {
         dispatch({ type: 'changeOrder', payload: { key, targetIdx } });
     }), []);
-    const columnTogglers = react_1.useMemo(() => {
+    const columnTogglers = (0, react_1.useMemo)(() => {
         // We use "columns" to keep the original order
         return columnSpecs.map(({ key, label, display, canHide = !disableColumnHiding }) => ({
             key,
@@ -115,7 +115,7 @@ function useGridManagedColumns(rows, { columns: columnSpecs, onColumnsChange, co
             toggleColumn: !canHide ? null : getColumnToggler(key),
         }));
     }, [columnSpecs, visibleColumnKeys, disableColumnHiding]);
-    const columns = react_1.useMemo(() => {
+    const columns = (0, react_1.useMemo)(() => {
         return orderedColumnKeys.reduce((acc, columnKey) => {
             if (visibleColumnKeys.includes(columnKey)) {
                 const columnSpec = columnSpecs.find(({ key }) => key === columnKey);
@@ -131,7 +131,7 @@ function useGridManagedColumns(rows, { columns: columnSpecs, onColumnsChange, co
             return acc;
         }, []);
     }, [columnSpecs, orderedColumnKeys, visibleColumnKeys]);
-    const parsedRows = react_1.useMemo(() => rows.map((_a) => {
+    const parsedRows = (0, react_1.useMemo)(() => rows.map((_a) => {
         var { getCells: baseGetCells } = _a, row = __rest(_a, ["getCells"]);
         return (Object.assign(Object.assign({}, row), { getCells: () => columns.map(({ key: columnKey }) => baseGetCells().find(({ key }) => key === columnKey)) }));
     }), [rows, columns]);

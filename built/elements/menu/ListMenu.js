@@ -26,7 +26,7 @@ function ListMenu(_a) {
         item.name)))));
 }
 exports.default = ListMenu;
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     menuContainer: {
         '& .menu-popover': {
             padding: '8px',

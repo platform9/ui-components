@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -14,7 +18,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -28,7 +32,7 @@ const use_react_router_1 = __importDefault(require("use-react-router"));
 const AsyncDropdown_1 = __importDefault(require("../elements/dropdown/AsyncDropdown"));
 const SearchBar_1 = __importDefault(require("./SearchBar"));
 const constants_1 = require("../constants");
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     filtersContainer: {
         display: 'flex',
         flexFlow: 'row nowrap',
@@ -48,9 +52,9 @@ function Filter({ data, setFilteredData, filters, searchTarget, extraFilters = [
     const classes = useStyles({});
     const [searchTerm, setSearchTerm] = react_1.default.useState('');
     const [filterProperties, setFilterProperties] = react_1.default.useState({});
-    const { history, location } = use_react_router_1.default();
+    const { history, location } = (0, use_react_router_1.default)();
     const urlParams = new URLSearchParams(location.search);
-    react_1.useEffect(() => {
+    (0, react_1.useEffect)(() => {
         const searchTerm = urlParams.get('search');
         if (searchTerm) {
             setSearchTerm(searchTerm);
@@ -63,7 +67,7 @@ function Filter({ data, setFilteredData, filters, searchTarget, extraFilters = [
             }
         });
     }, [data]);
-    react_1.useEffect(() => {
+    (0, react_1.useEffect)(() => {
         setFilteredData(getFilteredData(data));
         updateUrlWithParams();
     }, [searchTerm, filterProperties]);

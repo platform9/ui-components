@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import { TextVariant } from '../Text';
-declare type Props = {
+type Props = {
     component?: React.ElementType;
     textVariant?: TextVariant;
     icon?: string;

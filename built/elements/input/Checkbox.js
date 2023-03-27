@@ -29,9 +29,9 @@ function Checkbox(_a) {
         }
     };
     const children = [
-        react_1.default.createElement("input", Object.assign({ key: `${id}-input`, "data-testid": test_helpers_1.default(label, 'checkbox', 'selection'), className: classes.input, type: "checkbox" }, props)),
-        react_1.default.createElement(Text_1.default, { key: `${id}-label`, "data-testid": test_helpers_1.default(label), variant: textWeight === 'heavy' ? 'caption1' : 'body2', component: "label", className: classes.label },
-            react_1.default.createElement("span", { className: clsx_1.default(`${type}-frame`, classes.displayContainer, {
+        react_1.default.createElement("input", Object.assign({ key: `${id}-input`, "data-testid": (0, test_helpers_1.default)(label, 'checkbox', 'selection'), className: classes.input, type: "checkbox" }, props)),
+        react_1.default.createElement(Text_1.default, { key: `${id}-label`, "data-testid": (0, test_helpers_1.default)(label), variant: textWeight === 'heavy' ? 'caption1' : 'body2', component: "label", className: classes.label },
+            react_1.default.createElement("span", { className: (0, clsx_1.default)(`${type}-frame`, classes.displayContainer, {
                     'fa-regular': type === 'checkbox',
                     'fa-check': type === 'checkbox' && !indeterminate,
                     'fa-dash': type === 'checkbox' && indeterminate,
@@ -42,7 +42,7 @@ function Checkbox(_a) {
             label ? react_1.default.createElement("span", { className: classes.text }, label) : null),
     ];
     const element = react_1.default.createElement(containerComponent, {
-        className: clsx_1.default(classes.container, className, 'checkbox'),
+        className: (0, clsx_1.default)(classes.container, className, 'checkbox'),
         onClick: handleClick,
     }, children);
     if (info) {
@@ -51,7 +51,7 @@ function Checkbox(_a) {
     return element;
 }
 exports.default = Checkbox;
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     container: {
         position: 'relative',
         cursor: ({ disabled }) => (disabled ? 'not-allowed' : 'pointer'),

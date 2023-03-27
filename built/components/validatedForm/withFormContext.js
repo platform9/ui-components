@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -14,7 +18,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -56,7 +60,7 @@ exports.ValidatedFormInputPropTypes = {
  */
 function ValidatedFormInput(_a) {
     var { id, className, initialValue, validateFormOnChange = false, value, required = false, validations = [], onBlur, onChange, children, error } = _a, rest = __rest(_a, ["id", "className", "initialValue", "validateFormOnChange", "value", "required", "validations", "onBlur", "onChange", "children", "error"]);
-    const { initialValues, values, errors, setFieldValue, updateFieldValue, getFieldValue, defineField, removeField, validateField, showErrorsOnBlur, } = react_1.useContext(ValidatedForm_1.ValidatedFormContext);
+    const { initialValues, values, errors, setFieldValue, updateFieldValue, getFieldValue, defineField, removeField, validateField, showErrorsOnBlur, } = (0, react_1.useContext)(ValidatedForm_1.ValidatedFormContext);
     const defineCurrentField = defineField(id);
     const setCurrentFieldValue = setFieldValue(id);
     const updateCurrentFieldValue = updateFieldValue(id);
@@ -65,12 +69,12 @@ function ValidatedFormInput(_a) {
     const currentInitialValue = initialValue !== undefined
         ? initialValue
         : id !== undefined
-            ? fp_1.pathStr(id, initialValues)
+            ? (0, fp_1.pathStr)(id, initialValues)
             : undefined;
-    const currentValue = ramda_1.isNil(value) ? (id !== undefined ? fp_1.pathStr(id, values) : undefined) : value;
-    const hasError = fp_1.pathStrOr(null, `${id}.hasError`, errors);
-    const errorMessage = fp_1.pathStrOr(error, `${id}.errorMessage`, errors);
-    react_1.useEffect(() => {
+    const currentValue = (0, ramda_1.isNil)(value) ? (id !== undefined ? (0, fp_1.pathStr)(id, values) : undefined) : value;
+    const hasError = (0, fp_1.pathStrOr)(null, `${id}.hasError`, errors);
+    const errorMessage = (0, fp_1.pathStrOr)(error, `${id}.errorMessage`, errors);
+    (0, react_1.useEffect)(() => {
         defineCurrentField({
             validations: required
                 ? Array.isArray(validations)
@@ -81,16 +85,16 @@ function ValidatedFormInput(_a) {
         if (currentInitialValue !== undefined) {
             setCurrentFieldValue(currentInitialValue);
         }
-    }, [required, misc_1.memoizedObj(validations)]);
+    }, [required, (0, misc_1.memoizedObj)(validations)]);
     // Remove the field when component unmounts
-    react_1.useEffect(() => () => removeField(id), []);
+    (0, react_1.useEffect)(() => () => removeField(id), []);
     // Notify value changes to the form when the field is controlled
-    react_1.useEffect(() => {
-        if (!ramda_1.isNil(value)) {
+    (0, react_1.useEffect)(() => {
+        if (!(0, ramda_1.isNil)(value)) {
             setCurrentFieldValue(value);
         }
     }, [value]);
-    const handleBlur = react_1.useCallback((e) => {
+    const handleBlur = (0, react_1.useCallback)((e) => {
         if (showErrorsOnBlur) {
             validateCurrentField();
         }
@@ -99,7 +103,7 @@ function ValidatedFormInput(_a) {
             onBlur(e);
         }
     }, [showErrorsOnBlur, validateCurrentField, onBlur]);
-    const handleChange = react_1.useCallback((value) => {
+    const handleChange = (0, react_1.useCallback)((value) => {
         setCurrentFieldValue(value, validateFormOnChange);
         // Leverage the event to the wrapped input
         if (onChange) {
@@ -108,7 +112,7 @@ function ValidatedFormInput(_a) {
     }, [setCurrentFieldValue, onChange]);
     // @ts-ignore
     const params = Object.assign(Object.assign({}, rest), { id,
-        values, className: clsx_1.default(className, 'validatedFormInput'), onChange: handleChange, onBlur: handleBlur, value: currentValue, getCurrentValue: getCurrentFieldValue, updateFieldValue: updateCurrentFieldValue, setFieldValue,
+        values, className: (0, clsx_1.default)(className, 'validatedFormInput'), onChange: handleChange, onBlur: handleBlur, value: currentValue, getCurrentValue: getCurrentFieldValue, updateFieldValue: updateCurrentFieldValue, setFieldValue,
         hasError,
         errorMessage,
         required });
@@ -126,7 +130,7 @@ exports.ValidatedFormInput = ValidatedFormInput;
  * @param {Inject the form context into this Component through props.} Input
  */
 function withFormContext(Input) {
-    return react_1.forwardRef((props, ref) => (react_1.default.createElement(ValidatedFormInput, Object.assign({}, props), (inputProps) => (react_1.default.createElement(Input, Object.assign({}, inputProps, { ref: ref, "data-testid": test_helpers_1.default(inputProps.id, 'list', 'table', 'field') }))))));
+    return (0, react_1.forwardRef)((props, ref) => (react_1.default.createElement(ValidatedFormInput, Object.assign({}, props), (inputProps) => (react_1.default.createElement(Input, Object.assign({}, inputProps, { ref: ref, "data-testid": (0, test_helpers_1.default)(inputProps.id, 'list', 'table', 'field') }))))));
 }
 exports.default = withFormContext;
 //# sourceMappingURL=withFormContext.js.map

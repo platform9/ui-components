@@ -1,5 +1,5 @@
 import { FC } from 'react';
-declare type LabelRenderProp = (value: string) => string;
+type LabelRenderProp = (value: string) => string;
 interface Props {
     percent: number | string;
     animated?: boolean;

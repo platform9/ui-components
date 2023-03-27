@@ -10,7 +10,7 @@ const Text_1 = __importDefault(require("../../elements/Text"));
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
 const Checkbox_1 = __importDefault(require("../../elements/input/Checkbox"));
 const GridTableHeading_1 = __importDefault(require("./GridTableHeading"));
-const useStyles = styles_1.makeStyles((theme) => ({
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
     gridHead: {
         border: 'none',
     },
@@ -35,13 +35,13 @@ function SelectAllColumn({ className, pageRows, rowsSelectionDisabled, multiSele
     }
     const checked = pageRows.every(({ isSelected }) => isSelected);
     const indeterminate = !checked && selectionStatus === 'some';
-    return (react_1.default.createElement("th", { className: clsx_1.default(className, 'select-column') }, multiSelectionEnabled ? (react_1.default.createElement(Checkbox_1.default, { checked: checked || indeterminate, indeterminate: indeterminate, onChange: () => toggleSelectAll(pageRows) })) : null));
+    return (react_1.default.createElement("th", { className: (0, clsx_1.default)(className, 'select-column') }, multiSelectionEnabled ? (react_1.default.createElement(Checkbox_1.default, { checked: checked || indeterminate, indeterminate: indeterminate, onChange: () => toggleSelectAll(pageRows) })) : null));
 }
 function GridHeader(props) {
     const { columns, sortingDisabled, sortedBy, sortedDirection, toggleSort, multiSelectionEnabled, toggleSelectAll, selectionStatus, rowsSelectionDisabled, pageRows, rowMenuItemsLength, } = props;
     const classes = useStyles(props);
     return (react_1.default.createElement("thead", { className: classes.gridHead },
-        react_1.default.createElement(Text_1.default, { component: "tr", variant: "caption2", className: clsx_1.default(classes.gridHeadTr, classes.gridHeadTitleTr) },
+        react_1.default.createElement(Text_1.default, { component: "tr", variant: "caption2", className: (0, clsx_1.default)(classes.gridHeadTr, classes.gridHeadTitleTr) },
             react_1.default.createElement(SelectAllColumn, Object.assign({ className: classes.gridSelectAllTh }, {
                 pageRows,
                 rowsSelectionDisabled,

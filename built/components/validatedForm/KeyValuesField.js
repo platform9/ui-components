@@ -31,6 +31,6 @@ const KeyValuesField = react_1.default.forwardRef((_a, ref) => {
         react_1.default.createElement(KeyValues_1.default, { entries: value, onChange: onChange, keySuggestions: keySuggestions, valueSuggestions: valueSuggestions, blacklistedTags: blacklistedTags, addLabel: addLabel || `Add ${label}`, keyLabel: keyLabel, valueLabel: valueLabel, allowMultipleValues: allowMultipleValues, additionalFields: additionalFields }),
         errorMessage && react_1.default.createElement(core_1.FormHelperText, null, errorMessage)));
 });
-exports.default = fp_1.compose(InfoTooltip_1.withInfoTooltip, // This HoC causes unnecessary re-renders if declared after withFormContext
+exports.default = (0, fp_1.compose)(InfoTooltip_1.withInfoTooltip, // This HoC causes unnecessary re-renders if declared after withFormContext
 withFormContext_1.default)(KeyValuesField);
 //# sourceMappingURL=KeyValuesField.js.map

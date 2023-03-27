@@ -13,9 +13,11 @@ export interface TooltipProps {
     origin?: string;
     customClassName?: string;
 }
-declare const _default: import("@material-ui/styles").StyledComponent<Pick<React.PropsWithChildren<TooltipProps & {
+declare const _default: import("@material-ui/styles").StyledComponent<Pick<TooltipProps & {
     className: string;
-}>, "offset" | "message" | "children" | "align" | "origin" | "customClassName" | "customBody"> & import("@material-ui/styles").StyledComponentProps<"root"> & {
+} & {
+    children?: React.ReactNode;
+}, "children" | keyof TooltipProps> & import("@material-ui/styles").StyledComponentProps<"root"> & {
     className?: string;
     theme?: import("@material-ui/styles").DefaultTheme;
 }>;

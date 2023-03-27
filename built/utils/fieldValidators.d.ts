@@ -48,7 +48,7 @@ export declare class FieldValidator {
         updateExpire: boolean;
     }> & {
         maxSize: number;
-    } & Partial<import("./misc").DefaultMoizeOptions>>;
+    } & Partial<import("../utils/misc").DefaultMoizeOptions>>;
 }
 export declare const customValidator: (validator: any, errorMessage?: any) => FieldValidator;
 export declare const hasMinLength: (minLen: any) => (value: any) => boolean;
@@ -105,7 +105,7 @@ export declare const matchFieldValidator: import("moize").Moized<(id: any) => Fi
     updateExpire: boolean;
 }> & {
     maxSize: number;
-} & Partial<import("./misc").DefaultMoizeOptions>>;
+} & Partial<import("../utils/misc").DefaultMoizeOptions>>;
 export declare const lengthValidator: (minLength: any, maxLength: any) => FieldValidator;
 export declare const minLengthValidator: import("moize").Moized<(minLength: any) => FieldValidator, Partial<{
     isDeepEqual: boolean;
@@ -149,7 +149,7 @@ export declare const minLengthValidator: import("moize").Moized<(minLength: any)
     updateExpire: boolean;
 }> & {
     maxSize: number;
-} & Partial<import("./misc").DefaultMoizeOptions>>;
+} & Partial<import("../utils/misc").DefaultMoizeOptions>>;
 export declare const maxLengthValidator: import("moize").Moized<(maxLength: any) => FieldValidator, Partial<{
     isDeepEqual: boolean;
     isPromise: boolean;
@@ -192,7 +192,7 @@ export declare const maxLengthValidator: import("moize").Moized<(maxLength: any)
     updateExpire: boolean;
 }> & {
     maxSize: number;
-} & Partial<import("./misc").DefaultMoizeOptions>>;
+} & Partial<import("../utils/misc").DefaultMoizeOptions>>;
 export declare const minValueValidator: import("moize").Moized<(min: any) => FieldValidator, Partial<{
     isDeepEqual: boolean;
     isPromise: boolean;
@@ -235,7 +235,7 @@ export declare const minValueValidator: import("moize").Moized<(min: any) => Fie
     updateExpire: boolean;
 }> & {
     maxSize: number;
-} & Partial<import("./misc").DefaultMoizeOptions>>;
+} & Partial<import("../utils/misc").DefaultMoizeOptions>>;
 export declare const rangeValueValidator: import("moize").Moized<(min: any, max: any) => FieldValidator, Partial<{
     isDeepEqual: boolean;
     isPromise: boolean;
@@ -278,7 +278,7 @@ export declare const rangeValueValidator: import("moize").Moized<(min: any, max:
     updateExpire: boolean;
 }> & {
     maxSize: number;
-} & Partial<import("./misc").DefaultMoizeOptions>>;
+} & Partial<import("../utils/misc").DefaultMoizeOptions>>;
 export declare const maxValueValidator: import("moize").Moized<(max: any) => FieldValidator, Partial<{
     isDeepEqual: boolean;
     isPromise: boolean;
@@ -321,7 +321,7 @@ export declare const maxValueValidator: import("moize").Moized<(max: any) => Fie
     updateExpire: boolean;
 }> & {
     maxSize: number;
-} & Partial<import("./misc").DefaultMoizeOptions>>;
+} & Partial<import("../utils/misc").DefaultMoizeOptions>>;
 export declare const passwordValidator: FieldValidator;
 export declare const colorHexValidator: FieldValidator;
 export declare const spotMaxPriceValidator: FieldValidator;
@@ -371,7 +371,7 @@ export declare const validators: {
         updateExpire: boolean;
     }> & {
         maxSize: number;
-    } & Partial<import("./misc").DefaultMoizeOptions>>;
+    } & Partial<import("../utils/misc").DefaultMoizeOptions>>;
     length: (minLength: any, maxLength: any) => FieldValidator;
     minLength: import("moize").Moized<(minLength: any) => FieldValidator, Partial<{
         isDeepEqual: boolean;
@@ -415,7 +415,7 @@ export declare const validators: {
         updateExpire: boolean;
     }> & {
         maxSize: number;
-    } & Partial<import("./misc").DefaultMoizeOptions>>;
+    } & Partial<import("../utils/misc").DefaultMoizeOptions>>;
     maxLength: import("moize").Moized<(maxLength: any) => FieldValidator, Partial<{
         isDeepEqual: boolean;
         isPromise: boolean;
@@ -458,7 +458,7 @@ export declare const validators: {
         updateExpire: boolean;
     }> & {
         maxSize: number;
-    } & Partial<import("./misc").DefaultMoizeOptions>>;
+    } & Partial<import("../utils/misc").DefaultMoizeOptions>>;
     minValue: import("moize").Moized<(min: any) => FieldValidator, Partial<{
         isDeepEqual: boolean;
         isPromise: boolean;
@@ -501,7 +501,7 @@ export declare const validators: {
         updateExpire: boolean;
     }> & {
         maxSize: number;
-    } & Partial<import("./misc").DefaultMoizeOptions>>;
+    } & Partial<import("../utils/misc").DefaultMoizeOptions>>;
     maxValue: import("moize").Moized<(max: any) => FieldValidator, Partial<{
         isDeepEqual: boolean;
         isPromise: boolean;
@@ -544,7 +544,7 @@ export declare const validators: {
         updateExpire: boolean;
     }> & {
         maxSize: number;
-    } & Partial<import("./misc").DefaultMoizeOptions>>;
+    } & Partial<import("../utils/misc").DefaultMoizeOptions>>;
     rangeValue: import("moize").Moized<(min: any, max: any) => FieldValidator, Partial<{
         isDeepEqual: boolean;
         isPromise: boolean;
@@ -587,7 +587,7 @@ export declare const validators: {
         updateExpire: boolean;
     }> & {
         maxSize: number;
-    } & Partial<import("./misc").DefaultMoizeOptions>>;
+    } & Partial<import("../utils/misc").DefaultMoizeOptions>>;
 };
 export declare const parseValidator: (key: any, spec: any) => any;
 export declare const yamlValidator: FieldValidator;
