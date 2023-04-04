@@ -16,10 +16,12 @@ import {
   update,
   when,
   curry,
+  liftN,
+  mergeAll,
   lens,
   dissocPath,
 } from 'ramda'
-import { isNumeric, memoize } from './misc'
+import { memoize, isNumeric } from './misc'
 
 // Callback bubblers
 export const stopPropagation = (e) => e.stopPropagation()
@@ -343,31 +345,32 @@ export const switchCase = (casesObj, defaultValue?) => (input) =>
 export const onlyDefinedValues = (obj) =>
   reject<any>((val) => ['', undefined, null].includes(val))(obj)
 
-// /**
-//  * Given a "params" object with single values or arrays of values, returns an array with all the
-//  * possible permutations of the params as a single value params
-//  * @example
-//  *
-//  * paramsCartesianProduct({
-//  * 	clusterId: ['foo', 'bar'],
-//  * 	namespace: 'test'
-//  * })
-//  * // Result
-//  * [
-//  *  { clusterId: "foo", namespace: "test" }
-//  *  { clusterId: "bar", namespace: "test" }
-//  * ]
-//  *
-//  * @param params
-//  */
-// export function paramsCartesianProduct(params) {
-//   const objEntries = Object.entries(params)
-//   const cartesianMerge = liftN(objEntries.length, (...args) => mergeAll(args))
-//   const isolatedParamsArr = objEntries.map(([key, value]) => {
-//     if (Array.isArray(value)) {
-//       return value.map((v) => ({ [key]: v }))
-//     }
-//     return [{ [key]: value }]
-//   })
-//   return isolatedParamsArr.length ? cartesianMerge(...isolatedParamsArr) : [params]
-// }
+/**
+ * Given a "params" object with single values or arrays of values, returns an array with all the
+ * possible permutations of the params as a single value params
+ * @example
+ *
+ * paramsCartesianProduct({
+ * 	clusterId: ['foo', 'bar'],
+ * 	namespace: 'test'
+ * })
+ * // Result
+ * [
+ *  { clusterId: "foo", namespace: "test" }
+ *  { clusterId: "bar", namespace: "test" }
+ * ]
+ *
+ * @param params
+ */
+export function paramsCartesianProduct(params) {
+  const objEntries = Object.entries(params)
+  const cartesianMerge = liftN(objEntries.length, (...args) => mergeAll(args))
+  const isolatedParamsArr = objEntries.map(([key, value]) => {
+    if (Array.isArray(value)) {
+      return value.map((v) => ({ [key]: v }))
+    }
+    return [{ [key]: value }]
+  })
+  // @ts-ignore
+  return isolatedParamsArr.length ? cartesianMerge(...isolatedParamsArr) : [params]
+}

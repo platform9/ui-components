@@ -340,4 +340,5 @@ export declare const add: (value: any, total: any) => any;
 export declare const encodeStr: (str: string) => string;
 export declare const decodeStr: (str: string) => string;
 export declare const stripUnitFromValue: (value: any) => any;
+export declare const filterBySearch: (data: any, targets: any, searchTerm: any) => any;
 export declare function lightenDarkenColor(color: string, amt: number): string;

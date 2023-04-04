@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.lightenDarkenColor = exports.stripUnitFromValue = exports.decodeStr = exports.encodeStr = exports.add = exports.escapeRegex = exports.compareArrByValue = exports.cleanupStacktrace = exports.indefiniteArticle = exports.normalizeUsername = exports.getCookieValue = exports.sanitizeUrl = exports.capitalizeString = exports.snakeToPascalString = exports.snakeToCamelString = exports.uncamelizeString = exports.tryJsonParse = exports.castBoolToStr = exports.columnPathLookup = exports.castFuzzyBool = exports.pathJoin = exports.isPlainObject = exports.isNumeric = exports.parseJSON = exports.calculateAge = exports.secondsToString = exports.durationBetweenDates = exports.formatDate = exports.defaultDateFormat = exports.memoizePromise = exports.memoizedObj = exports.generateObjMemoizer = exports.memoizeShallow = exports.memoize = void 0;
+exports.lightenDarkenColor = exports.filterBySearch = exports.stripUnitFromValue = exports.decodeStr = exports.encodeStr = exports.add = exports.escapeRegex = exports.compareArrByValue = exports.cleanupStacktrace = exports.indefiniteArticle = exports.normalizeUsername = exports.getCookieValue = exports.sanitizeUrl = exports.capitalizeString = exports.snakeToPascalString = exports.snakeToCamelString = exports.uncamelizeString = exports.tryJsonParse = exports.castBoolToStr = exports.columnPathLookup = exports.castFuzzyBool = exports.pathJoin = exports.isPlainObject = exports.isNumeric = exports.parseJSON = exports.calculateAge = exports.secondsToString = exports.durationBetweenDates = exports.formatDate = exports.defaultDateFormat = exports.memoizePromise = exports.memoizedObj = exports.generateObjMemoizer = exports.memoizeShallow = exports.memoize = void 0;
 const ramda_1 = require("ramda");
 const moize_1 = __importDefault(require("moize"));
 const moment_1 = __importDefault(require("moment"));
@@ -278,6 +278,11 @@ const stripUnitFromValue = (value) => {
     return parseFloat(value);
 };
 exports.stripUnitFromValue = stripUnitFromValue;
+const filterBySearch = (data, targets, searchTerm) => {
+    const escapedTerm = (0, exports.escapeRegex)(searchTerm);
+    return data.filter((ele) => targets.some((target) => { var _a; return ((_a = ele[target]) === null || _a === void 0 ? void 0 : _a.match(new RegExp(escapedTerm, 'i'))) !== null; }));
+};
+exports.filterBySearch = filterBySearch;
 // ref:https://css-tricks.com/snippets/javascript/lighten-darken-color/
 function lightenDarkenColor(color, amt) {
     let usePound = false;
