@@ -2,7 +2,6 @@ import { path } from 'ramda'
 import moize, { Moizeable, Options } from 'moize'
 import moment from 'moment'
 import { moizeMaxSize } from '../constants'
-// import { pathStr } from '../utils/fp'
 
 export interface DefaultMoizeOptions {}
 
@@ -314,6 +313,13 @@ export const stripUnitFromValue = (value) => {
   const hasNumber = /\d/.test(value)
   if (!hasNumber) return value
   return parseFloat(value)
+}
+
+export const filterBySearch = (data, targets, searchTerm) => {
+  const escapedTerm = escapeRegex(searchTerm)
+  return data.filter((ele) =>
+    targets.some((target) => ele[target]?.match(new RegExp(escapedTerm, 'i')) !== null),
+  )
 }
 
 // ref:https://css-tricks.com/snippets/javascript/lighten-darken-color/

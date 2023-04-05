@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.condLiteral = exports.maybeFnOrNull = exports.ensureFunction = exports.ensureArrayHandleNull = exports.ensureArray = exports.objToCommaSeperatedString = exports.arrToObjByKey = exports.pipeWhenTruthy = exports.lensPathStr = exports.pathEqStr = exports.pathStrOrNull = exports.pathStrOr = exports.pathStr = exports.hasPathStr = exports.dissocPathStr = exports.assocPathStr = exports.dotStrPathToArr = exports.keyValueArrToObj = exports.objToKeyValueArr = exports.except = exports.range = exports.setStateLens = exports.setObjLens = exports.filterFields = exports.pickMultiple = exports.mergeKey = exports.tap = exports.projectAs = exports.pick = exports.pipe = exports.compose = exports.hasKeys = exports.notEmpty = exports.objIfNilOrEmpty = exports.arrayIfNilOrEmpty = exports.arrayIfEmpty = exports.stringIfNil = exports.arrayIfNil = exports.isNilOrEmpty = exports.noop = exports.exists = exports.isFalse = exports.isTruthy = exports.pluck = exports.getTypedEmptyArr = exports.emptyObj = exports.emptyArr = exports.stopBubbling = exports.preventDefault = exports.stopPropagation = void 0;
-exports.onlyDefinedValues = exports.switchCase = exports.filterIf = exports.applyJsonPatch = exports.upsertAllBy = exports.removeWith = exports.updateWith = exports.adjustWith = exports.updateInArray = void 0;
+exports.paramsCartesianProduct = exports.onlyDefinedValues = exports.switchCase = exports.filterIf = exports.applyJsonPatch = exports.upsertAllBy = exports.removeWith = exports.updateWith = exports.adjustWith = exports.updateInArray = void 0;
 const ramda_1 = require("ramda");
 const misc_1 = require("./misc");
 // Callback bubblers
@@ -271,32 +271,34 @@ exports.switchCase = switchCase;
 // Typically used for forms with optional fields to ensure empty string values etc are not passed
 const onlyDefinedValues = (obj) => (0, ramda_1.reject)((val) => ['', undefined, null].includes(val))(obj);
 exports.onlyDefinedValues = onlyDefinedValues;
-// /**
-//  * Given a "params" object with single values or arrays of values, returns an array with all the
-//  * possible permutations of the params as a single value params
-//  * @example
-//  *
-//  * paramsCartesianProduct({
-//  * 	clusterId: ['foo', 'bar'],
-//  * 	namespace: 'test'
-//  * })
-//  * // Result
-//  * [
-//  *  { clusterId: "foo", namespace: "test" }
-//  *  { clusterId: "bar", namespace: "test" }
-//  * ]
-//  *
-//  * @param params
-//  */
-// export function paramsCartesianProduct(params) {
-//   const objEntries = Object.entries(params)
-//   const cartesianMerge = liftN(objEntries.length, (...args) => mergeAll(args))
-//   const isolatedParamsArr = objEntries.map(([key, value]) => {
-//     if (Array.isArray(value)) {
-//       return value.map((v) => ({ [key]: v }))
-//     }
-//     return [{ [key]: value }]
-//   })
-//   return isolatedParamsArr.length ? cartesianMerge(...isolatedParamsArr) : [params]
-// }
+/**
+ * Given a "params" object with single values or arrays of values, returns an array with all the
+ * possible permutations of the params as a single value params
+ * @example
+ *
+ * paramsCartesianProduct({
+ * 	clusterId: ['foo', 'bar'],
+ * 	namespace: 'test'
+ * })
+ * // Result
+ * [
+ *  { clusterId: "foo", namespace: "test" }
+ *  { clusterId: "bar", namespace: "test" }
+ * ]
+ *
+ * @param params
+ */
+function paramsCartesianProduct(params) {
+    const objEntries = Object.entries(params);
+    const cartesianMerge = (0, ramda_1.liftN)(objEntries.length, (...args) => (0, ramda_1.mergeAll)(args));
+    const isolatedParamsArr = objEntries.map(([key, value]) => {
+        if (Array.isArray(value)) {
+            return value.map((v) => ({ [key]: v }));
+        }
+        return [{ [key]: value }];
+    });
+    // @ts-ignore
+    return isolatedParamsArr.length ? cartesianMerge(...isolatedParamsArr) : [params];
+}
+exports.paramsCartesianProduct = paramsCartesianProduct;
 //# sourceMappingURL=fp.js.map

@@ -177,3 +177,21 @@ export declare const filterIf: import("Function/Curry").Curry<(cond: any, fn: an
  */
 export declare const switchCase: (casesObj: any, defaultValue?: any) => (input: any) => any;
 export declare const onlyDefinedValues: (obj: any) => any;
+/**
+ * Given a "params" object with single values or arrays of values, returns an array with all the
+ * possible permutations of the params as a single value params
+ * @example
+ *
+ * paramsCartesianProduct({
+ * 	clusterId: ['foo', 'bar'],
+ * 	namespace: 'test'
+ * })
+ * // Result
+ * [
+ *  { clusterId: "foo", namespace: "test" }
+ *  { clusterId: "bar", namespace: "test" }
+ * ]
+ *
+ * @param params
+ */
+export declare function paramsCartesianProduct(params: any): any[];
