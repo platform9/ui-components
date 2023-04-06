@@ -44,7 +44,6 @@ class Route {
         return Route.find(pathname);
     }
 }
-exports.Route = Route;
 Route.routes = [];
 Route.find = (0, misc_1.memoize)((pathname) => {
     return Route.getRoutes().find((r) => !!r.pattern.match(pathname));
@@ -52,6 +51,7 @@ Route.find = (0, misc_1.memoize)((pathname) => {
 Route.findRouteById = (0, misc_1.memoize)((id) => {
     return Route.getRoutes().find((r) => r.id === id);
 });
+exports.Route = Route;
 /*
     createUrlWithQueryString(routes.cluster.edit, {id: 'asdf', name: 'fdsa'})
     produces /ui/kubernetesd/clusters/edit/asdf?name=fdsa`,

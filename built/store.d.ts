@@ -1,4 +1,4 @@
-declare const customThemeKey: "theme", themeReducer: import("redux").Reducer<import("./theme-manager/createThemeSlice").ThemeReducer, import("redux").AnyAction>, themeActions: import("@reduxjs/toolkit").CaseReducerActions<{
+declare const customThemeKey: "theme", themeReducer: import("redux").Reducer<import("./theme-manager/createThemeSlice").ThemeReducer>, themeActions: import("@reduxjs/toolkit").CaseReducerActions<{
     updateGlobalTheme: (state: import("immer/dist/internal").WritableDraft<import("./theme-manager/createThemeSlice").ThemeReducer>, { payload }: {
         payload: any;
         type: string;
@@ -29,6 +29,6 @@ declare const store: import("@reduxjs/toolkit/dist/configureStore").ToolkitStore
     theme: import("./theme-manager/createThemeSlice").ThemeReducer;
 }>, import("redux").AnyAction, import("@reduxjs/toolkit").MiddlewareArray<[import("@reduxjs/toolkit").ThunkMiddleware<import("redux").CombinedState<{
     theme: import("./theme-manager/createThemeSlice").ThemeReducer;
-}>, import("redux").AnyAction, undefined>]>>;
+}>, import("redux").AnyAction>]>>;
 export { customThemeKey, themeReducer, themeActions };
 export default store;

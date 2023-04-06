@@ -2,6 +2,7 @@ import React from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
 import Theme from '../theme-manager/themes/model'
+import Text from '../elements/Text'
 
 const useStyles = makeStyles<Theme>((theme) => ({
   page: {
@@ -91,6 +92,7 @@ const FormPageContainer = ({
   className = undefined,
   footer = undefined,
   logoUrl,
+  logoText,
   primayImgUrl,
 }) => {
   const classes = useStyles()
@@ -99,7 +101,14 @@ const FormPageContainer = ({
       id={clsx('form-page-container', className)}
       className={clsx('form-page-container', classes.page)}
     >
-      <img src={logoUrl} alt="Platform9 Logo" className={classes.logo} />
+      {!logoUrl && !!logoText && (
+        <Text className="form-logo" variant="subtitle1">
+          {logoText}
+        </Text>
+      )}
+      {!!logoUrl && (
+        <img src={logoUrl} alt="Platform9 Logo" className={clsx('form-logo', classes.logo)} />
+      )}
       <article className={classes.container}>
         <div className={clsx('left-pane', classes.managementPlane)}>
           <img alt="Platform9 Management Plane" src={primayImgUrl} className={classes.img} />

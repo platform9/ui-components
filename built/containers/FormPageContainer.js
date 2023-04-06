@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const clsx_1 = __importDefault(require("clsx"));
 const styles_1 = require("@material-ui/styles");
+const Text_1 = __importDefault(require("../elements/Text"));
 const useStyles = (0, styles_1.makeStyles)((theme) => {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
     return ({
@@ -89,10 +90,11 @@ const useStyles = (0, styles_1.makeStyles)((theme) => {
         },
     });
 });
-const FormPageContainer = ({ children, className = undefined, footer = undefined, logoUrl, primayImgUrl, }) => {
+const FormPageContainer = ({ children, className = undefined, footer = undefined, logoUrl, logoText, primayImgUrl, }) => {
     const classes = useStyles();
     return (react_1.default.createElement("section", { id: (0, clsx_1.default)('form-page-container', className), className: (0, clsx_1.default)('form-page-container', classes.page) },
-        react_1.default.createElement("img", { src: logoUrl, alt: "Platform9 Logo", className: classes.logo }),
+        !logoUrl && !!logoText && (react_1.default.createElement(Text_1.default, { className: "form-logo", variant: "subtitle1" }, logoText)),
+        !!logoUrl && (react_1.default.createElement("img", { src: logoUrl, alt: "Platform9 Logo", className: (0, clsx_1.default)('form-logo', classes.logo) })),
         react_1.default.createElement("article", { className: classes.container },
             react_1.default.createElement("div", { className: (0, clsx_1.default)('left-pane', classes.managementPlane) },
                 react_1.default.createElement("img", { alt: "Platform9 Management Plane", src: primayImgUrl, className: classes.img })),
