@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
+import Text from '../elements/text'
 import generateTestId from '../utils/test-helpers'
 import Theme from '../theme-manager/themes/model'
 
@@ -48,13 +49,15 @@ const Avatar = ({ displayName = '', diameter = 48, fontSize = 18, onClick, class
   const { avatar } = useStyles({ diameter, fontSize, readOnly })
 
   return (
-    <div
+    <Text
+      component="div"
+      variant="body1"
       data-testid={generateTestId('user', 'menu')}
       className={clsx(avatar, className, { 'read-only': readOnly })}
       onClick={onClick}
     >
       {displayName.charAt(0)}
-    </div>
+    </Text>
   )
 }
 
