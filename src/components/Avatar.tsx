@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import Text from '../elements/text'
+import Text from '../elements/Text'
 import generateTestId from '../utils/test-helpers'
 import Theme from '../theme-manager/themes/model'
 

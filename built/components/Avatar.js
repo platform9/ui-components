@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const styles_1 = require("@material-ui/styles");
 const clsx_1 = __importDefault(require("clsx"));
-const text_1 = __importDefault(require("../elements/text"));
+const Text_1 = __importDefault(require("../elements/Text"));
 const test_helpers_1 = __importDefault(require("../utils/test-helpers"));
 const useStyles = (0, styles_1.makeStyles)((theme) => ({
     avatar: {
@@ -36,7 +36,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
 const Avatar = ({ displayName = '', diameter = 48, fontSize = 18, onClick, className }) => {
     const readOnly = !onClick;
     const { avatar } = useStyles({ diameter, fontSize, readOnly });
-    return (react_1.default.createElement(text_1.default, { component: "div", variant: "body1", "data-testid": (0, test_helpers_1.default)('user', 'menu'), className: (0, clsx_1.default)(avatar, className, { 'read-only': readOnly }), onClick: onClick }, displayName.charAt(0)));
+    return (react_1.default.createElement(Text_1.default, { component: "div", variant: "body1", "data-testid": (0, test_helpers_1.default)('user', 'menu'), className: (0, clsx_1.default)(avatar, className, { 'read-only': readOnly }), onClick: onClick }, displayName.charAt(0)));
 };
 exports.default = Avatar;
 //# sourceMappingURL=Avatar.js.map
