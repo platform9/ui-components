@@ -1,9 +1,3 @@
-/// <reference types="react" />
-interface Props {
-    role: string;
-    features: any;
-    currentPluginId: string;
-    setPluginId: (id: string) => void;
-}
-declare function DefaultFrame({ role }: Props): JSX.Element;
+import { PropsWithChildren } from 'react';
+declare function DefaultFrame({ children }: PropsWithChildren<{}>): JSX.Element;
 export default DefaultFrame;

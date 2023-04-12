@@ -30,16 +30,13 @@ const react_1 = __importStar(require("react"));
 const clsx_1 = __importDefault(require("clsx"));
 const ramda_1 = require("ramda");
 const styles_1 = require("@material-ui/styles");
-const pluginManager_1 = __importDefault(require("../plugins/pluginManager"));
-const helpers_1 = require("../plugins/helpers");
 const Header_1 = __importDefault(require("../elements/header/Header"));
 const frame_provider_1 = __importDefault(require("../providers/frame-provider"));
 const sidebarPane = 'default';
 const sidebarPaneRef = react_1.default.createRef();
-function DefaultFrame({ role }) {
+function DefaultFrame({ children }) {
     const [frameRefs, setFrameRefs] = (0, react_1.useState)({});
     const setFrameContainerRef = (0, react_1.useCallback)((payload) => setFrameRefs((frames) => (0, ramda_1.mergeLeft)(frames, payload)), [setFrameRefs]);
-    const plugins = pluginManager_1.default.getPlugins();
     const classes = useStyles({ sidebarPane });
     (0, react_1.useEffect)(() => {
         setFrameContainerRef({
@@ -51,7 +48,7 @@ function DefaultFrame({ role }) {
         react_1.default.createElement("main", { className: classes.appFrame },
             react_1.default.createElement(Header_1.default, null),
             react_1.default.createElement("aside", { className: "sidebar custom-nav", ref: sidebarPaneRef }),
-            react_1.default.createElement("section", { className: (0, clsx_1.default)('content-main', classes.contentMain) }, (0, helpers_1.renderMainContent)(plugins, role)))));
+            react_1.default.createElement("section", { className: (0, clsx_1.default)('content-main', classes.contentMain) }, children))));
 }
 const useStyles = (0, styles_1.makeStyles)((theme) => {
     var _a, _b, _c, _d;

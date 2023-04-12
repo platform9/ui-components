@@ -1,32 +1,21 @@
-import React, { useState, useCallback, useMemo, useEffect } from 'react'
+import React, { useState, useCallback, useMemo, useEffect, PropsWithChildren } from 'react'
 import clsx from 'clsx'
 import { mergeLeft } from 'ramda'
-import useReactRouter from 'use-react-router'
 import { makeStyles } from '@material-ui/styles'
 import Theme from '../theme-manager/themes/model'
-import pluginManager from '../plugins/pluginManager'
-import { renderMainContent } from '../plugins/helpers'
 import Header from '../elements/header/Header'
 import FrameContext, { IFullFrameContext, IFrameContextRefs } from '../providers/frame-provider'
-// import { clientStoreKey, ClientState } from '../client/clientReducers'
 
-interface Props {
-  role: string
-  features: any
-  currentPluginId: string
-  setPluginId: (id: string) => void
-}
 const sidebarPane = 'default'
 
 const sidebarPaneRef = React.createRef<HTMLDivElement>()
 
-function DefaultFrame({ role }: Props) {
+function DefaultFrame({ children }: PropsWithChildren<{}>) {
   const [frameRefs, setFrameRefs] = useState<IFullFrameContext>({} as any)
   const setFrameContainerRef = useCallback(
     (payload: Partial<IFrameContextRefs>) => setFrameRefs((frames) => mergeLeft(frames, payload)),
     [setFrameRefs],
   )
-  const plugins = pluginManager.getPlugins()
   const classes = useStyles({ sidebarPane })
 
   useEffect(() => {
@@ -48,9 +37,7 @@ function DefaultFrame({ role }: Props) {
       <main className={classes.appFrame}>
         <Header />
         <aside className="sidebar custom-nav" ref={sidebarPaneRef} />
-        <section className={clsx('content-main', classes.contentMain)}>
-          {renderMainContent(plugins, role)}
-        </section>
+        <section className={clsx('content-main', classes.contentMain)}>{children}</section>
       </main>
     </FrameContext.Provider>
   )
