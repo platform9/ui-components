@@ -90,7 +90,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => {
         },
     });
 });
-const FormPageContainer = ({ children, className = undefined, footer = undefined, logoUrl, logoText, primayImgUrl, }) => {
+const FormPageContainer = ({ children, className = undefined, footer = undefined, logoUrl = undefined, logoText = undefined, primayImgUrl, }) => {
     const classes = useStyles();
     return (react_1.default.createElement("section", { id: (0, clsx_1.default)('form-page-container', className), className: (0, clsx_1.default)('form-page-container', classes.page) },
         !logoUrl && !!logoText && (react_1.default.createElement(Text_1.default, { className: "form-logo", variant: "subtitle1" }, logoText)),

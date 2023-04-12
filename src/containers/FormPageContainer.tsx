@@ -91,8 +91,8 @@ const FormPageContainer = ({
   children,
   className = undefined,
   footer = undefined,
-  logoUrl,
-  logoText,
+  logoUrl = undefined,
+  logoText = undefined,
   primayImgUrl,
 }) => {
   const classes = useStyles()

@@ -1,0 +1,1 @@
+{"version":3,"file":"frame-provider.js","sourceRoot":"","sources":["../../src/providers/frame-provider.tsx"],"names":[],"mappings":";;;AAAA,iCAA0D;AAY7C,QAAA,YAAY,GAAG,IAAA,qBAAa,EAAC;IACxC,oBAAoB,EAAE,CAAC,OAAO,EAAE,EAAE,GAAE,CAAC;IACrC,oBAAoB,EAAE,IAAI;IAC1B,oBAAoB,EAAE,IAAI;IAC1B,4BAA4B,EAAE,IAAI;IAClC,0BAA0B,EAAE,IAAI;CACjC,CAAC,CAAA;AAEF,kBAAe,oBAAY,CAAA"}

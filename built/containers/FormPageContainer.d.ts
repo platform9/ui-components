@@ -3,8 +3,8 @@ declare const FormPageContainer: ({ children, className, footer, logoUrl, logoTe
     children: any;
     className?: any;
     footer?: any;
-    logoUrl: any;
-    logoText: any;
+    logoUrl?: any;
+    logoText?: any;
     primayImgUrl: any;
 }) => JSX.Element;
 export default FormPageContainer;
