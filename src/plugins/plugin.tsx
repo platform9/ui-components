@@ -7,12 +7,15 @@ class Plugin {
   constructor(
     public pluginId: string,
     public name: string,
-    public basePath: string,
-    public icon: any,
+    public basePath?: string,
+    public icon?: any,
+    public isDefault = false,
     public data = initData(DefaultFrame),
     private prependBasePath = parseNavItem(basePath),
   ) {}
-
+  public setAsDefault() {
+    this.isDefault = true
+  }
   public clearAll() {
     this.data = initData()
   }

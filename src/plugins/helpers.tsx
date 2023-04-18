@@ -119,6 +119,7 @@ export const getSections = memoize(
       id,
       name: plugin.name,
       icon: plugin.icon,
+      isDefault: plugin.isDefault,
       links: plugin
         .getNavItems()
         .filter(

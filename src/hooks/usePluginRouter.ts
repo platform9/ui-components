@@ -21,8 +21,11 @@ const usePluginRouter = (initialPlugin?: string, appPlugins?: string[]) => {
   // const sections = getSections(plugins, role, features)
   const sections = getSections(plugins)
 
-  const currentSection = useMemo(
-    () => sections.find((section) => pluginId === section.id),
+  let currentSection = useMemo(
+    () =>
+      sections.find(
+        (section, idx) => (pluginId === 'default' && section.isDefault) || pluginId === section.id,
+      ),
     [pluginId, sections],
   )
   const currentLink = useMemo(
