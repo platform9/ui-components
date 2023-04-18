@@ -3,7 +3,7 @@ declare const usePluginRouter: (initialPlugin?: string, appPlugins?: string[]) =
     plugins: {
         [key: string]: import("../plugins/plugin").default;
     };
-    currentPluginId: any;
+    currentPluginId: string;
     sections: import("../plugins/model").PluginSection[];
     currentSection: import("../plugins/model").PluginSection;
     currentLink: import("../plugins/model").IRouterLink;
