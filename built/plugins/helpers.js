@@ -81,6 +81,7 @@ exports.getSections = (0, misc_1.memoize)((plugins, role, features) => (0, ramda
     id,
     name: plugin.name,
     icon: plugin.icon,
+    isDefault: plugin.isDefault,
     links: plugin
         .getNavItems()
         .filter(({ requiredRoles }) => (0, fp_1.isNilOrEmpty)(requiredRoles) || (0, fp_1.ensureArray)(requiredRoles).includes(role))

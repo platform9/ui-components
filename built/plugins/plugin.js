@@ -7,13 +7,17 @@ const helpers_1 = require("./helpers");
 const DefaultFrame_1 = __importDefault(require("../containers/DefaultFrame"));
 const route_1 = require("./route");
 class Plugin {
-    constructor(pluginId, name, basePath, icon, data = (0, helpers_1.initData)(DefaultFrame_1.default), prependBasePath = (0, helpers_1.parseNavItem)(basePath)) {
+    constructor(pluginId, name, basePath, icon, isDefault = false, data = (0, helpers_1.initData)(DefaultFrame_1.default), prependBasePath = (0, helpers_1.parseNavItem)(basePath)) {
         this.pluginId = pluginId;
         this.name = name;
         this.basePath = basePath;
         this.icon = icon;
+        this.isDefault = isDefault;
         this.data = data;
         this.prependBasePath = prependBasePath;
+    }
+    setAsDefault() {
+        this.isDefault = true;
     }
     clearAll() {
         this.data = (0, helpers_1.initData)();

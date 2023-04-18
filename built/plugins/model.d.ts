@@ -2,6 +2,7 @@ export interface PluginSection {
     id: string;
     name: string;
     links: IRouterLink[];
+    isDefault: boolean;
 }
 export interface IRouterLink {
     name: string;

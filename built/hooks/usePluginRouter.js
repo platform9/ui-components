@@ -22,7 +22,7 @@ const usePluginRouter = (initialPlugin, appPlugins) => {
     const currentPath = `${pathname}${hash}`;
     // const sections = getSections(plugins, role, features)
     const sections = (0, helpers_1.getSections)(plugins);
-    const currentSection = (0, react_1.useMemo)(() => sections.find((section) => pluginId === section.id), [pluginId, sections]);
+    let currentSection = (0, react_1.useMemo)(() => sections.find((section, idx) => (pluginId === 'default' && section.isDefault) || pluginId === section.id), [pluginId, sections]);
     const currentLink = (0, react_1.useMemo)(() => currentSection.links.find((0, route_helpers_1.matchLinkToPath)(currentPath)), [currentSection, currentPath]);
     const currentOptions = (0, react_1.useMemo)(() => {
         var _a, _b;
