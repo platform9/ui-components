@@ -18,7 +18,9 @@ const useStyles = makeStyles<Theme>((theme) => ({
   dividerLink: {
     display: 'grid',
     marginTop: 36,
+    marginBottom: 8,
     gridTemplateColumns: 'max-content 1fr',
     gap: 12,
+    alignItems: 'center',
   },
 }))
