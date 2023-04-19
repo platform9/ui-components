@@ -104,6 +104,7 @@ const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
     borderRadius: 4,
     boxSizing: 'border-box',
     lineHeight: 1.25,
+    textTransform: 'capitalize',
     color: ({ active, disabled }) => {
       const key: BreadcrumbKeys = disabled ? 'disabledText' : active ? 'activeText' : 'text'
       return theme.components.breadcrumb[key]
