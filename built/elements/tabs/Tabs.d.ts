@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { Route } from '../../misc/route';
+import { Route } from '../../plugins/route';
 interface Props {
     route?: Route;
     routeKey?: string;

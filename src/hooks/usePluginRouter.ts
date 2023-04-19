@@ -6,7 +6,7 @@ import pluginManager from '../plugins/pluginManager'
 import { matchLinkToPath } from '../plugins/route-helpers'
 import { PluginOptions } from '../plugins/model'
 
-const usePluginRouter = (initialPlugin?: string, appPlugins?: string[] = []) => {
+const usePluginRouter = (initialPlugin?: string, appPlugins: string[] = []) => {
   const plugins = pluginManager.getPlugins()
   const { location } = useReactRouter()
   const { pathname, hash } = location

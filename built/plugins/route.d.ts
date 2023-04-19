@@ -8,6 +8,7 @@ interface IRouteOptions {
     breadcrumbs?: Map<string, string>;
     name: string;
     defaultParams?: GenericKVP;
+    metadata?: Record<string, string | boolean>;
     tab?: string;
 }
 type OptionalGenericKVP = GenericKVP | null | void;
@@ -19,6 +20,7 @@ export declare class Route<T extends OptionalGenericKVP = null> {
     breadcrumbs: Map<string, string>;
     name: string;
     defaultParams: GenericKVP;
+    metadata: Record<string, string | boolean>;
     pattern: URLPattern;
     tab: string;
     static routes: Route[];

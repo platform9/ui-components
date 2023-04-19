@@ -34,7 +34,7 @@ const iconProps = {
 // TODO setup reducers to be used in the consuming app for session and client
 const sidebarState = 'expanded'
 const features = {}
-const sidebarPane: 'custom' | 'default' = 'default'
+const sidebarPane: any = 'default'
 
 const sidebarPaneRef = React.createRef<HTMLDivElement>()
 const Sidebar: FC<Props> = ({ setPluginId }) => {

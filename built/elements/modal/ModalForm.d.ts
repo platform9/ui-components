@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import { ModalProps } from './Modal';
-import { Route } from '../../misc/route';
+import { Route } from '../../plugins/route';
 interface BaseModalFormProps extends Omit<ModalProps, 'open'> {
     submitTitle?: string;
     onSubmit?: any;

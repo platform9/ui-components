@@ -23,7 +23,7 @@ export declare const defaultThemeState: ThemeReducer;
 export declare const themeKey = "theme";
 declare const createThemeSlice: (theme?: ThemeReducer) => {
     customThemeKey: "theme";
-    themeReducer: import("redux").Reducer<ThemeReducer>;
+    themeReducer: import("redux").Reducer<ThemeReducer, import("redux").AnyAction>;
     themeActions: import("@reduxjs/toolkit").CaseReducerActions<{
         updateGlobalTheme: (state: import("immer/dist/internal").WritableDraft<ThemeReducer>, { payload }: {
             payload: any;
