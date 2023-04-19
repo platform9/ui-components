@@ -9,6 +9,7 @@ export interface IRouterLink {
   name: string
   link: Link
   icon?: string
+  type?: 'divider' | 'link'
   nestedLinks: NestedLink[] | null
   isBottomLink?: boolean
   requiredRoles?: string

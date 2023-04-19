@@ -4,7 +4,7 @@ import Theme from '../../theme-manager/themes/model'
 import FontAwesomeIcon from '../../components/FontAwesomeIcon'
 import Text from '../Text'
 
-export default function NavDivider({ icon, name }) {
+export default function NavDivider({ icon = undefined, name = '' }) {
   const classes = useStyles()
   return (
     <li className={classes.dividerLink}>

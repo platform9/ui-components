@@ -7,7 +7,7 @@ const react_1 = __importDefault(require("react"));
 const styles_1 = require("@material-ui/styles");
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
 const Text_1 = __importDefault(require("../Text"));
-function NavDivider({ icon, name }) {
+function NavDivider({ icon = undefined, name = '' }) {
     const classes = useStyles();
     return (react_1.default.createElement("li", { className: classes.dividerLink },
         react_1.default.createElement(FontAwesomeIcon_1.default, null, icon),
@@ -18,8 +18,10 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
     dividerLink: {
         display: 'grid',
         marginTop: 36,
+        marginBottom: 8,
         gridTemplateColumns: 'max-content 1fr',
         gap: 12,
+        alignItems: 'center',
     },
 }));
 //# sourceMappingURL=NavDivider.js.map
