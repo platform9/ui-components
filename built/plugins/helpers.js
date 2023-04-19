@@ -62,9 +62,10 @@ const renderPluginRoutes = (role) => (id, plugin) => {
     const filteredRoutes = plugin
         .getRoutes()
         .filter(({ requiredRoles }) => (0, fp_1.isNilOrEmpty)(requiredRoles) || (0, fp_1.ensureArray)(requiredRoles).includes(role));
+    const RouteComponent = plugin.routeComponent || react_router_1.Route;
     return [...filteredRoutes, ...genericRoutes].map((route) => {
         const { component: Component, render, link } = route;
-        return (react_1.default.createElement(react_router_1.Route, { key: link.path, path: link.path, exact: link.exact || false, render: render, component: Component }));
+        return (react_1.default.createElement(RouteComponent, { key: link.path, path: link.path, exact: link.exact || false, render: render, component: Component }));
     });
 };
 exports.renderPluginRoutes = renderPluginRoutes;

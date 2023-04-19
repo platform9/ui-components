@@ -19,6 +19,9 @@ class Plugin {
     setAsDefault() {
         this.isDefault = true;
     }
+    setDefaultRouteComponent(component) {
+        this.routeComponent = component;
+    }
     clearAll() {
         this.data = (0, helpers_1.initData)();
     }

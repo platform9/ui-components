@@ -4,6 +4,7 @@ import DefaultFrame from '../containers/DefaultFrame'
 import { createUrlWithQueryString } from './route'
 
 class Plugin {
+  routeComponent?: React.ReactNode
   constructor(
     public pluginId: string,
     public name: string,
@@ -15,6 +16,9 @@ class Plugin {
   ) {}
   public setAsDefault() {
     this.isDefault = true
+  }
+  public setDefaultRouteComponent(component) {
+    this.routeComponent = component
   }
   public clearAll() {
     this.data = initData()

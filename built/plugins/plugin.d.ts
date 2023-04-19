@@ -1,3 +1,4 @@
+import React from 'react';
 declare class Plugin {
     pluginId: string;
     name: string;
@@ -17,6 +18,7 @@ declare class Plugin {
         };
     };
     private prependBasePath;
+    routeComponent?: React.ReactNode;
     constructor(pluginId: string, name: string, basePath?: string, icon?: any, isDefault?: boolean, data?: {
         frame: any;
         components: any[];
@@ -30,6 +32,7 @@ declare class Plugin {
         };
     }, prependBasePath?: (navItem: any) => any);
     setAsDefault(): void;
+    setDefaultRouteComponent(component: any): void;
     clearAll(): void;
     registerFrame(component: any): void;
     registerComponent(component: any): void;

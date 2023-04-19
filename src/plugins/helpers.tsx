@@ -76,11 +76,11 @@ export const renderPluginRoutes = (role) => (id, plugin) => {
       ({ requiredRoles }) =>
         isNilOrEmpty(requiredRoles) || ensureArray(requiredRoles).includes(role),
     )
-
+  const RouteComponent = plugin.routeComponent || Route
   return [...filteredRoutes, ...genericRoutes].map((route) => {
     const { component: Component, render, link } = route
     return (
-      <Route
+      <RouteComponent
         key={link.path}
         path={link.path}
         exact={link.exact || false}
