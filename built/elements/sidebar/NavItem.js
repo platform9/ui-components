@@ -11,6 +11,7 @@ const clsx_1 = __importDefault(require("clsx"));
 const tooltip_1 = __importDefault(require("../tooltip"));
 const Text_1 = __importDefault(require("../Text"));
 const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
+const colorHelpers_1 = require("../../utils/colorHelpers");
 function NavItem({ name, link, icon, className = undefined, open = false, isActive = false, compact = false, tooltip = false, tooltipProps = {}, activeDisplayType = 'background', }) {
     const classes = useStyles({ isActive, compact, activeDisplayType });
     return (react_1.default.createElement(react_router_dom_1.Link, { to: link.path },
@@ -21,12 +22,12 @@ function NavItem({ name, link, icon, className = undefined, open = false, isActi
                 open && (react_1.default.createElement(Text_1.default, { className: (0, clsx_1.default)('nav-text', classes.navText), "data-testid": (0, test_helpers_1.default)(name), variant: compact ? 'sidenav' : 'subtitle2' }, name))))));
 }
 exports.default = NavItem;
-const getBackgroundImage = (isActive, displayType) => {
+const getBackgroundImage = (isActive, displayType, sidebarColors) => {
     if (displayType === 'background' && isActive) {
-        return 'linear-gradient(to right, rgba(0, 171, 232, 0.5) 0%, rgba(0, 171, 232, 0) 100%)';
+        return `linear-gradient(to right, ${(0, colorHelpers_1.hexToRgbaCss)(sidebarColors.activeBackground, 0.5)} 0%, ${(0, colorHelpers_1.hexToRgbaCss)(sidebarColors.activeBackground, 0)} 100%)`;
     }
     if (displayType === 'bar' && isActive) {
-        return 'linear-gradient(rgba(0, 171, 232, 1), rgba(0, 171, 232, 1))';
+        return `linear-gradient(${sidebarColors.activeBackground}, ${sidebarColors.activeBackground})`;
     }
     return 'unset';
 };
@@ -46,12 +47,23 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         '&:before': {
             content: '""',
             position: 'absolute',
+            bottom: ({ activeDisplayType }) => (activeDisplayType === 'bar' ? 'unset' : 0),
+            top: ({ activeDisplayType }) => (activeDisplayType === 'bar' ? '50%' : 0),
+            left: 0,
+            right: ({ activeDisplayType }) => (activeDisplayType === 'background' ? 0 : 'unset'),
+            width: ({ activeDisplayType }) => (activeDisplayType === 'bar' ? 3 : 'unset'),
+            height: ({ activeDisplayType }) => (activeDisplayType === 'bar' ? 24 : 'unset'),
+            transform: ({ activeDisplayType }) => activeDisplayType === 'bar' ? 'translate(0px, -50%)' : 'unset',
+            backgroundImage: ({ isActive, activeDisplayType }) => getBackgroundImage(isActive, activeDisplayType, theme.components.sidebar),
+        },
+        '&:after': {
+            content: ({ activeDisplayType }) => (activeDisplayType === 'bar' ? '""' : ''),
+            position: 'absolute',
             bottom: 0,
             top: 0,
             left: 0,
-            right: ({ activeDisplayType }) => (activeDisplayType === 'background' ? 0 : 'unset'),
-            width: ({ activeDisplayType }) => (activeDisplayType === 'bar' ? 4 : 'unset'),
-            backgroundImage: ({ isActive, activeDisplayType }) => getBackgroundImage(isActive, activeDisplayType),
+            width: 1,
+            backgroundColor: theme.components.sidebar.border,
         },
     },
     navIcon: {

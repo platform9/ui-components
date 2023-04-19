@@ -8,6 +8,7 @@ import clsx from 'clsx'
 import Tooltip from '../tooltip'
 import Text from '../Text'
 import generateTestId from '../../utils/test-helpers'
+import { hexToRgbaCss } from '../../utils/colorHelpers'
 
 interface Props extends IRouterLink {
   isActive?: boolean
@@ -70,12 +71,15 @@ interface StyleProps {
   activeDisplayType: Props['activeDisplayType']
 }
 
-const getBackgroundImage = (isActive, displayType) => {
+const getBackgroundImage = (isActive, displayType, sidebarColors) => {
   if (displayType === 'background' && isActive) {
-    return 'linear-gradient(to right, rgba(0, 171, 232, 0.5) 0%, rgba(0, 171, 232, 0) 100%)'
+    return `linear-gradient(to right, ${hexToRgbaCss(
+      sidebarColors.activeBackground,
+      0.5,
+    )} 0%, ${hexToRgbaCss(sidebarColors.activeBackground, 0)} 100%)`
   }
   if (displayType === 'bar' && isActive) {
-    return 'linear-gradient(rgba(0, 171, 232, 1), rgba(0, 171, 232, 1))'
+    return `linear-gradient(${sidebarColors.activeBackground}, ${sidebarColors.activeBackground})`
   }
   return 'unset'
 }
@@ -96,13 +100,25 @@ const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
     '&:before': {
       content: '""',
       position: 'absolute',
+      bottom: ({ activeDisplayType }) => (activeDisplayType === 'bar' ? 'unset' : 0),
+      top: ({ activeDisplayType }) => (activeDisplayType === 'bar' ? '50%' : 0),
+      left: 0,
+      right: ({ activeDisplayType }) => (activeDisplayType === 'background' ? 0 : 'unset'),
+      width: ({ activeDisplayType }) => (activeDisplayType === 'bar' ? 3 : 'unset'),
+      height: ({ activeDisplayType }) => (activeDisplayType === 'bar' ? 24 : 'unset'),
+      transform: ({ activeDisplayType }) =>
+        activeDisplayType === 'bar' ? 'translate(0px, -50%)' : 'unset',
+      backgroundImage: ({ isActive, activeDisplayType }) =>
+        getBackgroundImage(isActive, activeDisplayType, theme.components.sidebar),
+    },
+    '&:after': {
+      content: ({ activeDisplayType }) => (activeDisplayType === 'bar' ? '""' : ''),
+      position: 'absolute',
       bottom: 0,
       top: 0,
       left: 0,
-      right: ({ activeDisplayType }) => (activeDisplayType === 'background' ? 0 : 'unset'),
-      width: ({ activeDisplayType }) => (activeDisplayType === 'bar' ? 4 : 'unset'),
-      backgroundImage: ({ isActive, activeDisplayType }) =>
-        getBackgroundImage(isActive, activeDisplayType),
+      width: 1,
+      backgroundColor: theme.components.sidebar.border,
     },
   },
   navIcon: {
