@@ -1,0 +1,44 @@
+import { Route as Router } from '../../plugins/route';
+export declare const getCrumbs: import("moize").Moized<(breadcrumbs: Router['breadcrumbs'], breadCrumbParams: any, routeParams: any) => any[], Partial<{
+    isDeepEqual: boolean;
+    isPromise: boolean;
+    isReact: boolean;
+    isSerialized: boolean;
+    isShallowEqual: boolean;
+    matchesArg: import("moize").IsEqual;
+    matchesKey: import("moize").IsMatchingKey;
+    maxAge: number;
+    maxArgs: number;
+    maxSize: number;
+    onCacheAdd: import("moize").OnCacheOperation<(breadcrumbs: Router['breadcrumbs'], breadCrumbParams: any, routeParams: any) => any[]>;
+    onCacheChange: import("moize").OnCacheOperation<(breadcrumbs: Router['breadcrumbs'], breadCrumbParams: any, routeParams: any) => any[]>;
+    onCacheHit: import("moize").OnCacheOperation<(breadcrumbs: Router['breadcrumbs'], breadCrumbParams: any, routeParams: any) => any[]>;
+    onExpire: import("moize").OnExpire;
+    profileName: string;
+    serializer: import("moize").Serialize;
+    transformArgs: import("moize").TransformKey;
+    updateCacheForKey: import("moize").UpdateCacheForKey;
+    updateExpire: boolean;
+}> & Partial<{
+    isDeepEqual: boolean;
+    isPromise: boolean;
+    isReact: boolean;
+    isSerialized: boolean;
+    isShallowEqual: boolean;
+    matchesArg: import("moize").IsEqual;
+    matchesKey: import("moize").IsMatchingKey;
+    maxAge: number;
+    maxArgs: number;
+    maxSize: number;
+    onCacheAdd: import("moize").OnCacheOperation<import("moize").Moizeable>;
+    onCacheChange: import("moize").OnCacheOperation<import("moize").Moizeable>;
+    onCacheHit: import("moize").OnCacheOperation<import("moize").Moizeable>;
+    onExpire: import("moize").OnExpire;
+    profileName: string;
+    serializer: import("moize").Serialize;
+    transformArgs: import("moize").TransformKey;
+    updateCacheForKey: import("moize").UpdateCacheForKey;
+    updateExpire: boolean;
+}> & {
+    maxSize: number;
+} & Partial<import("../../utils/misc").DefaultMoizeOptions>>;

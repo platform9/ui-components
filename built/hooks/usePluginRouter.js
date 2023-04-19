@@ -9,7 +9,7 @@ const use_react_router_1 = __importDefault(require("use-react-router"));
 const helpers_1 = require("../plugins/helpers");
 const pluginManager_1 = __importDefault(require("../plugins/pluginManager"));
 const route_helpers_1 = require("../plugins/route-helpers");
-const usePluginRouter = (initialPlugin, appPlugins) => {
+const usePluginRouter = (initialPlugin, appPlugins = []) => {
     const plugins = pluginManager_1.default.getPlugins();
     const { location } = (0, use_react_router_1.default)();
     const { pathname, hash } = location;
