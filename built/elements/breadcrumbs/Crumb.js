@@ -62,7 +62,6 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         borderRadius: 4,
         boxSizing: 'border-box',
         lineHeight: 1.25,
-        textTransform: 'capitalize',
         color: ({ active, disabled }) => {
             const key = disabled ? 'disabledText' : active ? 'activeText' : 'text';
             return theme.components.breadcrumb[key];

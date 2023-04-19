@@ -36,7 +36,7 @@ class Route {
     static getRoutes() {
         return Route.routes;
     }
-    static getCurrentRoute(pathname = '') {
+    static getCurrentRoute(pathname = window.location.pathname) {
         if (!pathname) {
             pathname = `${location.pathname}${location.hash}`;
         }

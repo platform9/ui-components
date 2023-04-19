@@ -70,7 +70,9 @@ export class Route<T extends OptionalGenericKVP = null> {
     return Route.routes
   }
 
-  static getCurrentRoute<T extends OptionalGenericKVP = null>(pathname = ''): Route<T> | null {
+  static getCurrentRoute<T extends OptionalGenericKVP = null>(
+    pathname = window.location.pathname,
+  ): Route<T> | null {
     if (!pathname) {
       pathname = `${location.pathname}${location.hash}`
     }
