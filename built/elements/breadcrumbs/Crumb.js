@@ -56,6 +56,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         },
     },
     crumbText: {
+        fontWeight: 600,
         width: '100%',
         padding: 8,
         borderRadius: 4,
