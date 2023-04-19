@@ -3,10 +3,9 @@ import React, { PropsWithChildren, useMemo, useRef } from 'react'
 import Modal, { ModalProps } from './Modal'
 import Button from '../button'
 import useReactRouter from 'use-react-router'
-
+import { Route } from '../../plugins/route'
 import Progress from '../../components/progress/Progress'
 import Alert from '../../components/Alert'
-import { Route } from '../../misc/route'
 
 interface BaseModalFormProps extends Omit<ModalProps, 'open'> {
   submitTitle?: string

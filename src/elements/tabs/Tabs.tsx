@@ -3,7 +3,7 @@ import useReactRouter from 'use-react-router'
 import { makeStyles } from '@material-ui/styles'
 
 import Theme from '../../theme-manager/themes/model'
-import { Route } from '../../misc/route'
+import { Route } from '../../plugins/route'
 import { TabContext } from './TabContext'
 import TabPreview from './TabPreview'
 

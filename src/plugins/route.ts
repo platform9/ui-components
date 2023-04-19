@@ -11,6 +11,7 @@ interface IRouteOptions {
   breadcrumbs?: Map<string, string>
   name: string
   defaultParams?: GenericKVP
+  metadata?: Record<string, string | boolean>
   tab?: string
 }
 
@@ -31,6 +32,7 @@ export class Route<T extends OptionalGenericKVP = null> {
   breadcrumbs: Map<string, string>
   name: string
   defaultParams: GenericKVP
+  metadata: Record<string, string | boolean>
   pattern: URLPattern
   tab: string
 
@@ -42,6 +44,7 @@ export class Route<T extends OptionalGenericKVP = null> {
     this.name = options.name
     this.breadcrumbs = options.breadcrumbs || new Map()
     this.defaultParams = options.defaultParams || {}
+    this.metadata = options.metadata || {}
     this.pattern = new URLPattern(options.url)
     this.tab = options.tab || ''
   }
