@@ -12,7 +12,7 @@ const route_1 = require("../../plugins/route");
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
 const Crumb_1 = __importDefault(require("./Crumb"));
 const helpers_1 = require("./helpers");
-function Breadcrumbs({ nameOverrides }) {
+function Breadcrumbs({ nameOverrides, textVariant = 'body2' }) {
     const { currentLink } = (0, usePluginRouter_1.default)();
     const { match, location } = (0, use_react_router_1.default)();
     const classes = useStyles({});
@@ -25,7 +25,7 @@ function Breadcrumbs({ nameOverrides }) {
     return (react_1.default.createElement("ul", { className: (0, clsx_1.default)(classes.breadcrumbs, classes.gridContainer, {
             [classes.fourCrumbs]: crumbs.length === 4,
             [classes.fiveCrumbs]: crumbs.length === 5,
-        }) }, crumbs.map((crumb, idx) => (react_1.default.createElement(Crumb_1.default, { key: crumb.name, leftIcon: idx === 0 && (react_1.default.createElement(FontAwesomeIcon_1.default, { className: (0, clsx_1.default)(classes.icon, classes.primaryIcon) }, currentLink === null || currentLink === void 0 ? void 0 : currentLink.icon)), name: crumb.name, path: crumb.path, icon: "chevron-right", active: idx === crumbs.length - 1 })))));
+        }) }, crumbs.map((crumb, idx) => (react_1.default.createElement(Crumb_1.default, { key: crumb.name, leftIcon: idx === 0 && (react_1.default.createElement(FontAwesomeIcon_1.default, { className: (0, clsx_1.default)(classes.icon, classes.primaryIcon) }, currentLink === null || currentLink === void 0 ? void 0 : currentLink.icon)), textVariant: textVariant, name: crumb.name, path: crumb.path, icon: "chevron-right", active: idx === crumbs.length - 1 })))));
 }
 exports.default = Breadcrumbs;
 const useStyles = (0, styles_1.makeStyles)((theme) => ({

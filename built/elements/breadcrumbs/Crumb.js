@@ -10,7 +10,7 @@ const styles_1 = require("@material-ui/styles");
 const Text_1 = __importDefault(require("../../elements/Text"));
 const SimpleLink_1 = __importDefault(require("../../components/SimpleLink"));
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
-function Crumb({ icon, name, path, active, leftIcon, disabled = false, }) {
+function Crumb({ icon, name, path, active, leftIcon, textVariant, disabled = false, }) {
     const isLink = !(0, ramda_1.isNil)(path) && !active;
     const classes = useStyles({
         active,
@@ -18,7 +18,7 @@ function Crumb({ icon, name, path, active, leftIcon, disabled = false, }) {
         selectable: isLink,
         hideEllipsis: !!leftIcon || active,
     });
-    const textContent = (react_1.default.createElement(Text_1.default, { variant: "subtitle2", noWrap: true, className: (0, clsx_1.default)('breadcrumb-text', classes.crumbText) },
+    const textContent = (react_1.default.createElement(Text_1.default, { variant: textVariant, noWrap: true, className: (0, clsx_1.default)('breadcrumb-text', classes.crumbText) },
         leftIcon && leftIcon,
         react_1.default.createElement("span", null, name)));
     return (react_1.default.createElement("li", { className: classes.breadcrumbItem },

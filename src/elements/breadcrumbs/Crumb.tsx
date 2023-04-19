@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
 import Theme from '../../theme-manager/themes/model'
 
-import Text from '../../elements/Text'
+import Text, { TextProps } from '../../elements/Text'
 import SimpleLink from '../../components/SimpleLink'
 import FontAwesomeIcon from '../../components/FontAwesomeIcon'
 
@@ -15,6 +15,7 @@ interface CrumbProps {
   icon: string
   leftIcon?: React.ReactNode
   disabled?: boolean
+  textVariant?: TextProps['variant']
 }
 
 export default function Crumb({
@@ -23,6 +24,7 @@ export default function Crumb({
   path,
   active,
   leftIcon,
+  textVariant,
   disabled = false,
 }: CrumbProps) {
   const isLink = !isNil(path) && !active
@@ -33,7 +35,7 @@ export default function Crumb({
     hideEllipsis: !!leftIcon || active,
   })
   const textContent = (
-    <Text variant="subtitle2" noWrap className={clsx('breadcrumb-text', classes.crumbText)}>
+    <Text variant={textVariant} noWrap className={clsx('breadcrumb-text', classes.crumbText)}>
       {leftIcon && leftIcon}
       <span>{name}</span>
     </Text>

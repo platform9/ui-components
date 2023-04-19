@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/styles'
 
 export type TextVariant = keyof typeof typography
 
-interface TextProps
+export interface TextProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   className?: string
   variant?: TextVariant

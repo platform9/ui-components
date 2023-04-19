@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import useReactRouter from 'use-react-router'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
@@ -9,8 +9,14 @@ import FontAwesomeIcon from '../../components/FontAwesomeIcon'
 
 import Crumb from './Crumb'
 import { getCrumbs } from './helpers'
+import { TextProps } from '../Text'
 
-export default function Breadcrumbs({ nameOverrides }) {
+type Props = PropsWithChildren<{
+  nameOverrides: Record<string, string>
+  textVariant: TextProps['variant']
+}>
+
+export default function Breadcrumbs({ nameOverrides, textVariant = 'body2' as const }: Props) {
   const { currentLink } = usePluginRouter()
   const { match, location } = useReactRouter()
   const classes = useStyles({})
@@ -39,6 +45,7 @@ export default function Breadcrumbs({ nameOverrides }) {
               </FontAwesomeIcon>
             )
           }
+          textVariant={textVariant}
           name={crumb.name}
           path={crumb.path}
           icon="chevron-right"
