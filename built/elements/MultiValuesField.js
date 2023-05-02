@@ -102,7 +102,7 @@ const removeEmptyValuesAndStripId = (entries) => {
     });
     return values;
 };
-const MultiValuesField = ({ label, items: values, addLabel, placeholderText, onChange, info = '', }) => {
+const MultiValuesField = ({ label, items: values, addLabel, placeholderText, onChange, info = '', inputProperties = {}, }) => {
     const classes = useStyles({ info });
     const [entries, setEntries] = (0, react_1.useState)(getInitialEntries(values));
     (0, react_1.useEffect)(() => {
@@ -119,7 +119,7 @@ const MultiValuesField = ({ label, items: values, addLabel, placeholderText, onC
                     react_1.default.createElement(FontAwesomeIcon_1.default, null, "question-circle"),
                     "Hint")))),
         entries.map(({ id, value }) => (react_1.default.createElement("div", { key: id, className: classes.entries },
-            react_1.default.createElement(input_1.default, { placeholder: placeholderText, value: value, onChange: handleChange(id) }),
+            react_1.default.createElement(input_1.default, Object.assign({}, inputProperties, { placeholder: placeholderText, value: value, onChange: handleChange(id) })),
             react_1.default.createElement(FontAwesomeIcon_1.default, { className: classes.minus, onClick: deleteEntry(id) }, "minus-circle")))),
         react_1.default.createElement("div", { className: classes.addNewEntry },
             react_1.default.createElement(FontAwesomeIcon_1.default, { className: classes.plus, onClick: addBlankEntry, size: "lg" }, "plus-circle"),

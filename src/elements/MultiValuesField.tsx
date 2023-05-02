@@ -18,6 +18,7 @@ interface Props {
   info?: string
   placeholderText?: string
   onChange: (value: string[]) => void
+  inputProperties?: Record<string, any>
 }
 
 const useStyles = makeStyles<Theme, Partial<Props>>((theme) => ({
@@ -94,6 +95,7 @@ const MultiValuesField = ({
   placeholderText,
   onChange,
   info = '',
+  inputProperties = {},
 }: Props) => {
   const classes = useStyles({ info })
   const [entries, setEntries] = useState(getInitialEntries(values))
@@ -137,7 +139,12 @@ const MultiValuesField = ({
       </div>
       {entries.map(({ id, value }) => (
         <div key={id} className={classes.entries}>
-          <Input placeholder={placeholderText} value={value} onChange={handleChange(id)} />
+          <Input
+            {...inputProperties}
+            placeholder={placeholderText}
+            value={value}
+            onChange={handleChange(id)}
+          />
           <FontAwesomeIcon className={classes.minus} onClick={deleteEntry(id)}>
             minus-circle
           </FontAwesomeIcon>
