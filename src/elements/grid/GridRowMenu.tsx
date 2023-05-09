@@ -16,6 +16,7 @@ interface GridRowMenuProps<T> extends GridRowMenuItemsProps<T> {
   // display just a button instead of a menu/dropdown. Set this to false if you
   // still want the menu to show instead of a single action button
   showRowMenuForSingleRowActions?: boolean
+  maxRowMenuHeight?: number
 }
 
 export default function GridRowMenu<T>({
@@ -24,6 +25,7 @@ export default function GridRowMenu<T>({
   rowMenuDisabled,
   rowMenuOffset = {},
   showRowMenuForSingleRowActions = false,
+  maxRowMenuHeight,
 }: GridRowMenuProps<T>) {
   const filteredRowMenuItems = rowMenuItems.filter((rowItem) => {
     if (rowItem?.hideIfDisabled) {
@@ -32,7 +34,7 @@ export default function GridRowMenu<T>({
     return true
   })
 
-  const classes = useStyles({})
+  const classes = useStyles({ maxRowMenuHeight })
   const [isOpen, toggleIsOpen] = useToggler()
   const handleMenuClick = useCallback((e) => {
     toggleIsOpen()
@@ -92,7 +94,7 @@ export default function GridRowMenu<T>({
   )
 }
 
-const useStyles = makeStyles<Theme>((theme) => ({
+const useStyles = makeStyles<Theme, Partial<GridRowMenuProps<any>>>((theme) => ({
   gridRowMenu: {
     cursor: 'pointer',
     '& > i': {
@@ -111,6 +113,8 @@ const useStyles = makeStyles<Theme>((theme) => ({
     '& .menu-popover': {
       minWidth: 60,
       padding: '8px',
+      maxHeight: ({ maxRowMenuHeight }) => (maxRowMenuHeight ? maxRowMenuHeight : undefined),
+      overflow: ({ maxRowMenuHeight }) => (maxRowMenuHeight ? 'auto' : undefined),
     },
   },
   warning: {

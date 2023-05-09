@@ -9,6 +9,7 @@ export interface GridRowMenuConfig<T> {
   rowMenuOffset?: GridRowMenuOffset
   onRefresh?: () => void | Promise<void>
   showRowMenuForSingleRowActions?: boolean
+  maxRowMenuHeight?: number
 }
 
 export interface GridRowMenuOffset {
@@ -39,6 +40,7 @@ export interface GridRowMenuItemsProps<T> {
   rowMenuItems?: GridRowMenuItemProps<T>[]
   rowMenuOffset?: GridRowMenuOffset
   showRowMenuForSingleRowActions?: boolean
+  maxRowMenuHeight?: number
 }
 
 export interface GridRowMenuItemProps<T> {
@@ -58,6 +60,7 @@ export default function useGridRowMenu<T>(
     onRefresh,
     rowMenuOffset = {},
     showRowMenuForSingleRowActions,
+    maxRowMenuHeight,
   }: GridRowMenuConfig<T>,
 ): [Array<ParsedGridRow<T>>, GridRowMenuItemsProps<T>] {
   const rowMenuItems = useMemo<GridRowMenuItemProps<T>[]>(() => {
@@ -105,6 +108,7 @@ export default function useGridRowMenu<T>(
       rowMenuItems,
       rowMenuOffset,
       showRowMenuForSingleRowActions,
+      maxRowMenuHeight,
     },
   ]
 }

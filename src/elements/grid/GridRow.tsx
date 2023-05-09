@@ -63,6 +63,7 @@ export default function GridRow<T>(props: GridRowProps<T>) {
     numPageItems,
     rowMenuOffset = {},
     showRowMenuForSingleRowActions,
+    maxRowMenuHeight,
   } = props
   return (
     <tr className={className} onClick={toggleSelect}>
@@ -104,6 +105,7 @@ export default function GridRow<T>(props: GridRowProps<T>) {
                 : rowMenuOffset
             }
             showRowMenuForSingleRowActions={showRowMenuForSingleRowActions}
+            maxRowMenuHeight={maxRowMenuHeight}
           />
         </td>
       ) : null}
