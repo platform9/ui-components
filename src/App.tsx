@@ -11,6 +11,7 @@ import { without } from 'ramda'
 import { GridBatchActionSpec } from './elements/grid/hooks/useGridSelectableRows'
 import GridDefaultDeleteButton from './elements/grid/buttons/GridDefaultDeleteButton'
 import Button from './elements/button/Button'
+import { GridRowMenuItemSpec } from './elements/grid/hooks/useGridRowMenu'
 
 // For testing purposes only. This is just to simulate what the
 // app consuming this plugin would look like
@@ -78,6 +79,32 @@ const App = () => {
     ],
     [],
   )
+  const rowMenuItems: Array<GridRowMenuItemSpec<Movie>> = [
+    {
+      cond: () => true,
+      label: 'Foo Action',
+      icon: 'edit',
+      handleClick: () => alert('Action triggered'),
+      refreshAfterSuccess: true,
+      onComplete: (success) => alert(success ? 'Success!' : 'Failure'),
+    },
+    {
+      cond: () => true,
+      label: 'Bar Action',
+      icon: 'level-up',
+      handleClick: () => alert('Action triggered'),
+      refreshAfterSuccess: true,
+      onComplete: (success) => alert(success ? 'Success!' : 'Failure'),
+    },
+    {
+      cond: (item) => false,
+      label: 'Disabled Action',
+      icon: 'trash',
+      handleClick: () => alert('Action triggered'),
+      refreshAfterSuccess: true,
+      onComplete: (success) => alert(success ? 'Success!' : 'Failure'),
+    },
+  ]
   return (
     <Provider store={store}>
       <ThemeManager themeActions={themeActions}>
@@ -97,6 +124,7 @@ const App = () => {
           multiSelection
           batchActions={batchActions}
           onRefresh={() => dispatch({ type: 'refresh', payload: {} })}
+          rowMenuItems={rowMenuItems}
         />
       </ThemeManager>
     </Provider>

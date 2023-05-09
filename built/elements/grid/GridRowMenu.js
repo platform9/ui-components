@@ -45,7 +45,6 @@ function GridRowMenu({ item, rowMenuItems, rowMenuDisabled, rowMenuOffset = {}, 
     const [isOpen, toggleIsOpen] = (0, useToggler_1.default)();
     const handleMenuClick = (0, react_1.useCallback)((e) => {
         toggleIsOpen();
-        e.stopPropagation();
     }, []);
     if (rowMenuDisabled || !filteredRowMenuItems.length) {
         return null;

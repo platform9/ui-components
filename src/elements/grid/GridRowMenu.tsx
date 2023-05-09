@@ -38,7 +38,6 @@ export default function GridRowMenu<T>({
   const [isOpen, toggleIsOpen] = useToggler()
   const handleMenuClick = useCallback((e) => {
     toggleIsOpen()
-    e.stopPropagation()
   }, [])
 
   if (rowMenuDisabled || !filteredRowMenuItems.length) {

@@ -92,6 +92,32 @@ const App = () => {
             BatchActionButton: GridDefaultDeleteButton_1.default,
         },
     ], []);
+    const rowMenuItems = [
+        {
+            cond: () => true,
+            label: 'Foo Action',
+            icon: 'edit',
+            handleClick: () => alert('Action triggered'),
+            refreshAfterSuccess: true,
+            onComplete: (success) => alert(success ? 'Success!' : 'Failure'),
+        },
+        {
+            cond: () => true,
+            label: 'Bar Action',
+            icon: 'level-up',
+            handleClick: () => alert('Action triggered'),
+            refreshAfterSuccess: true,
+            onComplete: (success) => alert(success ? 'Success!' : 'Failure'),
+        },
+        {
+            cond: (item) => false,
+            label: 'Disabled Action',
+            icon: 'trash',
+            handleClick: () => alert('Action triggered'),
+            refreshAfterSuccess: true,
+            onComplete: (success) => alert(success ? 'Success!' : 'Failure'),
+        },
+    ];
     return (react_1.default.createElement(react_redux_1.Provider, { store: store_1.default },
         react_1.default.createElement(ThemeManager_1.default, { themeActions: store_1.themeActions },
             react_1.default.createElement(card_1.default, null,
@@ -101,7 +127,7 @@ const App = () => {
                 react_1.default.createElement(CardButton_1.default, { title: "Card Button", icon: "plus" }),
                 react_1.default.createElement(badge_1.default, { variant: "primary", text: "This is a badge" })),
             react_1.default.createElement("hr", null),
-            react_1.default.createElement(Grid_1.default, { label: "Label", uniqueIdentifier: "id", columns: columns, data: items, multiSelection: true, batchActions: batchActions, onRefresh: () => dispatch({ type: 'refresh', payload: {} }) }))));
+            react_1.default.createElement(Grid_1.default, { label: "Label", uniqueIdentifier: "id", columns: columns, data: items, multiSelection: true, batchActions: batchActions, onRefresh: () => dispatch({ type: 'refresh', payload: {} }), rowMenuItems: rowMenuItems }))));
 };
 exports.default = App;
 //# sourceMappingURL=App.js.map
