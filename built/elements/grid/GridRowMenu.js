@@ -34,14 +34,14 @@ const defaults_1 = require("../../elements/menu/defaults");
 const Menu_1 = __importDefault(require("../../elements/menu/Menu"));
 const MenuItem_1 = __importDefault(require("../../elements/menu/MenuItem"));
 const styles_1 = require("@material-ui/styles");
-function GridRowMenu({ item, rowMenuItems, rowMenuDisabled, rowMenuOffset = {}, showRowMenuForSingleRowActions = false, }) {
+function GridRowMenu({ item, rowMenuItems, rowMenuDisabled, rowMenuOffset = {}, showRowMenuForSingleRowActions = false, maxRowMenuHeight, }) {
     const filteredRowMenuItems = rowMenuItems.filter((rowItem) => {
         if (rowItem === null || rowItem === void 0 ? void 0 : rowItem.hideIfDisabled) {
             return !(rowItem === null || rowItem === void 0 ? void 0 : rowItem.getIsDisabled(item));
         }
         return true;
     });
-    const classes = useStyles({});
+    const classes = useStyles({ maxRowMenuHeight });
     const [isOpen, toggleIsOpen] = (0, useToggler_1.default)();
     const handleMenuClick = (0, react_1.useCallback)((e) => {
         toggleIsOpen();
@@ -76,6 +76,8 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         '& .menu-popover': {
             minWidth: 60,
             padding: '8px',
+            maxHeight: ({ maxRowMenuHeight }) => (maxRowMenuHeight ? maxRowMenuHeight : undefined),
+            overflow: ({ maxRowMenuHeight }) => (maxRowMenuHeight ? 'auto' : undefined),
         },
     },
     warning: {

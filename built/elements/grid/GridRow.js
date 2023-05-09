@@ -21,7 +21,7 @@ const SelectRowColumn = (0, misc_1.memoizeShallow)(function SelectRowColumn({ cl
     maxSize: 8,
 });
 function GridRow(props) {
-    const { isSelectable, multiSelection, isSelected, toggleSelect, getCells, rowMenuItems = [], rowMenuDisabled = !rowMenuItems.length, item, className, tdClassName, cellClassName, index, numPageItems, rowMenuOffset = {}, showRowMenuForSingleRowActions, } = props;
+    const { isSelectable, multiSelection, isSelected, toggleSelect, getCells, rowMenuItems = [], rowMenuDisabled = !rowMenuItems.length, item, className, tdClassName, cellClassName, index, numPageItems, rowMenuOffset = {}, showRowMenuForSingleRowActions, maxRowMenuHeight, } = props;
     return (react_1.default.createElement("tr", { className: className, onClick: toggleSelect },
         react_1.default.createElement(SelectRowColumn, Object.assign({ className: tdClassName }, {
             multiSelection,
@@ -38,7 +38,7 @@ function GridRow(props) {
                     ? {
                         vertical: rowMenuOffset.vertical * -1,
                     }
-                    : rowMenuOffset, showRowMenuForSingleRowActions: showRowMenuForSingleRowActions }))) : null));
+                    : rowMenuOffset, showRowMenuForSingleRowActions: showRowMenuForSingleRowActions, maxRowMenuHeight: maxRowMenuHeight }))) : null));
 }
 exports.default = GridRow;
 //# sourceMappingURL=GridRow.js.map

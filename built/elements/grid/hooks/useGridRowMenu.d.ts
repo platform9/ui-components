@@ -5,6 +5,7 @@ export interface GridRowMenuConfig<T> {
     rowMenuOffset?: GridRowMenuOffset;
     onRefresh?: () => void | Promise<void>;
     showRowMenuForSingleRowActions?: boolean;
+    maxRowMenuHeight?: number;
 }
 export interface GridRowMenuOffset {
     vertical?: number;
@@ -31,6 +32,7 @@ export interface GridRowMenuItemsProps<T> {
     rowMenuItems?: GridRowMenuItemProps<T>[];
     rowMenuOffset?: GridRowMenuOffset;
     showRowMenuForSingleRowActions?: boolean;
+    maxRowMenuHeight?: number;
 }
 export interface GridRowMenuItemProps<T> {
     key: string | number;
@@ -41,4 +43,4 @@ export interface GridRowMenuItemProps<T> {
     RowMenuButton: FC<RowMenuButtonProps<T>>;
     hideIfDisabled?: boolean;
 }
-export default function useGridRowMenu<T>(rows: Array<ParsedGridRow<T>>, { rowMenuItems: rowActionsSpec, onRefresh, rowMenuOffset, showRowMenuForSingleRowActions, }: GridRowMenuConfig<T>): [Array<ParsedGridRow<T>>, GridRowMenuItemsProps<T>];
+export default function useGridRowMenu<T>(rows: Array<ParsedGridRow<T>>, { rowMenuItems: rowActionsSpec, onRefresh, rowMenuOffset, showRowMenuForSingleRowActions, maxRowMenuHeight, }: GridRowMenuConfig<T>): [Array<ParsedGridRow<T>>, GridRowMenuItemsProps<T>];

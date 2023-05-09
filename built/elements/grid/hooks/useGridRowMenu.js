@@ -7,7 +7,7 @@ const react_1 = require("react");
 const fp_1 = require("../../../utils/fp");
 const GridDefaultActionButton_1 = __importDefault(require("../../../elements/grid/buttons/GridDefaultActionButton"));
 const misc_1 = require("../../../utils/misc");
-function useGridRowMenu(rows, { rowMenuItems: rowActionsSpec = fp_1.emptyArr, onRefresh, rowMenuOffset = {}, showRowMenuForSingleRowActions, }) {
+function useGridRowMenu(rows, { rowMenuItems: rowActionsSpec = fp_1.emptyArr, onRefresh, rowMenuOffset = {}, showRowMenuForSingleRowActions, maxRowMenuHeight, }) {
     const rowMenuItems = (0, react_1.useMemo)(() => {
         return rowActionsSpec.map(({ cond, RowMenuButton = GridDefaultActionButton_1.default, label, refreshAfterSuccess, onComplete, handleClick, icon, hideIfDisabled = false, }, idx) => ({
             key: idx,
@@ -37,6 +37,7 @@ function useGridRowMenu(rows, { rowMenuItems: rowActionsSpec = fp_1.emptyArr, on
             rowMenuItems,
             rowMenuOffset,
             showRowMenuForSingleRowActions,
+            maxRowMenuHeight,
         },
     ];
 }
