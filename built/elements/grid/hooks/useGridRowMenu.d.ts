@@ -3,7 +3,7 @@ import { ParsedGridRow } from './useGridRows';
 export interface GridRowMenuConfig<T> {
     rowMenuItems?: Array<GridRowMenuItemSpec<T>>;
     rowMenuOffset?: GridRowMenuOffset;
-    onRefresh?: () => void | Promise<void>;
+    onRefresh?: (...args: unknown[]) => void | Promise<void>;
     showRowMenuForSingleRowActions?: boolean;
     maxRowMenuHeight?: number;
 }
