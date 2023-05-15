@@ -7,7 +7,7 @@ import { memoize } from '../../../utils/misc'
 export interface GridRowMenuConfig<T> {
   rowMenuItems?: Array<GridRowMenuItemSpec<T>>
   rowMenuOffset?: GridRowMenuOffset
-  onRefresh?: () => void | Promise<void>
+  onRefresh?: (...args: unknown[]) => void | Promise<void>
   showRowMenuForSingleRowActions?: boolean
   maxRowMenuHeight?: number
 }
@@ -87,7 +87,7 @@ export default function useGridRowMenu<T>(
         triggerAction: async (currentItem) => {
           const success = handleClick ? await handleClick(currentItem) : true
           if (success && refreshAfterSuccess && onRefresh) {
-            onRefresh()
+            onRefresh(true)
           }
           if (onComplete) {
             onComplete(success, currentItem)

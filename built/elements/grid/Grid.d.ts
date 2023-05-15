@@ -13,7 +13,7 @@ interface GridViewConfig {
     loading?: boolean;
     loadingMessage?: string;
     compact?: boolean;
-    onRefresh?: () => void | Promise<void>;
+    onRefresh?: (...args: unknown[]) => void | Promise<void>;
     disableToolbar?: boolean;
     ToolbarContainer?: FC<PropsWithChildren<{
         className?: string;

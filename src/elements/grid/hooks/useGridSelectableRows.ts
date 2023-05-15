@@ -24,7 +24,7 @@ export interface GridBatchActionsConfig<T> {
   isControlled?: boolean
   totalItems?: number
   batchActions?: Array<GridBatchActionSpec<T>>
-  onRefresh?: () => void | Promise<void>
+  onRefresh?: (...args: unknown[]) => void | Promise<void>
 }
 
 export interface BatchActionButtonProps<T> {

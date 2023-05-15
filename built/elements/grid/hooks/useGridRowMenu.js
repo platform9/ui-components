@@ -19,7 +19,7 @@ function useGridRowMenu(rows, { rowMenuItems: rowActionsSpec = fp_1.emptyArr, on
             triggerAction: async (currentItem) => {
                 const success = handleClick ? await handleClick(currentItem) : true;
                 if (success && refreshAfterSuccess && onRefresh) {
-                    onRefresh();
+                    onRefresh(true);
                 }
                 if (onComplete) {
                     onComplete(success, currentItem);
