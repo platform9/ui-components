@@ -7,11 +7,26 @@ interface GridFilterProps<F extends Record<string, unknown>, K extends keyof F =
     clearFilter: () => void | Promise<void>;
     FilterComponent: FC<GridFilterComponentProps<V, F>>;
     filterValues: F;
+    label?: string;
+    filterComponentProps?: any;
 }
-export interface GridFilteringProps<GF extends Record<string, unknown>, F extends Record<string, unknown>> {
+interface DropdownFilterValue {
+    key: string;
+    label: string;
+    updateFilterValue: FilterValueChangeHandler;
+    value: string | {
+        key: string;
+        value: string;
+    };
+    display: string;
+}
+export interface GridFilteringProps<GF extends Record<string, unknown>, F extends Record<string, unknown>, DF extends Record<string, unknown>> {
     clearFilters: () => void | Promise<void>;
     globalFilters: GridFilterProps<GF>[];
     filters: GridFilterProps<F>[];
+    dropdownFilters?: GridFilterProps<DF>[];
+    dropdownFilterValues?: DropdownFilterValue[];
+    dropdownValuesByKey?: Record<string, unknown>;
 }
 type FilterValueChangeHandler<V = unknown> = (value: V) => void | Promise<void>;
 export interface GridFilterComponentProps<V, F> {
@@ -38,10 +53,22 @@ export interface GridFilterSpec<T, F extends Record<string, unknown>, TK extends
     controlled?: boolean;
     onChange?: FilterValueChangeHandler<FV>;
 }
-export interface GridFilteringConfig<T, GF extends Record<string, unknown> = Record<string, unknown>, F extends Record<string, unknown> = Record<string, unknown>> {
+export interface GridDropdownFilterSpec<T, F extends Record<string, unknown>, FK extends keyof F = keyof F, FV = F[FK]> {
+    key?: FK;
+    label?: string;
+    FilterComponent: FC;
+    filterComponentProps?: any;
+    initialValue?: FV;
+    equalityComparerFn?: (item: T, filterValue: FV) => boolean;
+    allowEmpty?: boolean;
+    controlled?: boolean;
+    onChange?: FilterValueChangeHandler<FV>;
+}
+export interface GridFilteringConfig<T, GF extends Record<string, unknown> = Record<string, unknown>, F extends Record<string, unknown> = Record<string, unknown>, DF extends Record<string, unknown> = Record<string, unknown>> {
     filters?: GridFilterSpec<T, F>[];
     globalFilters?: Array<GridGlobalFilterSpec<T, GF>>;
     onClearFilters?: () => void | Promise<void>;
+    dropdownFilters?: GridDropdownFilterSpec<T, DF>[];
 }
-export default function useGridFiltering<T, GF extends Record<string, unknown>, F extends Record<string, unknown>>(rows: Array<ParsedGridRow<T>>, { onClearFilters, globalFilters: globalFilterSpecs, filters: filterSpecs, }: GridFilteringConfig<T, GF, F>): [Array<ParsedGridRow<T>>, GridFilteringProps<GF, F>];
+export default function useGridFiltering<T, GF extends Record<string, unknown>, F extends Record<string, unknown>, DF extends Record<string, unknown>>(rows: Array<ParsedGridRow<T>>, { onClearFilters, globalFilters: globalFilterSpecs, filters: filterSpecs, dropdownFilters: dropdownFilterSpecs, }: GridFilteringConfig<T, GF, F, DF>): [Array<ParsedGridRow<T>>, GridFilteringProps<GF, F, DF>];
 export {};

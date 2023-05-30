@@ -130,4 +130,7 @@ export default makeStyles<Theme, DropdownStylesProps>((theme) => ({
     padding: '0',
     fontSize: '16px',
   },
+  bottomContent: {
+    cursor: 'initial',
+  },
 }))

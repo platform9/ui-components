@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import { ReactNode } from 'react';
 import DropdownCommonProps, { DropdownItemSpec } from './DropdownCommonProps';
 export interface MultiDropdownProps<V, T extends DropdownItemSpec<V> = DropdownItemSpec<V>> extends DropdownCommonProps<V, T> {
     initialValues?: V[];
@@ -10,5 +10,6 @@ export interface MultiDropdownProps<V, T extends DropdownItemSpec<V> = DropdownI
     showAll?: boolean;
     id?: string;
     optionToggleCondition?: (option: any, isSelected: any, selectedValues: any) => boolean;
+    bottomContent?: ReactNode;
 }
 export default function MultiDropdown<V, T extends DropdownItemSpec<V> = DropdownItemSpec<V>>(props: MultiDropdownProps<V, T>): JSX.Element;

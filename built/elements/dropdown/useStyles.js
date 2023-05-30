@@ -103,5 +103,8 @@ exports.default = (0, styles_1.makeStyles)((theme) => ({
         padding: '0',
         fontSize: '16px',
     },
+    bottomContent: {
+        cursor: 'initial',
+    },
 }));
 //# sourceMappingURL=useStyles.js.map

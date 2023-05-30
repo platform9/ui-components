@@ -44,10 +44,10 @@ const fp_1 = require("../../utils/fp");
 function MultiDropdown(props) {
     const input = (0, react_1.useRef)(null);
     const classes = (0, useStyles_1.default)(props);
-    const { value: selectedValues, itemToString = helpers_1.defaultItemToString, onChange, items, label, error, name, placeholder = 'Select an option', enableSearch, width = constants_1.dropdownDefaultWidth, className, multiline, noCheckboxes, compact, id, showAll = false, optionToggleCondition, preventUnselectLast, } = props;
+    const { value: selectedValues, itemToString = helpers_1.defaultItemToString, onChange, items, label, error, name, placeholder = 'Select an option', enableSearch, width = constants_1.dropdownDefaultWidth, className, multiline, noCheckboxes, compact, id, showAll = false, optionToggleCondition, preventUnselectLast, bottomContent, } = props;
     const maxItems = (width > 240 ? 3 : 2) * (multiline ? 4 : 1);
     const selectedItems = (0, react_1.useMemo)(() => selectedValues
-        ? items.filter(({ value }) => selectedValues.includes(value))
+        ? items.filter(({ value }) => selectedValues.includes(value) || selectedValues.some((val) => (0, ramda_1.equals)(val, value)))
         : (0, fp_1.getTypedEmptyArr)(), [selectedValues, items]);
     const handleMultiChange = (0, react_1.useCallback)((items) => {
         if (!(0, ramda_1.equals)(items, selectedItems)) {
@@ -108,7 +108,8 @@ function MultiDropdown(props) {
                     isOpen
                         ? items.reduce((acc, item) => {
                             var _a, _b, _c;
-                            const isSelected = selectedValues.includes(item.value);
+                            const isSelected = selectedValues.includes(item.value) ||
+                                selectedValues.some((val) => (0, ramda_1.equals)(val, item.value));
                             if (enableSearch &&
                                 inputValue &&
                                 !item.label.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase())) {
@@ -125,7 +126,8 @@ function MultiDropdown(props) {
                                     !optionToggleCondition(item, isSelected, selectedValues) }, (_c = item.content) !== null && _c !== void 0 ? _c : react_1.default.createElement("span", null, itemToString(item))));
                             return acc;
                         }, [])
-                        : null)),
+                        : null,
+                    isOpen && bottomContent && (react_1.default.createElement("div", { className: classes.bottomContent }, bottomContent)))),
             !!error && (react_1.default.createElement(Text_1.default, { variant: "body2", className: (0, clsx_1.default)(classes.error, 'error') }, error))));
     }));
 }

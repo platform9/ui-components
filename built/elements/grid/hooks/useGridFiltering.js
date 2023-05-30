@@ -8,9 +8,14 @@ const constants_1 = require("../../../constants");
 const defaultFilteringState = {
     globalValuesByKey: {},
     valuesByKey: {},
+    dropdownValuesByKey: {},
 };
-function filteringReducer(state, { type, payload: { global, key, value } }) {
-    const basePath = global ? 'globalValuesByKey' : 'valuesByKey';
+function filteringReducer(state, { type, payload: { global, dropdownFilter, key, value } }) {
+    const basePath = global
+        ? 'globalValuesByKey'
+        : dropdownFilter
+            ? 'dropdownValuesByKey'
+            : 'valuesByKey';
     switch (type) {
         case 'update':
             return (0, ramda_1.assocPath)([basePath, key], value, state);
@@ -21,7 +26,7 @@ function filteringReducer(state, { type, payload: { global, key, value } }) {
             return defaultFilteringState;
     }
 }
-function useGridFiltering(rows, { onClearFilters, globalFilters: globalFilterSpecs = fp_1.emptyArr, filters: filterSpecs = fp_1.emptyArr, }) {
+function useGridFiltering(rows, { onClearFilters, globalFilters: globalFilterSpecs = fp_1.emptyArr, filters: filterSpecs = fp_1.emptyArr, dropdownFilters: dropdownFilterSpecs = fp_1.emptyArr, }) {
     const initialFilteringState = (0, react_1.useMemo)(() => {
         return {
             globalValuesByKey: globalFilterSpecs.reduce((acc, { key, initialValue }) => {
@@ -32,9 +37,13 @@ function useGridFiltering(rows, { onClearFilters, globalFilters: globalFilterSpe
                 acc[columnKey] = initialValue;
                 return acc;
             }, {}),
+            dropdownValuesByKey: dropdownFilterSpecs.reduce((acc, { key, initialValue }) => {
+                acc[key] = initialValue;
+                return acc;
+            }, {}),
         };
     }, []);
-    const [{ globalValuesByKey, valuesByKey }, dispatch] = (0, react_1.useReducer)(filteringReducer, initialFilteringState);
+    const [{ globalValuesByKey, valuesByKey, dropdownValuesByKey }, dispatch] = (0, react_1.useReducer)(filteringReducer, initialFilteringState);
     const filterHandlers = (0, react_1.useMemo)(() => filterSpecs.reduce((acc, { columnKey, onChange }) => {
         if (onChange) {
             acc[columnKey] = onChange;
@@ -47,6 +56,12 @@ function useGridFiltering(rows, { onClearFilters, globalFilters: globalFilterSpe
         }
         return acc;
     }, {}), [globalFilterSpecs]);
+    const dropdownFilterHandlers = (0, react_1.useMemo)(() => dropdownFilterSpecs.reduce((acc, { key, onChange }) => {
+        if (onChange) {
+            acc[key] = onChange;
+        }
+        return acc;
+    }, {}), [dropdownFilterSpecs]);
     const getFilterUpdater = (0, react_1.useCallback)((0, misc_1.memoize)((key) => async (value) => {
         dispatch({ type: 'update', payload: { key, value } });
         if (filterHandlers[key]) {
@@ -71,12 +86,36 @@ function useGridFiltering(rows, { onClearFilters, globalFilters: globalFilterSpe
             return globalFilterHandlers[key](null);
         }
     }), [globalFilterHandlers]);
+    const getDropdownFilterUpdater = (0, react_1.useCallback)((0, misc_1.memoize)((key) => (value) => {
+        dispatch({ type: 'update', payload: { key, dropdownFilter: true, value } });
+        if (dropdownFilterHandlers[key]) {
+            return dropdownFilterHandlers[key](value);
+        }
+    }), [dropdownFilterHandlers]);
+    const getDropdownFilterClearFn = (0, react_1.useCallback)((0, misc_1.memoize)((key) => () => {
+        dispatch({ type: 'clear', payload: { key, dropdownFilter: true } });
+        if (dropdownFilterHandlers[key]) {
+            return dropdownFilterHandlers[key](null);
+        }
+    }), [dropdownFilterHandlers]);
     const clearFilters = (0, react_1.useCallback)(async () => {
         dispatch({ type: 'clearAll' });
         if (onClearFilters) {
             return onClearFilters();
         }
     }, [onClearFilters]);
+    const dropdownFilteredRows = (0, react_1.useMemo)(() => {
+        return dropdownFilterSpecs.reduce((rows, { key, controlled, equalityComparerFn = ramda_1.equals, allowEmpty = false }) => {
+            if (dropdownValuesByKey[key] !== undefined &&
+                (allowEmpty || !(0, fp_1.isNilOrEmpty)(dropdownValuesByKey[key]))) {
+                if (controlled || dropdownValuesByKey[key] === constants_1.allKey) {
+                    return rows;
+                }
+                return rows.filter((row) => equalityComparerFn(row.item, dropdownValuesByKey[key]));
+            }
+            return rows;
+        }, rows);
+    }, [dropdownFilterSpecs, rows, dropdownValuesByKey]);
     const globalFilteredRows = (0, react_1.useMemo)(() => {
         return globalFilterSpecs.reduce((rows, { key, controlled, equalityComparerFn = ramda_1.equals, allowEmpty = false }) => {
             if (globalValuesByKey[key] !== undefined &&
@@ -87,8 +126,8 @@ function useGridFiltering(rows, { onClearFilters, globalFilters: globalFilterSpe
                 return rows.filter((row) => equalityComparerFn(row.item, globalValuesByKey[key]));
             }
             return rows;
-        }, rows);
-    }, [globalFilterSpecs, rows, globalValuesByKey]);
+        }, dropdownFilteredRows);
+    }, [globalFilterSpecs, dropdownFilteredRows, globalValuesByKey]);
     const filteredRows = (0, react_1.useMemo)(() => {
         return filterSpecs.reduce((rows, { columnKey, controlled, equalityComparerFn = ramda_1.equals, allowEmpty = false }) => {
             if (valuesByKey[String(columnKey)] !== undefined &&
@@ -124,11 +163,47 @@ function useGridFiltering(rows, { onClearFilters, globalFilters: globalFilterSpe
             FilterComponent,
         }));
     }, [valuesByKey]);
+    // const dropdownFilters = useMemo(() => {
+    const dropdownFilters = (0, react_1.useMemo)(() => {
+        return dropdownFilterSpecs.map(({ key, label, FilterComponent, filterComponentProps }) => ({
+            key,
+            label,
+            updateFilterValue: getDropdownFilterUpdater(key),
+            filterValue: dropdownValuesByKey[key],
+            clearFilter: getDropdownFilterClearFn(key),
+            filterValues: dropdownValuesByKey,
+            FilterComponent,
+            filterComponentProps,
+        }));
+    }, [dropdownValuesByKey]);
+    const dropdownFilterValues = (0, react_1.useMemo)(() => {
+        const filterInfo = dropdownFilters.map((filter) => {
+            return { key: filter.key, updateFilterValue: filter.updateFilterValue, label: filter === null || filter === void 0 ? void 0 : filter.label };
+        });
+        const activeFilters = filterInfo.reduce((accum, current) => {
+            const keyValues = dropdownValuesByKey[current === null || current === void 0 ? void 0 : current.key] || [];
+            // @ts-ignore not sure how to resolve this ts error
+            const transformedValues = keyValues.map((value) => {
+                return {
+                    key: current.key,
+                    label: current.label,
+                    updateFilterValue: current.updateFilterValue,
+                    value: value,
+                    display: typeof value === 'object' ? `${value.key}=${value.value}` : value,
+                };
+            });
+            return [...accum, ...transformedValues];
+        }, []);
+        return activeFilters;
+    }, [dropdownValuesByKey, dropdownFilters]);
     return [
         filteredRows,
         {
             globalFilters,
             filters,
+            dropdownFilters,
+            dropdownFilterValues,
+            dropdownValuesByKey,
             clearFilters,
         },
     ];

@@ -1,4 +1,4 @@
-import React, { ReactNode, FC, PropsWithChildren } from 'react'
+import React, { ReactNode, FC, PropsWithChildren, useCallback } from 'react'
 import { makeStyles, ThemeProvider } from '@material-ui/styles'
 import Theme, { TypographyModel } from '../../theme-manager/themes/model'
 import { GridFilteringProps } from './hooks/useGridFiltering'
@@ -12,9 +12,16 @@ import GridColumnsPopover from './GridColumnsPopover'
 import { GridManagedColumnsProps } from './hooks/useGridManagedColumns'
 import Tooltip from '../../elements/tooltip'
 import { useCustomTheme } from '../../theme-manager/ThemeManager'
+import useToggler from '../../hooks/useToggler'
+import { ensureArray } from '../../utils/fp'
+import { equals } from 'ramda'
 
-interface GridToolbarProps<T, GF extends Record<string, unknown>, F extends Record<string, unknown>>
-  extends GridFilteringProps<GF, F>,
+interface GridToolbarProps<
+  T,
+  GF extends Record<string, unknown>,
+  F extends Record<string, unknown>,
+  DF extends Record<string, unknown>,
+> extends GridFilteringProps<GF, F, DF>,
     GridBatchActionsProps<T>,
     GridManagedColumnsProps {
   compact?: boolean
@@ -27,7 +34,10 @@ interface GridToolbarProps<T, GF extends Record<string, unknown>, F extends Reco
   tooltip?: ReactNode
 }
 
-const useStyles = makeStyles<Theme, { compact?: boolean; selectedCount?: number }>((theme) => ({
+const useStyles = makeStyles<
+  Theme,
+  { compact?: boolean; selectedCount?: number; filtersOpen?: boolean }
+>((theme) => ({
   gridToolbar: {
     display: 'grid',
     gridAutoFlow: 'column',
@@ -108,6 +118,36 @@ const useStyles = makeStyles<Theme, { compact?: boolean; selectedCount?: number 
     display: 'inline-block',
     marginLeft: 8,
   },
+  filterBar: {
+    transition: 'height .2s ease',
+    height: ({ filtersOpen }) => (filtersOpen ? 'max-content' : 0),
+    overflow: ({ filtersOpen }) => (filtersOpen ? 'visible' : 'hidden'),
+    padding: ({ filtersOpen }) => (filtersOpen ? '16px' : '0px'),
+    background: theme.components.table.hoverBackground,
+    display: 'grid',
+    gap: 16,
+  },
+  filterDropdowns: {
+    display: 'flex',
+    gap: 16,
+    alignItems: 'center',
+  },
+  activeFilters: {
+    display: 'flex',
+    gap: 16,
+  },
+  activeFilterBox: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, max-content)',
+    gap: 8,
+    alignItems: 'center',
+    padding: '4px 12px',
+    background: theme.components.table.background,
+    border: `1px solid ${theme.components.table.border}`,
+  },
+  activeFilterText: {
+    fontSize: 12,
+  },
 }))
 
 const DefaultToolbarContainer: FC<
@@ -128,8 +168,10 @@ export default function GridToolbar<
   T,
   GF extends Record<string, unknown>,
   F extends Record<string, unknown>,
->(props: GridToolbarProps<T, GF, F>) {
-  const classes = useStyles(props)
+  DF extends Record<string, unknown>,
+>(props: GridToolbarProps<T, GF, F, DF>) {
+  const [isOpen, toggleIsOpen] = useToggler(false)
+  const classes = useStyles({ ...props, filtersOpen: isOpen })
   const {
     label,
     columns,
@@ -138,6 +180,9 @@ export default function GridToolbar<
     batchActions,
     globalFilters,
     filters,
+    dropdownFilters,
+    dropdownFilterValues,
+    dropdownValuesByKey,
     onRefresh,
     extraToolbarContent,
     clearSelectedRows,
@@ -148,100 +193,155 @@ export default function GridToolbar<
     itemsCount = undefined,
     tooltip = undefined,
   } = props
+
+  const removeFilterValue = useCallback(
+    (filterValue) => {
+      const keyValues = ensureArray(dropdownValuesByKey[filterValue.key])
+      const filteredKeyValues = keyValues.filter((val) => {
+        return !equals(val, filterValue.value)
+      })
+      filterValue.updateFilterValue(filteredKeyValues)
+    },
+    [dropdownValuesByKey],
+  )
+
   return (
-    <ToolbarContainer selectedCount={selectedCount} className={classes.gridToolbar}>
-      <div className={classes.batchActions}>
-        <Text
-          data-testid={generateTestId(label, 'label')}
-          className={classes.label}
-          variant="subtitle2"
-          component="p"
-        >
-          {showItemsCountInLabel && itemsCount ? `${label} (${itemsCount})` : label}
-          {tooltip && (
-            <Tooltip className={classes.tooltip} message={tooltip}>
-              <FontAwesomeIcon>question-circle</FontAwesomeIcon>
-            </Tooltip>
-          )}
-        </Text>
-        {selectedCount ? (
-          <>
-            {multiSelectionEnabled ? (
-              <>
-                <Text
-                  data-testid={generateTestId('selected')}
-                  variant="body2"
-                  className={classes.selectedCount}
-                  component="p"
-                >
-                  {`${selectedCount} Selected`}
-                </Text>
-                <Text
-                  data-testid={generateTestId('clear', 'all')}
-                  variant="body2"
-                  className={classes.clearBtn}
-                  component="p"
-                  onClick={clearSelectedRows}
-                >
-                  {`Clear All`}
-                </Text>
-                <div className={classes.verticalLine} />
-              </>
-            ) : null}
-            {batchActions?.map(({ key, label, triggerAction, BatchActionButton, ...props }) => (
-              <BatchActionButton {...props} key={key} onClick={triggerAction}>
-                {label}
-              </BatchActionButton>
-            ))}
-          </>
-        ) : null}
-      </div>
-      <div data-testid={generateTestId('search')} className={classes.tools}>
-        {globalFilters.map(
-          ({ key, filterValue, filterValues, updateFilterValue, FilterComponent, ...rest }) => (
-            <FilterComponent
-              key={String(key)}
-              value={filterValue}
-              filterValues={filterValues}
-              onChange={updateFilterValue}
-              {...rest}
-            />
-          ),
-        )}
-
-        {!selectedCount ? (
-          <div className={classes.buttons}>
-            {!columnHidingDisabled && (
-              <GridColumnsPopover columns={columns} columnTogglers={columnTogglers} />
+    <>
+      <ToolbarContainer selectedCount={selectedCount} className={classes.gridToolbar}>
+        <div className={classes.batchActions}>
+          <Text
+            data-testid={generateTestId(label, 'label')}
+            className={classes.label}
+            variant="subtitle2"
+            component="p"
+          >
+            {showItemsCountInLabel && itemsCount ? `${label} (${itemsCount})` : label}
+            {tooltip && (
+              <Tooltip className={classes.tooltip} message={tooltip}>
+                <FontAwesomeIcon>question-circle</FontAwesomeIcon>
+              </Tooltip>
             )}
-            <Text
-              data-testid={generateTestId('refresh')}
-              noWrap
-              onClick={onRefresh}
-              component="div"
-              className={classes.button}
-            >
-              <FontAwesomeIcon>sync-alt</FontAwesomeIcon>
-              Refresh
-            </Text>
-          </div>
-        ) : null}
+          </Text>
+          {selectedCount ? (
+            <>
+              {multiSelectionEnabled ? (
+                <>
+                  <Text
+                    data-testid={generateTestId('selected')}
+                    variant="body2"
+                    className={classes.selectedCount}
+                    component="p"
+                  >
+                    {`${selectedCount} Selected`}
+                  </Text>
+                  <Text
+                    data-testid={generateTestId('clear', 'all')}
+                    variant="body2"
+                    className={classes.clearBtn}
+                    component="p"
+                    onClick={clearSelectedRows}
+                  >
+                    {`Clear All`}
+                  </Text>
+                  <div className={classes.verticalLine} />
+                </>
+              ) : null}
+              {batchActions?.map(({ key, label, triggerAction, BatchActionButton, ...props }) => (
+                <BatchActionButton {...props} key={key} onClick={triggerAction}>
+                  {label}
+                </BatchActionButton>
+              ))}
+            </>
+          ) : null}
+        </div>
+        <div data-testid={generateTestId('search')} className={classes.tools}>
+          {globalFilters.map(
+            ({ key, filterValue, filterValues, updateFilterValue, FilterComponent, ...rest }) => (
+              <FilterComponent
+                key={String(key)}
+                value={filterValue}
+                filterValues={filterValues}
+                onChange={updateFilterValue}
+                {...rest}
+              />
+            ),
+          )}
 
-        {filters.map(
-          ({ key, filterValue, filterValues, updateFilterValue, FilterComponent, ...rest }) => (
-            <FilterComponent
-              key={String(key)}
-              value={filterValue}
-              filterValues={filterValues}
-              onChange={updateFilterValue}
-              {...rest}
-            />
-          ),
+          {!selectedCount ? (
+            <div className={classes.buttons}>
+              {!columnHidingDisabled && (
+                <GridColumnsPopover columns={columns} columnTogglers={columnTogglers} />
+              )}
+              <Text
+                data-testid={generateTestId('refresh')}
+                noWrap
+                onClick={onRefresh}
+                component="div"
+                className={classes.button}
+              >
+                <FontAwesomeIcon>sync-alt</FontAwesomeIcon>
+                Refresh
+              </Text>
+              {!!dropdownFilters?.length && (
+                <Text noWrap component="div" className={classes.button} onClick={toggleIsOpen}>
+                  <FontAwesomeIcon>filter</FontAwesomeIcon>
+                  Filters
+                  <FontAwesomeIcon>{isOpen ? 'angle-up' : 'angle-down'}</FontAwesomeIcon>
+                </Text>
+              )}
+            </div>
+          ) : null}
+
+          {filters.map(
+            ({ key, filterValue, filterValues, updateFilterValue, FilterComponent, ...rest }) => (
+              <FilterComponent
+                key={String(key)}
+                value={filterValue}
+                filterValues={filterValues}
+                onChange={updateFilterValue}
+                {...rest}
+              />
+            ),
+          )}
+          {extraToolbarContent ? (
+            <div className={classes.extraContent}>{extraToolbarContent}</div>
+          ) : null}
+        </div>
+      </ToolbarContainer>
+      <div className={classes.filterBar}>
+        <div className={classes.filterDropdowns}>
+          <Text variant="caption1">Filters:</Text>
+          {dropdownFilters?.map(
+            ({ key, filterValue, updateFilterValue, FilterComponent, filterComponentProps }) => (
+              <FilterComponent
+                key={key}
+                value={filterValue}
+                onChange={updateFilterValue}
+                {...filterComponentProps}
+              />
+            ),
+          )}
+        </div>
+        {!!dropdownFilterValues?.length && (
+          <div className={classes.activeFilters}>
+            {dropdownFilterValues?.map((filterInfo) => (
+              <div key={filterInfo?.display} className={classes.activeFilterBox}>
+                <Text variant="body2" className={classes.activeFilterText}>
+                  <b>{filterInfo?.label}:</b> {filterInfo?.display}
+                </Text>
+                <FontAwesomeIcon
+                  onClick={() => {
+                    removeFilterValue(filterInfo)
+                  }}
+                  size="md"
+                >
+                  xmark
+                </FontAwesomeIcon>
+              </div>
+            ))}
+          </div>
         )}
-        {extraToolbarContent ? (
-          <div className={classes.extraContent}>{extraToolbarContent}</div>
-        ) : null}
       </div>
-    </ToolbarContainer>
+    </>
   )
 }

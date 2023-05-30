@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef } from 'react'
+import React, { ReactNode, useCallback, useMemo, useRef } from 'react'
 import DropdownCommonProps, { DropdownItemSpec } from './DropdownCommonProps'
 import MultiDownshift from './MultiDownshift'
 import DropdownToggle from './DropdownToggle'
@@ -26,6 +26,7 @@ export interface MultiDropdownProps<V, T extends DropdownItemSpec<V> = DropdownI
   showAll?: boolean
   id?: string
   optionToggleCondition?: (option, isSelected, selectedValues) => boolean
+  bottomContent?: ReactNode
 }
 
 export default function MultiDropdown<V, T extends DropdownItemSpec<V> = DropdownItemSpec<V>>(
@@ -52,12 +53,16 @@ export default function MultiDropdown<V, T extends DropdownItemSpec<V> = Dropdow
     showAll = false,
     optionToggleCondition,
     preventUnselectLast,
+    bottomContent,
   } = props
   const maxItems = (width > 240 ? 3 : 2) * (multiline ? 4 : 1)
   const selectedItems = useMemo<T[]>(
     () =>
       selectedValues
-        ? items.filter(({ value }) => selectedValues.includes(value))
+        ? items.filter(
+            ({ value }) =>
+              selectedValues.includes(value) || selectedValues.some((val) => equals(val, value)),
+          )
         : getTypedEmptyArr<T>(),
     [selectedValues, items],
   )
@@ -199,7 +204,9 @@ export default function MultiDropdown<V, T extends DropdownItemSpec<V> = Dropdow
                 ) : null}
                 {isOpen
                   ? items.reduce((acc, item) => {
-                      const isSelected = selectedValues.includes(item.value)
+                      const isSelected =
+                        selectedValues.includes(item.value) ||
+                        selectedValues.some((val) => equals(val, item.value))
                       if (
                         enableSearch &&
                         inputValue &&
@@ -234,6 +241,9 @@ export default function MultiDropdown<V, T extends DropdownItemSpec<V> = Dropdow
                       return acc
                     }, [])
                   : null}
+                {isOpen && bottomContent && (
+                  <div className={classes.bottomContent}>{bottomContent}</div>
+                )}
               </DropdownMenu>
             </div>
             {!!error && (
