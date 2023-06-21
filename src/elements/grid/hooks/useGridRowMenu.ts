@@ -5,7 +5,7 @@ import GridDefaultActionButton from '../../../elements/grid/buttons/GridDefaultA
 import { memoize } from '../../../utils/misc'
 
 export interface GridRowMenuConfig<T> {
-  rowMenuItems?: Array<GridRowMenuItemSpec<T>>
+  rowMenuItems?: Array<GridRowMenuHeader | GridRowMenuItemSpec<T>>
   rowMenuOffset?: GridRowMenuOffset
   onRefresh?: (...args: unknown[]) => void | Promise<void>
   showRowMenuForSingleRowActions?: boolean
@@ -14,6 +14,11 @@ export interface GridRowMenuConfig<T> {
 
 export interface GridRowMenuOffset {
   vertical?: number
+}
+
+export interface GridRowMenuHeader {
+  title?: string
+  insertDivider?: boolean
 }
 
 export interface GridRowMenuItemSpec<T> {
@@ -37,7 +42,7 @@ export interface RowMenuButtonProps<T> {
 
 export interface GridRowMenuItemsProps<T> {
   rowMenuDisabled: boolean
-  rowMenuItems?: GridRowMenuItemProps<T>[]
+  rowMenuItems?: Array<GridRowMenuHeader | GridRowMenuItemProps<T>>
   rowMenuOffset?: GridRowMenuOffset
   showRowMenuForSingleRowActions?: boolean
   maxRowMenuHeight?: number
@@ -53,6 +58,9 @@ export interface GridRowMenuItemProps<T> {
   hideIfDisabled?: boolean
 }
 
+export const isGridRowMenuHeader = (item: any): item is GridRowMenuHeader =>
+  !!item.title || !!item.insertDivider
+
 export default function useGridRowMenu<T>(
   rows: Array<ParsedGridRow<T>>,
   {
@@ -63,21 +71,20 @@ export default function useGridRowMenu<T>(
     maxRowMenuHeight,
   }: GridRowMenuConfig<T>,
 ): [Array<ParsedGridRow<T>>, GridRowMenuItemsProps<T>] {
-  const rowMenuItems = useMemo<GridRowMenuItemProps<T>[]>(() => {
-    return rowActionsSpec.map(
-      (
-        {
-          cond,
-          RowMenuButton = GridDefaultActionButton,
-          label,
-          refreshAfterSuccess,
-          onComplete,
-          handleClick,
-          icon,
-          hideIfDisabled = false,
-        },
-        idx,
-      ) => ({
+  const rowMenuItems = useMemo<Array<GridRowMenuHeader | GridRowMenuItemProps<T>>>(() => {
+    return rowActionsSpec.map((item, idx) => {
+      if (isGridRowMenuHeader(item)) return item as GridRowMenuHeader
+      const {
+        cond,
+        RowMenuButton = GridDefaultActionButton,
+        label,
+        refreshAfterSuccess,
+        onComplete,
+        handleClick,
+        icon,
+        hideIfDisabled = false,
+      } = item as GridRowMenuItemSpec<T>
+      return {
         key: idx,
         RowMenuButton,
         icon,
@@ -93,8 +100,8 @@ export default function useGridRowMenu<T>(
             onComplete(success, currentItem)
           }
         },
-      }),
-    )
+      }
+    })
   }, [rowActionsSpec])
 
   if (!rowActionsSpec.length) {

@@ -1,17 +1,13 @@
 import React, { Reducer, useReducer, useMemo } from 'react'
 import { Provider } from 'react-redux'
 import store, { themeActions } from './store'
-import CardButton from './elements/button/CardButton'
 import ThemeManager from './theme-manager/ThemeManager'
-import Card from './elements/card'
-import Badge from './elements/badge'
 import Grid, { GridViewColumn } from './elements/grid/Grid'
 import data, { Movie } from './stories/data/movies-list'
 import { without } from 'ramda'
 import { GridBatchActionSpec } from './elements/grid/hooks/useGridSelectableRows'
 import GridDefaultDeleteButton from './elements/grid/buttons/GridDefaultDeleteButton'
-import Button from './elements/button/Button'
-import { GridRowMenuItemSpec } from './elements/grid/hooks/useGridRowMenu'
+import { GridRowMenuHeader, GridRowMenuItemSpec } from './elements/grid/hooks/useGridRowMenu'
 
 // For testing purposes only. This is just to simulate what the
 // app consuming this plugin would look like
@@ -79,27 +75,30 @@ const App = () => {
     ],
     [],
   )
-  const rowMenuItems: Array<GridRowMenuItemSpec<Movie>> = [
+  const rowMenuItems: Array<GridRowMenuHeader | GridRowMenuItemSpec<Movie>> = [
+    { title: 'Basic Actions' },
     {
       cond: () => true,
-      label: 'Foo Action',
+      label: 'Edit',
       icon: 'edit',
       handleClick: () => alert('Action triggered'),
       refreshAfterSuccess: true,
       onComplete: (success) => alert(success ? 'Success!' : 'Failure'),
     },
+
     {
-      cond: () => true,
-      label: 'Bar Action',
-      icon: 'level-up',
+      cond: (item) => false,
+      label: 'Delete',
+      icon: 'trash',
       handleClick: () => alert('Action triggered'),
       refreshAfterSuccess: true,
       onComplete: (success) => alert(success ? 'Success!' : 'Failure'),
     },
+    { title: 'Advanced Actions' },
     {
-      cond: (item) => false,
-      label: 'Disabled Action',
-      icon: 'trash',
+      cond: () => true,
+      label: 'Upgrade',
+      icon: 'level-up',
       handleClick: () => alert('Action triggered'),
       refreshAfterSuccess: true,
       onComplete: (success) => alert(success ? 'Success!' : 'Failure'),
@@ -108,14 +107,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <ThemeManager themeActions={themeActions}>
-        <Card>
-          <Button variant="primary">Primary Button</Button>
-          <br />
-          <Button variant="secondary">Secondary Button</Button>
-          <CardButton title="Card Button" icon="plus" />
-          <Badge variant="primary" text="This is a badge" />
-        </Card>
-        <hr />
+        {/* Render components here for testing */}
         <Grid
           label="Label"
           uniqueIdentifier="id"

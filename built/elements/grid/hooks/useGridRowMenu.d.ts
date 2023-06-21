@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import { ParsedGridRow } from './useGridRows';
 export interface GridRowMenuConfig<T> {
-    rowMenuItems?: Array<GridRowMenuItemSpec<T>>;
+    rowMenuItems?: Array<GridRowMenuHeader | GridRowMenuItemSpec<T>>;
     rowMenuOffset?: GridRowMenuOffset;
     onRefresh?: (...args: unknown[]) => void | Promise<void>;
     showRowMenuForSingleRowActions?: boolean;
@@ -9,6 +9,10 @@ export interface GridRowMenuConfig<T> {
 }
 export interface GridRowMenuOffset {
     vertical?: number;
+}
+export interface GridRowMenuHeader {
+    title?: string;
+    insertDivider?: boolean;
 }
 export interface GridRowMenuItemSpec<T> {
     cond?: (item: T) => boolean;
@@ -29,7 +33,7 @@ export interface RowMenuButtonProps<T> {
 }
 export interface GridRowMenuItemsProps<T> {
     rowMenuDisabled: boolean;
-    rowMenuItems?: GridRowMenuItemProps<T>[];
+    rowMenuItems?: Array<GridRowMenuHeader | GridRowMenuItemProps<T>>;
     rowMenuOffset?: GridRowMenuOffset;
     showRowMenuForSingleRowActions?: boolean;
     maxRowMenuHeight?: number;
@@ -43,4 +47,5 @@ export interface GridRowMenuItemProps<T> {
     RowMenuButton: FC<RowMenuButtonProps<T>>;
     hideIfDisabled?: boolean;
 }
+export declare const isGridRowMenuHeader: (item: any) => item is GridRowMenuHeader;
 export default function useGridRowMenu<T>(rows: Array<ParsedGridRow<T>>, { rowMenuItems: rowActionsSpec, onRefresh, rowMenuOffset, showRowMenuForSingleRowActions, maxRowMenuHeight, }: GridRowMenuConfig<T>): [Array<ParsedGridRow<T>>, GridRowMenuItemsProps<T>];

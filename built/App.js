@@ -29,15 +29,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const react_redux_1 = require("react-redux");
 const store_1 = __importStar(require("./store"));
-const CardButton_1 = __importDefault(require("./elements/button/CardButton"));
 const ThemeManager_1 = __importDefault(require("./theme-manager/ThemeManager"));
-const card_1 = __importDefault(require("./elements/card"));
-const badge_1 = __importDefault(require("./elements/badge"));
 const Grid_1 = __importDefault(require("./elements/grid/Grid"));
 const movies_list_1 = __importDefault(require("./stories/data/movies-list"));
 const ramda_1 = require("ramda");
 const GridDefaultDeleteButton_1 = __importDefault(require("./elements/grid/buttons/GridDefaultDeleteButton"));
-const Button_1 = __importDefault(require("./elements/button/Button"));
 // For testing purposes only. This is just to simulate what the
 // app consuming this plugin would look like
 const columns = [
@@ -93,26 +89,28 @@ const App = () => {
         },
     ], []);
     const rowMenuItems = [
+        { title: 'Basic Actions' },
         {
             cond: () => true,
-            label: 'Foo Action',
+            label: 'Edit',
             icon: 'edit',
             handleClick: () => alert('Action triggered'),
             refreshAfterSuccess: true,
             onComplete: (success) => alert(success ? 'Success!' : 'Failure'),
         },
         {
-            cond: () => true,
-            label: 'Bar Action',
-            icon: 'level-up',
+            cond: (item) => false,
+            label: 'Delete',
+            icon: 'trash',
             handleClick: () => alert('Action triggered'),
             refreshAfterSuccess: true,
             onComplete: (success) => alert(success ? 'Success!' : 'Failure'),
         },
+        { title: 'Advanced Actions' },
         {
-            cond: (item) => false,
-            label: 'Disabled Action',
-            icon: 'trash',
+            cond: () => true,
+            label: 'Upgrade',
+            icon: 'level-up',
             handleClick: () => alert('Action triggered'),
             refreshAfterSuccess: true,
             onComplete: (success) => alert(success ? 'Success!' : 'Failure'),
@@ -120,13 +118,6 @@ const App = () => {
     ];
     return (react_1.default.createElement(react_redux_1.Provider, { store: store_1.default },
         react_1.default.createElement(ThemeManager_1.default, { themeActions: store_1.themeActions },
-            react_1.default.createElement(card_1.default, null,
-                react_1.default.createElement(Button_1.default, { variant: "primary" }, "Primary Button"),
-                react_1.default.createElement("br", null),
-                react_1.default.createElement(Button_1.default, { variant: "secondary" }, "Secondary Button"),
-                react_1.default.createElement(CardButton_1.default, { title: "Card Button", icon: "plus" }),
-                react_1.default.createElement(badge_1.default, { variant: "primary", text: "This is a badge" })),
-            react_1.default.createElement("hr", null),
             react_1.default.createElement(Grid_1.default, { label: "Label", uniqueIdentifier: "id", columns: columns, data: items, multiSelection: true, batchActions: batchActions, onRefresh: () => dispatch({ type: 'refresh', payload: {} }), rowMenuItems: rowMenuItems }))));
 };
 exports.default = App;
