@@ -80,7 +80,7 @@ const App = () => {
     {
       cond: () => true,
       label: 'Edit',
-      // icon: 'edit',
+      icon: 'edit',
       handleClick: () => alert('Action triggered'),
       refreshAfterSuccess: true,
       onComplete: (success) => alert(success ? 'Success!' : 'Failure'),
@@ -89,7 +89,7 @@ const App = () => {
     {
       cond: (item) => false,
       label: 'Delete',
-      // icon: 'trash',
+      icon: 'trash',
       handleClick: () => alert('Action triggered'),
       refreshAfterSuccess: true,
       onComplete: (success) => alert(success ? 'Success!' : 'Failure'),
@@ -98,7 +98,7 @@ const App = () => {
     {
       cond: () => true,
       label: 'Upgrade',
-      // icon: 'level-up',
+      icon: 'level-up',
       handleClick: () => alert('Action triggered'),
       refreshAfterSuccess: true,
       onComplete: (success) => alert(success ? 'Success!' : 'Failure'),

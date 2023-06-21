@@ -64,7 +64,8 @@ function GridRowMenu({ item, rowMenuItems, rowMenuDisabled, rowMenuOffset = {}, 
         if ((0, useGridRowMenu_1.isGridRowMenuHeader)(menuItem)) {
             return (react_1.default.createElement(react_1.default.Fragment, null,
                 idx !== 0 && react_1.default.createElement("hr", { className: classes.divider }),
-                react_1.default.createElement("div", { className: classes.header }, (menuItem === null || menuItem === void 0 ? void 0 : menuItem.title) && react_1.default.createElement(Text_1.default, { variant: "caption2" }, menuItem.title))));
+                (menuItem === null || menuItem === void 0 ? void 0 : menuItem.title) && (react_1.default.createElement("div", { className: classes.header },
+                    react_1.default.createElement(Text_1.default, { variant: "caption2" }, menuItem.title)))));
         }
         return (react_1.default.createElement(MenuItem_1.default, { key: menuItem === null || menuItem === void 0 ? void 0 : menuItem.key, readonly: menuItem === null || menuItem === void 0 ? void 0 : menuItem.getIsDisabled(item), icon: menuItem === null || menuItem === void 0 ? void 0 : menuItem.icon, onClick: () => menuItem === null || menuItem === void 0 ? void 0 : menuItem.triggerAction(item), className: classes.menuItem }, menuItem === null || menuItem === void 0 ? void 0 : menuItem.label));
     })));

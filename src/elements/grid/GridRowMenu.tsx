@@ -99,9 +99,11 @@ export default function GridRowMenu<T>({
           return (
             <>
               {idx !== 0 && <hr className={classes.divider} />}
-              <div className={classes.header}>
-                {menuItem?.title && <Text variant="caption2">{menuItem.title}</Text>}
-              </div>
+              {menuItem?.title && (
+                <div className={classes.header}>
+                  <Text variant="caption2">{menuItem.title}</Text>
+                </div>
+              )}
             </>
           )
         }
