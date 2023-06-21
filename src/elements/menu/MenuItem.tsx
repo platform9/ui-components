@@ -83,7 +83,7 @@ const useStyles = makeStyles<Theme, { iconPlacement: Props['iconPlacement']; rea
       gap: 16,
       minHeight: 48,
       alignItems: 'center',
-      paddingLeft: 8,
+      padding: '8px 16px',
       borderRadius: 4,
       backgroundColor: theme.components.checkbox.background,
       transition: 'background .2s ease, color .2s ease',

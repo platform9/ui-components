@@ -73,7 +73,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         gap: 16,
         minHeight: 48,
         alignItems: 'center',
-        paddingLeft: 8,
+        padding: '8px 16px',
         borderRadius: 4,
         backgroundColor: theme.components.checkbox.background,
         transition: 'background .2s ease, color .2s ease',

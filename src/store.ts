@@ -9,41 +9,50 @@ import CustomThemeHelper from './theme-manager/CustomThemeHelper'
 // reducer
 
 const customColorPalette = {
-  purple: {
-    '200': '#FCF2FB',
-    '300': '#F6D7F4',
-    '400': '#C670BF',
-    '500': '#95098A',
-    '600': '#7D0572',
-    '700': '#64005A',
-    '800': '#4B003F',
+  grey: {
+    '000': '#ffffff',
+    '50': '#FAFAFC',
+    '100': '#f5f5f9',
+    '150': '#EEEEF2',
+    '200': '#e6e6ea',
+    '300': '#b6b6c0',
+    '500': '#868696',
+    '600': '#56566B',
+    '650': '#4A4A61',
+    '700': '#3d3d57',
+    '750': '#31314B',
+    '800': '#25253f',
+    '900': '#0d0d28',
   },
   blue: {
-    '200': '#F2F8FD',
-    '300': '#D8EBF9',
-    '400': '#6CA3E1',
-    '500': '#005AC8',
-    '600': '#0047A5',
-    '700': '#003482',
-    '800': '#001851',
+    '100': '#f3fbfe',
+    '200': '#cceffc',
+    '300': '#82d4f2',
+    '500': '#00abe8',
+    '700': '#0089c7',
+    '900': '#005992',
   },
-  teal: {
-    '200': '#ECFBFA',
-    '300': '#CDFBF7',
-    '400': '#69DFDC',
-    '500': '#00BEBC',
-    '600': '#0096A5',
-    '700': '#006E8D',
-    '800': '#00445E',
+  pink: {
+    '100': '#FCE6EF',
+    '300': '#f26aa6',
+    '500': '#d82071',
+    '700': '#8a003c',
+    '900': '#6d0030',
   },
-  orange: {
-    '200': '#FFF5EC',
-    '300': '#FEEBDA',
-    '400': '#FED7B4',
-    '500': '#FDC38F',
-    '600': '#FCB069',
-    '700': '#FB9C44',
-    '800': '#E36D00',
+  yellow: {
+    '100': '#FFF8E9',
+    '200': '#FFECBE',
+    '300': '#ffd7a2',
+    '500': '#ffbf26',
+    '700': '#f0aa00',
+    '900': '#bf8700',
+  },
+  red: {
+    '100': '#FFECE9',
+    '300': '#ff9f8e',
+    '500': '#ff4826',
+    '700': '#f02500',
+    '900': '#bf1e00',
   },
 }
 
@@ -59,11 +68,11 @@ themeHelper.setColorPaletteOptions({
 // PF9 one is used
 themeHelper.setComponentsTheme((colors) => ({
   card: {
-    background: colors.purple[300],
+    background: colors.grey[50],
   },
   badge: {
     primary: {
-      color: colors.purple[300],
+      color: colors.blue[300],
       background: colors.blue[500],
     },
   },
