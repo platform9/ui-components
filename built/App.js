@@ -93,7 +93,7 @@ const App = () => {
         {
             cond: () => true,
             label: 'Edit',
-            icon: 'edit',
+            // icon: 'edit',
             handleClick: () => alert('Action triggered'),
             refreshAfterSuccess: true,
             onComplete: (success) => alert(success ? 'Success!' : 'Failure'),
@@ -101,7 +101,7 @@ const App = () => {
         {
             cond: (item) => false,
             label: 'Delete',
-            icon: 'trash',
+            // icon: 'trash',
             handleClick: () => alert('Action triggered'),
             refreshAfterSuccess: true,
             onComplete: (success) => alert(success ? 'Success!' : 'Failure'),
@@ -110,7 +110,7 @@ const App = () => {
         {
             cond: () => true,
             label: 'Upgrade',
-            icon: 'level-up',
+            // icon: 'level-up',
             handleClick: () => alert('Action triggered'),
             refreshAfterSuccess: true,
             onComplete: (success) => alert(success ? 'Success!' : 'Failure'),
@@ -118,7 +118,7 @@ const App = () => {
     ];
     return (react_1.default.createElement(react_redux_1.Provider, { store: store_1.default },
         react_1.default.createElement(ThemeManager_1.default, { themeActions: store_1.themeActions },
-            react_1.default.createElement(Grid_1.default, { label: "Label", uniqueIdentifier: "id", columns: columns, data: items, multiSelection: true, batchActions: batchActions, onRefresh: () => dispatch({ type: 'refresh', payload: {} }), rowMenuItems: rowMenuItems }))));
+            react_1.default.createElement(Grid_1.default, { label: "Label", uniqueIdentifier: "id", columns: columns, data: items, multiSelection: true, batchActions: batchActions, onRefresh: () => dispatch({ type: 'refresh', payload: {} }), rowMenuItems: rowMenuItems, rowMenuOffset: { vertical: 40 } }))));
 };
 exports.default = App;
 //# sourceMappingURL=App.js.map
