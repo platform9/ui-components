@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react';
-interface Props {
+import { Props as SimpleLinkProps } from '../components/SimpleLink';
+interface Props extends SimpleLinkProps {
     url: string;
     newWindow?: boolean;
 }

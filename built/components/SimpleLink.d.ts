@@ -1,7 +1,7 @@
 import React, { ComponentType, PropsWithChildren } from 'react';
 import { TextVariant } from '../elements/Text';
 type ISimpleLinkVariant = 'error' | 'primary' | 'secondary';
-interface Props {
+export interface Props {
     src?: string;
     staticContext?: any;
     className?: string;
@@ -13,6 +13,7 @@ interface Props {
     label?: string;
     lineClamp?: number;
     iconPosition?: 'left' | 'right';
+    underline?: 'none' | 'always' | 'hover';
 }
 declare const SimpleLink: ComponentType<PropsWithChildren<Props>>;
 export default SimpleLink;

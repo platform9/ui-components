@@ -10,7 +10,7 @@ import generateTestId from '../utils/test-helpers'
 
 type ISimpleLinkVariant = 'error' | 'primary' | 'secondary'
 
-interface Props {
+export interface Props {
   src?: string
   staticContext?: any
   className?: string
@@ -22,6 +22,7 @@ interface Props {
   label?: string
   lineClamp?: number
   iconPosition?: 'left' | 'right'
+  underline?: 'none' | 'always' | 'hover'
 }
 
 const getColor = (variant, theme) => {

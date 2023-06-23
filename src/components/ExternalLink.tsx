@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react'
-import SimpleLink from '../components/SimpleLink'
+import SimpleLink, { Props as SimpleLinkProps } from '../components/SimpleLink'
 
-interface Props {
+interface Props extends SimpleLinkProps {
   // This should be an external link that includes the http(s) and the FQDN.
   url: string
   // Should this link open a new window (default: true)
