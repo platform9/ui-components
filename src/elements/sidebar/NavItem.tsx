@@ -73,7 +73,12 @@ export default function NavItem({
         <Tooltip message={tooltip ? name : ''} {...tooltipProps}>
           {icon && (
             <div className={clsx(classes.navIcon)}>
-              <FontAwesomeIcon className="nav-icon" title={name} size="lg">
+              <FontAwesomeIcon
+                data-testid={generateTestId(name)}
+                className="nav-icon"
+                title={name}
+                size="lg"
+              >
                 {icon}
               </FontAwesomeIcon>
             </div>
@@ -81,6 +86,7 @@ export default function NavItem({
           {open && (
             <Text
               className={clsx('nav-text', classes.navText)}
+              data-testid={generateTestId(name)}
               variant={compact ? 'sidenav' : 'subtitle2'}
             >
               {name}

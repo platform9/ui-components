@@ -10,6 +10,7 @@ const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeI
 const clsx_1 = __importDefault(require("clsx"));
 const tooltip_1 = __importDefault(require("../tooltip"));
 const Text_1 = __importDefault(require("../Text"));
+const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 const colorHelpers_1 = require("../../utils/colorHelpers");
 const ExternalLink_1 = __importDefault(require("../../components/ExternalLink"));
 function NavItem({ name, link, icon, className = undefined, open = false, isActive = false, compact = false, tooltip = false, tooltipProps = {}, activeDisplayType = 'background', }) {
@@ -24,8 +25,8 @@ function NavItem({ name, link, icon, className = undefined, open = false, isActi
         react_1.default.createElement("li", { className: (0, clsx_1.default)(classes.navItem, className) },
             react_1.default.createElement(tooltip_1.default, Object.assign({ message: tooltip ? name : '' }, tooltipProps),
                 icon && (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.navIcon) },
-                    react_1.default.createElement(FontAwesomeIcon_1.default, { className: "nav-icon", title: name, size: "lg" }, icon))),
-                open && (react_1.default.createElement(Text_1.default, { className: (0, clsx_1.default)('nav-text', classes.navText), variant: compact ? 'sidenav' : 'subtitle2' }, name))))));
+                    react_1.default.createElement(FontAwesomeIcon_1.default, { "data-testid": (0, test_helpers_1.default)(name), className: "nav-icon", title: name, size: "lg" }, icon))),
+                open && (react_1.default.createElement(Text_1.default, { className: (0, clsx_1.default)('nav-text', classes.navText), "data-testid": (0, test_helpers_1.default)(name), variant: compact ? 'sidenav' : 'subtitle2' }, name))))));
 }
 exports.default = NavItem;
 const getBackgroundImage = (isActive, displayType, sidebarColors) => {
