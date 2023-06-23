@@ -46,7 +46,7 @@ export default function NavItem({
   const classes = useStyles({ isActive, compact, activeDisplayType })
 
   return link?.external ? (
-    <ExternalLink url={link.path} underline="none">
+    <ExternalLink url={link.path} textDecoration="none">
       <li className={clsx(classes.navItem, className)}>
         <Tooltip message={tooltip ? name : ''} {...tooltipProps}>
           <div className={classes.externalLinkBody}>
@@ -176,6 +176,6 @@ const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
   externalLinkBody: {
     display: 'flex',
     gap: theme.spacing(1),
-    alignItems: 'center',
+    alignItems: 'baseline',
   },
 }))
