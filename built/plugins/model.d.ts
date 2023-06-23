@@ -20,6 +20,7 @@ interface Link {
     definition?: string;
     exact?: boolean;
     external?: boolean;
+    getPath?: () => string;
 }
 interface NestedLink {
     name: string;
