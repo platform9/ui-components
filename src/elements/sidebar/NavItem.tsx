@@ -9,6 +9,17 @@ import Tooltip from '../tooltip'
 import Text from '../Text'
 import generateTestId from '../../utils/test-helpers'
 import { hexToRgbaCss } from '../../utils/colorHelpers'
+import ExternalLink from '../../components/ExternalLink'
+
+interface Props extends IRouterLink {
+  isActive?: boolean
+  tooltip?: boolean
+  open?: boolean
+  compact?: boolean
+  activeDisplayType?: 'background' | 'bar'
+  className?: string
+  tooltipProps?: { [key: string]: any }
+}
 
 interface Props extends IRouterLink {
   isActive?: boolean
@@ -34,7 +45,29 @@ export default function NavItem({
 }: Props) {
   const classes = useStyles({ isActive, compact, activeDisplayType })
 
-  return (
+  return link?.external ? (
+    <ExternalLink url={link.path}>
+      <li className={clsx(classes.navItem, className)}>
+        <Tooltip message={tooltip ? name : ''} {...tooltipProps}>
+          <div className={classes.externalLinkBody}>
+            {open && (
+              <Text
+                className={clsx('nav-text', classes.navText)}
+                variant={compact ? 'sidenav' : 'subtitle2'}
+              >
+                {name}
+              </Text>
+            )}
+            <div className={clsx(classes.navIcon)}>
+              <FontAwesomeIcon className="nav-icon" title={name} size="lg">
+                arrow-up-right-from-square
+              </FontAwesomeIcon>
+            </div>
+          </div>
+        </Tooltip>
+      </li>
+    </ExternalLink>
+  ) : (
     <Link to={link.path}>
       <li className={clsx(classes.navItem, className)}>
         <Tooltip message={tooltip ? name : ''} {...tooltipProps}>
@@ -139,5 +172,10 @@ const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
   },
   navText: {
     color: ({ isActive }) => theme.components.sidebar?.[isActive ? 'activeText' : 'text'],
+  },
+  externalLinkBody: {
+    display: 'flex',
+    gap: theme.spacing(1),
+    alignItems: 'center',
   },
 }))

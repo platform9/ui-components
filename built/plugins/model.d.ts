@@ -19,6 +19,7 @@ interface Link {
     path: string;
     definition?: string;
     exact?: boolean;
+    external?: boolean;
 }
 interface NestedLink {
     name: string;
