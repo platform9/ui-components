@@ -16,11 +16,11 @@ export interface IRouterLink {
     requiredFeatures?: (features: any) => boolean;
 }
 interface Link {
+    onClick: () => void;
     path: string;
     definition?: string;
     exact?: boolean;
     external?: boolean;
-    getPath?: (state: any) => string;
 }
 interface NestedLink {
     name: string;
