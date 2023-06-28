@@ -18,11 +18,11 @@ export interface IRouterLink {
 }
 
 interface Link {
+  onClick: () => void
   path: string
   definition?: string
   exact?: boolean
   external?: boolean
-  getPath?: (state: any) => string
 }
 
 interface NestedLink {
