@@ -9,12 +9,13 @@ export interface IRouterLink {
   name: string
   link: Link
   icon?: string
-  type?: 'divider' | 'link'
+  type?: 'divider' | 'link' | 'component'
   isHidden?: boolean
   nestedLinks: NestedLink[] | null
   isBottomLink?: boolean
   requiredRoles?: string
   requiredFeatures?: (features: any) => boolean
+  Component?: React.ReactNode
 }
 
 interface Link {
