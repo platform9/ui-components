@@ -15,7 +15,7 @@ export interface IRouterLink {
   isBottomLink?: boolean
   requiredRoles?: string
   requiredFeatures?: (features: any) => boolean
-  Component?: React.ReactNode
+  Component?: JSX.Element
 }
 
 interface Link {
