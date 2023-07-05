@@ -40,9 +40,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
-    "react-scripts": "5.0.1",
     "react-router": "5.0.1",
     "react-router-dom": "5.0.1",
+    "react-scripts": "5.0.1",
     "web-vitals": "^2.1.0",
     "webpack": "^5.75.0"
   },
@@ -63,6 +63,7 @@
     "ramda": "^0.28.0",
     "react-codemirror2": "6.0.0",
     "react-dropzone": "11.2.4",
+    "react-side-effect": "^2.1.2",
     "recharts": "^2.4.3",
     "typescript": "^4.4.4",
     "url-pattern": "^1.0.3",
