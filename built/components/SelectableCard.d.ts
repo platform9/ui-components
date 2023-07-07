@@ -6,5 +6,6 @@ interface SelectableCardProps extends CardProps {
     onClick: any;
     active?: boolean;
     className?: string;
+    showCheckmarkIcon?: boolean;
 }
 export default SelectableCard;
