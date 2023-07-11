@@ -12,5 +12,7 @@ export interface DropdownProps<V, T extends DropdownItemSpec<V> = DropdownItemSp
     noneLabel?: string;
     noneKey?: string;
     showClearButton?: boolean;
+    icon?: string;
+    iconSize?: string;
 }
 export default function Dropdown<V, T extends DropdownItemSpec<V> = DropdownItemSpec<V>>(props: DropdownProps<V, T>): JSX.Element;

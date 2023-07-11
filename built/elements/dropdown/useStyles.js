@@ -106,5 +106,9 @@ exports.default = (0, styles_1.makeStyles)((theme) => ({
     bottomContent: {
         cursor: 'initial',
     },
+    icon: {
+        marginLeft: '4px',
+        marginRight: theme.spacing(1),
+    },
 }));
 //# sourceMappingURL=useStyles.js.map

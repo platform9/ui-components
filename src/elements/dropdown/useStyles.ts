@@ -133,4 +133,8 @@ export default makeStyles<Theme, DropdownStylesProps>((theme) => ({
   bottomContent: {
     cursor: 'initial',
   },
+  icon: {
+    marginLeft: '4px',
+    marginRight: theme.spacing(1),
+  },
 }))

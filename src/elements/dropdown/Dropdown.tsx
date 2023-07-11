@@ -27,6 +27,8 @@ export interface DropdownProps<V, T extends DropdownItemSpec<V> = DropdownItemSp
   noneLabel?: string
   noneKey?: string
   showClearButton?: boolean
+  icon?: string
+  iconSize?: string
 }
 
 const blankItem = { key: '', label: '', value: null }
@@ -56,6 +58,8 @@ export default function Dropdown<V, T extends DropdownItemSpec<V> = DropdownItem
     noneKey = defaultNoneKey,
     compact,
     showClearButton = enableSearch,
+    icon,
+    iconSize,
   } = props
   const showAllItem = useMemo<T>(
     () => ({ key: allKey, label: allLabel, value: allKey } as T),
@@ -180,6 +184,11 @@ export default function Dropdown<V, T extends DropdownItemSpec<V> = DropdownItem
                 {...getToggleButtonProps()}
                 className={clsx(classes.placeholder, 'placeholder')}
               >
+                {icon && (
+                  <FontAwesomeIcon className={classes.icon} size={iconSize}>
+                    {icon}
+                  </FontAwesomeIcon>
+                )}
                 {inputValue || placeholder}
               </div>
             )}
