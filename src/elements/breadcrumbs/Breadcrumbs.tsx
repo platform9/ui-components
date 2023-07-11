@@ -14,9 +14,14 @@ import { TextProps } from '../Text'
 type Props = PropsWithChildren<{
   nameOverrides: Record<string, string>
   textVariant?: TextProps['variant']
+  icon?: string
 }>
 
-export default function Breadcrumbs({ nameOverrides, textVariant = 'body2' as const }: Props) {
+export default function Breadcrumbs({
+  nameOverrides,
+  textVariant = 'body2' as const,
+  icon,
+}: Props) {
   const { currentLink } = usePluginRouter()
   const { match, location } = useReactRouter()
   const classes = useStyles({})
@@ -41,7 +46,7 @@ export default function Breadcrumbs({ nameOverrides, textVariant = 'body2' as co
           leftIcon={
             idx === 0 && (
               <FontAwesomeIcon className={clsx(classes.icon, classes.primaryIcon)}>
-                {currentLink?.icon}
+                {icon || currentLink?.icon}
               </FontAwesomeIcon>
             )
           }
