@@ -5,6 +5,8 @@ interface DropdownItemProps {
     onClick: () => void;
     disabled?: boolean;
     disableCheckbox?: boolean;
+    icon?: string;
+    iconSize?: string;
 }
 declare const _default: React.ForwardRefExoticComponent<DropdownItemProps & {
     children?: React.ReactNode;

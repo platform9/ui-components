@@ -42,7 +42,7 @@ const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 const helpers_1 = require("./helpers");
 const blankItem = { key: '', label: '', value: null };
 function Dropdown(props) {
-    const { value, initialValue, itemToString = helpers_1.defaultItemToString, onChange, items, label, error, name, placeholder = 'Select an option', enableSearch, width = constants_1.dropdownDefaultWidth, noBlankValue, className, showAll = false, allLabel = 'All', allKey = constants_1.defaultAllKey, showNone = false, noneLabel = 'None', noneKey = constants_1.defaultNoneKey, compact, showClearButton = enableSearch, } = props;
+    const { value, initialValue, itemToString = helpers_1.defaultItemToString, onChange, items, label, error, name, placeholder = 'Select an option', enableSearch, width = constants_1.dropdownDefaultWidth, noBlankValue, className, showAll = false, allLabel = 'All', allKey = constants_1.defaultAllKey, showNone = false, noneLabel = 'None', noneKey = constants_1.defaultNoneKey, compact, showClearButton = enableSearch, icon, iconSize, } = props;
     const showAllItem = (0, react_1.useMemo)(() => ({ key: allKey, label: allLabel, value: allKey }), [allKey, allLabel]);
     const showNoneItem = (0, react_1.useMemo)(() => ({ key: noneKey, label: noneLabel, value: noneKey }), [noneKey, noneLabel]);
     const input = (0, react_1.useRef)(null);
@@ -107,7 +107,9 @@ function Dropdown(props) {
                 ref: input,
                 name,
                 placeholder,
-            })))) : (react_1.default.createElement("div", Object.assign({ "data-testid": (0, test_helpers_1.default)(label, 'dropdown', 'list') }, getToggleButtonProps(), { className: (0, clsx_1.default)(classes.placeholder, 'placeholder') }), inputValue || placeholder)),
+            })))) : (react_1.default.createElement("div", Object.assign({ "data-testid": (0, test_helpers_1.default)(label, 'dropdown', 'list') }, getToggleButtonProps(), { className: (0, clsx_1.default)(classes.placeholder, 'placeholder') }),
+                icon && (react_1.default.createElement(FontAwesomeIcon_1.default, { className: classes.icon, size: iconSize }, icon)),
+                inputValue || placeholder)),
             inputValue && (!noBlankValue || enableSearch) && showClearButton ? (react_1.default.createElement(DropdownToggle_1.default, { onClick: () => clearSelection(), "aria-label": "clear selection" },
                 react_1.default.createElement(FontAwesomeIcon_1.default, { solid: true, size: "sm" }, "xmark"))) : (react_1.default.createElement(DropdownToggle_1.default, Object.assign({}, getToggleButtonProps()),
                 react_1.default.createElement(FontAwesomeIcon_1.default, { solid: true, size: "sm" }, isOpen ? 'caret-up' : 'caret-down'))),
