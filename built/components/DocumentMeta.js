@@ -161,7 +161,7 @@ class DocumentMetaCls extends react_1.default.Component {
     render() {
         if (this.props.breadcrumbs) {
             return (react_1.default.createElement(portals_1.HeaderTitlePortal, null,
-                react_1.default.createElement(breadcrumbs_1.default, { nameOverrides: this.props.breadcrumbNameOverrides })));
+                react_1.default.createElement(breadcrumbs_1.default, { nameOverrides: this.props.breadcrumbNameOverrides, icon: this.props.breadcrumbIcon })));
         }
         return null;
     }

@@ -208,6 +208,7 @@ export interface IDocumentMetaProps {
   link?: TagProps[]
   breadcrumbs?: boolean
   breadcrumbNameOverrides?: Record<string, string>
+  breadcrumbIcon?: string
 }
 
 interface AddScriptElementToDomBodyProps {
@@ -240,7 +241,10 @@ export class DocumentMetaCls extends React.Component<IDocumentMetaProps, {}> {
     if (this.props.breadcrumbs) {
       return (
         <HeaderTitlePortal>
-          <Breadcrumbs nameOverrides={this.props.breadcrumbNameOverrides} />
+          <Breadcrumbs
+            nameOverrides={this.props.breadcrumbNameOverrides}
+            icon={this.props.breadcrumbIcon}
+          />
         </HeaderTitlePortal>
       )
     }

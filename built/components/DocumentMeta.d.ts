@@ -17,6 +17,7 @@ export interface IDocumentMetaProps {
     link?: TagProps[];
     breadcrumbs?: boolean;
     breadcrumbNameOverrides?: Record<string, string>;
+    breadcrumbIcon?: string;
 }
 interface AddScriptElementToDomBodyProps {
     id: string;
