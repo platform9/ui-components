@@ -23,6 +23,8 @@ interface BaseModalFormProps extends Omit<ModalProps, 'open'> {
   initialValues?: Record<string, unknown>
   withAddonManager?: boolean
   clearOnSubmit?: boolean
+  showBackButton?: boolean
+  onBackButtonClick?: () => void
 }
 
 interface PropsWithOpenRoute extends BaseModalFormProps {
@@ -52,6 +54,8 @@ export default function ModalForm({
   open,
   withAddonManager,
   initialValues = {},
+  showBackButton,
+  onBackButtonClick,
   ...props
 }: PropsWithChildren<ModalFormProps>) {
   const submitFuncRef = useRef(null)
@@ -75,6 +79,11 @@ export default function ModalForm({
           <Button variant="secondary" onClick={props.onClose} disabled={submitting}>
             Cancel
           </Button>
+          {showBackButton && (
+            <Button variant="secondary" onClick={() => onBackButtonClick()} disabled={submitting}>
+              Back
+            </Button>
+          )}
           {onSubmit && (
             <Button onClick={handleSubmit} loading={submitting} disabled={disableSubmit}>
               {submitTitle}

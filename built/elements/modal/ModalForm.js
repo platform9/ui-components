@@ -45,7 +45,7 @@ const use_react_router_1 = __importDefault(require("use-react-router"));
 const Progress_1 = __importDefault(require("../../components/progress/Progress"));
 const Alert_1 = __importDefault(require("../../components/Alert"));
 function ModalForm(_a) {
-    var { children, onSubmit, disableSubmit = false, submitTitle = 'Submit', fieldSetter = null, submitting = false, loading = false, loadingMessage = 'Loading', error, customErrorComponent, route, open, withAddonManager, initialValues = {} } = _a, props = __rest(_a, ["children", "onSubmit", "disableSubmit", "submitTitle", "fieldSetter", "submitting", "loading", "loadingMessage", "error", "customErrorComponent", "route", "open", "withAddonManager", "initialValues"]);
+    var { children, onSubmit, disableSubmit = false, submitTitle = 'Submit', fieldSetter = null, submitting = false, loading = false, loadingMessage = 'Loading', error, customErrorComponent, route, open, withAddonManager, initialValues = {}, showBackButton, onBackButtonClick } = _a, props = __rest(_a, ["children", "onSubmit", "disableSubmit", "submitTitle", "fieldSetter", "submitting", "loading", "loadingMessage", "error", "customErrorComponent", "route", "open", "withAddonManager", "initialValues", "showBackButton", "onBackButtonClick"]);
     const submitFuncRef = (0, react_1.useRef)(null);
     const { match } = (0, use_react_router_1.default)();
     const setSubmitFuncRef = (handleSubmit) => {
@@ -57,6 +57,7 @@ function ModalForm(_a) {
     const toOpen = (0, react_1.useMemo)(() => (route ? route.pattern.match(match.url) : open), [match.url, open]);
     return (react_1.default.createElement(Modal_1.default, Object.assign({ open: toOpen, footer: react_1.default.createElement(react_1.default.Fragment, null,
             react_1.default.createElement(button_1.default, { variant: "secondary", onClick: props.onClose, disabled: submitting }, "Cancel"),
+            showBackButton && (react_1.default.createElement(button_1.default, { variant: "secondary", onClick: () => onBackButtonClick(), disabled: submitting }, "Back")),
             onSubmit && (react_1.default.createElement(button_1.default, { onClick: handleSubmit, loading: submitting, disabled: disableSubmit }, submitTitle))) }, props),
         !!error && react_1.default.createElement(Alert_1.default, { variant: "error", title: error === null || error === void 0 ? void 0 : error.title, message: error === null || error === void 0 ? void 0 : error.message }),
         customErrorComponent && customErrorComponent,
