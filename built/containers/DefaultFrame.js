@@ -34,7 +34,7 @@ const Header_1 = __importDefault(require("../elements/header/Header"));
 const frame_provider_1 = __importDefault(require("../providers/frame-provider"));
 const sidebarPane = 'default';
 const sidebarPaneRef = react_1.default.createRef();
-function DefaultFrame({ children }) {
+function DefaultFrame({ className, children }) {
     const [frameRefs, setFrameRefs] = (0, react_1.useState)({});
     const setFrameContainerRef = (0, react_1.useCallback)((payload) => setFrameRefs((frames) => (0, ramda_1.mergeLeft)(frames, payload)), [setFrameRefs]);
     const classes = useStyles({ sidebarPane });
@@ -45,7 +45,7 @@ function DefaultFrame({ children }) {
     }, []);
     const frameValue = (0, react_1.useMemo)(() => (Object.assign(Object.assign({}, frameRefs), { setFrameContainerRef })), [frameRefs, setFrameContainerRef]);
     return (react_1.default.createElement(frame_provider_1.default.Provider, { value: frameValue },
-        react_1.default.createElement("main", { className: classes.appFrame },
+        react_1.default.createElement("main", { className: (0, clsx_1.default)(classes.appFrame, className) },
             react_1.default.createElement(Header_1.default, null),
             react_1.default.createElement("aside", { className: "sidebar custom-nav", ref: sidebarPaneRef }),
             react_1.default.createElement("section", { className: (0, clsx_1.default)('content-main', classes.contentMain) }, children))));

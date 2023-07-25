@@ -10,7 +10,7 @@ const sidebarPane = 'default'
 
 const sidebarPaneRef = React.createRef<HTMLDivElement>()
 
-function DefaultFrame({ children }: PropsWithChildren<{}>) {
+function DefaultFrame({ className, children }: PropsWithChildren<{ className?: string }>) {
   const [frameRefs, setFrameRefs] = useState<IFullFrameContext>({} as any)
   const setFrameContainerRef = useCallback(
     (payload: Partial<IFrameContextRefs>) => setFrameRefs((frames) => mergeLeft(frames, payload)),
@@ -34,7 +34,7 @@ function DefaultFrame({ children }: PropsWithChildren<{}>) {
 
   return (
     <FrameContext.Provider value={frameValue}>
-      <main className={classes.appFrame}>
+      <main className={clsx(classes.appFrame, className)}>
         <Header />
         <aside className="sidebar custom-nav" ref={sidebarPaneRef} />
         <section className={clsx('content-main', classes.contentMain)}>{children}</section>

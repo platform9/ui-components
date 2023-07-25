@@ -1,3 +1,5 @@
 import { PropsWithChildren } from 'react';
-declare function DefaultFrame({ children }: PropsWithChildren<{}>): JSX.Element;
+declare function DefaultFrame({ className, children }: PropsWithChildren<{
+    className?: string;
+}>): JSX.Element;
 export default DefaultFrame;
