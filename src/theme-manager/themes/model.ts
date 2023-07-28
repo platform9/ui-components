@@ -261,6 +261,7 @@ interface Header {
 }
 
 interface Sidebar {
+  disabledText?: string
   background: string
   border: string
   activeBackground: string

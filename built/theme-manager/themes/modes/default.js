@@ -26,6 +26,7 @@ exports.components = {
         activeText: colors_1.default.grey['000'],
         hoverText: colors_1.default.grey['000'],
         spinLogoFill: colors_1.default.grey['000'],
+        disabledText: colors_1.default.grey[300],
     },
     scrollbar: {
         track: 'transparent',

@@ -16,6 +16,7 @@ export interface IRouterLink {
     requiredRoles?: string;
     requiredFeatures?: (features: any) => boolean;
     Component?: React.ComponentType<any>;
+    disabled?: (params: any) => boolean | boolean;
 }
 interface Link {
     onClick: () => void;

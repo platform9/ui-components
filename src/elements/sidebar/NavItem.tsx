@@ -19,16 +19,7 @@ interface Props extends IRouterLink {
   activeDisplayType?: 'background' | 'bar'
   className?: string
   tooltipProps?: { [key: string]: any }
-}
-
-interface Props extends IRouterLink {
-  isActive?: boolean
-  tooltip?: boolean
-  open?: boolean
-  compact?: boolean
-  activeDisplayType?: 'background' | 'bar'
-  className?: string
-  tooltipProps?: { [key: string]: any }
+  disableLink?: boolean
 }
 
 export default function NavItem({
@@ -42,8 +33,9 @@ export default function NavItem({
   tooltip = false,
   tooltipProps = {},
   activeDisplayType = 'background',
+  disableLink = false,
 }: Props) {
-  const classes = useStyles({ isActive, compact, activeDisplayType })
+  const classes = useStyles({ isActive, compact, activeDisplayType, disableLink })
 
   return link?.external ? (
     <ExternalLink url={link.path} textDecoration="none" onClick={link.onClick}>
@@ -68,7 +60,7 @@ export default function NavItem({
       </li>
     </ExternalLink>
   ) : (
-    <Link to={link.path}>
+    <Link to={disableLink ? null : link.path}>
       <li className={clsx(classes.navItem, className)}>
         <Tooltip message={tooltip ? name : ''} {...tooltipProps}>
           {icon && (
@@ -102,6 +94,7 @@ interface StyleProps {
   isActive: Props['isActive']
   compact: Props['compact']
   activeDisplayType: Props['activeDisplayType']
+  disableLink: Props['disableLink']
 }
 
 const getBackgroundImage = (isActive, displayType, sidebarColors) => {
@@ -128,7 +121,8 @@ const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
       transition: 'color .2s ease',
     },
     '&:hover .nav-text, &:hover .nav-icon': {
-      color: theme.components.sidebar.hoverText,
+      color: ({ disableLink }) =>
+        disableLink ? theme.components.sidebar.disabledText : theme.components.sidebar.hoverText,
     },
     '&:before': {
       content: '""',
@@ -171,7 +165,8 @@ const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
     },
   },
   navText: {
-    color: ({ isActive }) => theme.components.sidebar?.[isActive ? 'activeText' : 'text'],
+    color: ({ isActive, disableLink }) =>
+      theme.components.sidebar?.[isActive ? 'activeText' : disableLink ? 'disabledText' : 'text'],
   },
   externalLinkBody: {
     display: 'flex',

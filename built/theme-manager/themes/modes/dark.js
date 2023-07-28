@@ -24,6 +24,7 @@ const components = {
         activeText: colors_1.default.grey['000'],
         hoverText: colors_1.default.grey['000'],
         spinLogoFill: colors_1.default.grey['000'],
+        disabledText: colors_1.default.grey[500],
     },
     scrollbar: {
         track: 'transparent',
