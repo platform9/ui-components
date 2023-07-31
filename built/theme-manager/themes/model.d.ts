@@ -236,6 +236,7 @@ interface Header {
     background: string;
 }
 interface Sidebar {
+    disabledText?: string;
     background: string;
     border: string;
     activeBackground: string;
