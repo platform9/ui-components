@@ -30,7 +30,7 @@ const react_1 = __importStar(require("react"));
 const clsx_1 = __importDefault(require("clsx"));
 const styles_1 = require("@material-ui/styles");
 const Text_1 = __importDefault(require("../elements/Text"));
-function ProductInfoPage({ title, footerTitle = undefined, className, children, icon, actions = [], componentDidMountFn, componentWillUnmountFn, }) {
+function ProductInfoPage({ title, footerTitle = undefined, className, rootClassName, children, icon, actions = [], componentDidMountFn, componentWillUnmountFn, }) {
     const classes = useStyles();
     //   const dispatch = useDispatch()
     (0, react_1.useEffect)(() => {
@@ -45,7 +45,7 @@ function ProductInfoPage({ title, footerTitle = undefined, className, children, 
     //       dispatch(clientActions.setSidebarState('expanded'))
     //     }
     //   }, [])
-    return (react_1.default.createElement("div", { className: classes.productInfoPage },
+    return (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.productInfoPage, rootClassName) },
         react_1.default.createElement("article", { className: (0, clsx_1.default)(classes.productInfoContent, className) },
             react_1.default.createElement(Text_1.default, { variant: "h2", component: "header", className: (0, clsx_1.default)('product-info-title', classes.productInfoTitle) }, title),
             react_1.default.createElement("div", { className: (0, clsx_1.default)('product-info-body', classes.productInfoBody) }, children),

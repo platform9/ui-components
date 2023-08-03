@@ -9,6 +9,7 @@ interface Props {
   icon: React.ReactNode
   actions: React.ReactNode[]
   footerTitle?: string
+  rootClassName?: string
   className?: string
   componentDidMountFn?: any
   componentWillUnmountFn?: any
@@ -18,6 +19,7 @@ export default function ProductInfoPage({
   title,
   footerTitle = undefined,
   className,
+  rootClassName,
   children,
   icon,
   actions = [],
@@ -39,7 +41,7 @@ export default function ProductInfoPage({
   //     }
   //   }, [])
   return (
-    <div className={classes.productInfoPage}>
+    <div className={clsx(classes.productInfoPage, rootClassName)}>
       <article className={clsx(classes.productInfoContent, className)}>
         <Text
           variant="h2"
