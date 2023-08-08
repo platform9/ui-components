@@ -10,7 +10,7 @@ export interface IRouterLink {
     link: Link;
     icon?: string;
     type?: 'divider' | 'link' | 'component';
-    isHidden?: boolean;
+    isHidden?: (params: any) => boolean | boolean;
     nestedLinks: NestedLink[] | null;
     isBottomLink?: boolean;
     requiredRoles?: string;
