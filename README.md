@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Platform9 UI Components
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the home for all of PF9's UI React components
 
 ## Available Scripts
 
@@ -14,33 +14,28 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Transpiles TypeScript source code to JavaScript. These files are stored in the `built` folder
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## To Use pf9-ui-components In Your App:
+1. In your app root directory, run `yarn add https://github.com/platform9/ui-components`
+2. Import the components you want to use from the `built` folder.
+   Ex. `import Theme from 'pf9-ui-components/built/theme-manager/themes/model'`
+3. If you want to sync your changes from ui-components to your app, run `yarn upgrade pf9-ui-components`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## To Modify or Create a React Component:
+1. Run `yarn start` to run the app
+2. Make the changes you need to make in the code
+3. Test your changes if needed by following the testing steps below
+4. Run `yarn build` 
+5. Commit and push your changes to the main branch
+6. To update your changes in the app that is using this component library, run `yarn upgrade pf9-ui-components`
 
-### `yarn eject`
+## To Test Your Changes:
+1. Add your component to the render function in `src/App.tsx`
+2. In `src/index.tsx`, uncomment out lines 4-12 to render the component in `src/App.tsx`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
