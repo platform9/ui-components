@@ -122,7 +122,7 @@ exports.useGridContext = useGridContext;
 function Grid(configProps) {
     var _a;
     const classes = useStyles(configProps);
-    const { onRefresh, emptyContent = 'No data found', disableToolbar = false, extraToolbarContent, loading = false, loadingMessage, compact, label, ToolbarContainer, showItemsCountInLabel, tooltip, } = configProps;
+    const { onRefresh, emptyContent = 'No data found', disableToolbar = false, extraToolbarContent, loading = false, loadingMessage, compact, label, ToolbarContainer, showItemsCountInLabel, tooltip, CustomGridRowComponent, } = configProps;
     const rows = (0, useGridRows_1.default)(configProps);
     const [rowsWithActions, rowActionsProps] = (0, useGridRowMenu_1.default)(rows, configProps);
     const [selectableRows, rowBatchActionsProps] = (0, useGridSelectableRows_1.default)(rowsWithActions, configProps);
@@ -130,6 +130,7 @@ function Grid(configProps) {
     const [sortedRows, sortingProps] = (0, useGridSorting_1.default)(filteredRows, configProps);
     const [pageRows, paginationProps] = (0, useGridPagination_1.default)(sortedRows, configProps);
     const [colManagedRows, columnProps] = (0, useGridManagedColumns_1.default)(pageRows, configProps);
+    const GridRowComponent = CustomGridRowComponent || GridRow_1.default;
     const contextValue = (0, react_1.useMemo)(() => ({
         triggerRefresh: onRefresh,
         selectedItems: rowBatchActionsProps.selectedItems,
@@ -145,7 +146,7 @@ function Grid(configProps) {
                     react_1.default.createElement(GridHeader_1.default, Object.assign({}, columnProps, sortingProps, rowBatchActionsProps, { rowMenuItemsLength: (_a = rowActionsProps.rowMenuItems) === null || _a === void 0 ? void 0 : _a.length, pageRows: pageRows })),
                     react_1.default.createElement("tbody", null, colManagedRows.map((_a, index) => {
                         var { key } = _a, rowProps = __rest(_a, ["key"]);
-                        return (react_1.default.createElement(GridRow_1.default, Object.assign({ key: key, className: classes.tr, tdClassName: classes.td, cellClassName: classes.cell, index: index, numPageItems: paginationProps === null || paginationProps === void 0 ? void 0 : paginationProps.currentPageItemsCount }, rowProps, rowActionsProps, rowBatchActionsProps)));
+                        return (react_1.default.createElement(GridRowComponent, Object.assign({ key: key, className: classes.tr, tdClassName: classes.td, cellClassName: classes.cell, index: index, numPageItems: paginationProps === null || paginationProps === void 0 ? void 0 : paginationProps.currentPageItemsCount }, rowProps, rowActionsProps, rowBatchActionsProps)));
                     })))) : (react_1.default.createElement(GridEmptyContent_1.default, null, loading ? '' : emptyContent))),
                 sortedRows.length && (!compact || sortedRows.length > paginationProps.rowsPerPage) ? (react_1.default.createElement(GridPagination_1.default, Object.assign({}, paginationProps))) : null))));
 }

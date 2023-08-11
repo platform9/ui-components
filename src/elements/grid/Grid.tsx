@@ -31,6 +31,7 @@ interface GridViewConfig {
   ToolbarContainer?: FC<PropsWithChildren<{ className?: string; selectedCount?: number }>>
   showItemsCountInLabel?: boolean
   tooltip?: ReactNode
+  CustomGridRowComponent?: React.ComponentType
 }
 
 export type GridViewColumn<T, A extends Accessor<T> = Accessor<T>> = GridColumnSpec<T, A> &
@@ -151,6 +152,7 @@ export default function Grid<
     ToolbarContainer,
     showItemsCountInLabel,
     tooltip,
+    CustomGridRowComponent,
   } = configProps
 
   const rows = useGridRows(configProps)
@@ -160,6 +162,7 @@ export default function Grid<
   const [sortedRows, sortingProps] = useGridSorting(filteredRows, configProps)
   const [pageRows, paginationProps] = useGridPagination(sortedRows, configProps)
   const [colManagedRows, columnProps] = useGridManagedColumns(pageRows, configProps)
+  const GridRowComponent = CustomGridRowComponent || GridRow
 
   const contextValue = useMemo<GridContextType<T>>(
     () => ({
@@ -206,7 +209,7 @@ export default function Grid<
                 />
                 <tbody>
                   {colManagedRows.map(({ key, ...rowProps }, index) => (
-                    <GridRow
+                    <GridRowComponent
                       key={key}
                       className={classes.tr}
                       tdClassName={classes.td}
