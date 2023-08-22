@@ -7,6 +7,7 @@ import generateTestId from '../../utils/test-helpers'
 import { SelectableParsedGridRow } from './hooks/useGridSelectableRows'
 import { GridRowMenuItemsProps, GridRowMenuOffset } from './hooks/useGridRowMenu'
 import GridRowMenu from './GridRowMenu'
+import { GridExpandedRowsProps } from './hooks/useGridExpandedRows'
 
 interface SelectRowColumnProps {
   className: string
@@ -37,13 +38,17 @@ const SelectRowColumn = memoizeShallow(
   },
 )
 
-export interface GridRowProps<T> extends SelectableParsedGridRow<T>, GridRowMenuItemsProps<T> {
+export interface GridRowProps<T>
+  extends SelectableParsedGridRow<T>,
+    GridRowMenuItemsProps<T>,
+    GridExpandedRowsProps {
   className: string
   tdClassName: string
   cellClassName: string
   index?: number
   numPageItems?: number
   rowMenuOffset?: GridRowMenuOffset
+  rowId?: string
 }
 
 export default function GridRow<T>(props: GridRowProps<T>) {
@@ -64,6 +69,9 @@ export default function GridRow<T>(props: GridRowProps<T>) {
     rowMenuOffset = {},
     showRowMenuForSingleRowActions,
     maxRowMenuHeight,
+    expandedRowsById,
+    onRowExpand,
+    rowId,
   } = props
   return (
     <tr className={className} onClick={toggleSelect}>
@@ -85,6 +93,8 @@ export default function GridRow<T>(props: GridRowProps<T>) {
               value={value}
               title={String(formattedValue)}
               className={cellClassName}
+              expandRow={onRowExpand ? onRowExpand(rowId) : noop}
+              rowIsExpanded={!!expandedRowsById[rowId]}
             >
               {formattedValue}
             </CellComponent>
