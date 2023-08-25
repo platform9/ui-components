@@ -26,7 +26,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AsyncGrid = exports.UncontrolledGrid = void 0;
+exports.ExpandableRowGrid = exports.AsyncGrid = exports.UncontrolledGrid = void 0;
 /* eslint-disable no-restricted-globals */
 const react_1 = __importStar(require("react"));
 const movies_list_1 = __importDefault(require("../data/movies-list"));
@@ -39,6 +39,15 @@ const GridSearchFilter_1 = __importDefault(require("../../elements/grid/GridSear
 const containers_1 = require("../containers");
 const dropdown_1 = __importDefault(require("../../elements/dropdown"));
 const GridDefaultActionButton_1 = __importDefault(require("../../elements/grid/buttons/GridDefaultActionButton"));
+const Button_1 = __importDefault(require("../../elements/button/Button"));
+const styles_1 = require("@material-ui/styles");
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
+    expandedRow: {
+        padding: '32px',
+        display: 'grid',
+        gap: '16px',
+    },
+}));
 const sortNumbers = (valA, valB) => valA - valB;
 const columns = [
     {
@@ -88,6 +97,21 @@ const columns = [
         label: 'Plot',
         disableSorting: true,
         width: 'large',
+    },
+];
+const ExpandCell = ({ expandRow, rowIsExpanded }) => {
+    return (react_1.default.createElement(Button_1.default, { onClick: (e) => {
+            e.stopPropagation();
+            expandRow();
+        } }, rowIsExpanded ? 'Shrink' : 'Expand'));
+};
+const expandableGridColumns = [
+    ...columns,
+    {
+        key: 'key',
+        label: 'Actions',
+        disableSorting: true,
+        CellComponent: ExpandCell,
     },
 ];
 const rowMenuItems = [
@@ -306,6 +330,30 @@ const AsyncGrid = (args) => {
         react_1.default.createElement(grid_1.default, Object.assign({}, args, { extraToolbarContent: react_1.default.createElement(GridDefaultActionButton_1.default, { onClick: () => alert('Add Dialog placeholder') }, "Add Movie"), label: "Label", totalItems: items.length, rowsPerPage: rowsPerPage, loading: loading, controlledPagination: true, controlledSorting: true, onPageChange: handlePageChange, onSortChange: handleSortBy, uniqueIdentifier: "id", columns: columns, data: parsedData, globalFilters: asyncGlobalFilters, filters: asyncFilters, batchActions: batchActions, rowMenuItems: rowMenuItems, onRefresh: handleRefresh, multiSelection: true }))));
 };
 exports.AsyncGrid = AsyncGrid;
+const ExpandableRowGrid = (args) => {
+    const classes = useStyles();
+    const [items, dispatch] = (0, react_1.useReducer)(itemActionsReducer, movies_list_1.default);
+    const batchActions = (0, react_1.useMemo)(() => [
+        {
+            handleAction: (selectedItems) => {
+                if (confirm('Are you sure?')) {
+                    dispatch({ type: 'remove', payload: { selectedItems } });
+                    return true;
+                }
+                return false;
+            },
+            BatchActionButton: GridDefaultDeleteButton_1.default,
+        },
+    ], []);
+    return (react_1.default.createElement(containers_1.ThemedContainer, null,
+        react_1.default.createElement(grid_1.default, Object.assign({}, args, { extraToolbarContent: react_1.default.createElement(GridDefaultActionButton_1.default, { onClick: () => alert('Add Dialog placeholder') }, "Add Movie"), label: "Label", uniqueIdentifier: "id", columns: expandableGridColumns, data: items, globalFilters: globalFilters, filters: filters, multiSelection: true, batchActions: batchActions, rowMenuItems: rowMenuItems, onRefresh: () => dispatch({ type: 'refresh', payload: {} }), disableToolbar: true, expandableRow: (item, onRowExpand) => (react_1.default.createElement("div", { className: classes.expandedRow },
+                react_1.default.createElement("div", null,
+                    "Expanded Row ", item === null || item === void 0 ? void 0 :
+                    item.title),
+                react_1.default.createElement("div", null,
+                    react_1.default.createElement(Button_1.default, { onClick: onRowExpand }, "Shrink Row")))), expandedByDefault: (item) => (item === null || item === void 0 ? void 0 : item.title) === 'Beetlejuice' }))));
+};
+exports.ExpandableRowGrid = ExpandableRowGrid;
 exports.UncontrolledGrid.parameters = {
     docs: {
         source: {

@@ -21,7 +21,7 @@ const SelectRowColumn = (0, misc_1.memoizeShallow)(function SelectRowColumn({ cl
     maxSize: 8,
 });
 function GridRow(props) {
-    const { isSelectable, multiSelection, isSelected, toggleSelect, getCells, rowMenuItems = [], rowMenuDisabled = !rowMenuItems.length, item, className, tdClassName, cellClassName, index, numPageItems, rowMenuOffset = {}, showRowMenuForSingleRowActions, maxRowMenuHeight, } = props;
+    const { isSelectable, multiSelection, isSelected, toggleSelect, getCells, rowMenuItems = [], rowMenuDisabled = !rowMenuItems.length, item, className, tdClassName, cellClassName, index, numPageItems, rowMenuOffset = {}, showRowMenuForSingleRowActions, maxRowMenuHeight, expandedRowsById, onRowExpand, rowId, } = props;
     return (react_1.default.createElement("tr", { className: className, onClick: toggleSelect },
         react_1.default.createElement(SelectRowColumn, Object.assign({ className: tdClassName }, {
             multiSelection,
@@ -31,7 +31,7 @@ function GridRow(props) {
         getCells().map(({ key, CellComponent, value, getFormattedValue }, idx) => {
             const formattedValue = getFormattedValue();
             return (react_1.default.createElement("td", { "data-testid": (0, test_helpers_1.default)(key), key: key, className: tdClassName },
-                react_1.default.createElement(CellComponent, { index: idx, item: item, value: value, title: String(formattedValue), className: cellClassName }, formattedValue)));
+                react_1.default.createElement(CellComponent, { index: idx, item: item, value: value, title: String(formattedValue), className: cellClassName, expandRow: onRowExpand ? onRowExpand(rowId) : fp_1.noop, rowIsExpanded: !!expandedRowsById[rowId] }, formattedValue)));
         }),
         rowMenuItems.length ? (react_1.default.createElement("td", null,
             react_1.default.createElement(GridRowMenu_1.default, { item: item, rowMenuItems: rowMenuItems, rowMenuDisabled: rowMenuDisabled, rowMenuOffset: index === numPageItems - 1

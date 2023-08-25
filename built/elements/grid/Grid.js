@@ -54,6 +54,7 @@ const GridToolbar_1 = __importDefault(require("./GridToolbar"));
 const Progress_1 = __importDefault(require("../../components/progress/Progress"));
 const useGridSelectableRows_1 = __importDefault(require("./hooks/useGridSelectableRows"));
 const useGridManagedColumns_1 = __importDefault(require("./hooks/useGridManagedColumns"));
+const useGridExpandedRows_1 = __importDefault(require("./hooks/useGridExpandedRows"));
 const useStyles = (0, styles_1.makeStyles)((theme) => ({
     noTableBorder: {
         borderColor: 'transparent !important',
@@ -95,6 +96,15 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
             backgroundColor: theme.components.table.hoverBackground,
         },
     },
+    trTop: {
+        border: `2px solid ${theme.components.table.toolbarColor}`,
+        borderBottom: '0px',
+    },
+    trBot: {
+        height: 'max-content',
+        border: `2px solid ${theme.components.table.toolbarColor}`,
+        borderTop: '0px',
+    },
     td: Object.assign(Object.assign({ border: 0, margin: 0, padding: theme.spacing(1) }, theme.typography.body2), { '&:first-child': {
             borderLeft: 'none',
             paddingLeft: 16,
@@ -122,7 +132,7 @@ exports.useGridContext = useGridContext;
 function Grid(configProps) {
     var _a;
     const classes = useStyles(configProps);
-    const { onRefresh, emptyContent = 'No data found', disableToolbar = false, extraToolbarContent, loading = false, loadingMessage, compact, label, ToolbarContainer, showItemsCountInLabel, tooltip, } = configProps;
+    const { onRefresh, emptyContent = 'No data found', disableToolbar = false, extraToolbarContent, loading = false, loadingMessage, compact, label, ToolbarContainer, showItemsCountInLabel, tooltip, expandableRow, } = configProps;
     const rows = (0, useGridRows_1.default)(configProps);
     const [rowsWithActions, rowActionsProps] = (0, useGridRowMenu_1.default)(rows, configProps);
     const [selectableRows, rowBatchActionsProps] = (0, useGridSelectableRows_1.default)(rowsWithActions, configProps);
@@ -130,6 +140,7 @@ function Grid(configProps) {
     const [sortedRows, sortingProps] = (0, useGridSorting_1.default)(filteredRows, configProps);
     const [pageRows, paginationProps] = (0, useGridPagination_1.default)(sortedRows, configProps);
     const [colManagedRows, columnProps] = (0, useGridManagedColumns_1.default)(pageRows, configProps);
+    const [_, expandedRowProps] = (0, useGridExpandedRows_1.default)(colManagedRows, configProps);
     const contextValue = (0, react_1.useMemo)(() => ({
         triggerRefresh: onRefresh,
         selectedItems: rowBatchActionsProps.selectedItems,
@@ -144,8 +155,16 @@ function Grid(configProps) {
                 react_1.default.createElement("section", { className: (0, clsx_1.default)(classes.gridBody, 'thin-scrollbar') }, colManagedRows.length ? (react_1.default.createElement("table", { className: classes.grid },
                     react_1.default.createElement(GridHeader_1.default, Object.assign({}, columnProps, sortingProps, rowBatchActionsProps, { rowMenuItemsLength: (_a = rowActionsProps.rowMenuItems) === null || _a === void 0 ? void 0 : _a.length, pageRows: pageRows })),
                     react_1.default.createElement("tbody", null, colManagedRows.map((_a, index) => {
+                        var _b, _c;
                         var { key } = _a, rowProps = __rest(_a, ["key"]);
-                        return (react_1.default.createElement(GridRow_1.default, Object.assign({ key: key, className: classes.tr, tdClassName: classes.td, cellClassName: classes.cell, index: index, numPageItems: paginationProps === null || paginationProps === void 0 ? void 0 : paginationProps.currentPageItemsCount }, rowProps, rowActionsProps, rowBatchActionsProps)));
+                        return (react_1.default.createElement(react_1.default.Fragment, { key: key },
+                            react_1.default.createElement(GridRow_1.default, Object.assign({ key: key, className: (0, clsx_1.default)(classes.tr, {
+                                    [classes.trTop]: (_b = expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.expandedRowsById) === null || _b === void 0 ? void 0 : _b[key],
+                                }), tdClassName: classes.td, cellClassName: classes.cell, index: index, numPageItems: paginationProps === null || paginationProps === void 0 ? void 0 : paginationProps.currentPageItemsCount, rowId: key }, rowProps, rowActionsProps, rowBatchActionsProps, expandedRowProps)),
+                            expandableRow && (expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.expandedRowsById[key]) && (react_1.default.createElement("tr", { className: (0, clsx_1.default)(classes.tr, {
+                                    [classes.trBot]: (_c = expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.expandedRowsById) === null || _c === void 0 ? void 0 : _c[key],
+                                }) },
+                                react_1.default.createElement("td", { colSpan: 100 }, expandableRow(rowProps === null || rowProps === void 0 ? void 0 : rowProps.item, expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.onRowExpand(key)))))));
                     })))) : (react_1.default.createElement(GridEmptyContent_1.default, null, loading ? '' : emptyContent))),
                 sortedRows.length && (!compact || sortedRows.length > paginationProps.rowsPerPage) ? (react_1.default.createElement(GridPagination_1.default, Object.assign({}, paginationProps))) : null))));
 }
