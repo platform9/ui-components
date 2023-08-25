@@ -97,6 +97,7 @@ function StackedAreaChart<Axis extends string, Types extends string>({
 
   const renderAreaChart = () => {
     return (
+      // Note: this doesn't render anything w/o ResponsiveContainer bc width/height are required
       <AreaChart data={values} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
         <CartesianGrid
           vertical={verticalAxisLines}
@@ -152,7 +153,61 @@ function StackedAreaChart<Axis extends string, Types extends string>({
       {renderAreaChart()}
     </ResponsiveContainer>
   ) : (
-    <div className={classes.chartContainer}>{renderAreaChart()}</div>
+    <>
+      {/* <div className={classes.chartContainer}>{renderAreaChart()}</div> */}
+      <AreaChart
+        width={750}
+        height={250}
+        data={values}
+        margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
+      >
+        <CartesianGrid
+          vertical={verticalAxisLines}
+          horizontal={horizontalAxisLines}
+          // strokeDasharray="2 3"
+          stroke={themeStore?.components?.table?.border} /* dot={{strokeWidth: 4}} */
+        />
+        <XAxis
+          axisLine={{ stroke: themeStore?.components?.table?.border, strokeWidth: 1 }}
+          tick={false}
+          dataKey={xAxis}
+          allowDataOverflow
+        />
+        <YAxis
+          padding={{
+            top: 20,
+          }}
+          axisLine={{ stroke: themeStore?.components?.table?.border, strokeWidth: 1 }}
+          tickLine={{
+            stroke: themeStore?.components?.table?.border,
+            strokeWidth: 1,
+          }}
+          tick={{
+            fontSize: 14,
+            fill: themeStore?.components?.table?.headColor,
+            style: { transform: 'translate(-12px, 0px)' },
+          }}
+          tickSize={8}
+          allowDataOverflow
+        />
+        <Tooltip
+          cursor={{ stroke: 'rgba(96, 96, 96, 0.5)', strokeDasharray: '6' /* strokeWidth: 6 */ }}
+          content={CustomTooltip}
+        />
+        {keys.map(({ name, color }) => (
+          <Area
+            key={name}
+            type="monotone"
+            dataKey={name}
+            stackId="1"
+            stroke={pathStr(color, theme.palette)}
+            strokeWidth={2}
+            fill={pathStr(color, theme.palette)}
+            activeDot={{ strokeWidth: 4, r: 8, stroke: 'rgba(96, 96, 96, 0.5)' }}
+          />
+        ))}
+      </AreaChart>
+    </>
   )
 }
 
