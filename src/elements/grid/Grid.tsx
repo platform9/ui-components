@@ -94,14 +94,23 @@ const useStyles = makeStyles<Theme, GridViewConfig>((theme: Theme) => ({
       backgroundColor: theme.components.table.hoverBackground,
     },
   },
-  trTop: {
+  trTopExpanded: {
     border: `2px solid ${theme.components.table.toolbarColor}`,
     borderBottom: '0px',
   },
-  trBot: {
-    height: 'max-content',
+  trBotExpanded: {
     border: `2px solid ${theme.components.table.toolbarColor}`,
     borderTop: '0px',
+  },
+  // Fast transition combined with high max height to minimize risk for expandable
+  // row size while showing minimal difference in open vs close animations
+  expandingContainer: {
+    transition: ' max-height 0.3s ease',
+    maxHeight: '0px',
+    overflow: 'hidden',
+  },
+  expandedContainer: {
+    maxHeight: '1000px',
   },
   td: {
     border: 0,
@@ -223,7 +232,7 @@ export default function Grid<
                       <GridRow
                         key={key}
                         className={clsx(classes.tr, {
-                          [classes.trTop]: expandedRowProps?.expandedRowsById?.[key],
+                          [classes.trTopExpanded]: expandedRowProps?.expandedRowsById?.[key],
                         })}
                         tdClassName={classes.td}
                         cellClassName={classes.cell}
@@ -235,15 +244,22 @@ export default function Grid<
                         {...rowBatchActionsProps}
                         {...expandedRowProps}
                       />
-                      {expandableRow && expandedRowProps?.expandedRowsById[key] && (
+                      {expandableRow && (
                         <tr
-                          className={clsx(classes.tr, {
-                            [classes.trBot]: expandedRowProps?.expandedRowsById?.[key],
+                          className={clsx({
+                            [classes.trBotExpanded]: expandedRowProps?.expandedRowsById?.[key],
                           })}
                         >
                           {/* This would not be viable if we have more than 100 rows */}
                           <td colSpan={100}>
-                            {expandableRow(rowProps?.item, expandedRowProps?.onRowExpand(key))}
+                            <div
+                              className={clsx(classes.expandingContainer, {
+                                [classes.expandedContainer]:
+                                  expandedRowProps?.expandedRowsById?.[key],
+                              })}
+                            >
+                              {expandableRow(rowProps?.item, expandedRowProps?.onRowExpand(key))}
+                            </div>
                           </td>
                         </tr>
                       )}

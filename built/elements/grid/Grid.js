@@ -96,14 +96,23 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
             backgroundColor: theme.components.table.hoverBackground,
         },
     },
-    trTop: {
+    trTopExpanded: {
         border: `2px solid ${theme.components.table.toolbarColor}`,
         borderBottom: '0px',
     },
-    trBot: {
-        height: 'max-content',
+    trBotExpanded: {
         border: `2px solid ${theme.components.table.toolbarColor}`,
         borderTop: '0px',
+    },
+    // Fast transition combined with high max height to minimize risk for expandable
+    // row size while showing minimal difference in open vs close animations
+    expandingContainer: {
+        transition: ' max-height 0.3s ease',
+        maxHeight: '0px',
+        overflow: 'hidden',
+    },
+    expandedContainer: {
+        maxHeight: '1000px',
     },
     td: Object.assign(Object.assign({ border: 0, margin: 0, padding: theme.spacing(1) }, theme.typography.body2), { '&:first-child': {
             borderLeft: 'none',
@@ -155,16 +164,19 @@ function Grid(configProps) {
                 react_1.default.createElement("section", { className: (0, clsx_1.default)(classes.gridBody, 'thin-scrollbar') }, colManagedRows.length ? (react_1.default.createElement("table", { className: classes.grid },
                     react_1.default.createElement(GridHeader_1.default, Object.assign({}, columnProps, sortingProps, rowBatchActionsProps, { rowMenuItemsLength: (_a = rowActionsProps.rowMenuItems) === null || _a === void 0 ? void 0 : _a.length, pageRows: pageRows })),
                     react_1.default.createElement("tbody", null, colManagedRows.map((_a, index) => {
-                        var _b, _c;
+                        var _b, _c, _d;
                         var { key } = _a, rowProps = __rest(_a, ["key"]);
                         return (react_1.default.createElement(react_1.default.Fragment, { key: key },
                             react_1.default.createElement(GridRow_1.default, Object.assign({ key: key, className: (0, clsx_1.default)(classes.tr, {
-                                    [classes.trTop]: (_b = expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.expandedRowsById) === null || _b === void 0 ? void 0 : _b[key],
+                                    [classes.trTopExpanded]: (_b = expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.expandedRowsById) === null || _b === void 0 ? void 0 : _b[key],
                                 }), tdClassName: classes.td, cellClassName: classes.cell, index: index, numPageItems: paginationProps === null || paginationProps === void 0 ? void 0 : paginationProps.currentPageItemsCount, rowId: key }, rowProps, rowActionsProps, rowBatchActionsProps, expandedRowProps)),
-                            expandableRow && (expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.expandedRowsById[key]) && (react_1.default.createElement("tr", { className: (0, clsx_1.default)(classes.tr, {
-                                    [classes.trBot]: (_c = expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.expandedRowsById) === null || _c === void 0 ? void 0 : _c[key],
+                            expandableRow && (react_1.default.createElement("tr", { className: (0, clsx_1.default)({
+                                    [classes.trBotExpanded]: (_c = expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.expandedRowsById) === null || _c === void 0 ? void 0 : _c[key],
                                 }) },
-                                react_1.default.createElement("td", { colSpan: 100 }, expandableRow(rowProps === null || rowProps === void 0 ? void 0 : rowProps.item, expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.onRowExpand(key)))))));
+                                react_1.default.createElement("td", { colSpan: 100 },
+                                    react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.expandingContainer, {
+                                            [classes.expandedContainer]: (_d = expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.expandedRowsById) === null || _d === void 0 ? void 0 : _d[key],
+                                        }) }, expandableRow(rowProps === null || rowProps === void 0 ? void 0 : rowProps.item, expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.onRowExpand(key))))))));
                     })))) : (react_1.default.createElement(GridEmptyContent_1.default, null, loading ? '' : emptyContent))),
                 sortedRows.length && (!compact || sortedRows.length > paginationProps.rowsPerPage) ? (react_1.default.createElement(GridPagination_1.default, Object.assign({}, paginationProps))) : null))));
 }
