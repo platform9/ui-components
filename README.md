@@ -27,14 +27,11 @@ Transpiles TypeScript source code to JavaScript. These files are stored in the `
 ## To Modify or Create a React Component:
 1. Run `yarn start` to run the app
 2. Make the changes you need to make in the code
-3. Test your changes if needed by following the testing steps below
-4. Run `yarn build` 
-5. Commit and push your changes to the main branch
-6. To update your changes in the app that is using this component library, run `yarn upgrade pf9-ui-components`
+3. Run `yarn build` 
+4. Commit and push your changes to the main branch
+5. To update your changes in the app that is using this component library, run `yarn upgrade pf9-ui-components`
 
-## To Test Your Changes:
-1. Add your component to the render function in `src/App.tsx`
-2. In `src/index.tsx`, uncomment out lines 4-12 to render the component in `src/App.tsx`
+
 
 
    
