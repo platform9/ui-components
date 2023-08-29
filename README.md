@@ -32,7 +32,11 @@ Transpiles TypeScript source code to JavaScript. These files are stored in the `
 5. To update your changes in the app that is using this component library, run `yarn upgrade pf9-ui-components`
 
 
+## Storybook
+Storybook is used to create an isolated development environment and showcase the components. This helps speed up development as we can control the data / props that are feed into the component.
 
+To see the Storybook just run:
 
+### yarn storybook
    
 
