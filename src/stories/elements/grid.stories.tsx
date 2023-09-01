@@ -19,6 +19,17 @@ import { ThemedContainer } from '../containers'
 import Dropdown from '../../elements/dropdown'
 import GridDefaultActionButton from '../../elements/grid/buttons/GridDefaultActionButton'
 import { GridRowMenuItemSpec } from '../../elements/grid/hooks/useGridRowMenu'
+import Button from '../../elements/button/Button'
+import { makeStyles } from '@material-ui/styles'
+import Theme from '../../theme-manager/themes/model'
+
+const useStyles = makeStyles<Theme>((theme: Theme) => ({
+  expandedRow: {
+    padding: '32px',
+    display: 'grid',
+    gap: '16px',
+  },
+}))
 
 type GlobalFilters = { search: string }
 
@@ -77,6 +88,29 @@ const columns: Array<GridViewColumn<Movie>> = [
     label: 'Plot',
     disableSorting: true,
     width: 'large',
+  },
+]
+
+const ExpandCell = ({ expandRow, rowIsExpanded }) => {
+  return (
+    <Button
+      onClick={(e) => {
+        e.stopPropagation()
+        expandRow()
+      }}
+    >
+      {rowIsExpanded ? 'Shrink' : 'Expand'}
+    </Button>
+  )
+}
+
+const expandableGridColumns = [
+  ...columns,
+  {
+    key: 'key',
+    label: 'Actions',
+    disableSorting: true,
+    CellComponent: ExpandCell,
   },
 ]
 
@@ -386,6 +420,58 @@ export const AsyncGrid = (args: Partial<GridProps<Movie, GlobalFilters, Filters>
         rowMenuItems={rowMenuItems}
         onRefresh={handleRefresh}
         multiSelection
+      />
+    </ThemedContainer>
+  )
+}
+
+export const ExpandableRowGrid = (args: Partial<GridProps<Movie, GlobalFilters, Filters>>) => {
+  const classes = useStyles()
+  const [items, dispatch] = useReducer(itemActionsReducer, data)
+  const batchActions = useMemo<GridBatchActionSpec<Movie>[]>(
+    () => [
+      {
+        handleAction: (selectedItems) => {
+          if (confirm('Are you sure?')) {
+            dispatch({ type: 'remove', payload: { selectedItems } })
+            return true
+          }
+          return false
+        },
+        BatchActionButton: GridDefaultDeleteButton,
+      },
+    ],
+    [],
+  )
+  return (
+    <ThemedContainer>
+      <Grid
+        {...args}
+        extraToolbarContent={
+          <GridDefaultActionButton onClick={() => alert('Add Dialog placeholder')}>
+            Add Movie
+          </GridDefaultActionButton>
+        }
+        label="Label"
+        uniqueIdentifier="id"
+        columns={expandableGridColumns}
+        data={items}
+        globalFilters={globalFilters}
+        filters={filters}
+        multiSelection
+        batchActions={batchActions}
+        rowMenuItems={rowMenuItems}
+        onRefresh={() => dispatch({ type: 'refresh', payload: {} })}
+        disableToolbar
+        expandableRow={(item, onRowExpand) => (
+          <div className={classes.expandedRow}>
+            <div>Expanded Row {item?.title}</div>
+            <div>
+              <Button onClick={onRowExpand}>Shrink Row</Button>
+            </div>
+          </div>
+        )}
+        expandedByDefault={(item) => item?.title === 'Beetlejuice'}
       />
     </ThemedContainer>
   )

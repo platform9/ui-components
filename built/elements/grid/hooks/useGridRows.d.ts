@@ -13,6 +13,8 @@ export interface GridCellProps<T, V = unknown> {
     /** This will typically contain the formatted value of the cell */
     children?: ReactNode;
     className?: string;
+    expandRow?: () => void;
+    rowIsExpanded?: boolean;
 }
 export type GridCellWidth = 'small' | 'medium' | 'large' | number;
 export type Accessor<T> = string | keyof T | ((item: T) => unknown);

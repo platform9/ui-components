@@ -18,6 +18,7 @@ import useGridManagedColumns, {
   GridManagedColumnSpec,
   GridManagedColumnsConfig,
 } from './hooks/useGridManagedColumns'
+import useGridExpandedRows, { GridExpandedRowsConfig } from './hooks/useGridExpandedRows'
 
 interface GridViewConfig {
   label?: string
@@ -50,6 +51,7 @@ export interface GridProps<
     GridPaginationConfig,
     GridRowMenuConfig<T>,
     GridBatchActionsConfig<T>,
+    GridExpandedRowsConfig<T>,
     GridManagedColumnsConfig<T, C> {}
 
 const useStyles = makeStyles<Theme, GridViewConfig>((theme: Theme) => ({
@@ -92,6 +94,24 @@ const useStyles = makeStyles<Theme, GridViewConfig>((theme: Theme) => ({
     '&:hover': {
       backgroundColor: theme.components.table.hoverBackground,
     },
+  },
+  trTopExpanded: {
+    border: `2px solid ${theme.components.table.toolbarColor}`,
+    borderBottom: '0px',
+  },
+  trBotExpanded: {
+    border: `2px solid ${theme.components.table.toolbarColor}`,
+    borderTop: '0px',
+  },
+  // Fast transition combined with high max height to minimize risk for expandable
+  // row size while showing minimal difference in open vs close animations
+  expandingContainer: {
+    transition: ' max-height 0.3s ease',
+    maxHeight: '0px',
+    overflow: 'hidden',
+  },
+  expandedContainer: {
+    maxHeight: '1000px',
   },
   td: {
     border: 0,
@@ -153,6 +173,7 @@ export default function Grid<
     showItemsCountInLabel,
     tooltip,
     hidePagination = false,
+    expandableRow,
   } = configProps
 
   const rows = useGridRows(configProps)
@@ -162,6 +183,7 @@ export default function Grid<
   const [sortedRows, sortingProps] = useGridSorting(filteredRows, configProps)
   const [pageRows, paginationProps] = useGridPagination(sortedRows, configProps)
   const [colManagedRows, columnProps] = useGridManagedColumns(pageRows, configProps)
+  const [_, expandedRowProps] = useGridExpandedRows(colManagedRows, configProps)
 
   const contextValue = useMemo<GridContextType<T>>(
     () => ({
@@ -208,17 +230,42 @@ export default function Grid<
                 />
                 <tbody>
                   {colManagedRows.map(({ key, ...rowProps }, index) => (
-                    <GridRow
-                      key={key}
-                      className={classes.tr}
-                      tdClassName={classes.td}
-                      cellClassName={classes.cell}
-                      index={index}
-                      numPageItems={paginationProps?.currentPageItemsCount}
-                      {...rowProps}
-                      {...rowActionsProps}
-                      {...rowBatchActionsProps}
-                    />
+                    <React.Fragment key={key}>
+                      <GridRow
+                        key={key}
+                        className={clsx(classes.tr, {
+                          [classes.trTopExpanded]: expandedRowProps?.expandedRowsById?.[key],
+                        })}
+                        tdClassName={classes.td}
+                        cellClassName={classes.cell}
+                        index={index}
+                        numPageItems={paginationProps?.currentPageItemsCount}
+                        rowId={key}
+                        {...rowProps}
+                        {...rowActionsProps}
+                        {...rowBatchActionsProps}
+                        {...expandedRowProps}
+                      />
+                      {expandableRow && (
+                        <tr
+                          className={clsx({
+                            [classes.trBotExpanded]: expandedRowProps?.expandedRowsById?.[key],
+                          })}
+                        >
+                          {/* This would not be viable if we have more than 100 rows */}
+                          <td colSpan={100}>
+                            <div
+                              className={clsx(classes.expandingContainer, {
+                                [classes.expandedContainer]:
+                                  expandedRowProps?.expandedRowsById?.[key],
+                              })}
+                            >
+                              {expandableRow(rowProps?.item, expandedRowProps?.onRowExpand(key))}
+                            </div>
+                          </td>
+                        </tr>
+                      )}
+                    </React.Fragment>
                   ))}
                 </tbody>
               </table>
