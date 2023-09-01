@@ -23,5 +23,6 @@ export declare const UncontrolledGrid: {
     };
 };
 export declare const AsyncGrid: (args: Partial<GridProps<Movie, GlobalFilters, Filters>>) => JSX.Element;
+export declare const ExpandableRowGrid: (args: Partial<GridProps<Movie, GlobalFilters, Filters>>) => JSX.Element;
 declare const GridStories: Meta;
 export default GridStories;
