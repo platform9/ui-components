@@ -32,6 +32,7 @@ interface GridViewConfig {
   ToolbarContainer?: FC<PropsWithChildren<{ className?: string; selectedCount?: number }>>
   showItemsCountInLabel?: boolean
   tooltip?: ReactNode
+  hidePagination?: boolean
 }
 
 export type GridViewColumn<T, A extends Accessor<T> = Accessor<T>> = GridColumnSpec<T, A> &
@@ -171,6 +172,7 @@ export default function Grid<
     ToolbarContainer,
     showItemsCountInLabel,
     tooltip,
+    hidePagination = false,
     expandableRow,
   } = configProps
 
@@ -271,7 +273,9 @@ export default function Grid<
               <GridEmptyContent>{loading ? '' : emptyContent}</GridEmptyContent>
             )}
           </section>
-          {sortedRows.length && (!compact || sortedRows.length > paginationProps.rowsPerPage) ? (
+          {sortedRows.length &&
+          !hidePagination &&
+          (!compact || sortedRows.length > paginationProps.rowsPerPage) ? (
             <GridPagination {...paginationProps} />
           ) : null}
         </div>

@@ -141,7 +141,7 @@ exports.useGridContext = useGridContext;
 function Grid(configProps) {
     var _a;
     const classes = useStyles(configProps);
-    const { onRefresh, emptyContent = 'No data found', disableToolbar = false, extraToolbarContent, loading = false, loadingMessage, compact, label, ToolbarContainer, showItemsCountInLabel, tooltip, expandableRow, } = configProps;
+    const { onRefresh, emptyContent = 'No data found', disableToolbar = false, extraToolbarContent, loading = false, loadingMessage, compact, label, ToolbarContainer, showItemsCountInLabel, tooltip, hidePagination = false, expandableRow, } = configProps;
     const rows = (0, useGridRows_1.default)(configProps);
     const [rowsWithActions, rowActionsProps] = (0, useGridRowMenu_1.default)(rows, configProps);
     const [selectableRows, rowBatchActionsProps] = (0, useGridSelectableRows_1.default)(rowsWithActions, configProps);
@@ -178,7 +178,9 @@ function Grid(configProps) {
                                             [classes.expandedContainer]: (_d = expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.expandedRowsById) === null || _d === void 0 ? void 0 : _d[key],
                                         }) }, expandableRow(rowProps === null || rowProps === void 0 ? void 0 : rowProps.item, expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.onRowExpand(key))))))));
                     })))) : (react_1.default.createElement(GridEmptyContent_1.default, null, loading ? '' : emptyContent))),
-                sortedRows.length && (!compact || sortedRows.length > paginationProps.rowsPerPage) ? (react_1.default.createElement(GridPagination_1.default, Object.assign({}, paginationProps))) : null))));
+                sortedRows.length &&
+                    !hidePagination &&
+                    (!compact || sortedRows.length > paginationProps.rowsPerPage) ? (react_1.default.createElement(GridPagination_1.default, Object.assign({}, paginationProps))) : null))));
 }
 exports.default = Grid;
 //# sourceMappingURL=Grid.js.map
