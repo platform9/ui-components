@@ -36,7 +36,7 @@ const Menu_1 = __importDefault(require("../../elements/menu/Menu"));
 const MenuItem_1 = __importDefault(require("../../elements/menu/MenuItem"));
 const styles_1 = require("@material-ui/styles");
 const Text_1 = __importDefault(require("../../elements/Text"));
-function GridRowMenu({ item, rowMenuItems, rowMenuDisabled, rowMenuOffset = {}, showRowMenuForSingleRowActions = false, maxRowMenuHeight, }) {
+function GridRowMenu({ item, rowMenuItems, rowMenuDisabled, rowMenuOffset = {}, showRowMenuForSingleRowActions = false, maxRowMenuHeight, expandRow, }) {
     const filteredRowMenuItems = rowMenuItems.filter((rowItem) => {
         if ((0, useGridRowMenu_1.isGridRowMenuHeader)(rowItem))
             return true;
@@ -58,7 +58,7 @@ function GridRowMenu({ item, rowMenuItems, rowMenuDisabled, rowMenuOffset = {}, 
         filteredRowMenuItems.length === 1 &&
         !(0, useGridRowMenu_1.isGridRowMenuHeader)(filteredRowMenuItems[0])) {
         const [{ RowMenuButton, icon, label, getIsDisabled, triggerAction }] = filteredRowMenuItems;
-        return (react_1.default.createElement("div", { className: (0, clsx_1.default)('rowMenu', classes.gridRowMenu) }, label ? (react_1.default.createElement(RowMenuButton, { disabled: getIsDisabled(item), icon: icon, onClick: () => triggerAction(item) }, label)) : (react_1.default.createElement(FontAwesomeIcon_1.default, { disabled: getIsDisabled(item), onClick: () => triggerAction(item) }, icon))));
+        return (react_1.default.createElement("div", { className: (0, clsx_1.default)('rowMenu', classes.gridRowMenu) }, label ? (react_1.default.createElement(RowMenuButton, { disabled: getIsDisabled(item), icon: icon, onClick: () => triggerAction(item, expandRow) }, label)) : (react_1.default.createElement(FontAwesomeIcon_1.default, { disabled: getIsDisabled(item), onClick: () => triggerAction(item, expandRow) }, icon))));
     }
     return (react_1.default.createElement(Menu_1.default, { align: defaults_1.middleLeft.align, offset: Object.assign(Object.assign({}, defaults_1.middleLeft.offset), rowMenuOffset), origin: "top left", onClick: handleMenuClick, className: (0, clsx_1.default)('rowMenu', classes.gridRowMenu), anchor: react_1.default.createElement(FontAwesomeIcon_1.default, null, "ellipsis-vertical"), open: isOpen, onClose: toggleIsOpen }, filteredRowMenuItems.map((menuItem, idx) => {
         if ((0, useGridRowMenu_1.isGridRowMenuHeader)(menuItem)) {
@@ -67,7 +67,7 @@ function GridRowMenu({ item, rowMenuItems, rowMenuDisabled, rowMenuOffset = {}, 
                 (menuItem === null || menuItem === void 0 ? void 0 : menuItem.title) && (react_1.default.createElement("div", { className: classes.header },
                     react_1.default.createElement(Text_1.default, { variant: "caption2" }, menuItem.title)))));
         }
-        return (react_1.default.createElement(MenuItem_1.default, { key: menuItem === null || menuItem === void 0 ? void 0 : menuItem.key, readonly: menuItem === null || menuItem === void 0 ? void 0 : menuItem.getIsDisabled(item), icon: menuItem === null || menuItem === void 0 ? void 0 : menuItem.icon, onClick: () => menuItem === null || menuItem === void 0 ? void 0 : menuItem.triggerAction(item), className: classes.menuItem }, menuItem === null || menuItem === void 0 ? void 0 : menuItem.label));
+        return (react_1.default.createElement(MenuItem_1.default, { key: menuItem === null || menuItem === void 0 ? void 0 : menuItem.key, readonly: menuItem === null || menuItem === void 0 ? void 0 : menuItem.getIsDisabled(item), icon: menuItem === null || menuItem === void 0 ? void 0 : menuItem.icon, onClick: () => menuItem === null || menuItem === void 0 ? void 0 : menuItem.triggerAction(item, expandRow), className: classes.menuItem }, menuItem === null || menuItem === void 0 ? void 0 : menuItem.label));
     })));
 }
 exports.default = GridRowMenu;

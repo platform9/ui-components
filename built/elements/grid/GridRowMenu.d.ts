@@ -5,6 +5,7 @@ interface GridRowMenuProps<T> extends GridRowMenuItemsProps<T> {
     rowMenuOffset?: GridRowMenuOffset;
     showRowMenuForSingleRowActions?: boolean;
     maxRowMenuHeight?: number;
+    expandRow?: () => void;
 }
-export default function GridRowMenu<T>({ item, rowMenuItems, rowMenuDisabled, rowMenuOffset, showRowMenuForSingleRowActions, maxRowMenuHeight, }: GridRowMenuProps<T>): JSX.Element;
+export default function GridRowMenu<T>({ item, rowMenuItems, rowMenuDisabled, rowMenuOffset, showRowMenuForSingleRowActions, maxRowMenuHeight, expandRow, }: GridRowMenuProps<T>): JSX.Element;
 export {};

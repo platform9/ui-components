@@ -443,6 +443,19 @@ export const ExpandableRowGrid = (args: Partial<GridProps<Movie, GlobalFilters, 
     ],
     [],
   )
+  const rowMenuItems: Array<GridRowMenuItemSpec<Movie>> = [
+    {
+      icon: 'edit',
+      label: 'Edit',
+      handleClick: (item, onRowExpand) => alert(`Edit ${item?.title}`),
+    },
+    {
+      icon: 'up-right-and-down-left-from-center',
+      label: 'Expand/Shrink Row',
+      handleClick: (item, onRowExpand) => onRowExpand(),
+    },
+  ]
+
   return (
     <ThemedContainer>
       <Grid
