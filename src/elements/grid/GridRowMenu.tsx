@@ -22,6 +22,7 @@ interface GridRowMenuProps<T> extends GridRowMenuItemsProps<T> {
   // still want the menu to show instead of a single action button
   showRowMenuForSingleRowActions?: boolean
   maxRowMenuHeight?: number
+  expandRow?: () => void
 }
 
 export default function GridRowMenu<T>({
@@ -31,6 +32,7 @@ export default function GridRowMenu<T>({
   rowMenuOffset = {},
   showRowMenuForSingleRowActions = false,
   maxRowMenuHeight,
+  expandRow,
 }: GridRowMenuProps<T>) {
   const filteredRowMenuItems = rowMenuItems.filter((rowItem) => {
     if (isGridRowMenuHeader(rowItem)) return true
@@ -67,12 +69,15 @@ export default function GridRowMenu<T>({
           <RowMenuButton
             disabled={getIsDisabled(item)}
             icon={icon}
-            onClick={() => triggerAction(item)}
+            onClick={() => triggerAction(item, expandRow)}
           >
             {label}
           </RowMenuButton>
         ) : (
-          <FontAwesomeIcon disabled={getIsDisabled(item)} onClick={() => triggerAction(item)}>
+          <FontAwesomeIcon
+            disabled={getIsDisabled(item)}
+            onClick={() => triggerAction(item, expandRow)}
+          >
             {icon}
           </FontAwesomeIcon>
         )}
@@ -112,7 +117,7 @@ export default function GridRowMenu<T>({
             key={menuItem?.key}
             readonly={menuItem?.getIsDisabled(item)}
             icon={menuItem?.icon}
-            onClick={() => menuItem?.triggerAction(item)}
+            onClick={() => menuItem?.triggerAction(item, expandRow)}
             className={classes.menuItem}
           >
             {menuItem?.label}

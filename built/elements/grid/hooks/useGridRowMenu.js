@@ -23,8 +23,8 @@ function useGridRowMenu(rows, { rowMenuItems: rowActionsSpec = fp_1.emptyArr, on
                 label,
                 hideIfDisabled,
                 getIsDisabled: (0, misc_1.memoize)((currentItem) => cond && !cond(currentItem)),
-                triggerAction: async (currentItem) => {
-                    const success = handleClick ? await handleClick(currentItem) : true;
+                triggerAction: async (currentItem, expandRow) => {
+                    const success = handleClick ? await handleClick(currentItem, expandRow) : true;
                     if (success && refreshAfterSuccess && onRefresh) {
                         onRefresh(true);
                     }

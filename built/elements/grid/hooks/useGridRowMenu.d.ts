@@ -18,7 +18,7 @@ export interface GridRowMenuItemSpec<T> {
     cond?: (item: T) => boolean;
     label?: string | ReactNode;
     icon?: string;
-    handleClick?: (item: T) => boolean | void | Promise<boolean | void | unknown>;
+    handleClick?: (item: T, expandRow: () => void) => boolean | void | Promise<boolean | void | unknown>;
     refreshAfterSuccess?: boolean;
     onComplete?: (success: any, item: T) => boolean | void | Promise<boolean | void>;
     RowMenuButton?: FC<RowMenuButtonProps<T>>;
@@ -43,7 +43,7 @@ export interface GridRowMenuItemProps<T> {
     label: string | ReactNode;
     icon?: string;
     getIsDisabled: (item: T) => boolean;
-    triggerAction: (item: T) => void;
+    triggerAction: (item: T, expandRow: () => void) => void;
     RowMenuButton: FC<RowMenuButtonProps<T>>;
     hideIfDisabled?: boolean;
 }

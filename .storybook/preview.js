@@ -13,6 +13,7 @@ import {
   Stories,
   PRIMARY_STORY,
 } from '@storybook/addon-docs'
+import '../static/fontawesome/css/all.min.css'
 
 const DelayedRender = ({ children, delay = 100 }) => {
   const [timeoutEnded, setTimeoutEnded] = useState(false)
