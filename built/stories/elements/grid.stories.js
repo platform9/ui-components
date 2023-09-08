@@ -345,6 +345,18 @@ const ExpandableRowGrid = (args) => {
             BatchActionButton: GridDefaultDeleteButton_1.default,
         },
     ], []);
+    const rowMenuItems = [
+        {
+            icon: 'edit',
+            label: 'Edit',
+            handleClick: (item, onRowExpand) => alert(`Edit ${item === null || item === void 0 ? void 0 : item.title}`),
+        },
+        {
+            icon: 'up-right-and-down-left-from-center',
+            label: 'Expand/Shrink Row',
+            handleClick: (item, onRowExpand) => onRowExpand(),
+        },
+    ];
     return (react_1.default.createElement(containers_1.ThemedContainer, null,
         react_1.default.createElement(grid_1.default, Object.assign({}, args, { extraToolbarContent: react_1.default.createElement(GridDefaultActionButton_1.default, { onClick: () => alert('Add Dialog placeholder') }, "Add Movie"), label: "Label", uniqueIdentifier: "id", columns: expandableGridColumns, data: items, globalFilters: globalFilters, filters: filters, multiSelection: true, batchActions: batchActions, rowMenuItems: rowMenuItems, onRefresh: () => dispatch({ type: 'refresh', payload: {} }), disableToolbar: true, expandableRow: (item, onRowExpand) => (react_1.default.createElement("div", { className: classes.expandedRow },
                 react_1.default.createElement("div", null,
