@@ -27,11 +27,11 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
     },
     title: {},
 }));
-function NumberedStepLabel({ step, title, className }) {
+function NumberedStepLabel({ step, title, className, textVariant = 'caption1', }) {
     const classes = useStyles({});
     return (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.container, className) },
         react_1.default.createElement(Text_1.default, { variant: "caption1", className: (0, clsx_1.default)(classes.circle, 'circle') }, step),
-        react_1.default.createElement(Text_1.default, { variant: "caption1", className: (0, clsx_1.default)(classes.title, 'title') }, title)));
+        react_1.default.createElement(Text_1.default, { variant: textVariant, className: (0, clsx_1.default)(classes.title, 'title') }, title)));
 }
 exports.default = NumberedStepLabel;
 //# sourceMappingURL=NumberedStepsLabel.js.map

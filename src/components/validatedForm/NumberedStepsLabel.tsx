@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import Theme from '../../theme-manager/themes/model'
-import Text from '../../elements/Text'
+import Text, { TextVariant } from '../../elements/Text'
 import clsx from 'clsx'
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -29,16 +29,22 @@ interface Props {
   step: number
   title: string
   className?: string
+  textVariant?: TextVariant
 }
 
-export default function NumberedStepLabel({ step, title, className }: Props) {
+export default function NumberedStepLabel({
+  step,
+  title,
+  className,
+  textVariant = 'caption1',
+}: Props) {
   const classes = useStyles({})
   return (
     <div className={clsx(classes.container, className)}>
       <Text variant="caption1" className={clsx(classes.circle, 'circle')}>
         {step}
       </Text>
-      <Text variant="caption1" className={clsx(classes.title, 'title')}>
+      <Text variant={textVariant} className={clsx(classes.title, 'title')}>
         {title}
       </Text>
     </div>
