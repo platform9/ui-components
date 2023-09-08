@@ -32,7 +32,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => {
             borderRadius: 16,
             border: `solid 1px ${(_d = (_c = theme === null || theme === void 0 ? void 0 : theme.components) === null || _c === void 0 ? void 0 : _c.card) === null || _d === void 0 ? void 0 : _d.border}`,
             display: 'grid',
-            gridTemplateColumns: '50% 50%',
+            gridTemplateColumns: ({ fullPane }) => (fullPane ? '100%' : '50% 50%'),
             overflow: 'hidden',
             '@media (max-width:1200px)': {
                 width: 912,
@@ -90,14 +90,14 @@ const useStyles = (0, styles_1.makeStyles)((theme) => {
         },
     });
 });
-const FormPageContainer = ({ children, className = undefined, footer = undefined, logoUrl = undefined, logoText = undefined, primayImgUrl, }) => {
-    const classes = useStyles();
+const FormPageContainer = ({ children, className = undefined, footer = undefined, logoUrl = undefined, logoText = undefined, primayImgUrl, fullPane = false, }) => {
+    const classes = useStyles({ fullPane });
     return (react_1.default.createElement("section", { id: (0, clsx_1.default)('form-page-container', className), className: (0, clsx_1.default)('form-page-container', classes.page) },
         !logoUrl && !!logoText && (react_1.default.createElement(Text_1.default, { className: "form-logo", variant: "subtitle1" }, logoText)),
         !!logoUrl && (react_1.default.createElement("img", { src: logoUrl, alt: "Platform9 Logo", className: (0, clsx_1.default)('form-logo', classes.logo) })),
         react_1.default.createElement("article", { className: classes.container },
-            react_1.default.createElement("div", { className: (0, clsx_1.default)('left-pane', classes.managementPlane) },
-                react_1.default.createElement("img", { alt: "Platform9 Management Plane", src: primayImgUrl, className: classes.img })),
+            !fullPane && (react_1.default.createElement("div", { className: (0, clsx_1.default)('left-pane', classes.managementPlane) },
+                react_1.default.createElement("img", { alt: "Platform9 Management Plane", src: primayImgUrl, className: classes.img }))),
             react_1.default.createElement("div", { className: (0, clsx_1.default)('right-pane', classes.formPane) }, children)),
         footer && react_1.default.createElement("footer", { className: (0, clsx_1.default)('form-page-footer', classes.footer) }, footer)));
 };

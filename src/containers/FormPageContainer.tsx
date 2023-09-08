@@ -4,7 +4,11 @@ import { makeStyles } from '@material-ui/styles'
 import Theme from '../theme-manager/themes/model'
 import Text from '../elements/Text'
 
-const useStyles = makeStyles<Theme>((theme) => ({
+interface ContainerProps {
+  fullPane: boolean
+}
+
+const useStyles = makeStyles<Theme, Partial<ContainerProps>>((theme) => ({
   page: {
     minWidth: '100vw',
     minHeight: '100vh',
@@ -28,7 +32,7 @@ const useStyles = makeStyles<Theme>((theme) => ({
     borderRadius: 16,
     border: `solid 1px ${theme?.components?.card?.border}`,
     display: 'grid',
-    gridTemplateColumns: '50% 50%',
+    gridTemplateColumns: ({ fullPane }) => (fullPane ? '100%' : '50% 50%'),
     overflow: 'hidden',
 
     '@media (max-width:1200px)': {
@@ -94,8 +98,9 @@ const FormPageContainer = ({
   logoUrl = undefined,
   logoText = undefined,
   primayImgUrl,
+  fullPane = false,
 }) => {
-  const classes = useStyles()
+  const classes = useStyles({ fullPane })
   return (
     <section
       id={clsx('form-page-container', className)}
@@ -110,9 +115,11 @@ const FormPageContainer = ({
         <img src={logoUrl} alt="Platform9 Logo" className={clsx('form-logo', classes.logo)} />
       )}
       <article className={classes.container}>
-        <div className={clsx('left-pane', classes.managementPlane)}>
-          <img alt="Platform9 Management Plane" src={primayImgUrl} className={classes.img} />
-        </div>
+        {!fullPane && (
+          <div className={clsx('left-pane', classes.managementPlane)}>
+            <img alt="Platform9 Management Plane" src={primayImgUrl} className={classes.img} />
+          </div>
+        )}
         <div className={clsx('right-pane', classes.formPane)}>{children}</div>
       </article>
       {footer && <footer className={clsx('form-page-footer', classes.footer)}>{footer}</footer>}
