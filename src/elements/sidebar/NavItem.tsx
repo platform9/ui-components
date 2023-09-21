@@ -11,7 +11,7 @@ import generateTestId from '../../utils/test-helpers'
 import { hexToRgbaCss } from '../../utils/colorHelpers'
 import ExternalLink from '../../components/ExternalLink'
 
-interface Props extends IRouterLink {
+export interface NavItemProps extends IRouterLink {
   isActive?: boolean
   tooltip?: boolean
   open?: boolean
@@ -34,7 +34,7 @@ export default function NavItem({
   tooltipProps = {},
   activeDisplayType = 'background',
   disableLink = false,
-}: Props) {
+}: NavItemProps) {
   const classes = useStyles({ isActive, compact, activeDisplayType, disableLink })
 
   return link?.external ? (
@@ -91,10 +91,10 @@ export default function NavItem({
 }
 
 interface StyleProps {
-  isActive: Props['isActive']
-  compact: Props['compact']
-  activeDisplayType: Props['activeDisplayType']
-  disableLink: Props['disableLink']
+  isActive: NavItemProps['isActive']
+  compact: NavItemProps['compact']
+  activeDisplayType: NavItemProps['activeDisplayType']
+  disableLink: NavItemProps['disableLink']
 }
 
 const getBackgroundImage = (isActive, displayType, sidebarColors) => {
