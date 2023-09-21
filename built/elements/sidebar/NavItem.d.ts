@@ -1,6 +1,6 @@
 /// <reference types="react" />
 import { IRouterLink } from '../../plugins/model';
-interface Props extends IRouterLink {
+export interface NavItemProps extends IRouterLink {
     isActive?: boolean;
     tooltip?: boolean;
     open?: boolean;
@@ -12,5 +12,4 @@ interface Props extends IRouterLink {
     };
     disableLink?: boolean;
 }
-export default function NavItem({ name, link, icon, className, open, isActive, compact, tooltip, tooltipProps, activeDisplayType, disableLink, }: Props): JSX.Element;
-export {};
+export default function NavItem({ name, link, icon, className, open, isActive, compact, tooltip, tooltipProps, activeDisplayType, disableLink, }: NavItemProps): JSX.Element;
