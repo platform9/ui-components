@@ -10,7 +10,9 @@ const useInterval = (callback, delay = 0) => {
     (0, react_1.useEffect)(() => {
         intervalIdRef.current && clearInterval(intervalIdRef.current);
         if (delay != null) {
-            intervalIdRef.current = setInterval(savedCallbackRef.current, delay);
+            intervalIdRef.current = setInterval(() => {
+                savedCallbackRef.current();
+            }, delay);
         }
         return () => intervalIdRef.current && clearInterval(intervalIdRef.current);
     }, [delay]);
