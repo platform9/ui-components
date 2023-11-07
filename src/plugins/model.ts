@@ -26,6 +26,7 @@ interface Link {
   exact?: boolean
   external?: boolean
   hideExternalLinkIcon?: boolean
+  externalLinkIcon?: string
 }
 
 interface NestedLink {
