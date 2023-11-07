@@ -11,5 +11,7 @@ export interface NavItemProps extends IRouterLink {
         [key: string]: any;
     };
     disableLink?: boolean;
+    hideExternalLinkIcon?: boolean;
+    externalLinkIcon?: string;
 }
-export default function NavItem({ name, link, icon, className, open, isActive, compact, tooltip, tooltipProps, activeDisplayType, disableLink, }: NavItemProps): JSX.Element;
+export default function NavItem({ name, link, icon, className, open, isActive, compact, tooltip, tooltipProps, activeDisplayType, disableLink, hideExternalLinkIcon, externalLinkIcon, }: NavItemProps): JSX.Element;

@@ -20,6 +20,8 @@ export interface NavItemProps extends IRouterLink {
   className?: string
   tooltipProps?: { [key: string]: any }
   disableLink?: boolean
+  hideExternalLinkIcon?: boolean
+  externalLinkIcon?: string
 }
 
 export default function NavItem({
@@ -34,6 +36,8 @@ export default function NavItem({
   tooltipProps = {},
   activeDisplayType = 'background',
   disableLink = false,
+  hideExternalLinkIcon = false,
+  externalLinkIcon = 'arrow-up-right-from-square',
 }: NavItemProps) {
   const classes = useStyles({ isActive, compact, activeDisplayType, disableLink })
 
@@ -50,11 +54,13 @@ export default function NavItem({
                 {name}
               </Text>
             )}
-            <div className={clsx(classes.navIcon)}>
-              <FontAwesomeIcon className="nav-icon" title={name} size="lg">
-                arrow-up-right-from-square
-              </FontAwesomeIcon>
-            </div>
+            {!hideExternalLinkIcon && (
+              <div className={clsx(classes.navIcon)}>
+                <FontAwesomeIcon className="nav-icon" title={name} size="lg">
+                  {externalLinkIcon}
+                </FontAwesomeIcon>
+              </div>
+            )}
           </div>
         </Tooltip>
       </li>
