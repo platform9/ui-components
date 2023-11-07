@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.makeMenuPositionProps = exports.getMenuLeft = exports.getMenuBottom = exports.getMenuRight = exports.getMenuTop = exports.getMenuTransform = void 0;
+exports.makeMenuPositionProps = exports.getPortalMenuLeft = exports.getPortalMenuTop = exports.getMenuLeft = exports.getMenuBottom = exports.getMenuRight = exports.getMenuTop = exports.getMenuTransform = void 0;
 const misc_1 = require("../../utils/misc");
 const getMenuTransform = (scale) => (0, misc_1.memoize)(({ vertAlign, horizAlign }) => {
     const tLeft = horizAlign === 'middle' ? '50%' : '0%';
@@ -31,6 +31,12 @@ exports.getMenuRight = (0, misc_1.memoize)(({ horizAlign, horizOffset = 0 }) => 
 });
 exports.getMenuBottom = (0, misc_1.memoize)(({ vertAlign, vertOffset = 0 }) => vertAlign === 'top' ? `calc(100% + ${vertOffset}px)` : 'unset');
 exports.getMenuLeft = (0, misc_1.memoize)(({ horizAlign, horizOffset = 0 }) => horizAlign === 'right' ? `calc(100% + ${horizOffset}px)` : 'unset');
+exports.getPortalMenuTop = (0, misc_1.memoize)(({ rect, vertAlign, vertOffset = 0 }) => {
+    return rect === null || rect === void 0 ? void 0 : rect.top;
+});
+exports.getPortalMenuLeft = (0, misc_1.memoize)(({ rect, horizAlign, horizOffset = 0 }) => {
+    return (rect === null || rect === void 0 ? void 0 : rect.left) - 296;
+});
 const makeMenuPositionProps = (va, ha, vo, ho) => ({
     align: {
         vertical: va,

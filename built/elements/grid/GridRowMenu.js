@@ -32,11 +32,11 @@ const clsx_1 = __importDefault(require("clsx"));
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
 const useToggler_1 = __importDefault(require("../../hooks/useToggler"));
 const defaults_1 = require("../../elements/menu/defaults");
-const Menu_1 = __importDefault(require("../../elements/menu/Menu"));
+const PortalMenu_1 = __importDefault(require("../../elements/menu/PortalMenu"));
 const MenuItem_1 = __importDefault(require("../../elements/menu/MenuItem"));
 const styles_1 = require("@material-ui/styles");
 const Text_1 = __importDefault(require("../../elements/Text"));
-function GridRowMenu({ item, rowMenuItems, rowMenuDisabled, rowMenuOffset = {}, showRowMenuForSingleRowActions = false, maxRowMenuHeight, expandRow, }) {
+function GridRowMenu({ item, rowMenuItems, rowMenuDisabled, rowMenuOffset = {}, showRowMenuForSingleRowActions = false, maxRowMenuHeight, expandRow, toggleRow, }) {
     const filteredRowMenuItems = rowMenuItems.filter((rowItem) => {
         if ((0, useGridRowMenu_1.isGridRowMenuHeader)(rowItem))
             return true;
@@ -50,6 +50,9 @@ function GridRowMenu({ item, rowMenuItems, rowMenuDisabled, rowMenuOffset = {}, 
     const [isOpen, toggleIsOpen] = (0, useToggler_1.default)();
     const handleMenuClick = (0, react_1.useCallback)((e) => {
         toggleIsOpen();
+        // Workaround for clicking anchor causing row to be toggled
+        // Retoggle the row back if clicking on anchor
+        toggleRow();
     }, []);
     if (rowMenuDisabled || !filteredRowMenuItems.length) {
         return null;
@@ -60,7 +63,7 @@ function GridRowMenu({ item, rowMenuItems, rowMenuDisabled, rowMenuOffset = {}, 
         const [{ RowMenuButton, icon, label, getIsDisabled, triggerAction }] = filteredRowMenuItems;
         return (react_1.default.createElement("div", { className: (0, clsx_1.default)('rowMenu', classes.gridRowMenu) }, label ? (react_1.default.createElement(RowMenuButton, { disabled: getIsDisabled(item), icon: icon, onClick: () => triggerAction(item, expandRow) }, label)) : (react_1.default.createElement(FontAwesomeIcon_1.default, { disabled: getIsDisabled(item), onClick: () => triggerAction(item, expandRow) }, icon))));
     }
-    return (react_1.default.createElement(Menu_1.default, { align: defaults_1.middleLeft.align, offset: Object.assign(Object.assign({}, defaults_1.middleLeft.offset), rowMenuOffset), origin: "top left", onClick: handleMenuClick, className: (0, clsx_1.default)('rowMenu', classes.gridRowMenu), anchor: react_1.default.createElement(FontAwesomeIcon_1.default, null, "ellipsis-vertical"), open: isOpen, onClose: toggleIsOpen }, filteredRowMenuItems.map((menuItem, idx) => {
+    return (react_1.default.createElement(PortalMenu_1.default, { align: defaults_1.middleLeft.align, offset: Object.assign(Object.assign({}, defaults_1.middleLeft.offset), rowMenuOffset), origin: "top left", onClick: handleMenuClick, className: (0, clsx_1.default)('rowMenu', classes.gridRowMenu), anchor: react_1.default.createElement(FontAwesomeIcon_1.default, null, "ellipsis-vertical"), open: isOpen, onClose: toggleIsOpen }, filteredRowMenuItems.map((menuItem, idx) => {
         if ((0, useGridRowMenu_1.isGridRowMenuHeader)(menuItem)) {
             return (react_1.default.createElement(react_1.default.Fragment, null,
                 idx !== 0 && react_1.default.createElement("hr", { className: classes.divider }),

@@ -117,6 +117,7 @@ export default function GridRow<T>(props: GridRowProps<T>) {
             showRowMenuForSingleRowActions={showRowMenuForSingleRowActions}
             maxRowMenuHeight={maxRowMenuHeight}
             expandRow={onRowExpand ? onRowExpand(rowId) : noop}
+            toggleRow={toggleSelect}
           />
         </td>
       ) : null}
