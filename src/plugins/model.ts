@@ -25,6 +25,7 @@ interface Link {
   definition?: string
   exact?: boolean
   external?: boolean
+  hideExternalLinkIcon?: boolean
 }
 
 interface NestedLink {
