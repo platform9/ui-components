@@ -24,6 +24,7 @@ interface Link {
     definition?: string;
     exact?: boolean;
     external?: boolean;
+    url?: string;
     hideExternalLinkIcon?: boolean;
     externalLinkIcon?: string;
 }
