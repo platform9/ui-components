@@ -15,7 +15,7 @@ const colorHelpers_1 = require("../../utils/colorHelpers");
 const ExternalLink_1 = __importDefault(require("../../components/ExternalLink"));
 function NavItem({ name, link, icon, className = undefined, open = false, isActive = false, compact = false, tooltip = false, tooltipProps = {}, activeDisplayType = 'background', disableLink = false, hideExternalLinkIcon = false, externalLinkIcon = 'arrow-up-right-from-square', }) {
     const classes = useStyles({ isActive, compact, activeDisplayType, disableLink });
-    return (link === null || link === void 0 ? void 0 : link.external) ? (react_1.default.createElement(ExternalLink_1.default, { url: link.path, textDecoration: "none", onClick: link.onClick },
+    return (link === null || link === void 0 ? void 0 : link.external) ? (react_1.default.createElement(ExternalLink_1.default, { url: link.url, textDecoration: "none", onClick: link.onClick },
         react_1.default.createElement("li", { className: (0, clsx_1.default)(classes.navItem, className) },
             react_1.default.createElement(tooltip_1.default, Object.assign({ message: tooltip ? name : '' }, tooltipProps),
                 react_1.default.createElement("div", { className: classes.externalLinkBody },

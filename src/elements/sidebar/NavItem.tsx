@@ -42,7 +42,7 @@ export default function NavItem({
   const classes = useStyles({ isActive, compact, activeDisplayType, disableLink })
 
   return link?.external ? (
-    <ExternalLink url={link.path} textDecoration="none" onClick={link.onClick}>
+    <ExternalLink url={link.url} textDecoration="none" onClick={link.onClick}>
       <li className={clsx(classes.navItem, className)}>
         <Tooltip message={tooltip ? name : ''} {...tooltipProps}>
           <div className={classes.externalLinkBody}>

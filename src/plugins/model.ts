@@ -24,7 +24,10 @@ interface Link {
   path: string
   definition?: string
   exact?: boolean
+
+  // External Link Props
   external?: boolean
+  url?: string
   hideExternalLinkIcon?: boolean
   externalLinkIcon?: string
 }
