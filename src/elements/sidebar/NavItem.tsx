@@ -88,10 +88,10 @@ export default function NavItem({
 }
 
 interface StyleProps {
-  isActive?: NavItemProps['isActive']
-  compact?: NavItemProps['compact']
-  activeDisplayType?: NavItemProps['activeDisplayType']
-  disableLink?: NavItemProps['disableLink']
+  isActive: NavItemProps['isActive']
+  compact: NavItemProps['compact']
+  activeDisplayType: NavItemProps['activeDisplayType']
+  disableLink: NavItemProps['disableLink']
 }
 
 const getBackgroundImage = (isActive, displayType, sidebarColors) => {
