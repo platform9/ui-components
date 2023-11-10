@@ -8,7 +8,7 @@ import clsx from 'clsx'
 import FontAwesomeIcon from '../../components/FontAwesomeIcon'
 import useToggler from '../../hooks/useToggler'
 import { middleLeft } from '../../elements/menu/defaults'
-import Menu from '../../elements/menu/Menu'
+import PortalMenu from '../../elements/menu/PortalMenu'
 import MenuItem from '../../elements/menu/MenuItem'
 import { makeStyles } from '@material-ui/styles'
 import Theme from '../../theme-manager/themes/model'
@@ -23,6 +23,7 @@ interface GridRowMenuProps<T> extends GridRowMenuItemsProps<T> {
   showRowMenuForSingleRowActions?: boolean
   maxRowMenuHeight?: number
   expandRow?: () => void
+  toggleRow?: () => void
 }
 
 export default function GridRowMenu<T>({
@@ -33,6 +34,7 @@ export default function GridRowMenu<T>({
   showRowMenuForSingleRowActions = false,
   maxRowMenuHeight,
   expandRow,
+  toggleRow,
 }: GridRowMenuProps<T>) {
   const filteredRowMenuItems = rowMenuItems.filter((rowItem) => {
     if (isGridRowMenuHeader(rowItem)) return true
@@ -51,6 +53,9 @@ export default function GridRowMenu<T>({
   const [isOpen, toggleIsOpen] = useToggler()
   const handleMenuClick = useCallback((e) => {
     toggleIsOpen()
+    // Workaround for clicking anchor causing row to be toggled
+    // Retoggle the row back if clicking on anchor
+    toggleRow()
   }, [])
 
   if (rowMenuDisabled || !filteredRowMenuItems.length) {
@@ -86,7 +91,7 @@ export default function GridRowMenu<T>({
   }
 
   return (
-    <Menu
+    <PortalMenu
       align={middleLeft.align}
       offset={{
         ...middleLeft.offset,
@@ -124,7 +129,7 @@ export default function GridRowMenu<T>({
           </MenuItem>
         )
       })}
-    </Menu>
+    </PortalMenu>
   )
 }
 

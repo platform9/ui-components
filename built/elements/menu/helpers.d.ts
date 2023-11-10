@@ -214,6 +214,92 @@ export declare const getMenuLeft: import("moize").Moized<({ horizAlign, horizOff
 }> & {
     maxSize: number;
 } & Partial<import("../../utils/misc").DefaultMoizeOptions>>;
+export declare const getPortalMenuTop: import("moize").Moized<({ rect, vertAlign, vertOffset }: any) => any, Partial<{
+    isDeepEqual: boolean;
+    isPromise: boolean;
+    isReact: boolean;
+    isSerialized: boolean;
+    isShallowEqual: boolean;
+    matchesArg: import("moize").IsEqual;
+    matchesKey: import("moize").IsMatchingKey;
+    maxAge: number;
+    maxArgs: number;
+    maxSize: number;
+    onCacheAdd: import("moize").OnCacheOperation<({ rect, vertAlign, vertOffset }: any) => any>;
+    onCacheChange: import("moize").OnCacheOperation<({ rect, vertAlign, vertOffset }: any) => any>;
+    onCacheHit: import("moize").OnCacheOperation<({ rect, vertAlign, vertOffset }: any) => any>;
+    onExpire: import("moize").OnExpire;
+    profileName: string;
+    serializer: import("moize").Serialize;
+    transformArgs: import("moize").TransformKey;
+    updateCacheForKey: import("moize").UpdateCacheForKey;
+    updateExpire: boolean;
+}> & Partial<{
+    isDeepEqual: boolean;
+    isPromise: boolean;
+    isReact: boolean;
+    isSerialized: boolean;
+    isShallowEqual: boolean;
+    matchesArg: import("moize").IsEqual;
+    matchesKey: import("moize").IsMatchingKey;
+    maxAge: number;
+    maxArgs: number;
+    maxSize: number;
+    onCacheAdd: import("moize").OnCacheOperation<import("moize").Moizeable>;
+    onCacheChange: import("moize").OnCacheOperation<import("moize").Moizeable>;
+    onCacheHit: import("moize").OnCacheOperation<import("moize").Moizeable>;
+    onExpire: import("moize").OnExpire;
+    profileName: string;
+    serializer: import("moize").Serialize;
+    transformArgs: import("moize").TransformKey;
+    updateCacheForKey: import("moize").UpdateCacheForKey;
+    updateExpire: boolean;
+}> & {
+    maxSize: number;
+} & Partial<import("../../utils/misc").DefaultMoizeOptions>>;
+export declare const getPortalMenuLeft: import("moize").Moized<({ rect, horizAlign, horizOffset }: any) => number, Partial<{
+    isDeepEqual: boolean;
+    isPromise: boolean;
+    isReact: boolean;
+    isSerialized: boolean;
+    isShallowEqual: boolean;
+    matchesArg: import("moize").IsEqual;
+    matchesKey: import("moize").IsMatchingKey;
+    maxAge: number;
+    maxArgs: number;
+    maxSize: number;
+    onCacheAdd: import("moize").OnCacheOperation<({ rect, horizAlign, horizOffset }: any) => number>;
+    onCacheChange: import("moize").OnCacheOperation<({ rect, horizAlign, horizOffset }: any) => number>;
+    onCacheHit: import("moize").OnCacheOperation<({ rect, horizAlign, horizOffset }: any) => number>;
+    onExpire: import("moize").OnExpire;
+    profileName: string;
+    serializer: import("moize").Serialize;
+    transformArgs: import("moize").TransformKey;
+    updateCacheForKey: import("moize").UpdateCacheForKey;
+    updateExpire: boolean;
+}> & Partial<{
+    isDeepEqual: boolean;
+    isPromise: boolean;
+    isReact: boolean;
+    isSerialized: boolean;
+    isShallowEqual: boolean;
+    matchesArg: import("moize").IsEqual;
+    matchesKey: import("moize").IsMatchingKey;
+    maxAge: number;
+    maxArgs: number;
+    maxSize: number;
+    onCacheAdd: import("moize").OnCacheOperation<import("moize").Moizeable>;
+    onCacheChange: import("moize").OnCacheOperation<import("moize").Moizeable>;
+    onCacheHit: import("moize").OnCacheOperation<import("moize").Moizeable>;
+    onExpire: import("moize").OnExpire;
+    profileName: string;
+    serializer: import("moize").Serialize;
+    transformArgs: import("moize").TransformKey;
+    updateCacheForKey: import("moize").UpdateCacheForKey;
+    updateExpire: boolean;
+}> & {
+    maxSize: number;
+} & Partial<import("../../utils/misc").DefaultMoizeOptions>>;
 export declare const makeMenuPositionProps: (va: AlignVertical, ha: AlignHorizontal, vo: number, ho: number) => {
     align: {
         vertical: AlignVertical;

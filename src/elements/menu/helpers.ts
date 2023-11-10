@@ -37,6 +37,14 @@ export const getMenuLeft = memoize(({ horizAlign, horizOffset = 0 }) =>
   horizAlign === 'right' ? `calc(100% + ${horizOffset}px)` : 'unset',
 )
 
+export const getPortalMenuTop = memoize(({ rect, vertAlign, vertOffset = 0 }) => {
+  return rect?.top
+})
+
+export const getPortalMenuLeft = memoize(({ rect, horizAlign, horizOffset = 0 }) => {
+  return rect?.left - 296
+})
+
 export const makeMenuPositionProps = (
   va: AlignVertical,
   ha: AlignHorizontal,

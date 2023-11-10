@@ -38,7 +38,7 @@ function GridRow(props) {
                     ? {
                         vertical: rowMenuOffset.vertical * -1,
                     }
-                    : rowMenuOffset, showRowMenuForSingleRowActions: showRowMenuForSingleRowActions, maxRowMenuHeight: maxRowMenuHeight, expandRow: onRowExpand ? onRowExpand(rowId) : fp_1.noop }))) : null));
+                    : rowMenuOffset, showRowMenuForSingleRowActions: showRowMenuForSingleRowActions, maxRowMenuHeight: maxRowMenuHeight, expandRow: onRowExpand ? onRowExpand(rowId) : fp_1.noop, toggleRow: toggleSelect }))) : null));
 }
 exports.default = GridRow;
 //# sourceMappingURL=GridRow.js.map
