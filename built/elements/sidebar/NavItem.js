@@ -15,18 +15,15 @@ const colorHelpers_1 = require("../../utils/colorHelpers");
 const ExternalLink_1 = __importDefault(require("../../components/ExternalLink"));
 function NavItem({ name, link, icon, className = undefined, open = false, isActive = false, compact = false, tooltip = false, tooltipProps = {}, activeDisplayType = 'background', disableLink = false, hideExternalLinkIcon = false, externalLinkIcon = 'arrow-up-right-from-square', }) {
     const classes = useStyles({ isActive, compact, activeDisplayType, disableLink });
-    return (link === null || link === void 0 ? void 0 : link.external) ? (react_1.default.createElement(ExternalLink_1.default, { url: link.url, textDecoration: "none", onClick: link.onClick },
-        react_1.default.createElement("li", { className: (0, clsx_1.default)(classes.navItem, className) },
-            react_1.default.createElement(tooltip_1.default, Object.assign({ message: tooltip ? name : '' }, tooltipProps),
-                react_1.default.createElement("div", { className: classes.externalLinkBody },
-                    open && (react_1.default.createElement(Text_1.default, { className: (0, clsx_1.default)('nav-text', classes.navText), variant: compact ? 'sidenav' : 'subtitle2' }, name)),
-                    !hideExternalLinkIcon && (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.navIcon) },
-                        react_1.default.createElement(FontAwesomeIcon_1.default, { className: "nav-icon", title: name, size: "lg" }, externalLinkIcon)))))))) : (react_1.default.createElement(react_router_dom_1.Link, { to: disableLink ? null : link.path },
-        react_1.default.createElement("li", { className: (0, clsx_1.default)(classes.navItem, className) },
-            react_1.default.createElement(tooltip_1.default, Object.assign({ message: tooltip ? name : '' }, tooltipProps),
+    const item = (react_1.default.createElement("li", { className: (0, clsx_1.default)(classes.navItem, className) },
+        react_1.default.createElement(tooltip_1.default, Object.assign({ message: tooltip ? name : '' }, tooltipProps),
+            react_1.default.createElement("div", { className: classes.item },
                 icon && (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.navIcon) },
                     react_1.default.createElement(FontAwesomeIcon_1.default, { "data-testid": (0, test_helpers_1.default)(name), className: "nav-icon", title: name, size: "lg" }, icon))),
-                open && (react_1.default.createElement(Text_1.default, { className: (0, clsx_1.default)('nav-text', classes.navText), "data-testid": (0, test_helpers_1.default)(name), variant: compact ? 'sidenav' : 'subtitle2' }, name))))));
+                open && (react_1.default.createElement(Text_1.default, { className: (0, clsx_1.default)('nav-text', classes.navText), "data-testid": (0, test_helpers_1.default)(name), variant: compact ? 'sidenav' : 'subtitle2' }, name)),
+                (link === null || link === void 0 ? void 0 : link.external) && !hideExternalLinkIcon && (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.navIcon) },
+                    react_1.default.createElement(FontAwesomeIcon_1.default, { className: "nav-icon", title: name, size: "lg" }, externalLinkIcon)))))));
+    return (link === null || link === void 0 ? void 0 : link.external) ? (react_1.default.createElement(ExternalLink_1.default, { url: link.url, textDecoration: "none", onClick: link.onClick }, item)) : (react_1.default.createElement(react_router_dom_1.Link, { to: disableLink ? '' : link.path }, item));
 }
 exports.default = NavItem;
 const getBackgroundImage = (isActive, displayType, sidebarColors) => {
@@ -49,6 +46,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
             transition: 'color .2s ease',
         },
         '&:hover .nav-text, &:hover .nav-icon': {
+            cursor: ({ disableLink }) => (disableLink ? 'not-allowed' : 'unset'),
             color: ({ disableLink }) => disableLink ? theme.components.sidebar.disabledText : theme.components.sidebar.hoverText,
         },
         '&:before': {
@@ -92,7 +90,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
     navText: {
         color: ({ isActive, disableLink }) => { var _a; return (_a = theme.components.sidebar) === null || _a === void 0 ? void 0 : _a[isActive ? 'activeText' : disableLink ? 'disabledText' : 'text']; },
     },
-    externalLinkBody: {
+    item: {
         display: 'flex',
         gap: theme.spacing(1),
         alignItems: 'baseline',

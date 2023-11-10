@@ -41,34 +41,10 @@ export default function NavItem({
 }: NavItemProps) {
   const classes = useStyles({ isActive, compact, activeDisplayType, disableLink })
 
-  return link?.external ? (
-    <ExternalLink url={link.url} textDecoration="none" onClick={link.onClick}>
-      <li className={clsx(classes.navItem, className)}>
-        <Tooltip message={tooltip ? name : ''} {...tooltipProps}>
-          <div className={classes.externalLinkBody}>
-            {open && (
-              <Text
-                className={clsx('nav-text', classes.navText)}
-                variant={compact ? 'sidenav' : 'subtitle2'}
-              >
-                {name}
-              </Text>
-            )}
-            {!hideExternalLinkIcon && (
-              <div className={clsx(classes.navIcon)}>
-                <FontAwesomeIcon className="nav-icon" title={name} size="lg">
-                  {externalLinkIcon}
-                </FontAwesomeIcon>
-              </div>
-            )}
-          </div>
-        </Tooltip>
-      </li>
-    </ExternalLink>
-  ) : (
-    <Link to={disableLink ? null : link.path}>
-      <li className={clsx(classes.navItem, className)}>
-        <Tooltip message={tooltip ? name : ''} {...tooltipProps}>
+  const item = (
+    <li className={clsx(classes.navItem, className)}>
+      <Tooltip message={tooltip ? name : ''} {...tooltipProps}>
+        <div className={classes.item}>
           {icon && (
             <div className={clsx(classes.navIcon)}>
               <FontAwesomeIcon
@@ -90,17 +66,32 @@ export default function NavItem({
               {name}
             </Text>
           )}
-        </Tooltip>
-      </li>
-    </Link>
+          {link?.external && !hideExternalLinkIcon && (
+            <div className={clsx(classes.navIcon)}>
+              <FontAwesomeIcon className="nav-icon" title={name} size="lg">
+                {externalLinkIcon}
+              </FontAwesomeIcon>
+            </div>
+          )}
+        </div>
+      </Tooltip>
+    </li>
+  )
+
+  return link?.external ? (
+    <ExternalLink url={link.url} textDecoration="none" onClick={link.onClick}>
+      {item}
+    </ExternalLink>
+  ) : (
+    <Link to={disableLink ? '' : link.path}>{item}</Link>
   )
 }
 
 interface StyleProps {
-  isActive: NavItemProps['isActive']
-  compact: NavItemProps['compact']
-  activeDisplayType: NavItemProps['activeDisplayType']
-  disableLink: NavItemProps['disableLink']
+  isActive?: NavItemProps['isActive']
+  compact?: NavItemProps['compact']
+  activeDisplayType?: NavItemProps['activeDisplayType']
+  disableLink?: NavItemProps['disableLink']
 }
 
 const getBackgroundImage = (isActive, displayType, sidebarColors) => {
@@ -127,6 +118,7 @@ const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
       transition: 'color .2s ease',
     },
     '&:hover .nav-text, &:hover .nav-icon': {
+      cursor: ({ disableLink }) => (disableLink ? 'not-allowed' : 'unset'),
       color: ({ disableLink }) =>
         disableLink ? theme.components.sidebar.disabledText : theme.components.sidebar.hoverText,
     },
@@ -174,7 +166,7 @@ const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
     color: ({ isActive, disableLink }) =>
       theme.components.sidebar?.[isActive ? 'activeText' : disableLink ? 'disabledText' : 'text'],
   },
-  externalLinkBody: {
+  item: {
     display: 'flex',
     gap: theme.spacing(1),
     alignItems: 'baseline',
