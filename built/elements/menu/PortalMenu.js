@@ -120,7 +120,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         borderRadius: 4,
         transformOrigin: ({ origin }) => origin,
         transition: 'opacity .2s ease, transform .2s ease',
-        zIndex: 100,
+        zIndex: 1000,
         transform: (0, helpers_1.getMenuTransform)(0),
         top: ({ rect, vertAlign, vertOffset }) => (0, helpers_1.getPortalMenuTop)({ rect, vertAlign, vertOffset }),
         left: ({ rect, horizAlign, horizOffset }) => (0, helpers_1.getPortalMenuLeft)({ rect, horizAlign, horizOffset }),
