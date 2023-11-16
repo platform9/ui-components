@@ -52,7 +52,7 @@ function GridRowMenu({ item, rowMenuItems, rowMenuDisabled, rowMenuOffset = {}, 
         toggleIsOpen();
         // Workaround for clicking anchor causing row to be toggled
         // Retoggle the row back if clicking on anchor
-        toggleRow();
+        toggleRow && toggleRow();
     }, []);
     if (rowMenuDisabled || !filteredRowMenuItems.length) {
         return null;
@@ -117,7 +117,8 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
     },
     menuItem: {
         minHeight: ({ hasHeaders }) => (hasHeaders ? 'unset' : '48px'),
-        marginLeft: '8px',
+        // If we want to add spacing back in the future for menu subsections, we should use paddingLeft
+        // marginLeft: '8px',
     },
 }));
 //# sourceMappingURL=GridRowMenu.js.map
