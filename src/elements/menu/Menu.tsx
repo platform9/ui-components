@@ -112,7 +112,7 @@ const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
     borderRadius: 4,
     transformOrigin: ({ origin }) => origin,
     transition: 'opacity .2s ease, transform .2s ease',
-    zIndex: 100,
+    zIndex: 1000,
     transform: getMenuTransform(0),
     top: getMenuTop,
     right: getMenuRight,

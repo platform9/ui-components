@@ -55,7 +55,7 @@ export default function GridRowMenu<T>({
     toggleIsOpen()
     // Workaround for clicking anchor causing row to be toggled
     // Retoggle the row back if clicking on anchor
-    toggleRow()
+    toggleRow && toggleRow()
   }, [])
 
   if (rowMenuDisabled || !filteredRowMenuItems.length) {
@@ -180,6 +180,7 @@ const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
   },
   menuItem: {
     minHeight: ({ hasHeaders }) => (hasHeaders ? 'unset' : '48px'),
-    marginLeft: '8px',
+    // If we want to add spacing back in the future for menu subsections, we should use paddingLeft
+    // marginLeft: '8px',
   },
 }))
