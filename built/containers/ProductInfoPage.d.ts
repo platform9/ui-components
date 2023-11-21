@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 interface Props {
     title: string;
-    icon: React.ReactNode;
+    icon?: React.ReactNode;
     actions: React.ReactNode[];
     footerTitle?: string;
     rootClassName?: string;

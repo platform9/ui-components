@@ -6,7 +6,7 @@ import Theme from '../theme-manager/themes/model'
 import Text from '../elements/Text'
 interface Props {
   title: string
-  icon: React.ReactNode
+  icon?: React.ReactNode
   actions: React.ReactNode[]
   footerTitle?: string
   rootClassName?: string
@@ -51,7 +51,9 @@ export default function ProductInfoPage({
           {title}
         </Text>
         <div className={clsx('product-info-body', classes.productInfoBody)}>{children}</div>
-        <figure className={clsx('product-info-figure', classes.productInfoFigure)}>{icon}</figure>
+        {icon && (
+          <figure className={clsx('product-info-figure', classes.productInfoFigure)}>{icon}</figure>
+        )}
         <footer className={clsx('product-info-footer', classes.productInfoFooter)}>
           {footerTitle ? (
             <Text variant="caption2" className={classes.productInfoFooterTitle}>

@@ -49,7 +49,7 @@ function ProductInfoPage({ title, footerTitle = undefined, className, rootClassN
         react_1.default.createElement("article", { className: (0, clsx_1.default)(classes.productInfoContent, className) },
             react_1.default.createElement(Text_1.default, { variant: "h2", component: "header", className: (0, clsx_1.default)('product-info-title', classes.productInfoTitle) }, title),
             react_1.default.createElement("div", { className: (0, clsx_1.default)('product-info-body', classes.productInfoBody) }, children),
-            react_1.default.createElement("figure", { className: (0, clsx_1.default)('product-info-figure', classes.productInfoFigure) }, icon),
+            icon && (react_1.default.createElement("figure", { className: (0, clsx_1.default)('product-info-figure', classes.productInfoFigure) }, icon)),
             react_1.default.createElement("footer", { className: (0, clsx_1.default)('product-info-footer', classes.productInfoFooter) },
                 footerTitle ? (react_1.default.createElement(Text_1.default, { variant: "caption2", className: classes.productInfoFooterTitle }, footerTitle)) : null,
                 actions))));
