@@ -52,7 +52,7 @@ const TextField = (_a) => {
             onChange(returnValue);
         }
     }, [onChange, type]);
-    return (react_1.default.createElement(Input_1.default, Object.assign({}, restProps, { label: label && required ? `${label} *` : label, variant: variant, error: errorMessage, value: value !== undefined ? (type === 'number' ? Number(value) : value) : '', onChange: handleChange, type: type })));
+    return (react_1.default.createElement(Input_1.default, Object.assign({}, restProps, { label: label && required ? `${label} *` : label, variant: variant, error: errorMessage, value: [undefined, ''].includes(value) ? '' : type === 'number' ? Number(value) : value, onChange: handleChange, type: type })));
 };
 exports.default = (0, withFormContext_1.default)(TextField);
 //# sourceMappingURL=TextField.js.map
