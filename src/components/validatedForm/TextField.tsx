@@ -45,7 +45,7 @@ const TextField = ({
       label={label && required ? `${label} *` : label}
       variant={variant}
       error={errorMessage}
-      value={value !== undefined ? (type === 'number' ? Number(value) : value) : ''}
+      value={[undefined, ''].includes(value) ? '' : type === 'number' ? Number(value) : value}
       onChange={handleChange}
       type={type}
     />
