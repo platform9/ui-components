@@ -5,6 +5,7 @@ export interface IFrameContextRefs {
   headerTitleContainer: any
   headerPrimaryActionContainer: any
   headerSharedToolsContainer: any
+  contentMainContainer: any
 }
 export interface IFullFrameContext extends IFrameContextRefs {
   setFrameContainerRef: (payload: Partial<IFrameContextRefs>) => void
@@ -16,6 +17,7 @@ export const FrameContext = createContext({
   headerTitleContainer: null,
   headerPrimaryActionContainer: null,
   headerSharedToolsContainer: null,
+  contentMainContainer: null,
 })
 
 export default FrameContext

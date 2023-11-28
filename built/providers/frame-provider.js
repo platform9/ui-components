@@ -8,6 +8,7 @@ exports.FrameContext = (0, react_1.createContext)({
     headerTitleContainer: null,
     headerPrimaryActionContainer: null,
     headerSharedToolsContainer: null,
+    contentMainContainer: null,
 });
 exports.default = exports.FrameContext;
 //# sourceMappingURL=frame-provider.js.map
