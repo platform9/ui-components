@@ -9,6 +9,7 @@ import FrameContext, { IFullFrameContext, IFrameContextRefs } from '../providers
 const sidebarPane = 'default'
 
 const sidebarPaneRef = React.createRef<HTMLDivElement>()
+const contentMainRef = React.createRef<HTMLElement>()
 
 function DefaultFrame({ className, children }: PropsWithChildren<{ className?: string }>) {
   const [frameRefs, setFrameRefs] = useState<IFullFrameContext>({} as any)
@@ -21,6 +22,7 @@ function DefaultFrame({ className, children }: PropsWithChildren<{ className?: s
   useEffect(() => {
     setFrameContainerRef({
       sidebarPaneContainer: sidebarPaneRef.current,
+      contentMainContainer: contentMainRef.current,
     })
   }, [])
 
@@ -37,7 +39,9 @@ function DefaultFrame({ className, children }: PropsWithChildren<{ className?: s
       <main className={clsx(classes.appFrame, className)}>
         <Header />
         <aside className="sidebar custom-nav" ref={sidebarPaneRef} />
-        <section className={clsx('content-main', classes.contentMain)}>{children}</section>
+        <section className={clsx('content-main', classes.contentMain)} ref={contentMainRef}>
+          {children}
+        </section>
       </main>
     </FrameContext.Provider>
   )
