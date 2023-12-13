@@ -44,8 +44,11 @@ const button_1 = __importDefault(require("../button"));
 const use_react_router_1 = __importDefault(require("use-react-router"));
 const Progress_1 = __importDefault(require("../../components/progress/Progress"));
 const Alert_1 = __importDefault(require("../../components/Alert"));
+const styles_1 = require("@material-ui/styles");
+const clsx_1 = __importDefault(require("clsx"));
 function ModalForm(_a) {
-    var { children, onSubmit, disableSubmit = false, submitTitle = 'Submit', fieldSetter = null, submitting = false, loading = false, loadingMessage = 'Loading', error, customErrorComponent, route, open, withAddonManager, initialValues = {}, showBackButton, onBackButtonClick } = _a, props = __rest(_a, ["children", "onSubmit", "disableSubmit", "submitTitle", "fieldSetter", "submitting", "loading", "loadingMessage", "error", "customErrorComponent", "route", "open", "withAddonManager", "initialValues", "showBackButton", "onBackButtonClick"]);
+    var { children, onSubmit, disableSubmit = false, submitTitle = 'Submit', fieldSetter = null, submitting = false, loading = false, loadingMessage = 'Loading', error, customErrorComponent, route, open, withAddonManager, initialValues = {}, showBackButton, onBackButtonClick, cancelButtonLabel = 'Cancel', className } = _a, props = __rest(_a, ["children", "onSubmit", "disableSubmit", "submitTitle", "fieldSetter", "submitting", "loading", "loadingMessage", "error", "customErrorComponent", "route", "open", "withAddonManager", "initialValues", "showBackButton", "onBackButtonClick", "cancelButtonLabel", "className"]);
+    const classes = useStyles();
     const submitFuncRef = (0, react_1.useRef)(null);
     const { match } = (0, use_react_router_1.default)();
     const setSubmitFuncRef = (handleSubmit) => {
@@ -56,12 +59,27 @@ function ModalForm(_a) {
     };
     const toOpen = (0, react_1.useMemo)(() => (route ? route.pattern.match(match.url) : open), [match.url, open]);
     return (react_1.default.createElement(Modal_1.default, Object.assign({ open: toOpen, footer: react_1.default.createElement(react_1.default.Fragment, null,
-            react_1.default.createElement(button_1.default, { variant: "secondary", onClick: props.onClose, disabled: submitting }, "Cancel"),
-            showBackButton && (react_1.default.createElement(button_1.default, { variant: "secondary", onClick: () => onBackButtonClick(), disabled: submitting }, "Back")),
-            onSubmit && (react_1.default.createElement(button_1.default, { onClick: handleSubmit, loading: submitting, disabled: disableSubmit }, submitTitle))) }, props),
+            react_1.default.createElement("div", null, showBackButton && (react_1.default.createElement(button_1.default, { variant: "secondary", onClick: () => onBackButtonClick(), disabled: submitting }, "Back"))),
+            react_1.default.createElement("div", null,
+                react_1.default.createElement(button_1.default, { variant: "secondary", onClick: props.onClose, disabled: submitting }, cancelButtonLabel),
+                onSubmit && (react_1.default.createElement(button_1.default, { onClick: handleSubmit, loading: submitting, disabled: disableSubmit }, submitTitle)))), className: (0, clsx_1.default)(classes.modalForm, className) }, props),
         !!error && react_1.default.createElement(Alert_1.default, { variant: "error", title: error === null || error === void 0 ? void 0 : error.title, message: error === null || error === void 0 ? void 0 : error.message }),
         customErrorComponent && customErrorComponent,
         react_1.default.createElement(Progress_1.default, { loading: loading, message: loadingMessage, renderContentOnMount: !!toOpen }, !loading && (react_1.default.createElement(ValidatedForm_1.default, { onSubmit: onSubmit, triggerSubmit: setSubmitFuncRef, elevated: false, fieldSetter: fieldSetter, initialValues: initialValues, withAddonManager: withAddonManager, clearOnSubmit: props.clearOnSubmit }, children)))));
 }
 exports.default = ModalForm;
+const useStyles = (0, styles_1.makeStyles)((theme) => ({
+    modalForm: {
+        '& .modal-footer': {
+            display: 'flex',
+            justifyContent: 'space-between',
+            '& > div': {
+                display: 'grid',
+                gridAutoFlow: 'column',
+                gridAutoColumns: 'max-content',
+                gridGap: theme.spacing(2),
+            },
+        },
+    },
+}));
 //# sourceMappingURL=ModalForm.js.map

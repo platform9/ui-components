@@ -19,6 +19,7 @@ interface BaseModalFormProps extends Omit<ModalProps, 'open'> {
     clearOnSubmit?: boolean;
     showBackButton?: boolean;
     onBackButtonClick?: () => void;
+    cancelButtonLabel?: string;
 }
 interface PropsWithOpenRoute extends BaseModalFormProps {
     open?: undefined;
@@ -29,5 +30,5 @@ interface PropsWithOpenFlag extends BaseModalFormProps {
     route?: undefined;
 }
 type ModalFormProps = PropsWithOpenRoute | PropsWithOpenFlag;
-export default function ModalForm({ children, onSubmit, disableSubmit, submitTitle, fieldSetter, submitting, loading, loadingMessage, error, customErrorComponent, route, open, withAddonManager, initialValues, showBackButton, onBackButtonClick, ...props }: PropsWithChildren<ModalFormProps>): JSX.Element;
+export default function ModalForm({ children, onSubmit, disableSubmit, submitTitle, fieldSetter, submitting, loading, loadingMessage, error, customErrorComponent, route, open, withAddonManager, initialValues, showBackButton, onBackButtonClick, cancelButtonLabel, className, ...props }: PropsWithChildren<ModalFormProps>): JSX.Element;
 export {};
