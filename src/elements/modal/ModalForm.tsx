@@ -9,6 +9,7 @@ import Alert from '../../components/Alert'
 import { makeStyles } from '@material-ui/styles'
 import Theme from '../../theme-manager/themes/model'
 import clsx from 'clsx'
+import FontAwesomeIcon from '../../components/FontAwesomeIcon'
 
 interface BaseModalFormProps extends Omit<ModalProps, 'open'> {
   submitTitle?: string
@@ -86,6 +87,7 @@ export default function ModalForm({
           <div>
             {showBackButton && (
               <Button variant="secondary" onClick={() => onBackButtonClick()} disabled={submitting}>
+                <FontAwesomeIcon size="xl">angle-left</FontAwesomeIcon>
                 Back
               </Button>
             )}

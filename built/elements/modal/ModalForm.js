@@ -46,6 +46,7 @@ const Progress_1 = __importDefault(require("../../components/progress/Progress")
 const Alert_1 = __importDefault(require("../../components/Alert"));
 const styles_1 = require("@material-ui/styles");
 const clsx_1 = __importDefault(require("clsx"));
+const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
 function ModalForm(_a) {
     var { children, onSubmit, disableSubmit = false, submitTitle = 'Submit', fieldSetter = null, submitting = false, loading = false, loadingMessage = 'Loading', error, customErrorComponent, route, open, withAddonManager, initialValues = {}, showBackButton, onBackButtonClick, cancelButtonLabel = 'Cancel', className } = _a, props = __rest(_a, ["children", "onSubmit", "disableSubmit", "submitTitle", "fieldSetter", "submitting", "loading", "loadingMessage", "error", "customErrorComponent", "route", "open", "withAddonManager", "initialValues", "showBackButton", "onBackButtonClick", "cancelButtonLabel", "className"]);
     const classes = useStyles();
@@ -59,7 +60,9 @@ function ModalForm(_a) {
     };
     const toOpen = (0, react_1.useMemo)(() => (route ? route.pattern.match(match.url) : open), [match.url, open]);
     return (react_1.default.createElement(Modal_1.default, Object.assign({ open: toOpen, footer: react_1.default.createElement(react_1.default.Fragment, null,
-            react_1.default.createElement("div", null, showBackButton && (react_1.default.createElement(button_1.default, { variant: "secondary", onClick: () => onBackButtonClick(), disabled: submitting }, "Back"))),
+            react_1.default.createElement("div", null, showBackButton && (react_1.default.createElement(button_1.default, { variant: "secondary", onClick: () => onBackButtonClick(), disabled: submitting },
+                react_1.default.createElement(FontAwesomeIcon_1.default, { size: "xl" }, "angle-left"),
+                "Back"))),
             react_1.default.createElement("div", null,
                 react_1.default.createElement(button_1.default, { variant: "secondary", onClick: props.onClose, disabled: submitting }, cancelButtonLabel),
                 onSubmit && (react_1.default.createElement(button_1.default, { onClick: handleSubmit, loading: submitting, disabled: disableSubmit }, submitTitle)))), className: (0, clsx_1.default)(classes.modalForm, className) }, props),
