@@ -6,6 +6,9 @@ import useReactRouter from 'use-react-router'
 import { Route } from '../../plugins/route'
 import Progress from '../../components/progress/Progress'
 import Alert from '../../components/Alert'
+import { makeStyles } from '@material-ui/styles'
+import Theme from '../../theme-manager/themes/model'
+import clsx from 'clsx'
 
 interface BaseModalFormProps extends Omit<ModalProps, 'open'> {
   submitTitle?: string
@@ -25,6 +28,7 @@ interface BaseModalFormProps extends Omit<ModalProps, 'open'> {
   clearOnSubmit?: boolean
   showBackButton?: boolean
   onBackButtonClick?: () => void
+  cancelButtonLabel?: string
 }
 
 interface PropsWithOpenRoute extends BaseModalFormProps {
@@ -56,8 +60,11 @@ export default function ModalForm({
   initialValues = {},
   showBackButton,
   onBackButtonClick,
+  cancelButtonLabel = 'Cancel',
+  className,
   ...props
 }: PropsWithChildren<ModalFormProps>) {
+  const classes = useStyles()
   const submitFuncRef = useRef(null)
   const { match } = useReactRouter()
 
@@ -76,21 +83,27 @@ export default function ModalForm({
       open={toOpen}
       footer={
         <>
-          <Button variant="secondary" onClick={props.onClose} disabled={submitting}>
-            Cancel
-          </Button>
-          {showBackButton && (
-            <Button variant="secondary" onClick={() => onBackButtonClick()} disabled={submitting}>
-              Back
+          <div>
+            {showBackButton && (
+              <Button variant="secondary" onClick={() => onBackButtonClick()} disabled={submitting}>
+                Back
+              </Button>
+            )}
+          </div>
+          <div>
+            <Button variant="secondary" onClick={props.onClose} disabled={submitting}>
+              {cancelButtonLabel}
             </Button>
-          )}
-          {onSubmit && (
-            <Button onClick={handleSubmit} loading={submitting} disabled={disableSubmit}>
-              {submitTitle}
-            </Button>
-          )}
+
+            {onSubmit && (
+              <Button onClick={handleSubmit} loading={submitting} disabled={disableSubmit}>
+                {submitTitle}
+              </Button>
+            )}
+          </div>
         </>
       }
+      className={clsx(classes.modalForm, className)}
       {...props}
     >
       {!!error && <Alert variant="error" title={error?.title} message={error?.message} />}
@@ -116,3 +129,19 @@ export default function ModalForm({
     </Modal>
   )
 }
+
+const useStyles = makeStyles<Theme>((theme) => ({
+  modalForm: {
+    '& .modal-footer': {
+      display: 'flex',
+      justifyContent: 'space-between',
+
+      '& > div': {
+        display: 'grid',
+        gridAutoFlow: 'column',
+        gridAutoColumns: 'max-content',
+        gridGap: theme.spacing(2),
+      },
+    },
+  },
+}))
