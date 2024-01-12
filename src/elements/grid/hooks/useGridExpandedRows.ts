@@ -5,6 +5,7 @@ import { ParsedGridRow } from './useGridRows'
 export interface GridExpandedRowsConfig<T> {
   expandableRow?: (row: T, onRowExpand) => ReactNode
   expandedByDefault?: (row: T) => boolean
+  allowMultipleExpandedRows?: boolean
 }
 
 export interface GridExpandedRowsProps {
@@ -16,7 +17,11 @@ export interface GridExpandedRowsProps {
 
 export default function useGridExpandedRows<T>(
   rows: Array<ParsedGridRow<T>>,
-  { expandableRow, expandedByDefault }: GridExpandedRowsConfig<T>,
+  {
+    expandableRow,
+    expandedByDefault,
+    allowMultipleExpandedRows = false,
+  }: GridExpandedRowsConfig<T>,
 ): [Array<ParsedGridRow<T>>, GridExpandedRowsProps] {
   if (!expandableRow) {
     return [rows, { expandedRowsById: {} }]
@@ -34,11 +39,26 @@ export default function useGridExpandedRows<T>(
   }, [rows])
   const [expandedRowsById, setExpandedRowsById] = useState(initialExpandedRows)
 
-  const onRowExpand = (key) => () =>
-    setExpandedRowsById({
-      ...expandedRowsById,
-      [key]: !expandedRowsById[key],
-    })
+  const onRowExpand = (key) => () => {
+    if (allowMultipleExpandedRows) {
+      setExpandedRowsById({
+        ...expandedRowsById,
+        [key]: !expandedRowsById[key],
+      })
+    } else {
+      // Only one row should be expanded at one time. Check to see if any row is currently expanded
+      const currentExpandedRowKey = Object.entries(expandedRowsById).find(
+        ([key, expanded]) => expanded === true,
+      )?.[0]
+
+      setExpandedRowsById({
+        ...expandedRowsById,
+        // if a row is already expanded, close it
+        ...(currentExpandedRowKey ? { [currentExpandedRowKey]: false } : {}),
+        [key]: !expandedRowsById[key],
+      })
+    }
+  }
 
   return [
     rows,
