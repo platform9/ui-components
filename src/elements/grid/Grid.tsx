@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo, useContext, FC, PropsWithChildren, useEffect } from 'react'
+import React, { ReactNode, useMemo, useContext, FC, PropsWithChildren } from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
 import Theme, { TypographyModel } from '../../theme-manager/themes/model'
