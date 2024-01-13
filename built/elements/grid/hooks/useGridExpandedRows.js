@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-disable react-hooks/rules-of-hooks */
 const react_1 = require("react");
-function useGridExpandedRows(rows, { expandableRow, expandedByDefault }) {
+function useGridExpandedRows(rows, { expandableRow, expandedByDefault, allowMultipleExpandedRows = false, }) {
     if (!expandableRow) {
         return [rows, { expandedRowsById: {} }];
     }
@@ -14,7 +14,17 @@ function useGridExpandedRows(rows, { expandableRow, expandedByDefault }) {
             : rows;
     }, [rows]);
     const [expandedRowsById, setExpandedRowsById] = (0, react_1.useState)(initialExpandedRows);
-    const onRowExpand = (key) => () => setExpandedRowsById(Object.assign(Object.assign({}, expandedRowsById), { [key]: !expandedRowsById[key] }));
+    const onRowExpand = (key) => () => {
+        var _a;
+        if (allowMultipleExpandedRows) {
+            setExpandedRowsById(Object.assign(Object.assign({}, expandedRowsById), { [key]: !expandedRowsById[key] }));
+        }
+        else {
+            // Only one row should be expanded at one time. Check to see if any row is currently expanded
+            const currentExpandedRowKey = (_a = Object.entries(expandedRowsById).find(([key, expanded]) => expanded === true)) === null || _a === void 0 ? void 0 : _a[0];
+            setExpandedRowsById(Object.assign(Object.assign(Object.assign({}, expandedRowsById), (currentExpandedRowKey ? { [currentExpandedRowKey]: false } : {})), { [key]: !expandedRowsById[key] }));
+        }
+    };
     return [
         rows,
         {
