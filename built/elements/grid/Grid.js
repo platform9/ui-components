@@ -164,18 +164,19 @@ function Grid(configProps) {
                 react_1.default.createElement("section", { className: (0, clsx_1.default)(classes.gridBody, 'thin-scrollbar') }, colManagedRows.length ? (react_1.default.createElement("table", { className: classes.grid },
                     react_1.default.createElement(GridHeader_1.default, Object.assign({}, columnProps, sortingProps, rowBatchActionsProps, { rowMenuItemsLength: (_a = rowActionsProps.rowMenuItems) === null || _a === void 0 ? void 0 : _a.length, pageRows: pageRows })),
                     react_1.default.createElement("tbody", null, colManagedRows.map((_a, index) => {
-                        var _b, _c, _d;
+                        var _b;
                         var { key } = _a, rowProps = __rest(_a, ["key"]);
+                        const isExpanded = (_b = expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.expandedRowsById) === null || _b === void 0 ? void 0 : _b[key];
                         return (react_1.default.createElement(react_1.default.Fragment, { key: key },
                             react_1.default.createElement(GridRow_1.default, Object.assign({ key: key, className: (0, clsx_1.default)(classes.tr, {
-                                    [classes.trTopExpanded]: (_b = expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.expandedRowsById) === null || _b === void 0 ? void 0 : _b[key],
+                                    [classes.trTopExpanded]: isExpanded,
                                 }), tdClassName: classes.td, cellClassName: classes.cell, index: index, numPageItems: paginationProps === null || paginationProps === void 0 ? void 0 : paginationProps.currentPageItemsCount, rowId: key }, rowProps, rowActionsProps, rowBatchActionsProps, expandedRowProps)),
-                            expandableRow && (react_1.default.createElement("tr", { className: (0, clsx_1.default)({
-                                    [classes.trBotExpanded]: (_c = expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.expandedRowsById) === null || _c === void 0 ? void 0 : _c[key],
+                            expandableRow && isExpanded && (react_1.default.createElement("tr", { className: (0, clsx_1.default)({
+                                    [classes.trBotExpanded]: isExpanded,
                                 }) },
                                 react_1.default.createElement("td", { colSpan: 100 },
                                     react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.expandingContainer, {
-                                            [classes.expandedContainer]: (_d = expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.expandedRowsById) === null || _d === void 0 ? void 0 : _d[key],
+                                            [classes.expandedContainer]: isExpanded,
                                         }) }, expandableRow(rowProps === null || rowProps === void 0 ? void 0 : rowProps.item, expandedRowProps === null || expandedRowProps === void 0 ? void 0 : expandedRowProps.onRowExpand(key))))))));
                     })))) : (react_1.default.createElement(GridEmptyContent_1.default, null, loading ? '' : emptyContent))),
                 sortedRows.length &&

@@ -229,44 +229,46 @@ export default function Grid<
                   pageRows={pageRows}
                 />
                 <tbody>
-                  {colManagedRows.map(({ key, ...rowProps }, index) => (
-                    <React.Fragment key={key}>
-                      <GridRow
-                        key={key}
-                        className={clsx(classes.tr, {
-                          [classes.trTopExpanded]: expandedRowProps?.expandedRowsById?.[key],
-                        })}
-                        tdClassName={classes.td}
-                        cellClassName={classes.cell}
-                        index={index}
-                        numPageItems={paginationProps?.currentPageItemsCount}
-                        rowId={key}
-                        {...rowProps}
-                        {...rowActionsProps}
-                        {...rowBatchActionsProps}
-                        {...expandedRowProps}
-                      />
-                      {expandableRow && (
-                        <tr
-                          className={clsx({
-                            [classes.trBotExpanded]: expandedRowProps?.expandedRowsById?.[key],
+                  {colManagedRows.map(({ key, ...rowProps }, index) => {
+                    const isExpanded = expandedRowProps?.expandedRowsById?.[key]
+                    return (
+                      <React.Fragment key={key}>
+                        <GridRow
+                          key={key}
+                          className={clsx(classes.tr, {
+                            [classes.trTopExpanded]: isExpanded,
                           })}
-                        >
-                          {/* This would not be viable if we have more than 100 rows */}
-                          <td colSpan={100}>
-                            <div
-                              className={clsx(classes.expandingContainer, {
-                                [classes.expandedContainer]:
-                                  expandedRowProps?.expandedRowsById?.[key],
-                              })}
-                            >
-                              {expandableRow(rowProps?.item, expandedRowProps?.onRowExpand(key))}
-                            </div>
-                          </td>
-                        </tr>
-                      )}
-                    </React.Fragment>
-                  ))}
+                          tdClassName={classes.td}
+                          cellClassName={classes.cell}
+                          index={index}
+                          numPageItems={paginationProps?.currentPageItemsCount}
+                          rowId={key}
+                          {...rowProps}
+                          {...rowActionsProps}
+                          {...rowBatchActionsProps}
+                          {...expandedRowProps}
+                        />
+                        {expandableRow && isExpanded && (
+                          <tr
+                            className={clsx({
+                              [classes.trBotExpanded]: isExpanded,
+                            })}
+                          >
+                            {/* This would not be viable if we have more than 100 rows */}
+                            <td colSpan={100}>
+                              <div
+                                className={clsx(classes.expandingContainer, {
+                                  [classes.expandedContainer]: isExpanded,
+                                })}
+                              >
+                                {expandableRow(rowProps?.item, expandedRowProps?.onRowExpand(key))}
+                              </div>
+                            </td>
+                          </tr>
+                        )}
+                      </React.Fragment>
+                    )
+                  })}
                 </tbody>
               </table>
             ) : (
