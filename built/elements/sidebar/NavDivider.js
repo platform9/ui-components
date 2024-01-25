@@ -7,9 +7,10 @@ const react_1 = __importDefault(require("react"));
 const styles_1 = require("@material-ui/styles");
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
 const Text_1 = __importDefault(require("../Text"));
+const clsx_1 = __importDefault(require("clsx"));
 function NavDivider({ icon = undefined, name = '' }) {
     const classes = useStyles();
-    return (react_1.default.createElement("li", { className: classes.dividerLink },
+    return (react_1.default.createElement("li", { className: (0, clsx_1.default)(classes.dividerLink, 'dividerLink') },
         react_1.default.createElement(FontAwesomeIcon_1.default, null, icon),
         react_1.default.createElement(Text_1.default, { variant: "subtitle2" }, name)));
 }
