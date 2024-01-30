@@ -10,6 +10,8 @@ const Text_1 = __importDefault(require("../../elements/Text"));
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
 const Checkbox_1 = __importDefault(require("../../elements/input/Checkbox"));
 const GridTableHeading_1 = __importDefault(require("./GridTableHeading"));
+const tooltip_1 = __importDefault(require("../tooltip"));
+const defaults_1 = require("../menu/defaults");
 const useStyles = (0, styles_1.makeStyles)((theme) => ({
     gridHead: {
         border: 'none',
@@ -27,6 +29,15 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
     gridSelectAllTh: {
         width: 40,
         paddingLeft: 10,
+    },
+    nowrap: {
+        whiteSpace: 'nowrap',
+    },
+    tooltipContainer: {
+        display: 'inline-block',
+    },
+    tooltip: {
+        marginLeft: 8,
     },
 }));
 function SelectAllColumn({ className, pageRows, rowsSelectionDisabled, multiSelectionEnabled, toggleSelectAll, selectionStatus, }) {
@@ -52,7 +63,10 @@ function GridHeader(props) {
             columns
                 .filter(({ visible }) => visible !== false)
                 .map(({ key, width, tooltip, label }) => (react_1.default.createElement(GridTableHeading_1.default, { width: width, sortingDisabled: sortingDisabled, onClick: sortingDisabled ? null : () => toggleSort(key), key: key },
-                react_1.default.createElement(Text_1.default, { title: String(tooltip || label), variant: "caption2", className: "grid_header-text" }, label),
+                react_1.default.createElement(Text_1.default, { variant: "caption2", className: (0, clsx_1.default)('grid_header-text', classes.nowrap) },
+                    label,
+                    tooltip && (react_1.default.createElement(tooltip_1.default, { className: classes.tooltipContainer, align: defaults_1.topMiddle.align, offset: defaults_1.topMiddle.offset, message: tooltip },
+                        react_1.default.createElement(FontAwesomeIcon_1.default, { className: classes.tooltip }, "question-circle")))),
                 sortedBy === key ? (react_1.default.createElement(FontAwesomeIcon_1.default, { "aria-hidden": "true", solid: true, className: "grid_header-direction" }, `sort-${sortedDirection === 'asc' ? 'up' : 'down'}`)) : null))),
             rowMenuItemsLength ? (react_1.default.createElement(GridTableHeading_1.default, { width: rowMenuItemsLength > 1 ? 20 : 120, sortingDisabled: true, key: "row-menu" })) : null)));
 }

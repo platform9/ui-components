@@ -9,6 +9,8 @@ import FontAwesomeIcon from '../../components/FontAwesomeIcon'
 import Checkbox from '../../elements/input/Checkbox'
 import { GridManagedColumnsProps } from './hooks/useGridManagedColumns'
 import GridTableHeading from './GridTableHeading'
+import Tooltip from '../tooltip'
+import { topMiddle } from '../menu/defaults'
 
 export interface GridHeaderProps<T>
   extends GridSortingProps,
@@ -44,6 +46,15 @@ const useStyles = makeStyles<Theme, GridSortingProps>((theme) => ({
   gridSelectAllTh: {
     width: 40,
     paddingLeft: 10,
+  },
+  nowrap: {
+    whiteSpace: 'nowrap',
+  },
+  tooltipContainer: {
+    display: 'inline-block',
+  },
+  tooltip: {
+    marginLeft: 8,
   },
 }))
 
@@ -114,12 +125,18 @@ export default function GridHeader<T>(props: GridHeaderProps<T>) {
               onClick={sortingDisabled ? null : () => toggleSort(key)}
               key={key}
             >
-              <Text
-                title={String(tooltip || label)}
-                variant="caption2"
-                className="grid_header-text"
-              >
+              <Text variant="caption2" className={clsx('grid_header-text', classes.nowrap)}>
                 {label}
+                {tooltip && (
+                  <Tooltip
+                    className={classes.tooltipContainer}
+                    align={topMiddle.align}
+                    offset={topMiddle.offset}
+                    message={tooltip}
+                  >
+                    <FontAwesomeIcon className={classes.tooltip}>question-circle</FontAwesomeIcon>
+                  </Tooltip>
+                )}
               </Text>
               {sortedBy === key ? (
                 <FontAwesomeIcon aria-hidden="true" solid className="grid_header-direction">
