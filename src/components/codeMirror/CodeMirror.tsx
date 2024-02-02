@@ -15,6 +15,7 @@ import Tooltip from '../../elements/tooltip'
 import FontAwesomeIcon from '../../components/FontAwesomeIcon'
 import CodeMirrorModal from './CodeMirrorModal'
 import Button from '../../elements/button'
+import { ButtonProps } from '../../elements/button/Button'
 
 require('codemirror/mode/yaml/yaml')
 require('codemirror/mode/javascript/javascript')
@@ -41,6 +42,15 @@ const defaultOptions = {
 export type AlignVertical = 'top' | 'middle' | 'bottom'
 export type AlignHorizontal = 'left' | 'middle' | 'right'
 
+export interface CodeMirrorActionButtonProps extends Omit<ButtonProps, 'children'> {
+  // Info tooltip props
+  classes?: any
+  align?: any
+  offset?: any
+  info?: string | React.ReactNode
+  infoPlacement?: any
+}
+
 export interface Props extends ICodeMirror {
   id?: string
   variant?: string
@@ -63,6 +73,8 @@ export interface Props extends ICodeMirror {
   showCollapseButton?: boolean
   collapseYaml?: boolean
   maxHeight?: number
+  downloadButtonProps?: CodeMirrorActionButtonProps
+  copyButtonProps?: CodeMirrorActionButtonProps
 }
 
 // These styles are to match CodeMirrors. We need to find a good way
@@ -90,6 +102,8 @@ export default function CodeMirror({
   showCollapseButton = false,
   maxHeight = 350,
   collapseYaml = false,
+  downloadButtonProps = {},
+  copyButtonProps = {},
   ...restProps
 }: Props) {
   const codeMirrorInput = createRef()
@@ -199,13 +213,18 @@ export default function CodeMirror({
               )}
               {showCopyButton && (
                 <CopyToClipboard copyText={value} inline codeBlock={false} triggerWithChild>
-                  <Button type="button" icon="copy" disabled={!value}>
+                  <Button type="button" icon="copy" {...copyButtonProps}>
                     Copy
                   </Button>
                 </CopyToClipboard>
               )}
               {showDownloadButton && (
-                <Button type="button" onClick={downloadFile} icon="download">
+                <Button
+                  type="button"
+                  onClick={downloadFile}
+                  icon="download"
+                  {...downloadButtonProps}
+                >
                   Download
                 </Button>
               )}

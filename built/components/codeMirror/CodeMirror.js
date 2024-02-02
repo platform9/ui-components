@@ -76,7 +76,7 @@ const defaultOptions = {
 // These styles are to match CodeMirrors. We need to find a good way
 // to re-define their styles so we can use common variables
 function CodeMirror(_a) {
-    var { id, variant, label, value, hasError, errorMessage, onChange, options = {}, info, align = defaults_1.topRight.align, className, showSearchBar = false, extraActions = null, loading = false, showCopyButton = false, showDownloadButton = false, downloadFileName = '', showExpandButton = false, showCollapseButton = false, maxHeight = 350, collapseYaml = false } = _a, restProps = __rest(_a, ["id", "variant", "label", "value", "hasError", "errorMessage", "onChange", "options", "info", "align", "className", "showSearchBar", "extraActions", "loading", "showCopyButton", "showDownloadButton", "downloadFileName", "showExpandButton", "showCollapseButton", "maxHeight", "collapseYaml"]);
+    var { id, variant, label, value, hasError, errorMessage, onChange, options = {}, info, align = defaults_1.topRight.align, className, showSearchBar = false, extraActions = null, loading = false, showCopyButton = false, showDownloadButton = false, downloadFileName = '', showExpandButton = false, showCollapseButton = false, maxHeight = 350, collapseYaml = false, downloadButtonProps = {}, copyButtonProps = {} } = _a, restProps = __rest(_a, ["id", "variant", "label", "value", "hasError", "errorMessage", "onChange", "options", "info", "align", "className", "showSearchBar", "extraActions", "loading", "showCopyButton", "showDownloadButton", "downloadFileName", "showExpandButton", "showCollapseButton", "maxHeight", "collapseYaml", "downloadButtonProps", "copyButtonProps"]);
     const codeMirrorInput = (0, react_1.createRef)();
     const [height, setHeight] = (0, react_1.useState)(maxHeight);
     const classes = useStyles({ variant, height });
@@ -145,8 +145,8 @@ function CodeMirror(_a) {
             renderActionsBar && (react_1.default.createElement("div", { className: `CodeMirror-actionsBar ${classes.actionsBar}` },
                 showSearchBar && (react_1.default.createElement(SearchBar_1.default, { className: classes.searchBar, searchTerm: searchTerm, onSearchChange: (value) => setSearchTerm(value) })),
                 showCopyButton && (react_1.default.createElement(CopyToClipboard_1.default, { copyText: value, inline: true, codeBlock: false, triggerWithChild: true },
-                    react_1.default.createElement(button_1.default, { type: "button", icon: "copy", disabled: !value }, "Copy"))),
-                showDownloadButton && (react_1.default.createElement(button_1.default, { type: "button", onClick: downloadFile, icon: "download" }, "Download")),
+                    react_1.default.createElement(button_1.default, Object.assign({ type: "button", icon: "copy" }, copyButtonProps), "Copy"))),
+                showDownloadButton && (react_1.default.createElement(button_1.default, Object.assign({ type: "button", onClick: downloadFile, icon: "download" }, downloadButtonProps), "Download")),
                 showExpandButton && (react_1.default.createElement(tooltip_1.default, { message: "Expand", align: defaults_1.topLeft.align },
                     react_1.default.createElement(FontAwesomeIcon_1.default, { regular: true, className: classes.icon, onClick: () => setModalOpen(true) }, "expand"))),
                 isModalOpen && (react_1.default.createElement(CodeMirrorModal_1.default, { label: label, value: value, open: isModalOpen, onClose: () => setModalOpen(false) })),
