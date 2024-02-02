@@ -145,7 +145,7 @@ function CodeMirror(_a) {
             renderActionsBar && (react_1.default.createElement("div", { className: `CodeMirror-actionsBar ${classes.actionsBar}` },
                 showSearchBar && (react_1.default.createElement(SearchBar_1.default, { className: classes.searchBar, searchTerm: searchTerm, onSearchChange: (value) => setSearchTerm(value) })),
                 showCopyButton && (react_1.default.createElement(CopyToClipboard_1.default, { copyText: value, inline: true, codeBlock: false, triggerWithChild: true },
-                    react_1.default.createElement(button_1.default, Object.assign({ type: "button", icon: "copy" }, copyButtonProps), "Copy"))),
+                    react_1.default.createElement(button_1.default, Object.assign({ type: "button", icon: "copy", disabled: !value }, copyButtonProps), "Copy"))),
                 showDownloadButton && (react_1.default.createElement(button_1.default, Object.assign({ type: "button", onClick: downloadFile, icon: "download" }, downloadButtonProps), "Download")),
                 showExpandButton && (react_1.default.createElement(tooltip_1.default, { message: "Expand", align: defaults_1.topLeft.align },
                     react_1.default.createElement(FontAwesomeIcon_1.default, { regular: true, className: classes.icon, onClick: () => setModalOpen(true) }, "expand"))),

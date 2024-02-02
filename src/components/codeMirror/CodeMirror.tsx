@@ -213,7 +213,7 @@ export default function CodeMirror({
               )}
               {showCopyButton && (
                 <CopyToClipboard copyText={value} inline codeBlock={false} triggerWithChild>
-                  <Button type="button" icon="copy" {...copyButtonProps}>
+                  <Button type="button" icon="copy" disabled={!value} {...copyButtonProps}>
                     Copy
                   </Button>
                 </CopyToClipboard>
