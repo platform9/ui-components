@@ -6,7 +6,7 @@ import Text from '../elements/Text'
 
 interface AlertProps {
   variant?: 'primary' | 'success' | 'warning' | 'error'
-  title?: string
+  title?: string | React.ReactNode
   message?: string | React.ReactNode
   id?: string
   className?: string

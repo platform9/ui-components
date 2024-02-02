@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 interface AlertProps {
     variant?: 'primary' | 'success' | 'warning' | 'error';
-    title?: string;
+    title?: string | React.ReactNode;
     message?: string | React.ReactNode;
     id?: string;
     className?: string;
