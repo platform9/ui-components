@@ -38,7 +38,7 @@ function MultiToggleSwitch({ options = [], onChange, className, activeOptionColo
         setActiveOption(value);
         onChange && onChange(value);
     };
-    return (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.toggleSwitch, className) }, options.map(({ label, value }) => (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.option, activeOption === value ? classes.activeOption : ''), onClick: () => onClick(value) },
+    return (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.toggleSwitch, className) }, options.map(({ label, value }) => (react_1.default.createElement("div", { key: label, className: (0, clsx_1.default)(classes.option, activeOption === value ? classes.activeOption : '', 'option'), onClick: () => onClick(value) },
         react_1.default.createElement(Text_1.default, { variant: "caption1" }, label))))));
 }
 exports.default = MultiToggleSwitch;

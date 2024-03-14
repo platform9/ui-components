@@ -29,7 +29,12 @@ export default function MultiToggleSwitch({
     <div className={clsx(classes.toggleSwitch, className)}>
       {options.map(({ label, value }) => (
         <div
-          className={clsx(classes.option, activeOption === value ? classes.activeOption : '')}
+          key={label}
+          className={clsx(
+            classes.option,
+            activeOption === value ? classes.activeOption : '',
+            'option',
+          )}
           onClick={() => onClick(value)}
         >
           <Text variant="caption1">{label}</Text>
