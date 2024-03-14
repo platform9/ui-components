@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import Theme from '../theme-manager/themes/model'
@@ -6,38 +6,34 @@ import Text from './Text'
 
 interface MultiToggleSwitchProps {
   options: Array<{ label: string; value: unknown }>
-  onChange?: (value) => void
+  value: unknown
+  onClick: (value) => void
   className?: string
   activeOptionColor?: string
 }
 
 export default function MultiToggleSwitch({
   options = [],
-  onChange,
+  value,
+  onClick,
   className,
   activeOptionColor,
 }: MultiToggleSwitchProps) {
   const classes = useStyles({ activeOptionColor })
-  const [activeOption, setActiveOption] = useState(options[0]?.value)
-
-  const onClick = (value) => {
-    setActiveOption(value)
-    onChange && onChange(value)
-  }
 
   return (
     <div className={clsx(classes.toggleSwitch, className)}>
-      {options.map(({ label, value }) => (
+      {options.map((option) => (
         <div
-          key={label}
+          key={option.label}
           className={clsx(
             classes.option,
-            activeOption === value ? classes.activeOption : '',
+            option.value === value ? classes.activeOption : '',
             'option',
           )}
-          onClick={() => onClick(value)}
+          onClick={() => onClick(option.value)}
         >
-          <Text variant="caption1">{label}</Text>
+          <Text variant="caption1">{option.label}</Text>
         </div>
       ))}
     </div>
