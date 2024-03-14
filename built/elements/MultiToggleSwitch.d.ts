@@ -4,9 +4,10 @@ interface MultiToggleSwitchProps {
         label: string;
         value: unknown;
     }>;
-    onChange?: (value: any) => void;
+    value: unknown;
+    onClick: (value: any) => void;
     className?: string;
     activeOptionColor?: string;
 }
-export default function MultiToggleSwitch({ options, onChange, className, activeOptionColor, }: MultiToggleSwitchProps): JSX.Element;
+export default function MultiToggleSwitch({ options, value, onClick, className, activeOptionColor, }: MultiToggleSwitchProps): JSX.Element;
 export {};
