@@ -14,6 +14,7 @@ export declare const DefaultMultiToggleSwitch: {
             label: string;
             value: string;
         }[];
+        activeOptionColor: string;
     };
 };
 declare const ToggleSwitchStories: Meta;

@@ -6,6 +6,7 @@ interface MultiToggleSwitchProps {
     }>;
     onChange?: (value: any) => void;
     className?: string;
+    activeOptionColor?: string;
 }
-export default function MultiToggleSwitch({ options, onChange, className, }: MultiToggleSwitchProps): JSX.Element;
+export default function MultiToggleSwitch({ options, onChange, className, activeOptionColor, }: MultiToggleSwitchProps): JSX.Element;
 export {};

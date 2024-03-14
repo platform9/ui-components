@@ -1,6 +1,5 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
-
 import MultiToggleSwitch from '../../elements/MultiToggleSwitch'
 import Card from '../../elements/card'
 import { Column } from '../containers'
@@ -9,17 +8,12 @@ export const DefaultMultiToggleSwitch = (args) => {
   return (
     <Card>
       <Column>
-        <MultiToggleSwitch
-          {...args}
-          options={[
-            { label: 'Monthly', value: 'monthly' },
-            { label: 'Hourly', value: 'hourly' },
-          ]}
-        />
+        <MultiToggleSwitch {...args} />
       </Column>
     </Card>
   )
 }
+
 DefaultMultiToggleSwitch.parameters = {
   docs: {
     source: {
@@ -40,15 +34,18 @@ const MyComponent = () => {
     },
   },
 }
+
 DefaultMultiToggleSwitch.args = {
   options: [
     { label: 'Monthly', value: 'monthly' },
     { label: 'Hourly', value: 'hourly' },
   ],
+  activeOptionColor: '#00abe8',
 }
 
 const ToggleSwitchStories: Meta = {
   title: 'Elements/MultiToggleSwitch',
   component: MultiToggleSwitch,
 }
+
 export default ToggleSwitchStories

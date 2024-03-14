@@ -30,9 +30,9 @@ const react_1 = __importStar(require("react"));
 const styles_1 = require("@material-ui/styles");
 const clsx_1 = __importDefault(require("clsx"));
 const Text_1 = __importDefault(require("./Text"));
-function MultiToggleSwitch({ options = [], onChange, className, }) {
+function MultiToggleSwitch({ options = [], onChange, className, activeOptionColor, }) {
     var _a;
-    const classes = useStyles();
+    const classes = useStyles({ activeOptionColor });
     const [activeOption, setActiveOption] = (0, react_1.useState)((_a = options[0]) === null || _a === void 0 ? void 0 : _a.value);
     const onClick = (value) => {
         setActiveOption(value);
@@ -53,13 +53,15 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         borderRadius: '14px',
         height: '28px',
         padding: theme.spacing(0, 1),
+        border: `1px solid ${theme.palette.grey[200]}`,
+        boxShadow: '0 0 5px rgba(0, 0, 0, 0.1)',
     },
     option: {
         cursor: 'pointer',
         padding: theme.spacing(0, 1.5),
     },
     activeOption: {
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: ({ activeOptionColor }) => activeOptionColor ? activeOptionColor : theme.palette.primary.main,
         borderRadius: '18px',
         color: theme.palette.common.white,
         '& span': {

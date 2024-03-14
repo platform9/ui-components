@@ -11,10 +11,7 @@ const containers_1 = require("../containers");
 const DefaultMultiToggleSwitch = (args) => {
     return (react_1.default.createElement(card_1.default, null,
         react_1.default.createElement(containers_1.Column, null,
-            react_1.default.createElement(MultiToggleSwitch_1.default, Object.assign({}, args, { options: [
-                    { label: 'Monthly', value: 'monthly' },
-                    { label: 'Hourly', value: 'hourly' },
-                ] })))));
+            react_1.default.createElement(MultiToggleSwitch_1.default, Object.assign({}, args)))));
 };
 exports.DefaultMultiToggleSwitch = DefaultMultiToggleSwitch;
 exports.DefaultMultiToggleSwitch.parameters = {
@@ -42,6 +39,7 @@ exports.DefaultMultiToggleSwitch.args = {
         { label: 'Monthly', value: 'monthly' },
         { label: 'Hourly', value: 'hourly' },
     ],
+    activeOptionColor: '#00abe8',
 };
 const ToggleSwitchStories = {
     title: 'Elements/MultiToggleSwitch',
