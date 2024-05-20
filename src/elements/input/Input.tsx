@@ -1,13 +1,13 @@
-import React, { PropsWithChildren, useRef, useMemo, useCallback, ReactNode } from 'react'
-import FontAwesomeIcon from '../../components/FontAwesomeIcon'
-import { mergeRight } from 'ramda'
-import Text from '../Text'
-import Theme from '../../theme-manager/themes/model'
-import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
-import Tooltip from '../../elements/tooltip'
+import clsx from 'clsx'
+import { mergeRight } from 'ramda'
+import React, { PropsWithChildren, ReactNode, useCallback, useMemo, useRef } from 'react'
+import FontAwesomeIcon from '../../components/FontAwesomeIcon'
 import { topMiddle } from '../../elements/menu/defaults'
+import Tooltip from '../../elements/tooltip'
 import useToggler from '../../hooks/useToggler'
+import Theme from '../../theme-manager/themes/model'
+import Text from '../Text'
 
 export interface InputIconProps {
   onClick?: () => void
@@ -68,7 +68,7 @@ const Input = ({
 
   const handleFocusOut = (event) => {
     event.target.value = event?.target?.value?.trim()
-    onChange(event)
+    onChange && onChange(event)
     toggleFocused()
   }
 

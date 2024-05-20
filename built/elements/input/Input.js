@@ -37,15 +37,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const styles_1 = require("@material-ui/styles");
+const clsx_1 = __importDefault(require("clsx"));
+const ramda_1 = require("ramda");
 const react_1 = __importStar(require("react"));
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
-const ramda_1 = require("ramda");
-const Text_1 = __importDefault(require("../Text"));
-const clsx_1 = __importDefault(require("clsx"));
-const styles_1 = require("@material-ui/styles");
-const tooltip_1 = __importDefault(require("../../elements/tooltip"));
 const defaults_1 = require("../../elements/menu/defaults");
+const tooltip_1 = __importDefault(require("../../elements/tooltip"));
 const useToggler_1 = __importDefault(require("../../hooks/useToggler"));
+const Text_1 = __importDefault(require("../Text"));
 const defaultIconProps = {
     placement: 'start',
 };
@@ -66,7 +66,7 @@ const Input = (_a) => {
     const handleFocusOut = (event) => {
         var _a, _b;
         event.target.value = (_b = (_a = event === null || event === void 0 ? void 0 : event.target) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.trim();
-        onChange(event);
+        onChange && onChange(event);
         toggleFocused();
     };
     const handleFocusToggle = (0, react_1.useCallback)(() => {
