@@ -39,20 +39,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const styles_1 = require("@material-ui/styles");
 const clsx_1 = __importDefault(require("clsx"));
-const CopyToClipboard_1 = __importDefault(require("../../components/CopyToClipboard"));
+const react_1 = __importStar(require("react"));
+const react_codemirror2_1 = require("react-codemirror2");
+const CopyButton_1 = __importDefault(require("src/elements/button/CopyButton"));
+const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
 const Progress_1 = __importDefault(require("../../components/progress/Progress"));
+const ErrorMessage_1 = require("../../components/validatedForm/ErrorMessage");
+const Text_1 = __importDefault(require("../../elements/Text"));
+const button_1 = __importDefault(require("../../elements/button"));
 const card_1 = __importDefault(require("../../elements/card"));
 const CardHeader_1 = __importDefault(require("../../elements/card/CardHeader"));
 const defaults_1 = require("../../elements/menu/defaults");
-const Text_1 = __importDefault(require("../../elements/Text"));
-const ErrorMessage_1 = require("../../components/validatedForm/ErrorMessage");
-const react_1 = __importStar(require("react"));
-const react_codemirror2_1 = require("react-codemirror2");
-const SearchBar_1 = __importDefault(require("../SearchBar"));
 const tooltip_1 = __importDefault(require("../../elements/tooltip"));
-const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
+const SearchBar_1 = __importDefault(require("../SearchBar"));
 const CodeMirrorModal_1 = __importDefault(require("./CodeMirrorModal"));
-const button_1 = __importDefault(require("../../elements/button"));
 require('codemirror/mode/yaml/yaml');
 require('codemirror/mode/javascript/javascript');
 require('codemirror/mode/xml/xml');
@@ -144,8 +144,7 @@ function CodeMirror(_a) {
                 label && (react_1.default.createElement(Text_1.default, { className: "code-mirror-header", variant: "subtitle2" }, label))),
             renderActionsBar && (react_1.default.createElement("div", { className: `CodeMirror-actionsBar ${classes.actionsBar}` },
                 showSearchBar && (react_1.default.createElement(SearchBar_1.default, { className: classes.searchBar, searchTerm: searchTerm, onSearchChange: (value) => setSearchTerm(value) })),
-                showCopyButton && (react_1.default.createElement(CopyToClipboard_1.default, { copyText: value, inline: true, codeBlock: false, triggerWithChild: true },
-                    react_1.default.createElement(button_1.default, Object.assign({ type: "button", icon: "copy", disabled: !value }, copyButtonProps), "Copy"))),
+                showCopyButton && react_1.default.createElement(CopyButton_1.default, { copyText: value, disabled: !value }),
                 showDownloadButton && (react_1.default.createElement(button_1.default, Object.assign({ type: "button", onClick: downloadFile, icon: "download" }, downloadButtonProps), "Download")),
                 showExpandButton && (react_1.default.createElement(tooltip_1.default, { message: "Expand", align: defaults_1.topLeft.align },
                     react_1.default.createElement(FontAwesomeIcon_1.default, { regular: true, className: classes.icon, onClick: () => setModalOpen(true) }, "expand"))),

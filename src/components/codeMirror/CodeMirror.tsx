@@ -1,21 +1,21 @@
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import CopyToClipboard from '../../components/CopyToClipboard'
+import React, { createRef, useCallback, useEffect, useState } from 'react'
+import { Controlled as BaseCodeMirror, ICodeMirror } from 'react-codemirror2'
+import CopyButton from 'src/elements/button/CopyButton'
+import FontAwesomeIcon from '../../components/FontAwesomeIcon'
 import Progress from '../../components/progress/Progress'
+import { ErrorMessage } from '../../components/validatedForm/ErrorMessage'
+import Text from '../../elements/Text'
+import Button from '../../elements/button'
+import { ButtonProps } from '../../elements/button/Button'
 import Card from '../../elements/card'
 import CardHeader from '../../elements/card/CardHeader'
 import { topLeft, topRight } from '../../elements/menu/defaults'
-import Text from '../../elements/Text'
-import { ErrorMessage } from '../../components/validatedForm/ErrorMessage'
-import React, { createRef, useCallback, useEffect, useState } from 'react'
-import { Controlled as BaseCodeMirror, ICodeMirror } from 'react-codemirror2'
-import SearchBar from '../SearchBar'
-import Theme from '../../theme-manager/themes/model'
 import Tooltip from '../../elements/tooltip'
-import FontAwesomeIcon from '../../components/FontAwesomeIcon'
+import Theme from '../../theme-manager/themes/model'
+import SearchBar from '../SearchBar'
 import CodeMirrorModal from './CodeMirrorModal'
-import Button from '../../elements/button'
-import { ButtonProps } from '../../elements/button/Button'
 
 require('codemirror/mode/yaml/yaml')
 require('codemirror/mode/javascript/javascript')
@@ -211,13 +211,7 @@ export default function CodeMirror({
                   onSearchChange={(value) => setSearchTerm(value)}
                 />
               )}
-              {showCopyButton && (
-                <CopyToClipboard copyText={value} inline codeBlock={false} triggerWithChild>
-                  <Button type="button" icon="copy" disabled={!value} {...copyButtonProps}>
-                    Copy
-                  </Button>
-                </CopyToClipboard>
-              )}
+              {showCopyButton && <CopyButton copyText={value} disabled={!value} />}
               {showDownloadButton && (
                 <Button
                   type="button"
