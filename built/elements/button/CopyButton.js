@@ -39,7 +39,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         left: '-9999px',
     },
 }));
-const CopyToClipboard = ({ className, copyText, disabled = false }) => {
+const CopyButton = ({ className, copyText, disabled = false }) => {
     const [isCopySuccessful, setIsCopySuccessful] = (0, react_1.useState)(false);
     const textAreaRef = (0, react_1.useRef)(null);
     const classes = useStyles();
@@ -71,5 +71,5 @@ const CopyToClipboard = ({ className, copyText, disabled = false }) => {
         react_1.default.createElement("textarea", { ref: textAreaRef, value: copyText, className: classes.textArea, readOnly: true }),
         react_1.default.createElement(Button_1.default, { variant: "primary", className: className, icon: isCopySuccessful ? 'check' : 'copy', disabled: disabled }, isCopySuccessful ? 'Copied!' : 'Copy')));
 };
-exports.default = CopyToClipboard;
+exports.default = CopyButton;
 //# sourceMappingURL=CopyButton.js.map

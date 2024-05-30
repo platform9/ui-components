@@ -4,5 +4,5 @@ interface Props {
     disabled?: boolean;
     className?: string;
 }
-declare const CopyToClipboard: FunctionComponent<Props>;
-export default CopyToClipboard;
+declare const CopyButton: FunctionComponent<Props>;
+export default CopyButton;

@@ -20,7 +20,7 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
   },
 }))
 
-const CopyToClipboard: FunctionComponent<Props> = ({ className, copyText, disabled = false }) => {
+const CopyButton: FunctionComponent<Props> = ({ className, copyText, disabled = false }) => {
   const [isCopySuccessful, setIsCopySuccessful] = useState<boolean>(false)
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
   const classes = useStyles()
@@ -68,4 +68,4 @@ const CopyToClipboard: FunctionComponent<Props> = ({ className, copyText, disabl
   )
 }
 
-export default CopyToClipboard
+export default CopyButton
