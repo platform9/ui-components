@@ -1,11 +1,11 @@
-import React, { useCallback, FC, useMemo } from 'react'
+import { ThemeProvider } from '@material-ui/styles'
+import React, { FC, useCallback, useMemo } from 'react'
+import { useGridContext } from '../../../elements/grid/Grid'
+import useToggler from '../../../hooks/useToggler'
+import { useCustomTheme } from '../../../theme-manager/ThemeManager'
 import GridDefaultActionButton, {
   GridDefaultActionButtonProps,
 } from '../buttons/GridDefaultActionButton'
-import useToggler from '../../../hooks/useToggler'
-import { useGridContext } from '../../../elements/grid/Grid'
-import { ThemeProvider } from '@material-ui/styles'
-import { useCustomTheme } from '../../../theme-manager/ThemeManager'
 
 export interface GridDialogProps<T> {
   onClose: (success?: boolean) => void
@@ -38,7 +38,7 @@ export default function getGridDialogButton<T, DialogProps extends GridDialogPro
       [customButtonProps, selectedItems, buttonProps.disabled],
     )
     return (
-      <>
+      <ThemeProvider theme={theme}>
         <GridDefaultActionButton
           {...buttonProps}
           {...additionalButtonProps}
@@ -47,16 +47,14 @@ export default function getGridDialogButton<T, DialogProps extends GridDialogPro
           {children}
         </GridDefaultActionButton>
         {dialogOpened && (
-          <ThemeProvider theme={theme}>
-            <DialogComponent
-              onClose={handleDialogClose}
-              rows={selectedItems}
-              // We have to trick the TS engine here as it is unable to infer extraProps as the remaining props
-              {...((customDialogProps || {}) as DialogProps)}
-            />
-          </ThemeProvider>
+          <DialogComponent
+            onClose={handleDialogClose}
+            rows={selectedItems}
+            // We have to trick the TS engine here as it is unable to infer extraProps as the remaining props
+            {...((customDialogProps || {}) as DialogProps)}
+          />
         )}
-      </>
+      </ThemeProvider>
     )
   }
 }
