@@ -37,12 +37,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importStar(require("react"));
-const GridDefaultActionButton_1 = __importDefault(require("../buttons/GridDefaultActionButton"));
-const useToggler_1 = __importDefault(require("../../../hooks/useToggler"));
-const Grid_1 = require("../../../elements/grid/Grid");
 const styles_1 = require("@material-ui/styles");
+const react_1 = __importStar(require("react"));
+const Grid_1 = require("../../../elements/grid/Grid");
+const useToggler_1 = __importDefault(require("../../../hooks/useToggler"));
 const ThemeManager_1 = require("../../../theme-manager/ThemeManager");
+const GridDefaultActionButton_1 = __importDefault(require("../buttons/GridDefaultActionButton"));
 function getGridDialogButton(DialogComponent, customDialogProps, customButtonProps = {}) {
     return (_a) => {
         var { children } = _a, buttonProps = __rest(_a, ["children"]);
@@ -59,10 +59,9 @@ function getGridDialogButton(DialogComponent, customDialogProps, customButtonPro
         const additionalButtonProps = (0, react_1.useMemo)(() => typeof customButtonProps === 'function'
             ? customButtonProps(selectedItems, buttonProps.disabled)
             : customButtonProps, [customButtonProps, selectedItems, buttonProps.disabled]);
-        return (react_1.default.createElement(react_1.default.Fragment, null,
+        return (react_1.default.createElement(styles_1.ThemeProvider, { theme: theme },
             react_1.default.createElement(GridDefaultActionButton_1.default, Object.assign({}, buttonProps, additionalButtonProps, { onClick: toggleDialogOpened }), children),
-            dialogOpened && (react_1.default.createElement(styles_1.ThemeProvider, { theme: theme },
-                react_1.default.createElement(DialogComponent, Object.assign({ onClose: handleDialogClose, rows: selectedItems }, (customDialogProps || {})))))));
+            dialogOpened && (react_1.default.createElement(DialogComponent, Object.assign({ onClose: handleDialogClose, rows: selectedItems }, (customDialogProps || {}))))));
     };
 }
 exports.default = getGridDialogButton;
