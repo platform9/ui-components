@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-disable react-hooks/rules-of-hooks */
-const react_1 = require("react");
 const ramda_1 = require("ramda");
+const react_1 = require("react");
 const fp_1 = require("../../..//utils/fp");
 const misc_1 = require("../../../utils/misc");
 const GridDefaultActionButton_1 = __importDefault(require("../buttons/GridDefaultActionButton"));
@@ -85,7 +85,7 @@ function useGridSelectableRows(rows, { batchActions: rowActionsSpec = fp_1.empty
     const toggleSelectAll = (0, react_1.useCallback)((rows = selectableRows) => {
         const keys = rows.map(({ key }) => key);
         if ((0, ramda_1.difference)(keys, Array.from(selectedRows.keys())).length) {
-            dispatch({ type: 'addSome', payload: { rows } });
+            dispatch({ type: 'addSome', payload: { rows: rows.filter((r) => r.isSelectable) } });
             return;
         }
         dispatch({ type: 'removeSome', payload: { rows } });
