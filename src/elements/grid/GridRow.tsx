@@ -4,16 +4,17 @@ import Radio from '../../elements/input/Radio'
 import { noop } from '../../utils/fp'
 import { memoizeShallow } from '../../utils/misc'
 import generateTestId from '../../utils/test-helpers'
-import { SelectableParsedGridRow } from './hooks/useGridSelectableRows'
-import { GridRowMenuItemsProps, GridRowMenuOffset } from './hooks/useGridRowMenu'
 import GridRowMenu from './GridRowMenu'
 import { GridExpandedRowsProps } from './hooks/useGridExpandedRows'
+import { GridRowMenuItemsProps, GridRowMenuOffset } from './hooks/useGridRowMenu'
+import { SelectableParsedGridRow } from './hooks/useGridSelectableRows'
 
 interface SelectRowColumnProps {
   className: string
   multiSelection: boolean
   isSelectable: boolean
   isSelected: boolean
+  nonSelectableRowTooltip?: string | React.ReactNode
 }
 
 const SelectRowColumn = memoizeShallow(
@@ -22,14 +23,18 @@ const SelectRowColumn = memoizeShallow(
     multiSelection,
     isSelectable,
     isSelected,
+    nonSelectableRowTooltip = undefined,
   }: SelectRowColumnProps) {
     if (isSelectable === undefined) {
       return null
     }
     const Toggler = multiSelection ? Checkbox : Radio
+    const disabled = !isSelectable
+    const info =
+      isSelectable || nonSelectableRowTooltip === undefined ? null : nonSelectableRowTooltip
     return (
       <td data-testid={generateTestId('cluster', 'checkbox', 'selection')} className={className}>
-        <Toggler disabled={!isSelectable} checked={isSelected} onChange={noop} />
+        <Toggler disabled={disabled} checked={isSelected} onChange={noop} info={info} />
       </td>
     )
   },
@@ -72,6 +77,7 @@ export default function GridRow<T>(props: GridRowProps<T>) {
     expandedRowsById,
     onRowExpand,
     rowId,
+    nonSelectableRowTooltip,
   } = props
   return (
     <tr className={className} onClick={toggleSelect}>
@@ -81,6 +87,7 @@ export default function GridRow<T>(props: GridRowProps<T>) {
           multiSelection,
           isSelectable,
           isSelected,
+          nonSelectableRowTooltip,
         }}
       />
       {getCells().map(({ key, CellComponent, value, getFormattedValue }, idx) => {
