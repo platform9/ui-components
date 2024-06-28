@@ -132,6 +132,11 @@ const useStyles = makeStyles<Theme, GridViewConfig>((theme: Theme) => ({
       marginLeft: -4,
       width: 16,
     },
+    '& > .tooltip-container > .checkbox': {
+      padding: 4,
+      marginLeft: -4,
+      width: 16,
+    },
   },
   cell: {
     overflow: 'hidden',
