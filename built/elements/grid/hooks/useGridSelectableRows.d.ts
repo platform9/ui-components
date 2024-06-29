@@ -10,6 +10,7 @@ export interface GridBatchActionsConfig<T> {
     totalItems?: number;
     batchActions?: Array<GridBatchActionSpec<T>>;
     onRefresh?: (...args: unknown[]) => void | Promise<void>;
+    disabledRowTooltip?: string | React.ReactNode | ((item: T) => string | React.ReactNode);
 }
 export interface BatchActionButtonProps<T> {
     onClick: () => void | Promise<void>;
@@ -54,5 +55,6 @@ export interface GridBatchActionsProps<T> {
     toggleSelectAll?: () => void;
     clearSelectedRows?: () => void;
     selectionStatus?: SelectionStatus;
+    disabledRowTooltip?: string | React.ReactNode | ((item: T) => string | React.ReactNode);
 }
-export default function useGridSelectableRows<T>(rows: Array<ParsedGridRow<T>>, { batchActions: rowActionsSpec, multiSelection, rowIsSelectableFn, totalItems, selectedItems, onSelectChange, isControlled, disableRowSelection, onRefresh, }: GridBatchActionsConfig<T>): [Array<SelectableParsedGridRow<T>>, GridBatchActionsProps<T>];
+export default function useGridSelectableRows<T>(rows: Array<ParsedGridRow<T>>, { batchActions: rowActionsSpec, multiSelection, rowIsSelectableFn, totalItems, selectedItems, onSelectChange, isControlled, disableRowSelection, onRefresh, disabledRowTooltip, }: GridBatchActionsConfig<T>): [Array<SelectableParsedGridRow<T>>, GridBatchActionsProps<T>];

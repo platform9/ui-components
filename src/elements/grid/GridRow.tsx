@@ -4,16 +4,17 @@ import Radio from '../../elements/input/Radio'
 import { noop } from '../../utils/fp'
 import { memoizeShallow } from '../../utils/misc'
 import generateTestId from '../../utils/test-helpers'
-import { SelectableParsedGridRow } from './hooks/useGridSelectableRows'
-import { GridRowMenuItemsProps, GridRowMenuOffset } from './hooks/useGridRowMenu'
 import GridRowMenu from './GridRowMenu'
 import { GridExpandedRowsProps } from './hooks/useGridExpandedRows'
+import { GridRowMenuItemsProps, GridRowMenuOffset } from './hooks/useGridRowMenu'
+import { SelectableParsedGridRow } from './hooks/useGridSelectableRows'
 
 interface SelectRowColumnProps {
   className: string
   multiSelection: boolean
   isSelectable: boolean
   isSelected: boolean
+  info?: string | React.ReactNode
 }
 
 const SelectRowColumn = memoizeShallow(
@@ -22,6 +23,7 @@ const SelectRowColumn = memoizeShallow(
     multiSelection,
     isSelectable,
     isSelected,
+    info = undefined,
   }: SelectRowColumnProps) {
     if (isSelectable === undefined) {
       return null
@@ -29,7 +31,7 @@ const SelectRowColumn = memoizeShallow(
     const Toggler = multiSelection ? Checkbox : Radio
     return (
       <td data-testid={generateTestId('cluster', 'checkbox', 'selection')} className={className}>
-        <Toggler disabled={!isSelectable} checked={isSelected} onChange={noop} />
+        <Toggler disabled={!isSelectable} checked={isSelected} onChange={noop} info={info} />
       </td>
     )
   },
@@ -49,6 +51,7 @@ export interface GridRowProps<T>
   numPageItems?: number
   rowMenuOffset?: GridRowMenuOffset
   rowId?: string
+  disabledRowTooltip?: string | React.ReactNode | ((item: T) => string | React.ReactNode)
 }
 
 export default function GridRow<T>(props: GridRowProps<T>) {
@@ -72,7 +75,14 @@ export default function GridRow<T>(props: GridRowProps<T>) {
     expandedRowsById,
     onRowExpand,
     rowId,
+    disabledRowTooltip = undefined,
   } = props
+  const disabledTooltipMsg =
+    isSelectable === false
+      ? typeof disabledRowTooltip === 'function'
+        ? disabledRowTooltip(item)
+        : disabledRowTooltip
+      : undefined
   return (
     <tr className={className} onClick={toggleSelect}>
       <SelectRowColumn
@@ -81,6 +91,7 @@ export default function GridRow<T>(props: GridRowProps<T>) {
           multiSelection,
           isSelectable,
           isSelected,
+          info: isSelectable ? null : disabledTooltipMsg,
         }}
       />
       {getCells().map(({ key, CellComponent, value, getFormattedValue }, idx) => {

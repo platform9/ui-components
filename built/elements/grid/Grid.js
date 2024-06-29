@@ -38,23 +38,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useGridContext = exports.GridContext = void 0;
-const react_1 = __importStar(require("react"));
-const clsx_1 = __importDefault(require("clsx"));
 const styles_1 = require("@material-ui/styles");
-const useGridRows_1 = __importDefault(require("./hooks/useGridRows"));
-const useGridRowMenu_1 = __importDefault(require("./hooks/useGridRowMenu"));
-const GridEmptyContent_1 = __importDefault(require("./GridEmptyContent"));
-const GridRow_1 = __importDefault(require("./GridRow"));
-const GridPagination_1 = __importDefault(require("./GridPagination"));
-const useGridPagination_1 = __importDefault(require("./hooks/useGridPagination"));
-const useGridSorting_1 = __importDefault(require("./hooks/useGridSorting"));
-const GridHeader_1 = __importDefault(require("./GridHeader"));
-const useGridFiltering_1 = __importDefault(require("./hooks/useGridFiltering"));
-const GridToolbar_1 = __importDefault(require("./GridToolbar"));
+const clsx_1 = __importDefault(require("clsx"));
+const react_1 = __importStar(require("react"));
 const Progress_1 = __importDefault(require("../../components/progress/Progress"));
-const useGridSelectableRows_1 = __importDefault(require("./hooks/useGridSelectableRows"));
-const useGridManagedColumns_1 = __importDefault(require("./hooks/useGridManagedColumns"));
+const GridEmptyContent_1 = __importDefault(require("./GridEmptyContent"));
+const GridHeader_1 = __importDefault(require("./GridHeader"));
+const GridPagination_1 = __importDefault(require("./GridPagination"));
+const GridRow_1 = __importDefault(require("./GridRow"));
+const GridToolbar_1 = __importDefault(require("./GridToolbar"));
 const useGridExpandedRows_1 = __importDefault(require("./hooks/useGridExpandedRows"));
+const useGridFiltering_1 = __importDefault(require("./hooks/useGridFiltering"));
+const useGridManagedColumns_1 = __importDefault(require("./hooks/useGridManagedColumns"));
+const useGridPagination_1 = __importDefault(require("./hooks/useGridPagination"));
+const useGridRowMenu_1 = __importDefault(require("./hooks/useGridRowMenu"));
+const useGridRows_1 = __importDefault(require("./hooks/useGridRows"));
+const useGridSelectableRows_1 = __importDefault(require("./hooks/useGridSelectableRows"));
+const useGridSorting_1 = __importDefault(require("./hooks/useGridSorting"));
 const useStyles = (0, styles_1.makeStyles)((theme) => ({
     noTableBorder: {
         borderColor: 'transparent !important',
@@ -120,7 +120,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         }, '&:last-child': {
             borderRight: 'none',
             paddingRight: 16,
-        }, '& > .checkbox': {
+        }, '& > .checkbox, & > .tooltip-container > .checkbox': {
             padding: 4,
             marginLeft: -4,
             width: 16,

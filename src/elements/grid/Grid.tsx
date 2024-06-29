@@ -1,24 +1,24 @@
-import React, { ReactNode, useMemo, useContext, FC, PropsWithChildren } from 'react'
-import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
-import Theme, { TypographyModel } from '../../theme-manager/themes/model'
-import useGridRows, { GridBaseConfig, GridColumnSpec, Accessor } from './hooks/useGridRows'
-import useGridRowMenu, { GridRowMenuConfig } from './hooks/useGridRowMenu'
-import GridEmptyContent from './GridEmptyContent'
-import GridRow from './GridRow'
-import GridPagination from './GridPagination'
-import useGridPagination, { GridPaginationConfig } from './hooks/useGridPagination'
-import useGridSorting, { GridSortingConfig, GridSortableColumnSpec } from './hooks/useGridSorting'
-import GridHeader from './GridHeader'
-import useGridFiltering, { GridFilteringConfig } from './hooks/useGridFiltering'
-import GridToolbar from './GridToolbar'
+import clsx from 'clsx'
+import React, { FC, PropsWithChildren, ReactNode, useContext, useMemo } from 'react'
 import Progress from '../../components/progress/Progress'
-import useGridSelectableRows, { GridBatchActionsConfig } from './hooks/useGridSelectableRows'
+import Theme, { TypographyModel } from '../../theme-manager/themes/model'
+import GridEmptyContent from './GridEmptyContent'
+import GridHeader from './GridHeader'
+import GridPagination from './GridPagination'
+import GridRow from './GridRow'
+import GridToolbar from './GridToolbar'
+import useGridExpandedRows, { GridExpandedRowsConfig } from './hooks/useGridExpandedRows'
+import useGridFiltering, { GridFilteringConfig } from './hooks/useGridFiltering'
 import useGridManagedColumns, {
   GridManagedColumnSpec,
   GridManagedColumnsConfig,
 } from './hooks/useGridManagedColumns'
-import useGridExpandedRows, { GridExpandedRowsConfig } from './hooks/useGridExpandedRows'
+import useGridPagination, { GridPaginationConfig } from './hooks/useGridPagination'
+import useGridRowMenu, { GridRowMenuConfig } from './hooks/useGridRowMenu'
+import useGridRows, { Accessor, GridBaseConfig, GridColumnSpec } from './hooks/useGridRows'
+import useGridSelectableRows, { GridBatchActionsConfig } from './hooks/useGridSelectableRows'
+import useGridSorting, { GridSortableColumnSpec, GridSortingConfig } from './hooks/useGridSorting'
 
 interface GridViewConfig {
   label?: string
@@ -127,7 +127,7 @@ const useStyles = makeStyles<Theme, GridViewConfig>((theme: Theme) => ({
       borderRight: 'none',
       paddingRight: 16,
     },
-    '& > .checkbox': {
+    '& > .checkbox, & > .tooltip-container > .checkbox': {
       padding: 4,
       marginLeft: -4,
       width: 16,

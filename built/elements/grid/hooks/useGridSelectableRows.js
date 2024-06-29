@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-disable react-hooks/rules-of-hooks */
-const react_1 = require("react");
 const ramda_1 = require("ramda");
+const react_1 = require("react");
 const fp_1 = require("../../..//utils/fp");
 const misc_1 = require("../../../utils/misc");
 const GridDefaultActionButton_1 = __importDefault(require("../buttons/GridDefaultActionButton"));
@@ -41,7 +41,7 @@ const selectedRowReducer = (selectedRows, { type, payload: { row, rows, multiSel
     return newMap;
 };
 const maxSize = 1000000;
-function useGridSelectableRows(rows, { batchActions: rowActionsSpec = fp_1.emptyArr, multiSelection, rowIsSelectableFn, totalItems = rows.length, selectedItems, onSelectChange, isControlled = !!selectedItems, disableRowSelection = (0, fp_1.isNilOrEmpty)(rowActionsSpec) && !isControlled, onRefresh, }) {
+function useGridSelectableRows(rows, { batchActions: rowActionsSpec = fp_1.emptyArr, multiSelection, rowIsSelectableFn, totalItems = rows.length, selectedItems, onSelectChange, isControlled = !!selectedItems, disableRowSelection = (0, fp_1.isNilOrEmpty)(rowActionsSpec) && !isControlled, onRefresh, disabledRowTooltip = undefined, }) {
     if (disableRowSelection) {
         return [rows, { rowsSelectionDisabled: true, batchActionsDisabled: true }];
     }
@@ -133,6 +133,7 @@ function useGridSelectableRows(rows, { batchActions: rowActionsSpec = fp_1.empty
             rowsSelectionDisabled: false,
             batchActionsDisabled: (0, fp_1.isNilOrEmpty)(rowActionsSpec),
             batchActions,
+            disabledRowTooltip,
         },
     ];
 }
