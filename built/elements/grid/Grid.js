@@ -114,7 +114,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
     expandedContainer: {
         maxHeight: '1000px',
     },
-    td: Object.assign(Object.assign({ border: 0, margin: 0, padding: theme.spacing(1) }, theme.typography.body2), { '&:first-child': {
+    td: Object.assign(Object.assign({ border: 0, margin: 0, padding: theme.spacing(1), verticalAlign: 'middle' }, theme.typography.body2), { '&:first-child': {
             borderLeft: 'none',
             paddingLeft: 16,
         }, '&:last-child': {

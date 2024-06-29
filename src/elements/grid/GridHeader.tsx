@@ -1,16 +1,16 @@
-import React from 'react'
-import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
-import { GridSortingProps } from './hooks/useGridSorting'
-import { GridBatchActionsProps, SelectableParsedGridRow } from './hooks/useGridSelectableRows'
-import Theme from '../../theme-manager/themes/model'
-import Text from '../../elements/Text'
+import clsx from 'clsx'
+import React from 'react'
 import FontAwesomeIcon from '../../components/FontAwesomeIcon'
+import Text from '../../elements/Text'
 import Checkbox from '../../elements/input/Checkbox'
-import { GridManagedColumnsProps } from './hooks/useGridManagedColumns'
-import GridTableHeading from './GridTableHeading'
-import Tooltip from '../tooltip'
+import Theme from '../../theme-manager/themes/model'
 import { topMiddle } from '../menu/defaults'
+import Tooltip from '../tooltip'
+import GridTableHeading from './GridTableHeading'
+import { GridManagedColumnsProps } from './hooks/useGridManagedColumns'
+import { GridBatchActionsProps, SelectableParsedGridRow } from './hooks/useGridSelectableRows'
+import { GridSortingProps } from './hooks/useGridSorting'
 
 export interface GridHeaderProps<T>
   extends GridSortingProps,
@@ -35,6 +35,9 @@ const useStyles = makeStyles<Theme, GridSortingProps>((theme) => ({
   },
   gridHeadTr: {
     textAlign: 'left',
+    '& th': {
+      verticalAlign: 'middle',
+    },
   },
   gridHeadTitleTr: {
     backgroundColor: theme.components.table.hoverBackground,
