@@ -14,7 +14,7 @@ interface SelectRowColumnProps {
   multiSelection: boolean
   isSelectable: boolean
   isSelected: boolean
-  nonSelectableRowTooltip?: string | React.ReactNode
+  info?: string | React.ReactNode
 }
 
 const SelectRowColumn = memoizeShallow(
@@ -23,18 +23,15 @@ const SelectRowColumn = memoizeShallow(
     multiSelection,
     isSelectable,
     isSelected,
-    nonSelectableRowTooltip = undefined,
+    info = undefined,
   }: SelectRowColumnProps) {
     if (isSelectable === undefined) {
       return null
     }
     const Toggler = multiSelection ? Checkbox : Radio
-    const disabled = !isSelectable
-    const info =
-      isSelectable || nonSelectableRowTooltip === undefined ? null : nonSelectableRowTooltip
     return (
       <td data-testid={generateTestId('cluster', 'checkbox', 'selection')} className={className}>
-        <Toggler disabled={disabled} checked={isSelected} onChange={noop} info={info} />
+        <Toggler disabled={!isSelectable} checked={isSelected} onChange={noop} info={info} />
       </td>
     )
   },
@@ -54,6 +51,7 @@ export interface GridRowProps<T>
   numPageItems?: number
   rowMenuOffset?: GridRowMenuOffset
   rowId?: string
+  disabledRowTooltip?: string | React.ReactNode | ((item: T) => string | React.ReactNode)
 }
 
 export default function GridRow<T>(props: GridRowProps<T>) {
@@ -77,8 +75,14 @@ export default function GridRow<T>(props: GridRowProps<T>) {
     expandedRowsById,
     onRowExpand,
     rowId,
-    nonSelectableRowTooltip,
+    disabledRowTooltip = undefined,
   } = props
+  const disabledTooltipMsg =
+    isSelectable === false
+      ? typeof disabledRowTooltip === 'function'
+        ? disabledRowTooltip(item)
+        : disabledRowTooltip
+      : undefined
   return (
     <tr className={className} onClick={toggleSelect}>
       <SelectRowColumn
@@ -87,7 +91,7 @@ export default function GridRow<T>(props: GridRowProps<T>) {
           multiSelection,
           isSelectable,
           isSelected,
-          nonSelectableRowTooltip,
+          info: isSelectable ? null : disabledTooltipMsg,
         }}
       />
       {getCells().map(({ key, CellComponent, value, getFormattedValue }, idx) => {

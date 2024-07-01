@@ -117,6 +117,7 @@ const useStyles = makeStyles<Theme, GridViewConfig>((theme: Theme) => ({
     border: 0,
     margin: 0,
     padding: theme.spacing(1),
+    verticalAlign: 'middle',
     ...(theme.typography.body2 as TypographyModel),
 
     '&:first-child': {

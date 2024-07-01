@@ -25,7 +25,7 @@ export interface GridBatchActionsConfig<T> {
   totalItems?: number
   batchActions?: Array<GridBatchActionSpec<T>>
   onRefresh?: (...args: unknown[]) => void | Promise<void>
-  nonSelectableRowTooltip?: string | React.ReactNode
+  disabledRowTooltip?: string | React.ReactNode | ((item: T) => string | React.ReactNode)
 }
 
 export interface BatchActionButtonProps<T> {
@@ -54,7 +54,6 @@ export interface SelectableParsedGridRow<T> extends ParsedGridRow<T> {
   toggleSelect?: () => void
   select?: () => void
   unselect?: () => void
-  nonSelectableRowTooltip?: string | React.ReactNode
 }
 
 export type SelectionStatus = 'all' | 'some' | 'none'
@@ -77,7 +76,7 @@ export interface GridBatchActionsProps<T> {
   toggleSelectAll?: () => void
   clearSelectedRows?: () => void
   selectionStatus?: SelectionStatus
-  nonSelectableRowTooltip?: string | React.ReactNode
+  disabledRowTooltip?: string | React.ReactNode | ((item: T) => string | React.ReactNode)
 }
 
 interface SelectedRowsReducerAction<T> {
@@ -138,7 +137,7 @@ export default function useGridSelectableRows<T>(
     isControlled = !!selectedItems,
     disableRowSelection = isNilOrEmpty(rowActionsSpec) && !isControlled,
     onRefresh,
-    nonSelectableRowTooltip,
+    disabledRowTooltip = undefined,
   }: GridBatchActionsConfig<T>,
 ): [Array<SelectableParsedGridRow<T>>, GridBatchActionsProps<T>] {
   if (disableRowSelection) {
@@ -282,7 +281,7 @@ export default function useGridSelectableRows<T>(
       rowsSelectionDisabled: false,
       batchActionsDisabled: isNilOrEmpty(rowActionsSpec),
       batchActions,
-      nonSelectableRowTooltip,
+      disabledRowTooltip,
     },
   ]
 }

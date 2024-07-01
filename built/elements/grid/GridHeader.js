@@ -3,21 +3,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importDefault(require("react"));
-const clsx_1 = __importDefault(require("clsx"));
 const styles_1 = require("@material-ui/styles");
-const Text_1 = __importDefault(require("../../elements/Text"));
+const clsx_1 = __importDefault(require("clsx"));
+const react_1 = __importDefault(require("react"));
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
+const Text_1 = __importDefault(require("../../elements/Text"));
 const Checkbox_1 = __importDefault(require("../../elements/input/Checkbox"));
-const GridTableHeading_1 = __importDefault(require("./GridTableHeading"));
-const tooltip_1 = __importDefault(require("../tooltip"));
 const defaults_1 = require("../menu/defaults");
+const tooltip_1 = __importDefault(require("../tooltip"));
+const GridTableHeading_1 = __importDefault(require("./GridTableHeading"));
 const useStyles = (0, styles_1.makeStyles)((theme) => ({
     gridHead: {
         border: 'none',
     },
     gridHeadTr: {
         textAlign: 'left',
+        '& th': {
+            verticalAlign: 'middle',
+        },
     },
     gridHeadTitleTr: {
         backgroundColor: theme.components.table.hoverBackground,

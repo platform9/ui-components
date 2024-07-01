@@ -41,7 +41,7 @@ const selectedRowReducer = (selectedRows, { type, payload: { row, rows, multiSel
     return newMap;
 };
 const maxSize = 1000000;
-function useGridSelectableRows(rows, { batchActions: rowActionsSpec = fp_1.emptyArr, multiSelection, rowIsSelectableFn, totalItems = rows.length, selectedItems, onSelectChange, isControlled = !!selectedItems, disableRowSelection = (0, fp_1.isNilOrEmpty)(rowActionsSpec) && !isControlled, onRefresh, nonSelectableRowTooltip, }) {
+function useGridSelectableRows(rows, { batchActions: rowActionsSpec = fp_1.emptyArr, multiSelection, rowIsSelectableFn, totalItems = rows.length, selectedItems, onSelectChange, isControlled = !!selectedItems, disableRowSelection = (0, fp_1.isNilOrEmpty)(rowActionsSpec) && !isControlled, onRefresh, disabledRowTooltip = undefined, }) {
     if (disableRowSelection) {
         return [rows, { rowsSelectionDisabled: true, batchActionsDisabled: true }];
     }
@@ -133,7 +133,7 @@ function useGridSelectableRows(rows, { batchActions: rowActionsSpec = fp_1.empty
             rowsSelectionDisabled: false,
             batchActionsDisabled: (0, fp_1.isNilOrEmpty)(rowActionsSpec),
             batchActions,
-            nonSelectableRowTooltip,
+            disabledRowTooltip,
         },
     ];
 }
