@@ -1,19 +1,19 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import { difference, equals } from 'ramda'
 import {
   FC,
+  ReactNode,
   Reducer,
   useCallback,
+  useEffect,
   useMemo,
   useReducer,
-  ReactNode,
-  useEffect,
   useState,
 } from 'react'
-import { difference, equals } from 'ramda'
-import { emptyArr, noop, isNilOrEmpty } from '../../..//utils/fp'
+import { emptyArr, isNilOrEmpty, noop } from '../../..//utils/fp'
 import { memoize } from '../../../utils/misc'
-import { ParsedGridRow } from './useGridRows'
 import GridDefaultActionButton from '../buttons/GridDefaultActionButton'
+import { ParsedGridRow } from './useGridRows'
 
 export interface GridBatchActionsConfig<T> {
   multiSelection?: boolean
@@ -25,6 +25,7 @@ export interface GridBatchActionsConfig<T> {
   totalItems?: number
   batchActions?: Array<GridBatchActionSpec<T>>
   onRefresh?: (...args: unknown[]) => void | Promise<void>
+  nonSelectableRowTooltip?: string | React.ReactNode
 }
 
 export interface BatchActionButtonProps<T> {
@@ -53,6 +54,7 @@ export interface SelectableParsedGridRow<T> extends ParsedGridRow<T> {
   toggleSelect?: () => void
   select?: () => void
   unselect?: () => void
+  nonSelectableRowTooltip?: string | React.ReactNode
 }
 
 export type SelectionStatus = 'all' | 'some' | 'none'
@@ -75,6 +77,7 @@ export interface GridBatchActionsProps<T> {
   toggleSelectAll?: () => void
   clearSelectedRows?: () => void
   selectionStatus?: SelectionStatus
+  nonSelectableRowTooltip?: string | React.ReactNode
 }
 
 interface SelectedRowsReducerAction<T> {
@@ -135,6 +138,7 @@ export default function useGridSelectableRows<T>(
     isControlled = !!selectedItems,
     disableRowSelection = isNilOrEmpty(rowActionsSpec) && !isControlled,
     onRefresh,
+    nonSelectableRowTooltip,
   }: GridBatchActionsConfig<T>,
 ): [Array<SelectableParsedGridRow<T>>, GridBatchActionsProps<T>] {
   if (disableRowSelection) {
@@ -211,7 +215,7 @@ export default function useGridSelectableRows<T>(
     (rows = selectableRows) => {
       const keys = rows.map(({ key }) => key)
       if (difference(keys, Array.from(selectedRows.keys())).length) {
-        dispatch({ type: 'addSome', payload: { rows } })
+        dispatch({ type: 'addSome', payload: { rows: rows.filter((r) => r.isSelectable) } })
         return
       }
       dispatch({ type: 'removeSome', payload: { rows } })
@@ -278,6 +282,7 @@ export default function useGridSelectableRows<T>(
       rowsSelectionDisabled: false,
       batchActionsDisabled: isNilOrEmpty(rowActionsSpec),
       batchActions,
+      nonSelectableRowTooltip,
     },
   ]
 }
