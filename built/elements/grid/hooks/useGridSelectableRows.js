@@ -85,7 +85,7 @@ function useGridSelectableRows(rows, { batchActions: rowActionsSpec = fp_1.empty
     const toggleSelectAll = (0, react_1.useCallback)((rows = selectableRows) => {
         const keys = rows.map(({ key }) => key);
         if ((0, ramda_1.difference)(keys, Array.from(selectedRows.keys())).length) {
-            dispatch({ type: 'addSome', payload: { rows } });
+            dispatch({ type: 'addSome', payload: { rows: rows.filter((r) => r.isSelectable) } });
             return;
         }
         dispatch({ type: 'removeSome', payload: { rows } });

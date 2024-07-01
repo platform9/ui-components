@@ -128,7 +128,12 @@ const useStyles = makeStyles<Theme, GridViewConfig>((theme: Theme) => ({
       borderRight: 'none',
       paddingRight: 16,
     },
-    '& > .checkbox, & > .tooltip-container > .checkbox': {
+    '& > .checkbox': {
+      padding: 4,
+      marginLeft: -4,
+      width: 16,
+    },
+    '& > .tooltip-container > .checkbox': {
       padding: 4,
       marginLeft: -4,
       width: 16,

@@ -214,7 +214,7 @@ export default function useGridSelectableRows<T>(
     (rows = selectableRows) => {
       const keys = rows.map(({ key }) => key)
       if (difference(keys, Array.from(selectedRows.keys())).length) {
-        dispatch({ type: 'addSome', payload: { rows } })
+        dispatch({ type: 'addSome', payload: { rows: rows.filter((r) => r.isSelectable) } })
         return
       }
       dispatch({ type: 'removeSome', payload: { rows } })
