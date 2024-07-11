@@ -1,14 +1,21 @@
 import React, { useState } from 'react'
+import DropdownButtons from 'src/components/DropdownButtons'
 import Dropdown from '../../elements/dropdown'
-import data from '../data/movies-list'
-import { ThemedContainer, Row, Column } from '../containers'
 import MultiDropdown from '../../elements/dropdown/MultiDropdown'
+import { Column, Row, ThemedContainer } from '../containers'
+import data from '../data/movies-list'
 
 const items = data.map((movie) => ({
   value: movie,
   key: movie.id,
   label: movie.title,
 }))
+
+const dropdownButtons = [
+  { label: 'Edit', icon: 'edit' },
+  { label: 'Delete', icon: 'trash', disabled: true },
+  { label: 'Copy', icon: 'copy' },
+]
 
 export const DefaultDropdown = (args) => {
   return (
@@ -21,6 +28,11 @@ export const DefaultDropdown = (args) => {
       <Row>
         <Column>
           <MultiDropdown {...args} label="Multi item" items={items} />
+        </Column>
+      </Row>
+      <Row>
+        <Column>
+          <DropdownButtons label="Dropdown Buttons" buttons={dropdownButtons} />
         </Column>
       </Row>
     </ThemedContainer>
