@@ -28,15 +28,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ControlledDropdown = exports.DefaultDropdown = void 0;
 const react_1 = __importStar(require("react"));
+const DropdownButtons_1 = __importDefault(require("src/components/DropdownButtons"));
 const dropdown_1 = __importDefault(require("../../elements/dropdown"));
-const movies_list_1 = __importDefault(require("../data/movies-list"));
-const containers_1 = require("../containers");
 const MultiDropdown_1 = __importDefault(require("../../elements/dropdown/MultiDropdown"));
+const containers_1 = require("../containers");
+const movies_list_1 = __importDefault(require("../data/movies-list"));
 const items = movies_list_1.default.map((movie) => ({
     value: movie,
     key: movie.id,
     label: movie.title,
 }));
+const dropdownButtons = [
+    { label: 'Edit', icon: 'edit' },
+    { label: 'Delete', icon: 'trash', disabled: true },
+    { label: 'Copy', icon: 'copy' },
+];
 const DefaultDropdown = (args) => {
     return (react_1.default.createElement(containers_1.ThemedContainer, null,
         react_1.default.createElement(containers_1.Row, null,
@@ -44,7 +50,10 @@ const DefaultDropdown = (args) => {
                 react_1.default.createElement(dropdown_1.default, Object.assign({}, args, { label: "Default", items: items })))),
         react_1.default.createElement(containers_1.Row, null,
             react_1.default.createElement(containers_1.Column, null,
-                react_1.default.createElement(MultiDropdown_1.default, Object.assign({}, args, { label: "Multi item", items: items }))))));
+                react_1.default.createElement(MultiDropdown_1.default, Object.assign({}, args, { label: "Multi item", items: items })))),
+        react_1.default.createElement(containers_1.Row, null,
+            react_1.default.createElement(containers_1.Column, null,
+                react_1.default.createElement(DropdownButtons_1.default, { label: "Dropdown Buttons", buttons: dropdownButtons })))));
 };
 exports.DefaultDropdown = DefaultDropdown;
 const ControlledDropdown = (args) => {
