@@ -1,9 +1,9 @@
-import React, { FunctionComponent, useRef, useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
+import React, { FunctionComponent, useRef, useState } from 'react'
 // import useParams from '../hooks/useParams'
+import clsx from 'clsx'
 import Theme from '../theme-manager/themes/model'
 import FontAwesomeIcon from './FontAwesomeIcon'
-import clsx from 'clsx'
 
 interface Props {
   className?: string
@@ -105,6 +105,7 @@ const CopyToClipboard: FunctionComponent<Props> = ({
   header = undefined,
   fill = false,
   triggerWithChild = false,
+  copyIcon = 'clipboard',
 }) => {
   // const { params, updateParams } = useParams<State>(defaultParams)
   const [isCopySuccessful, setIsCopySuccessful] = useState<boolean>(false)
@@ -142,7 +143,7 @@ const CopyToClipboard: FunctionComponent<Props> = ({
         size="md"
         className={clsx(classes.copyIcon, isCopySuccessful ? classes.done : classes.copy)}
       >
-        {isCopySuccessful ? 'check' : 'clipboard'}
+        {isCopySuccessful ? 'check' : copyIcon}
       </FontAwesomeIcon>
     </div>
   )

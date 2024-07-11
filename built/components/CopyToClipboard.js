@@ -26,10 +26,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importStar(require("react"));
 const styles_1 = require("@material-ui/styles");
-const FontAwesomeIcon_1 = __importDefault(require("./FontAwesomeIcon"));
+const react_1 = __importStar(require("react"));
+// import useParams from '../hooks/useParams'
 const clsx_1 = __importDefault(require("clsx"));
+const FontAwesomeIcon_1 = __importDefault(require("./FontAwesomeIcon"));
 const useStyles = (0, styles_1.makeStyles)((theme) => ({
     textArea: {
         position: 'absolute',
@@ -98,7 +99,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         },
     },
 }));
-const CopyToClipboard = ({ className, children, copyText, inline = true, codeBlock = true, header = undefined, fill = false, triggerWithChild = false, }) => {
+const CopyToClipboard = ({ className, children, copyText, inline = true, codeBlock = true, header = undefined, fill = false, triggerWithChild = false, copyIcon = 'clipboard', }) => {
     // const { params, updateParams } = useParams<State>(defaultParams)
     const [isCopySuccessful, setIsCopySuccessful] = (0, react_1.useState)(false);
     const textAreaRef = (0, react_1.useRef)(null);
@@ -126,7 +127,7 @@ const CopyToClipboard = ({ className, children, copyText, inline = true, codeBlo
         }
     };
     const copyActionElems = (react_1.default.createElement("div", { className: classes.copyIconContainer, onClick: handleCopy },
-        react_1.default.createElement(FontAwesomeIcon_1.default, { size: "md", className: (0, clsx_1.default)(classes.copyIcon, isCopySuccessful ? classes.done : classes.copy) }, isCopySuccessful ? 'check' : 'clipboard')));
+        react_1.default.createElement(FontAwesomeIcon_1.default, { size: "md", className: (0, clsx_1.default)(classes.copyIcon, isCopySuccessful ? classes.done : classes.copy) }, isCopySuccessful ? 'check' : copyIcon)));
     // readOnly is needed in textarea to silence React warning about missing onChange
     return triggerWithChild ? (react_1.default.createElement("div", { onClick: handleCopy },
         react_1.default.createElement("textarea", { ref: textAreaRef, value: copyText, className: classes.textArea, readOnly: true }),
