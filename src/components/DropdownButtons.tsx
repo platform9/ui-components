@@ -1,9 +1,8 @@
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import React, { useState } from 'react'
-import Text from 'src/elements/Text'
-import Tooltip from 'src/elements/tooltip/Tooltip'
-import Theme from 'src/theme-manager/themes/model'
+import Text from '../elements/Text'
+import Tooltip from '../elements/tooltip/Tooltip'
 import ExternalLink from './ExternalLink'
 import FontAwesomeIcon from './FontAwesomeIcon'
 
