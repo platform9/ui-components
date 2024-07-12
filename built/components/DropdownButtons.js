@@ -40,8 +40,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const styles_1 = require("@material-ui/styles");
 const clsx_1 = __importDefault(require("clsx"));
 const react_1 = __importStar(require("react"));
-const Text_1 = __importDefault(require("src/elements/Text"));
-const Tooltip_1 = __importDefault(require("src/elements/tooltip/Tooltip"));
+const Text_1 = __importDefault(require("../elements/Text"));
+const Tooltip_1 = __importDefault(require("../elements/tooltip/Tooltip"));
 const ExternalLink_1 = __importDefault(require("./ExternalLink"));
 const FontAwesomeIcon_1 = __importDefault(require("./FontAwesomeIcon"));
 const DropdownButton = ({ label, icon, onClick, externalLink, disabled = false, tooltipMsg, }) => {

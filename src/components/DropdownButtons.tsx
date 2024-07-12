@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import React, { useState } from 'react'
 import Text from '../elements/Text'
 import Tooltip from '../elements/tooltip/Tooltip'
+import Theme from '../theme-manager/themes/model'
 import ExternalLink from './ExternalLink'
 import FontAwesomeIcon from './FontAwesomeIcon'
 
