@@ -1,11 +1,11 @@
-import React, { ReactNode, PropsWithChildren } from 'react'
-import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
+import clsx from 'clsx'
+import React, { PropsWithChildren, ReactNode } from 'react'
 import Theme from '../../theme-manager/themes/model'
-import CardHeader from './CardHeader'
+import generateTestId from '../../utils/test-helpers'
 import CardBody from './CardBody'
 import CardFooter from './CardFooter'
-import generateTestId from '../../utils/test-helpers'
+import CardHeader from './CardHeader'
 
 export interface CardProps {
   title?: string | ReactNode
@@ -13,6 +13,7 @@ export interface CardProps {
   withCustomBody?: boolean
   withCustomFooter?: boolean
   className?: string
+  dataTestId?: string
 }
 
 const getTitleComponent = (title) =>
@@ -25,16 +26,14 @@ function Card({
   withCustomBody = false,
   withCustomFooter = false,
   className = undefined,
+  dataTestId = 'card',
 }: PropsWithChildren<CardProps>) {
   const classes = useStyles({})
   const titleComponent = getTitleComponent(title)
   const BodyComponent = withCustomBody ? React.Fragment : CardBody
   const FooterComponent = withCustomFooter ? React.Fragment : CardFooter
   return (
-    <article
-      data-testid={generateTestId('cluster', 'status')}
-      className={clsx(classes.card, className)}
-    >
+    <article data-testid={generateTestId(dataTestId)} className={clsx(classes.card, className)}>
       {!!titleComponent && titleComponent}
       <BodyComponent>{children}</BodyComponent>
       {footer && <FooterComponent>{footer}</FooterComponent>}
