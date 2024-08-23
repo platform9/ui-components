@@ -63,6 +63,8 @@ export interface GridDropdownFilterSpec<T, F extends Record<string, unknown>, FK
     allowEmpty?: boolean;
     controlled?: boolean;
     onChange?: FilterValueChangeHandler<FV>;
+    getOptionsFn: (items: any) => any[];
+    filterComponentOptionsPropName: string;
 }
 export interface GridFilteringConfig<T, GF extends Record<string, unknown> = Record<string, unknown>, F extends Record<string, unknown> = Record<string, unknown>, DF extends Record<string, unknown> = Record<string, unknown>> {
     filters?: GridFilterSpec<T, F>[];

@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = require("react");
 const ramda_1 = require("ramda");
+const react_1 = require("react");
+const constants_1 = require("../../../constants");
 const fp_1 = require("../../../utils/fp");
 const misc_1 = require("../../../utils/misc");
-const constants_1 = require("../../../constants");
 const defaultFilteringState = {
     globalValuesByKey: {},
     valuesByKey: {},
@@ -165,17 +165,21 @@ function useGridFiltering(rows, { onClearFilters, globalFilters: globalFilterSpe
     }, [valuesByKey]);
     // const dropdownFilters = useMemo(() => {
     const dropdownFilters = (0, react_1.useMemo)(() => {
-        return dropdownFilterSpecs.map(({ key, label, FilterComponent, filterComponentProps }) => ({
-            key,
-            label,
-            updateFilterValue: getDropdownFilterUpdater(key),
-            filterValue: dropdownValuesByKey[key],
-            clearFilter: getDropdownFilterClearFn(key),
-            filterValues: dropdownValuesByKey,
-            FilterComponent,
-            filterComponentProps,
-        }));
-    }, [dropdownValuesByKey]);
+        return dropdownFilterSpecs.map(({ key, label, FilterComponent, filterComponentProps, getOptionsFn, filterComponentOptionsPropName, }) => {
+            const items = filteredRows.map((row) => row.item);
+            const dropdownOptions = getOptionsFn(items);
+            return {
+                key,
+                label,
+                updateFilterValue: getDropdownFilterUpdater(key),
+                filterValue: dropdownValuesByKey[key],
+                clearFilter: getDropdownFilterClearFn(key),
+                filterValues: dropdownValuesByKey,
+                FilterComponent,
+                filterComponentProps: Object.assign(Object.assign({}, filterComponentProps), { [filterComponentOptionsPropName]: dropdownOptions }),
+            };
+        });
+    }, [dropdownValuesByKey, filteredRows]);
     const dropdownFilterValues = (0, react_1.useMemo)(() => {
         const filterInfo = dropdownFilters.map((filter) => {
             return { key: filter.key, updateFilterValue: filter.updateFilterValue, label: filter === null || filter === void 0 ? void 0 : filter.label };

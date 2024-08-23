@@ -1,9 +1,9 @@
-import { useCallback, useMemo, useReducer, FC, Reducer } from 'react'
-import { ParsedGridRow } from '../../../elements/grid/hooks/useGridRows'
 import { assocPath, dissocPath, equals } from 'ramda'
-import { isNilOrEmpty, emptyArr } from '../../../utils/fp'
-import { memoize } from '../../../utils/misc'
+import { FC, Reducer, useCallback, useMemo, useReducer } from 'react'
 import { allKey } from '../../../constants'
+import { ParsedGridRow } from '../../../elements/grid/hooks/useGridRows'
+import { emptyArr, isNilOrEmpty } from '../../../utils/fp'
+import { memoize } from '../../../utils/misc'
 
 interface GridFilterProps<
   F extends Record<string, unknown>,
@@ -97,6 +97,8 @@ export interface GridDropdownFilterSpec<
   allowEmpty?: boolean
   controlled?: boolean
   onChange?: FilterValueChangeHandler<FV>
+  getOptionsFn: (items) => any[]
+  filterComponentOptionsPropName: string
 }
 
 export interface GridFilteringConfig<
@@ -377,17 +379,33 @@ export default function useGridFiltering<
 
   // const dropdownFilters = useMemo(() => {
   const dropdownFilters = useMemo<GridFilterProps<DF>[]>(() => {
-    return dropdownFilterSpecs.map(({ key, label, FilterComponent, filterComponentProps }) => ({
-      key,
-      label,
-      updateFilterValue: getDropdownFilterUpdater(key),
-      filterValue: dropdownValuesByKey[key],
-      clearFilter: getDropdownFilterClearFn(key),
-      filterValues: dropdownValuesByKey,
-      FilterComponent,
-      filterComponentProps,
-    }))
-  }, [dropdownValuesByKey])
+    return dropdownFilterSpecs.map(
+      ({
+        key,
+        label,
+        FilterComponent,
+        filterComponentProps,
+        getOptionsFn,
+        filterComponentOptionsPropName,
+      }) => {
+        const items = filteredRows.map((row) => row.item)
+        const dropdownOptions = getOptionsFn(items)
+        return {
+          key,
+          label,
+          updateFilterValue: getDropdownFilterUpdater(key),
+          filterValue: dropdownValuesByKey[key],
+          clearFilter: getDropdownFilterClearFn(key),
+          filterValues: dropdownValuesByKey,
+          FilterComponent,
+          filterComponentProps: {
+            ...filterComponentProps,
+            [filterComponentOptionsPropName]: dropdownOptions,
+          },
+        }
+      },
+    )
+  }, [dropdownValuesByKey, filteredRows])
 
   const dropdownFilterValues = useMemo(() => {
     const filterInfo = dropdownFilters.map((filter) => {
