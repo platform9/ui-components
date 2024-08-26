@@ -15,7 +15,7 @@ const SelectRowColumn = (0, misc_1.memoizeShallow)(function SelectRowColumn({ cl
         return null;
     }
     const Toggler = multiSelection ? Checkbox_1.default : Radio_1.default;
-    return (react_1.default.createElement("td", { "data-testid": (0, test_helpers_1.default)('cluster', 'checkbox', 'selection'), className: className },
+    return (react_1.default.createElement("td", { "data-testid": (0, test_helpers_1.default)('row', 'checkbox', 'selection'), className: className },
         react_1.default.createElement(Toggler, { disabled: !isSelectable, checked: isSelected, onChange: fp_1.noop, info: info })));
 }, {
     maxSize: 8,

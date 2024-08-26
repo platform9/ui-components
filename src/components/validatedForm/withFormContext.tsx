@@ -1,12 +1,11 @@
-import React, { useContext, useEffect, useCallback, FC, forwardRef, FocusEvent } from 'react'
+import clsx from 'clsx'
 import PropTypes from 'prop-types'
+import { isNil } from 'ramda'
+import React, { FC, FocusEvent, forwardRef, useCallback, useContext, useEffect } from 'react'
 import { ValidatedFormContext } from '../../components/validatedForm/ValidatedForm'
 import { requiredValidator } from '../../utils/fieldValidators'
-import { isNil } from 'ramda'
-import { memoizedObj } from '../../utils/misc'
-import clsx from 'clsx'
-import generateTestId from '../../utils/test-helpers'
 import { pathStr, pathStrOr } from '../../utils/fp'
+import { memoizedObj } from '../../utils/misc'
 
 // @deprecated
 export const ValidatedFormInputPropTypes = {
@@ -171,13 +170,7 @@ export default function withFormContext<T, P>(Input: FC<P & ChildrenFnParams<T>>
   return forwardRef<HTMLElement, Omit<ValidatedFormInputProps<T, P>, 'children'> & P>(
     (props, ref) => (
       <ValidatedFormInput<T, P> {...props}>
-        {(inputProps) => (
-          <Input
-            {...inputProps}
-            ref={ref}
-            data-testid={generateTestId(inputProps.id, 'list', 'table', 'field')}
-          />
-        )}
+        {(inputProps) => <Input {...inputProps} ref={ref} />}
       </ValidatedFormInput>
     ),
   )
