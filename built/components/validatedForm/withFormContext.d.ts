@@ -1,5 +1,5 @@
-import React, { FC, FocusEvent } from 'react';
 import PropTypes from 'prop-types';
+import React, { FC, FocusEvent } from 'react';
 export declare const ValidatedFormInputPropTypes: {
     required: PropTypes.Requireable<boolean>;
     validateFormOnChange: PropTypes.Requireable<boolean>;

@@ -30,7 +30,7 @@ const SelectRowColumn = memoizeShallow(
     }
     const Toggler = multiSelection ? Checkbox : Radio
     return (
-      <td data-testid={generateTestId('cluster', 'checkbox', 'selection')} className={className}>
+      <td data-testid={generateTestId('row', 'checkbox', 'selection')} className={className}>
         <Toggler disabled={!isSelectable} checked={isSelected} onChange={noop} info={info} />
       </td>
     )

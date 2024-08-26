@@ -38,15 +38,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ValidatedFormInput = exports.ValidatedFormInputPropTypes = void 0;
-const react_1 = __importStar(require("react"));
+const clsx_1 = __importDefault(require("clsx"));
 const prop_types_1 = __importDefault(require("prop-types"));
+const ramda_1 = require("ramda");
+const react_1 = __importStar(require("react"));
 const ValidatedForm_1 = require("../../components/validatedForm/ValidatedForm");
 const fieldValidators_1 = require("../../utils/fieldValidators");
-const ramda_1 = require("ramda");
-const misc_1 = require("../../utils/misc");
-const clsx_1 = __importDefault(require("clsx"));
-const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 const fp_1 = require("../../utils/fp");
+const misc_1 = require("../../utils/misc");
 // @deprecated
 exports.ValidatedFormInputPropTypes = {
     required: prop_types_1.default.bool,
@@ -130,7 +129,7 @@ exports.ValidatedFormInput = ValidatedFormInput;
  * @param {Inject the form context into this Component through props.} Input
  */
 function withFormContext(Input) {
-    return (0, react_1.forwardRef)((props, ref) => (react_1.default.createElement(ValidatedFormInput, Object.assign({}, props), (inputProps) => (react_1.default.createElement(Input, Object.assign({}, inputProps, { ref: ref, "data-testid": (0, test_helpers_1.default)(inputProps.id, 'list', 'table', 'field') }))))));
+    return (0, react_1.forwardRef)((props, ref) => (react_1.default.createElement(ValidatedFormInput, Object.assign({}, props), (inputProps) => react_1.default.createElement(Input, Object.assign({}, inputProps, { ref: ref })))));
 }
 exports.default = withFormContext;
 //# sourceMappingURL=withFormContext.js.map
