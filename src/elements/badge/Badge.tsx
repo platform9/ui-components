@@ -60,7 +60,7 @@ export default function Badge({
   const textToShow = shouldTruncateText ? text.substring(0, ellipsisAt) : text
   return (
     <Tooltip {...tooltipProps} {...getTooltipProps(tooltipBody, text)}>
-      <div className={clsx(classes.badge, className)} data-testId={dataTestId}>
+      <div className={clsx(classes.badge, className)} data-testid={dataTestId}>
         <Text
           data-testid={generateTestId(textToShow)}
           variant={bold ? 'caption1' : 'body2'}

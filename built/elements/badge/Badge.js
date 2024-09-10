@@ -47,7 +47,7 @@ function Badge({ text, additionalText, variant = defaultVariant, ellipsisAt = 15
     const shouldTruncateText = !showAll && text.length > ellipsisAt && ellipsisAt !== null;
     const textToShow = shouldTruncateText ? text.substring(0, ellipsisAt) : text;
     return (react_1.default.createElement(Tooltip_1.default, Object.assign({}, tooltipProps, getTooltipProps(tooltipBody, text)),
-        react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.badge, className), "data-testId": dataTestId },
+        react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.badge, className), "data-testid": dataTestId },
             react_1.default.createElement(Text_1.default, { "data-testid": (0, test_helpers_1.default)(textToShow), variant: bold ? 'caption1' : 'body2', component: "span", className: (0, clsx_1.default)('badgeText', classes.badgeText) },
                 textToShow,
                 shouldTruncateText && '...'),
