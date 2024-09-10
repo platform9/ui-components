@@ -26,14 +26,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importStar(require("react"));
 const styles_1 = require("@material-ui/styles");
-const Tooltip_1 = __importDefault(require("../../elements/tooltip/Tooltip"));
+const react_1 = __importStar(require("react"));
 const defaults_1 = require("../../elements/menu/defaults");
+const Tooltip_1 = __importDefault(require("../../elements/tooltip/Tooltip"));
+const clsx_1 = __importDefault(require("clsx"));
 const Text_1 = __importDefault(require("../../elements/Text"));
 const misc_1 = require("../../utils/misc");
 const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
-const clsx_1 = __importDefault(require("clsx"));
 const defaultTooltipProps = Object.assign(Object.assign({}, defaults_1.topMiddle), { origin: 'right bottom' });
 const defaultVariant = 'default';
 const getTooltipProps = (0, misc_1.memoize)((tooltipBody, text) => {
@@ -41,13 +41,13 @@ const getTooltipProps = (0, misc_1.memoize)((tooltipBody, text) => {
         return { customBody: tooltipBody };
     return { message: tooltipBody !== null && tooltipBody !== void 0 ? tooltipBody : text };
 });
-function Badge({ text, additionalText, variant = defaultVariant, ellipsisAt = 15, canDismissEllipsis = false, bold = true, tooltipBody = undefined, tooltipProps = defaultTooltipProps, className, }) {
+function Badge({ text, additionalText, variant = defaultVariant, ellipsisAt = 15, canDismissEllipsis = false, bold = true, tooltipBody = undefined, tooltipProps = defaultTooltipProps, className, dataTestId = 'badge', }) {
     const classes = useStyles({ variant });
     const [showAll, setShowAll] = (0, react_1.useState)(false);
     const shouldTruncateText = !showAll && text.length > ellipsisAt && ellipsisAt !== null;
     const textToShow = shouldTruncateText ? text.substring(0, ellipsisAt) : text;
     return (react_1.default.createElement(Tooltip_1.default, Object.assign({}, tooltipProps, getTooltipProps(tooltipBody, text)),
-        react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.badge, className) },
+        react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.badge, className), "data-testId": dataTestId },
             react_1.default.createElement(Text_1.default, { "data-testid": (0, test_helpers_1.default)(textToShow), variant: bold ? 'caption1' : 'body2', component: "span", className: (0, clsx_1.default)('badgeText', classes.badgeText) },
                 textToShow,
                 shouldTruncateText && '...'),

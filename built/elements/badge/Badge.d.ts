@@ -11,6 +11,7 @@ interface BadgeProps {
     tooltipBody?: React.ReactNode;
     tooltipProps?: Partial<TooltipProps>;
     className?: string;
+    dataTestId?: string;
 }
-export default function Badge({ text, additionalText, variant, ellipsisAt, canDismissEllipsis, bold, tooltipBody, tooltipProps, className, }: BadgeProps): JSX.Element;
+export default function Badge({ text, additionalText, variant, ellipsisAt, canDismissEllipsis, bold, tooltipBody, tooltipProps, className, dataTestId, }: BadgeProps): JSX.Element;
 export {};
