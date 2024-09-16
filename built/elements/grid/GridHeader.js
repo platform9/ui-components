@@ -52,7 +52,7 @@ function SelectAllColumn({ className, pageRows, rowsSelectionDisabled, multiSele
     return (react_1.default.createElement("th", { className: (0, clsx_1.default)(className, 'select-column') }, multiSelectionEnabled ? (react_1.default.createElement(Checkbox_1.default, { checked: checked || indeterminate, indeterminate: indeterminate, onChange: () => toggleSelectAll(pageRows) })) : null));
 }
 function GridHeader(props) {
-    const { columns, sortingDisabled, sortedBy, sortedDirection, toggleSort, multiSelectionEnabled, toggleSelectAll, selectionStatus, rowsSelectionDisabled, pageRows, rowMenuItemsLength, } = props;
+    const { columns, sortingDisabled, sortedBy, sortedDirection, toggleSort, multiSelectionEnabled, toggleSelectAll, selectionStatus, rowsSelectionDisabled, pageRows, rowMenuItemsLength, rowMenuCellWidth = 20, } = props;
     const classes = useStyles(props);
     return (react_1.default.createElement("thead", { className: classes.gridHead },
         react_1.default.createElement(Text_1.default, { component: "tr", variant: "caption2", className: (0, clsx_1.default)(classes.gridHeadTr, classes.gridHeadTitleTr) },
@@ -71,7 +71,7 @@ function GridHeader(props) {
                     tooltip && (react_1.default.createElement(tooltip_1.default, { className: classes.tooltipContainer, align: defaults_1.topMiddle.align, offset: defaults_1.topMiddle.offset, message: tooltip },
                         react_1.default.createElement(FontAwesomeIcon_1.default, { className: classes.tooltip }, "question-circle")))),
                 sortedBy === key ? (react_1.default.createElement(FontAwesomeIcon_1.default, { "aria-hidden": "true", solid: true, className: "grid_header-direction" }, `sort-${sortedDirection === 'asc' ? 'up' : 'down'}`)) : null))),
-            rowMenuItemsLength ? (react_1.default.createElement(GridTableHeading_1.default, { width: rowMenuItemsLength > 1 ? 20 : 120, sortingDisabled: true, key: "row-menu" })) : null)));
+            rowMenuItemsLength ? (react_1.default.createElement(GridTableHeading_1.default, { width: rowMenuCellWidth, sortingDisabled: true, key: "row-menu" })) : null)));
 }
 exports.default = GridHeader;
 //# sourceMappingURL=GridHeader.js.map

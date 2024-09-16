@@ -18,6 +18,7 @@ export interface GridHeaderProps<T>
     GridManagedColumnsProps {
   pageRows: Array<SelectableParsedGridRow<T>>
   rowMenuItemsLength: number
+  rowMenuCellWidth?: number
 }
 
 interface SelectAllColumnProps<T> {
@@ -100,6 +101,7 @@ export default function GridHeader<T>(props: GridHeaderProps<T>) {
     rowsSelectionDisabled,
     pageRows,
     rowMenuItemsLength,
+    rowMenuCellWidth = 20,
   } = props
   const classes = useStyles(props)
   return (
@@ -149,11 +151,7 @@ export default function GridHeader<T>(props: GridHeaderProps<T>) {
             </GridTableHeading>
           ))}
         {rowMenuItemsLength ? (
-          <GridTableHeading
-            width={rowMenuItemsLength > 1 ? 20 : 120}
-            sortingDisabled
-            key="row-menu"
-          />
+          <GridTableHeading width={rowMenuCellWidth} sortingDisabled key="row-menu" />
         ) : null}
       </Text>
     </thead>

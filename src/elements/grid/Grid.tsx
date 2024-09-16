@@ -232,6 +232,12 @@ export default function Grid<
                   {...sortingProps}
                   {...rowBatchActionsProps}
                   rowMenuItemsLength={rowActionsProps.rowMenuItems?.length}
+                  rowMenuCellWidth={
+                    rowActionsProps.rowMenuItems?.length > 1 ||
+                    rowActionsProps.showRowMenuForSingleRowActions
+                      ? 20
+                      : 120
+                  }
                   pageRows={pageRows}
                 />
                 <tbody>

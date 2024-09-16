@@ -143,7 +143,7 @@ function useGridContext() {
 }
 exports.useGridContext = useGridContext;
 function Grid(configProps) {
-    var _a;
+    var _a, _b;
     const classes = useStyles(configProps);
     const { onRefresh, emptyContent = 'No data found', disableToolbar = false, extraToolbarContent, loading = false, loadingMessage, compact, label, ToolbarContainer, showItemsCountInLabel, tooltip, hidePagination = false, expandableRow, } = configProps;
     const rows = (0, useGridRows_1.default)(configProps);
@@ -166,7 +166,10 @@ function Grid(configProps) {
                 }) },
                 disableToolbar ? null : (react_1.default.createElement(GridToolbar_1.default, Object.assign({ ToolbarContainer: ToolbarContainer, compact: compact, label: label, showItemsCountInLabel: showItemsCountInLabel, itemsCount: paginationProps === null || paginationProps === void 0 ? void 0 : paginationProps.itemsCount, onRefresh: onRefresh, extraToolbarContent: extraToolbarContent, tooltip: tooltip }, columnProps, filteringProps, rowBatchActionsProps))),
                 react_1.default.createElement("section", { className: (0, clsx_1.default)(classes.gridBody, 'thin-scrollbar') }, colManagedRows.length ? (react_1.default.createElement("table", { className: classes.grid },
-                    react_1.default.createElement(GridHeader_1.default, Object.assign({}, columnProps, sortingProps, rowBatchActionsProps, { rowMenuItemsLength: (_a = rowActionsProps.rowMenuItems) === null || _a === void 0 ? void 0 : _a.length, pageRows: pageRows })),
+                    react_1.default.createElement(GridHeader_1.default, Object.assign({}, columnProps, sortingProps, rowBatchActionsProps, { rowMenuItemsLength: (_a = rowActionsProps.rowMenuItems) === null || _a === void 0 ? void 0 : _a.length, rowMenuCellWidth: ((_b = rowActionsProps.rowMenuItems) === null || _b === void 0 ? void 0 : _b.length) > 1 ||
+                            rowActionsProps.showRowMenuForSingleRowActions
+                            ? 20
+                            : 120, pageRows: pageRows })),
                     react_1.default.createElement("tbody", null, colManagedRows.map((_a, index) => {
                         var _b;
                         var { key } = _a, rowProps = __rest(_a, ["key"]);
