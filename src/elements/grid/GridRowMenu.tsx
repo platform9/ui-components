@@ -1,18 +1,18 @@
+import { makeStyles } from '@material-ui/styles'
+import clsx from 'clsx'
 import React, { useCallback, useMemo } from 'react'
+import FontAwesomeIcon from '../../components/FontAwesomeIcon'
 import {
   GridRowMenuItemsProps,
   GridRowMenuOffset,
   isGridRowMenuHeader,
 } from '../../elements/grid/hooks/useGridRowMenu'
-import clsx from 'clsx'
-import FontAwesomeIcon from '../../components/FontAwesomeIcon'
-import useToggler from '../../hooks/useToggler'
 import { middleLeft } from '../../elements/menu/defaults'
-import PortalMenu from '../../elements/menu/PortalMenu'
 import MenuItem from '../../elements/menu/MenuItem'
-import { makeStyles } from '@material-ui/styles'
-import Theme from '../../theme-manager/themes/model'
+import PortalMenu from '../../elements/menu/PortalMenu'
 import Text from '../../elements/Text'
+import useToggler from '../../hooks/useToggler'
+import Theme from '../../theme-manager/themes/model'
 
 interface GridRowMenuProps<T> extends GridRowMenuItemsProps<T> {
   item: T
@@ -89,7 +89,6 @@ export default function GridRowMenu<T>({
       </div>
     )
   }
-
   return (
     <PortalMenu
       align={middleLeft.align}
@@ -146,9 +145,9 @@ const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
     textAlign: 'center',
     lineHeight: '56px',
     // visibility: 'hidden',
-    position: 'absolute',
+    position: 'relative',
     marginTop: 1,
-    inset: '0 0 0 auto',
+    // inset: '0 0 0 auto',
     padding: theme.spacing(0, 1),
     minWidth: 20,
     backgroundColor: 'inherit',

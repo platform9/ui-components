@@ -26,16 +26,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importStar(require("react"));
-const useGridRowMenu_1 = require("../../elements/grid/hooks/useGridRowMenu");
-const clsx_1 = __importDefault(require("clsx"));
-const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
-const useToggler_1 = __importDefault(require("../../hooks/useToggler"));
-const defaults_1 = require("../../elements/menu/defaults");
-const PortalMenu_1 = __importDefault(require("../../elements/menu/PortalMenu"));
-const MenuItem_1 = __importDefault(require("../../elements/menu/MenuItem"));
 const styles_1 = require("@material-ui/styles");
+const clsx_1 = __importDefault(require("clsx"));
+const react_1 = __importStar(require("react"));
+const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
+const useGridRowMenu_1 = require("../../elements/grid/hooks/useGridRowMenu");
+const defaults_1 = require("../../elements/menu/defaults");
+const MenuItem_1 = __importDefault(require("../../elements/menu/MenuItem"));
+const PortalMenu_1 = __importDefault(require("../../elements/menu/PortalMenu"));
 const Text_1 = __importDefault(require("../../elements/Text"));
+const useToggler_1 = __importDefault(require("../../hooks/useToggler"));
 function GridRowMenu({ item, rowMenuItems, rowMenuDisabled, rowMenuOffset = {}, showRowMenuForSingleRowActions = false, maxRowMenuHeight, expandRow, toggleRow, }) {
     const filteredRowMenuItems = rowMenuItems.filter((rowItem) => {
         if ((0, useGridRowMenu_1.isGridRowMenuHeader)(rowItem))
@@ -83,9 +83,9 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         textAlign: 'center',
         lineHeight: '56px',
         // visibility: 'hidden',
-        position: 'absolute',
+        position: 'relative',
         marginTop: 1,
-        inset: '0 0 0 auto',
+        // inset: '0 0 0 auto',
         padding: theme.spacing(0, 1),
         minWidth: 20,
         backgroundColor: 'inherit',
