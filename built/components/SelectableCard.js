@@ -14,9 +14,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importDefault(require("react"));
 const styles_1 = require("@material-ui/styles");
 const clsx_1 = __importDefault(require("clsx"));
+const react_1 = __importDefault(require("react"));
 const card_1 = __importDefault(require("../elements/card"));
 const FontAwesomeIcon_1 = __importDefault(require("./FontAwesomeIcon"));
 const useStyles = (0, styles_1.makeStyles)((theme) => ({
@@ -24,7 +24,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         position: 'relative',
     },
     card: {
-        cursor: 'pointer',
+        cursor: ({ disabled }) => (disabled ? 'not-allowed' : 'pointer'),
         border: ({ active }) => active
             ? `1px solid ${theme.components.card.activeBorder}`
             : `1px solid ${theme.components.card.border}`,
@@ -32,6 +32,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         '&:hover': {
             border: `1px solid ${theme.components.card.activeBorder}`,
         },
+        opacity: ({ disabled }) => (disabled ? 0.4 : 1),
     },
     circle: {
         background: theme.components.card.activeBorder,
@@ -50,8 +51,8 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
     },
 }));
 const SelectableCard = (props) => {
-    const { id, onClick, children, active = false, className = undefined, showCheckmarkIcon = false } = props, rest = __rest(props, ["id", "onClick", "children", "active", "className", "showCheckmarkIcon"]);
-    const classes = useStyles({ active });
+    const { id, onClick, children, active = false, className = undefined, showCheckmarkIcon = false, disabled = false } = props, rest = __rest(props, ["id", "onClick", "children", "active", "className", "showCheckmarkIcon", "disabled"]);
+    const classes = useStyles({ active, disabled });
     const handleClick = () => {
         if (onClick)
             return onClick(id);
