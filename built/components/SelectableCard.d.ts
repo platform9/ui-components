@@ -5,6 +5,8 @@ interface SelectableCardProps extends CardProps {
     id: any;
     onClick: any;
     active?: boolean;
+    disabled?: boolean;
+    disabledMsg?: string;
     className?: string;
     showCheckmarkIcon?: boolean;
 }

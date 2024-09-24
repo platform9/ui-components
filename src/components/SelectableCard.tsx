@@ -1,9 +1,10 @@
-import React, { FC, PropsWithChildren } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import Theme from '../theme-manager/themes/model'
 import clsx from 'clsx'
+import React, { FC, PropsWithChildren } from 'react'
 import Card from '../elements/card'
 import { CardProps } from '../elements/card/Card'
+import Tooltip from '../elements/tooltip'
+import Theme from '../theme-manager/themes/model'
 import FontAwesomeIcon from './FontAwesomeIcon'
 
 const useStyles = makeStyles<Theme, any>((theme) => ({
@@ -11,7 +12,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     position: 'relative',
   },
   card: {
-    cursor: 'pointer',
+    cursor: ({ disabled }) => (disabled ? 'not-allowed' : 'pointer'),
     border: ({ active }) =>
       active
         ? `1px solid ${theme.components.card.activeBorder}`
@@ -21,6 +22,7 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
     '&:hover': {
       border: `1px solid ${theme.components.card.activeBorder}`,
     },
+    opacity: ({ disabled }) => (disabled ? 0.4 : 1),
   },
   circle: {
     background: theme.components.card.activeBorder,
@@ -47,14 +49,17 @@ const SelectableCard: FC<PropsWithChildren<SelectableCardProps>> = (props) => {
     active = false,
     className = undefined,
     showCheckmarkIcon = false,
+    disabled = false,
+    disabledMsg,
     ...rest
   } = props
-  const classes = useStyles({ active })
+  const classes = useStyles({ active, disabled })
 
   const handleClick = () => {
     if (onClick) return onClick(id)
   }
-  return (
+
+  const card = (
     <div className={classes.selectableCard} onClick={handleClick}>
       <Card {...rest} className={clsx(classes.card, className)}>
         {children}
@@ -68,12 +73,15 @@ const SelectableCard: FC<PropsWithChildren<SelectableCardProps>> = (props) => {
       )}
     </div>
   )
+  return disabled && disabledMsg ? <Tooltip message={disabledMsg}>{card}</Tooltip> : <>{card}</>
 }
 
 interface SelectableCardProps extends CardProps {
   id: any
   onClick: any
   active?: boolean
+  disabled?: boolean
+  disabledMsg?: string
   className?: string
   showCheckmarkIcon?: boolean
 }
