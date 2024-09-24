@@ -18,6 +18,7 @@ const styles_1 = require("@material-ui/styles");
 const clsx_1 = __importDefault(require("clsx"));
 const react_1 = __importDefault(require("react"));
 const card_1 = __importDefault(require("../elements/card"));
+const tooltip_1 = __importDefault(require("../elements/tooltip"));
 const FontAwesomeIcon_1 = __importDefault(require("./FontAwesomeIcon"));
 const useStyles = (0, styles_1.makeStyles)((theme) => ({
     selectableCard: {
@@ -51,16 +52,17 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
     },
 }));
 const SelectableCard = (props) => {
-    const { id, onClick, children, active = false, className = undefined, showCheckmarkIcon = false, disabled = false } = props, rest = __rest(props, ["id", "onClick", "children", "active", "className", "showCheckmarkIcon", "disabled"]);
+    const { id, onClick, children, active = false, className = undefined, showCheckmarkIcon = false, disabled = false, disabledMsg } = props, rest = __rest(props, ["id", "onClick", "children", "active", "className", "showCheckmarkIcon", "disabled", "disabledMsg"]);
     const classes = useStyles({ active, disabled });
     const handleClick = () => {
         if (onClick)
             return onClick(id);
     };
-    return (react_1.default.createElement("div", { className: classes.selectableCard, onClick: handleClick },
+    const card = (react_1.default.createElement("div", { className: classes.selectableCard, onClick: handleClick },
         react_1.default.createElement(card_1.default, Object.assign({}, rest, { className: (0, clsx_1.default)(classes.card, className) }), children),
         active && showCheckmarkIcon && (react_1.default.createElement("div", { className: classes.circle },
             react_1.default.createElement(FontAwesomeIcon_1.default, { className: classes.checkIcon, solid: true, size: "sm" }, "check")))));
+    return disabled && disabledMsg ? react_1.default.createElement(tooltip_1.default, { message: disabledMsg }, card) : react_1.default.createElement(react_1.default.Fragment, null, card);
 };
 exports.default = SelectableCard;
 //# sourceMappingURL=SelectableCard.js.map
