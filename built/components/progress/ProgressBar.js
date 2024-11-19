@@ -3,10 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importDefault(require("react"));
-const fp_1 = require("../../utils/fp");
 const styles_1 = require("@material-ui/styles");
+const react_1 = __importDefault(require("react"));
 const Text_1 = __importDefault(require("../../elements/Text"));
+const fp_1 = require("../../utils/fp");
 const useStyles = (0, styles_1.makeStyles)((theme) => ({
     root: {
         height: ({ height }) => height,
@@ -54,19 +54,19 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
             ? 'linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)'
             : null,
         backgroundSize: '40px 40px',
-        backgroundColor: ({ animated, percent, variant, color }) => {
-            if (color) {
+        backgroundColor: ({ animated, percent, variant, color = theme.components.graph.success }) => {
+            if (['error', 'success', 'primary'].includes(color)) {
                 return theme.palette[color].main;
             }
             if (animated)
                 return theme.components.graph.primary;
             if (variant === 'health') {
-                if (percent >= 90)
+                if (typeof percent === 'number' && percent >= 90)
                     return theme.components.graph.error;
-                if (percent >= 80)
+                if (typeof percent === 'number' && percent >= 80)
                     return theme.components.graph.warning;
             }
-            return theme.components.graph.success;
+            return color;
         },
         animation: '$stripes 2s linear infinite',
         color: '#FFF',

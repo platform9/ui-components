@@ -8,7 +8,7 @@ interface Props {
     containedPercent?: boolean;
     label?: string | JSX.Element | LabelRenderProp;
     variant?: 'progress' | 'health';
-    color?: 'error' | 'success' | 'primary';
+    color?: string;
     showPercent?: boolean;
 }
 declare const ProgressBar: FC<Props>;
