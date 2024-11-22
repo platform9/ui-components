@@ -37,25 +37,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importStar(require("react"));
 const styles_1 = require("@material-ui/styles");
 const clsx_1 = __importDefault(require("clsx"));
+const react_1 = __importStar(require("react"));
 const useToggler_1 = __importDefault(require("../../hooks/useToggler"));
 const FontAwesomeIcon_1 = __importDefault(require("../FontAwesomeIcon"));
 function Accordion(_a) {
-    var { id, title, children, open = false, className } = _a, props = __rest(_a, ["id", "title", "children", "open", "className"]);
+    var { id, title, children, open = false, className, onClick, icon = 'chevron-right' } = _a, props = __rest(_a, ["id", "title", "children", "open", "className", "onClick", "icon"]);
     const [active, toggleActive] = (0, useToggler_1.default)(false);
     const [height, setHeight] = (0, react_1.useState)(0);
     const content = (0, react_1.useRef)(null);
-    const classes = useStyles({ active, height });
+    const classes = useStyles({ active, open, height });
     const titleComponent = (0, react_1.useMemo)(() => (typeof title === 'string' ? react_1.default.createElement("p", { className: classes.accordionTitle }, title) : title), [title]);
     (0, react_1.useEffect)(() => {
-        setHeight(open || active ? content.current.scrollHeight : 0); //TODO:CAPI There's a issue here, will need to fix it
+        if (content.current) {
+            setHeight(open || active ? content.current.scrollHeight : 0);
+        }
     }, [active, children, open]);
+    const handleToggleClick = () => {
+        onClick ? onClick() : toggleActive();
+    };
     return (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.accordionContainer, className), id: id },
-        react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.accordionTopBar, 'accordionTopBar'), onClick: toggleActive },
+        react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.accordionTopBar, 'accordionTopBar'), onClick: handleToggleClick },
             titleComponent,
-            react_1.default.createElement(FontAwesomeIcon_1.default, { solid: true, size: "xs", className: classes.icon }, "chevron-right")),
+            react_1.default.createElement(FontAwesomeIcon_1.default, { solid: true, size: "xs", className: (0, clsx_1.default)(classes.icon, 'toggleIcon') }, icon)),
         react_1.default.createElement("div", Object.assign({ ref: content, className: (0, clsx_1.default)(classes.accordionContent, 'accordianContent') }, props), children)));
 }
 exports.default = Accordion;
@@ -87,10 +92,9 @@ const useStyles = (0, styles_1.makeStyles)((theme) => {
             textAlign: 'left',
         },
         accordionContent: {
-            overflow: 'auto',
-            // padding: '0 12px',
-            transition: ' max-height 0.6s ease',
-            maxHeight: ({ height }) => height,
+            overflow: 'hidden',
+            transition: 'max-height 0.6s ease',
+            maxHeight: ({ active, open }) => (active || open ? '1000px' : '0'), // Use a sufficiently large value for expanded state
         },
         icon: {
             transition: 'transform 0.6s ease',

@@ -1,8 +1,8 @@
-import React, { useState, useRef, PropsWithChildren, useEffect, useMemo } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import Theme from '../../theme-manager/themes/model'
+import React, { PropsWithChildren, useEffect, useMemo, useRef, useState } from 'react'
 import useToggler from '../../hooks/useToggler'
+import Theme from '../../theme-manager/themes/model'
 import FontAwesomeIcon from '../FontAwesomeIcon'
 
 interface AccordionProps {
@@ -10,6 +10,8 @@ interface AccordionProps {
   title: string | React.ReactNode
   open?: boolean
   className?: string
+  onClick?: () => void
+  icon?: string
 }
 export default function Accordion({
   id,
@@ -17,13 +19,15 @@ export default function Accordion({
   children,
   open = false,
   className,
+  onClick,
+  icon = 'chevron-right',
   ...props
 }: PropsWithChildren<AccordionProps>) {
   const [active, toggleActive] = useToggler(false)
   const [height, setHeight] = useState(0)
 
-  const content = useRef(null)
-  const classes = useStyles({ active, height })
+  const content = useRef<HTMLDivElement>(null)
+  const classes = useStyles({ active, open, height })
 
   const titleComponent = useMemo(
     () => (typeof title === 'string' ? <p className={classes.accordionTitle}>{title}</p> : title),
@@ -31,15 +35,21 @@ export default function Accordion({
   )
 
   useEffect(() => {
-    setHeight(open || active ? content.current.scrollHeight : 0) //TODO:CAPI There's a issue here, will need to fix it
+    if (content.current) {
+      setHeight(open || active ? content.current.scrollHeight : 0)
+    }
   }, [active, children, open])
+
+  const handleToggleClick = () => {
+    onClick ? onClick() : toggleActive()
+  }
 
   return (
     <div className={clsx(classes.accordionContainer, className)} id={id}>
-      <div className={clsx(classes.accordionTopBar, 'accordionTopBar')} onClick={toggleActive}>
+      <div className={clsx(classes.accordionTopBar, 'accordionTopBar')} onClick={handleToggleClick}>
         {titleComponent}
-        <FontAwesomeIcon solid size="xs" className={classes.icon}>
-          chevron-right
+        <FontAwesomeIcon solid size="xs" className={clsx(classes.icon, 'toggleIcon')}>
+          {icon}
         </FontAwesomeIcon>
       </div>
 
@@ -52,6 +62,7 @@ export default function Accordion({
 interface AcccordionStylProps {
   active: boolean
   height: number
+  open: boolean
 }
 const useStyles = makeStyles<Theme, AcccordionStylProps>((theme: Theme) => ({
   accordionContainer: {
@@ -82,10 +93,9 @@ const useStyles = makeStyles<Theme, AcccordionStylProps>((theme: Theme) => ({
     textAlign: 'left',
   },
   accordionContent: {
-    overflow: 'auto',
-    // padding: '0 12px',
-    transition: ' max-height 0.6s ease',
-    maxHeight: ({ height }) => height,
+    overflow: 'hidden',
+    transition: 'max-height 0.6s ease',
+    maxHeight: ({ active, open }) => (active || open ? '1000px' : '0'), // Use a sufficiently large value for expanded state
   },
 
   icon: {
