@@ -1,8 +1,8 @@
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import React, { PropsWithChildren, useEffect, useMemo, useRef, useState } from 'react'
-import useToggler from '../../hooks/useToggler'
-import Theme from '../../theme-manager/themes/model'
+import useToggler from 'src/hooks/useToggler'
+import Theme from 'src/theme-manager/themes/model'
 import FontAwesomeIcon from '../FontAwesomeIcon'
 
 interface AccordionProps {
@@ -36,7 +36,8 @@ export default function Accordion({
 
   useEffect(() => {
     if (content.current) {
-      setHeight(open || active ? content.current.scrollHeight : 0)
+      const contentHeight = content.current.scrollHeight
+      setHeight(open || active ? contentHeight : 0)
     }
   }, [active, children, open])
 
@@ -53,7 +54,12 @@ export default function Accordion({
         </FontAwesomeIcon>
       </div>
 
-      <div ref={content} className={clsx(classes.accordionContent, 'accordianContent')} {...props}>
+      <div
+        ref={content}
+        className={clsx(classes.accordionContent, 'accordionContent')}
+        style={{ maxHeight: `${height}px` }}
+        {...props}
+      >
         {children}
       </div>
     </div>
@@ -70,7 +76,6 @@ const useStyles = makeStyles<Theme, AcccordionStylProps>((theme: Theme) => ({
     flexDirection: 'column',
     minWidth: 400,
   },
-
   accordionTopBar: {
     backgroundColor: ({ active }) =>
       active
@@ -95,9 +100,8 @@ const useStyles = makeStyles<Theme, AcccordionStylProps>((theme: Theme) => ({
   accordionContent: {
     overflow: 'hidden',
     transition: 'max-height 0.6s ease',
-    maxHeight: ({ active, open }) => (active || open ? '1000px' : '0'), // Use a sufficiently large value for expanded state
+    maxHeight: 0,
   },
-
   icon: {
     transition: 'transform 0.6s ease',
     transform: ({ active }) => (active ? 'rotate(90deg)' : 'rotate(0deg)'),

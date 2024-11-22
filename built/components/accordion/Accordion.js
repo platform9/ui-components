@@ -40,7 +40,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const styles_1 = require("@material-ui/styles");
 const clsx_1 = __importDefault(require("clsx"));
 const react_1 = __importStar(require("react"));
-const useToggler_1 = __importDefault(require("../../hooks/useToggler"));
+const useToggler_1 = __importDefault(require("src/hooks/useToggler"));
 const FontAwesomeIcon_1 = __importDefault(require("../FontAwesomeIcon"));
 function Accordion(_a) {
     var { id, title, children, open = false, className, onClick, icon = 'chevron-right' } = _a, props = __rest(_a, ["id", "title", "children", "open", "className", "onClick", "icon"]);
@@ -51,7 +51,8 @@ function Accordion(_a) {
     const titleComponent = (0, react_1.useMemo)(() => (typeof title === 'string' ? react_1.default.createElement("p", { className: classes.accordionTitle }, title) : title), [title]);
     (0, react_1.useEffect)(() => {
         if (content.current) {
-            setHeight(open || active ? content.current.scrollHeight : 0);
+            const contentHeight = content.current.scrollHeight;
+            setHeight(open || active ? contentHeight : 0);
         }
     }, [active, children, open]);
     const handleToggleClick = () => {
@@ -61,7 +62,7 @@ function Accordion(_a) {
         react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.accordionTopBar, 'accordionTopBar'), onClick: handleToggleClick },
             titleComponent,
             react_1.default.createElement(FontAwesomeIcon_1.default, { solid: true, size: "xs", className: (0, clsx_1.default)(classes.icon, 'toggleIcon') }, icon)),
-        react_1.default.createElement("div", Object.assign({ ref: content, className: (0, clsx_1.default)(classes.accordionContent, 'accordianContent') }, props), children)));
+        react_1.default.createElement("div", Object.assign({ ref: content, className: (0, clsx_1.default)(classes.accordionContent, 'accordionContent'), style: { maxHeight: `${height}px` } }, props), children)));
 }
 exports.default = Accordion;
 const useStyles = (0, styles_1.makeStyles)((theme) => {
@@ -94,7 +95,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => {
         accordionContent: {
             overflow: 'hidden',
             transition: 'max-height 0.6s ease',
-            maxHeight: ({ active, open }) => (active || open ? '1000px' : '0'), // Use a sufficiently large value for expanded state
+            maxHeight: 0,
         },
         icon: {
             transition: 'transform 0.6s ease',
