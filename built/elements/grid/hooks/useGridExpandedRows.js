@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-disable react-hooks/rules-of-hooks */
 const react_1 = require("react");
-function useGridExpandedRows(rows, { expandableRow, expandedByDefault, allowMultipleExpandedRows = false, }) {
+function useGridExpandedRows(rows, { expandableRow, expandedByDefault, allowMultipleExpandedRows = false, expandRowsUponSelection = false, }) {
     if (!expandableRow) {
         return [rows, { expandedRowsById: {} }];
     }
@@ -25,6 +25,17 @@ function useGridExpandedRows(rows, { expandableRow, expandedByDefault, allowMult
             setExpandedRowsById(Object.assign(Object.assign(Object.assign({}, expandedRowsById), (currentExpandedRowKey ? { [currentExpandedRowKey]: false } : {})), { [key]: !expandedRowsById[key] }));
         }
     };
+    (0, react_1.useEffect)(() => {
+        if (!expandRowsUponSelection)
+            return;
+        const rowsToExpand = rows.reduce((accum, row) => {
+            if (!row.isSelected)
+                return accum;
+            accum[row.key] = true;
+            return accum;
+        }, {});
+        setExpandedRowsById(rowsToExpand);
+    }, [expandRowsUponSelection, rows]);
     return [
         rows,
         {
