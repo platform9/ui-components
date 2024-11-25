@@ -40,23 +40,28 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const styles_1 = require("@material-ui/styles");
 const clsx_1 = __importDefault(require("clsx"));
 const react_1 = __importStar(require("react"));
-const useToggler_1 = __importDefault(require("src/hooks/useToggler"));
 const FontAwesomeIcon_1 = __importDefault(require("../FontAwesomeIcon"));
 function Accordion(_a) {
-    var { id, title, children, open = false, className, onClick, icon = 'chevron-right' } = _a, props = __rest(_a, ["id", "title", "children", "open", "className", "onClick", "icon"]);
-    const [active, toggleActive] = (0, useToggler_1.default)(false);
+    var { id, title, children, open = undefined, className, onClick, icon = 'chevron-right' } = _a, props = __rest(_a, ["id", "title", "children", "open", "className", "onClick", "icon"]);
+    const [active, toggleActive] = (0, react_1.useState)(open || false);
     const [height, setHeight] = (0, react_1.useState)(0);
+    const isControlledComponent = open !== undefined && onClick !== undefined;
     const content = (0, react_1.useRef)(null);
     const classes = useStyles({ active, open, height });
     const titleComponent = (0, react_1.useMemo)(() => (typeof title === 'string' ? react_1.default.createElement("p", { className: classes.accordionTitle }, title) : title), [title]);
     (0, react_1.useEffect)(() => {
+        if (isControlledComponent) {
+            toggleActive(open);
+        }
+    }, [open, isControlledComponent]);
+    (0, react_1.useEffect)(() => {
         if (content.current) {
             const contentHeight = content.current.scrollHeight;
-            setHeight(open || active ? contentHeight : 0);
+            setHeight(active ? contentHeight : 0);
         }
-    }, [active, children, open]);
+    }, [active, children]);
     const handleToggleClick = () => {
-        onClick ? onClick() : toggleActive();
+        isControlledComponent ? onClick() : toggleActive(!active);
     };
     return (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.accordionContainer, className), id: id },
         react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.accordionTopBar, 'accordionTopBar'), onClick: handleToggleClick },
@@ -93,7 +98,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => {
             textAlign: 'left',
         },
         accordionContent: {
-            overflow: 'hidden',
+            overflow: ({ active }) => (active ? 'visible' : 'hidden'),
             transition: 'max-height 0.6s ease',
             maxHeight: 0,
         },

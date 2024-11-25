@@ -1,30 +1,32 @@
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import React, { PropsWithChildren, useEffect, useMemo, useRef, useState } from 'react'
-import useToggler from 'src/hooks/useToggler'
 import Theme from 'src/theme-manager/themes/model'
 import FontAwesomeIcon from '../FontAwesomeIcon'
 
 interface AccordionProps {
   id: string
   title: string | React.ReactNode
-  open?: boolean
   className?: string
-  onClick?: () => void
   icon?: string
+
+  // Controlled accordion
+  open?: boolean
+  onClick?: () => void
 }
 export default function Accordion({
   id,
   title,
   children,
-  open = false,
+  open = undefined,
   className,
   onClick,
   icon = 'chevron-right',
   ...props
 }: PropsWithChildren<AccordionProps>) {
-  const [active, toggleActive] = useToggler(false)
+  const [active, toggleActive] = useState(open || false)
   const [height, setHeight] = useState(0)
+  const isControlledComponent = open !== undefined && onClick !== undefined
 
   const content = useRef<HTMLDivElement>(null)
   const classes = useStyles({ active, open, height })
@@ -35,14 +37,20 @@ export default function Accordion({
   )
 
   useEffect(() => {
+    if (isControlledComponent) {
+      toggleActive(open)
+    }
+  }, [open, isControlledComponent])
+
+  useEffect(() => {
     if (content.current) {
       const contentHeight = content.current.scrollHeight
-      setHeight(open || active ? contentHeight : 0)
+      setHeight(active ? contentHeight : 0)
     }
-  }, [active, children, open])
+  }, [active, children])
 
   const handleToggleClick = () => {
-    onClick ? onClick() : toggleActive()
+    isControlledComponent ? onClick() : toggleActive(!active)
   }
 
   return (
@@ -98,7 +106,7 @@ const useStyles = makeStyles<Theme, AcccordionStylProps>((theme: Theme) => ({
     textAlign: 'left',
   },
   accordionContent: {
-    overflow: 'hidden',
+    overflow: ({ active }) => (active ? 'visible' : 'hidden'),
     transition: 'max-height 0.6s ease',
     maxHeight: 0,
   },
