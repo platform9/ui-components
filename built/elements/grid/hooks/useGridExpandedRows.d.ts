@@ -4,6 +4,7 @@ export interface GridExpandedRowsConfig<T> {
     expandableRow?: (row: T, onRowExpand: any) => ReactNode;
     expandedByDefault?: (row: T) => boolean;
     allowMultipleExpandedRows?: boolean;
+    expandRowsUponSelection?: boolean;
 }
 export interface GridExpandedRowsProps {
     expandedRowsById?: {
@@ -11,4 +12,4 @@ export interface GridExpandedRowsProps {
     };
     onRowExpand?: (key: any) => () => void;
 }
-export default function useGridExpandedRows<T>(rows: Array<ParsedGridRow<T>>, { expandableRow, expandedByDefault, allowMultipleExpandedRows, }: GridExpandedRowsConfig<T>): [Array<ParsedGridRow<T>>, GridExpandedRowsProps];
+export default function useGridExpandedRows<T>(rows: Array<ParsedGridRow<T>>, { expandableRow, expandedByDefault, allowMultipleExpandedRows, expandRowsUponSelection, }: GridExpandedRowsConfig<T>): [Array<ParsedGridRow<T>>, GridExpandedRowsProps];

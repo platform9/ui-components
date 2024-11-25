@@ -3,9 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const ramda_1 = require("ramda");
 const react_1 = require("react");
 const misc_1 = require("../../../utils/misc");
-const ramda_1 = require("ramda");
 const GridDefaultCell_1 = __importDefault(require("../cells/GridDefaultCell"));
 const maxSize = 100000;
 function itemValueGetter(accessor, item) {

@@ -1,6 +1,6 @@
-import { FC, useMemo, ReactNode, useCallback } from 'react'
-import { memoize, memoizeShallow } from '../../../utils/misc'
 import { path } from 'ramda'
+import { FC, ReactNode, useCallback, useMemo } from 'react'
+import { memoize, memoizeShallow } from '../../../utils/misc'
 import GridDefaultCell from '../cells/GridDefaultCell'
 
 export interface GridBaseConfig<T, C extends GridColumnSpec<T> = GridColumnSpec<T>> {
@@ -49,6 +49,7 @@ export interface ParsedGridRow<T> {
   key: string
   item: T
   getCells: () => Array<ParsedGridCell<T>>
+  isSelected?: boolean
 }
 
 export interface ParsedGridCell<T, V = unknown> {

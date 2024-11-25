@@ -35,6 +35,7 @@ export interface ParsedGridRow<T> {
     key: string;
     item: T;
     getCells: () => Array<ParsedGridCell<T>>;
+    isSelected?: boolean;
 }
 export interface ParsedGridCell<T, V = unknown> {
     key: string;
