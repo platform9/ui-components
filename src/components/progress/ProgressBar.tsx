@@ -1,8 +1,8 @@
-import React, { FC } from 'react'
-import { ensureFunction } from '../../utils/fp'
 import { makeStyles } from '@material-ui/styles'
-import Theme from '../../theme-manager/themes/model'
+import React, { FC } from 'react'
 import Text from '../../elements/Text'
+import Theme from '../../theme-manager/themes/model'
+import { ensureFunction } from '../../utils/fp'
 
 type LabelRenderProp = (value: string) => string
 
@@ -14,7 +14,7 @@ interface Props {
   containedPercent?: boolean
   label?: string | JSX.Element | LabelRenderProp
   variant?: 'progress' | 'health'
-  color?: 'error' | 'success' | 'primary'
+  color?: string
   showPercent?: boolean
 }
 
@@ -66,16 +66,16 @@ const useStyles = makeStyles<Theme, Props>((theme) => ({
         ? 'linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)'
         : null,
     backgroundSize: '40px 40px',
-    backgroundColor: ({ animated, percent, variant, color }) => {
-      if (color) {
+    backgroundColor: ({ animated, percent, variant, color = theme.components.graph.success }) => {
+      if (['error', 'success', 'primary'].includes(color)) {
         return theme.palette[color].main
       }
       if (animated) return theme.components.graph.primary
       if (variant === 'health') {
-        if (percent >= 90) return theme.components.graph.error
-        if (percent >= 80) return theme.components.graph.warning
+        if (typeof percent === 'number' && percent >= 90) return theme.components.graph.error
+        if (typeof percent === 'number' && percent >= 80) return theme.components.graph.warning
       }
-      return theme.components.graph.success
+      return color
     },
     animation: '$stripes 2s linear infinite',
     color: '#FFF',
