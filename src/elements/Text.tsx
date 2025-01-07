@@ -1,14 +1,16 @@
 import React, { forwardRef } from 'react'
 import typography from '../theme-manager/themes/base/typography'
 
-import Theme from '../theme-manager/themes/model'
-import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
+import clsx from 'clsx'
+import Theme from '../theme-manager/themes/model'
 
 export type TextVariant = keyof typeof typography
 
+type DivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+
 export interface TextProps
-  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  extends Omit<DivProps, 'placeholder' | 'onPointerEnterCapture' | 'onPointerLeaveCapture'> {
   className?: string
   variant?: TextVariant
   component?: React.ElementType
