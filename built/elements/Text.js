@@ -38,8 +38,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
-const clsx_1 = __importDefault(require("clsx"));
 const styles_1 = require("@material-ui/styles");
+const clsx_1 = __importDefault(require("clsx"));
 const variantMap = {
     h1: 'h1',
     h2: 'h2',
