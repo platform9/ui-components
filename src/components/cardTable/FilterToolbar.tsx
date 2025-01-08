@@ -1,9 +1,10 @@
-import React from 'react'
-import Theme from '../../theme-manager/themes/model'
 import { makeStyles } from '@material-ui/styles'
+import clsx from 'clsx'
+import React from 'react'
+import AsyncDropdown from '../../elements/dropdown/AsyncDropdown'
+import Theme from '../../theme-manager/themes/model'
 import SearchBar from '../SearchBar'
 import RefreshButton from '../buttons/RefreshButton'
-import AsyncDropdown from '../../elements/dropdown/AsyncDropdown'
 
 const useStyles = makeStyles((theme: Theme) => ({
   toolbar: {
@@ -36,6 +37,7 @@ interface Props {
   searchTerm: string
   onSearchChange: (value) => any
   onRefresh: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+  className?: string
 }
 
 export default function FilterToolbar({
@@ -47,15 +49,16 @@ export default function FilterToolbar({
   searchTerm,
   onSearchChange,
   onRefresh,
+  className,
 }: Props) {
-  const classes = useStyles({})
+  const classes = useStyles()
   return (
-    <div className={classes.toolbar}>
-      <div className={classes.controls}>
+    <div className={clsx(classes.toolbar, className)}>
+      <div className={clsx(classes.controls, 'controls')}>
         {onRefresh && <RefreshButton onRefresh={onRefresh} />}
         <SearchBar searchTerm={searchTerm} onSearchChange={onSearchChange} />
       </div>
-      <div className={classes.filters}>
+      <div className={clsx(classes.filters, 'filters')}>
         {filters}
         {showSortOption && (
           <AsyncDropdown
