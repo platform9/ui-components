@@ -85,7 +85,11 @@ let AutocompleteBase = class AutocompleteBase extends react_1.PureComponent {
                 return;
             }
             const value = event.target.value;
-            this.setState({ value, open: true }, this.propogateChange);
+            // IDK why this callback is necessary, but I guess we will
+            // find out if we ever use the key/value suggestions
+            // this.setState({ value, open: true }, this.propogateChange)
+            this.setState({ value, open: true });
+            this.props.onChange(value);
         };
         // Note: that we are using `onMouseDown` instead of `onClick` to trigger this.
         // The reason is that the Textfield's `onBlur` is firing before the `onClick`
