@@ -30,6 +30,7 @@ interface BaseModalFormProps extends Omit<ModalProps, 'open'> {
   showBackButton?: boolean
   onBackButtonClick?: () => void
   cancelButtonLabel?: string
+  showErrorOnFooter?: boolean
 }
 
 interface PropsWithOpenRoute extends BaseModalFormProps {
@@ -63,6 +64,7 @@ export default function ModalForm({
   onBackButtonClick,
   cancelButtonLabel = 'Cancel',
   className,
+  showErrorOnFooter = false,
   ...props
 }: PropsWithChildren<ModalFormProps>) {
   const classes = useStyles()
@@ -84,6 +86,7 @@ export default function ModalForm({
       open={toOpen}
       footer={
         <>
+          {!!error && showErrorOnFooter && <Alert variant="error" message={error?.message} />}
           <div>
             {showBackButton && (
               <Button variant="secondary" onClick={() => onBackButtonClick()} disabled={submitting}>
