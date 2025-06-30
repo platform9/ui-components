@@ -19,9 +19,10 @@ const useStyles = makeStyles<Theme, any>((theme) => ({
         : `1px solid ${theme.components.card.border}`,
     backgroundColor: ({ active }) =>
       active ? theme.components.card.activeBackground : theme.components.card.background,
-    '&:hover': {
-      border: `1px solid ${theme.components.card.activeBorder}`,
-    },
+    '&:hover': ({ active }) =>
+      active
+        ? `1px solid ${theme.components.card.activeBorder}`
+        : `1px solid ${theme.components.card.border}`,
     opacity: ({ disabled }) => (disabled ? 0.4 : 1),
   },
   circle: {
