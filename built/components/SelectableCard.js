@@ -31,7 +31,9 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
             : `1px solid ${theme.components.card.border}`,
         backgroundColor: ({ active }) => active ? theme.components.card.activeBackground : theme.components.card.background,
         '&:hover': {
-            border: `1px solid ${theme.components.card.activeBorder}`,
+            border: ({ disabled }) => disabled
+                ? `1px solid ${theme.components.card.border}`
+                : `1px solid ${theme.components.card.activeBorder}`,
         },
         opacity: ({ disabled }) => (disabled ? 0.4 : 1),
     },
