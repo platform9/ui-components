@@ -1,24 +1,19 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, PropsWithChildren } from 'react';
+export interface Align {
+    vertical: 'top' | 'middle' | 'bottom';
+    horizontal: 'left' | 'middle' | 'right';
+}
 export interface TooltipProps {
     message?: string | ReactNode;
     customBody?: ReactNode;
-    align?: {
-        vertical: 'top' | 'middle' | 'bottom';
-        horizontal: 'left' | 'middle' | 'right';
-    };
+    align?: Align;
     offset?: {
         vertical: number;
         horizontal: number;
     };
     origin?: string;
-    customClassName?: string;
 }
-declare const _default: import("@material-ui/styles").StyledComponent<Pick<TooltipProps & {
-    className: string;
-} & {
-    children?: React.ReactNode;
-}, "children" | keyof TooltipProps> & import("@material-ui/styles").StyledComponentProps<"root"> & {
+declare const Tooltip: React.FC<PropsWithChildren<TooltipProps & {
     className?: string;
-    theme?: import("@material-ui/styles").DefaultTheme;
-}>;
-export default _default;
+}>>;
+export default Tooltip;
