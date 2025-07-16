@@ -52,13 +52,14 @@ function mapAlignToPlacement(align) {
 const Tooltip = (_a) => {
     var { message, customBody, align, offset, // Not directly supported by MUI Tooltip, can be handled via PopperProps if needed
     origin, // Not directly supported, but can be handled via placement
-    children, className } = _a, rest = __rest(_a, ["message", "customBody", "align", "offset", "origin", "children", "className"]);
+    children, className, customClassName } = _a, rest = __rest(_a, ["message", "customBody", "align", "offset", "origin", "children", "className", "customClassName"]);
     const placement = mapAlignToPlacement(align);
     const tooltipContent = customBody !== null && customBody !== void 0 ? customBody : message;
     const classes = useStyles({
         customBody: react_1.default.isValidElement(customBody),
     });
-    return (react_1.default.createElement(Tooltip_1.default, Object.assign({ title: tooltipContent || '', placement: placement, classes: { tooltip: classes.muiTooltip }, PopperProps: offset
+    const tooltipClass = (0, clsx_1.default)(classes.muiTooltip, customClassName);
+    return (react_1.default.createElement(Tooltip_1.default, Object.assign({ title: tooltipContent || '', placement: placement, classes: { tooltip: tooltipClass }, PopperProps: offset
             ? {
                 modifiers: {
                     offset: { enabled: true, offset: `${offset.horizontal},${offset.vertical}` },

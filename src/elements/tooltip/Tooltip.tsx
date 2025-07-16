@@ -17,6 +17,7 @@ export interface TooltipProps {
     horizontal: number
   }
   origin?: string
+  customClassName?: string
 }
 
 // Map Align to MUI placement string
@@ -49,6 +50,7 @@ const Tooltip: React.FC<PropsWithChildren<TooltipProps & { className?: string }>
   origin, // Not directly supported, but can be handled via placement
   children,
   className,
+  customClassName,
   ...rest
 }) => {
   const placement = mapAlignToPlacement(align)
@@ -57,11 +59,13 @@ const Tooltip: React.FC<PropsWithChildren<TooltipProps & { className?: string }>
     customBody: React.isValidElement(customBody),
   })
 
+  const tooltipClass = clsx(classes.muiTooltip, customClassName)
+
   return (
     <MUITooltip
       title={tooltipContent || ''}
       placement={placement as any}
-      classes={{ tooltip: classes.muiTooltip }}
+      classes={{ tooltip: tooltipClass }}
       PopperProps={
         offset
           ? {

@@ -12,6 +12,7 @@ export interface TooltipProps {
         horizontal: number;
     };
     origin?: string;
+    customClassName?: string;
 }
 declare const Tooltip: React.FC<PropsWithChildren<TooltipProps & {
     className?: string;
