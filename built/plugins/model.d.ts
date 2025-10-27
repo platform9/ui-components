@@ -18,7 +18,7 @@ export interface IRouterLink {
     Component?: React.ComponentType<any>;
     disabled?: (params: any) => boolean | boolean;
 }
-interface Link {
+export interface Link {
     onClick: () => void;
     path: string;
     definition?: string;
@@ -28,7 +28,7 @@ interface Link {
     hideExternalLinkIcon?: boolean;
     externalLinkIcon?: string;
 }
-interface NestedLink {
+export interface NestedLink {
     name: string;
     link: Link;
     nestedLinks: null;
@@ -40,4 +40,3 @@ export interface PluginOptions {
     showSidebar: boolean;
     singlePane?: boolean;
 }
-export {};
