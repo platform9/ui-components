@@ -110,8 +110,7 @@ const Input = ({
           className={classes.info}
         >
           <Text variant="inputLabel" className={classes.hint}>
-            <FontAwesomeIcon>question-circle</FontAwesomeIcon>
-            Hint
+            <FontAwesomeIcon>info-circle</FontAwesomeIcon>
           </Text>
         </Tooltip>
       )}
@@ -165,11 +164,15 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     minWidth: 100,
     width: '100%',
     gridAutoRows: 'max-content',
-    gridTemplateColumns: ({ info }) => (info ? '1fr minmax(0px, max-content)' : '1fr'),
-    gridTemplateAreas: ({ error }) =>
-      `"input-label input-hint" "input-frame input-frame"${
-        error ? ' "input-error input-error"' : ''
-      }`,
+    gridTemplateColumns: ({ info }) => (info ? 'max-content max-content 1fr' : '1fr'),
+    gridTemplateAreas: ({ error, info }) =>
+      info
+        ? `"input-label input-hint spacer" "input-frame input-frame input-frame"${
+            error ? ' "input-error input-error input-error"' : ''
+          }`
+        : `"input-label input-label" "input-frame input-frame"${
+            error ? ' "input-error input-error"' : ''
+          }`,
     gap: ({ compact }) => (compact ? 0 : 8),
   },
   error: {
@@ -190,14 +193,18 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     display: 'grid',
   },
   hint: {
+    width: 16,
+    height: 16,
     cursor: 'help',
     transition: 'color .2s ease',
     color: theme.components.input.label.hint,
     '& i': {
       cursor: 'help',
+      fontSize: 16,
       marginRight: 8,
       transition: 'color .2s ease',
       color: theme.components.input.label.hint,
+      '&:hover': { color: theme.palette.grey[700] },
     },
   },
   inputFrame: {

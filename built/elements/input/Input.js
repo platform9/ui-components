@@ -91,8 +91,7 @@ const Input = (_a) => {
         label && (react_1.default.createElement(Text_1.default, { variant: "inputLabel", className: (0, clsx_1.default)(classes.label, 'label') }, label)),
         info && (react_1.default.createElement(tooltip_1.default, { message: info || label || placeholder, align: defaults_1.topMiddle.align, offset: defaults_1.topMiddle.offset, origin: "right center", className: classes.info },
             react_1.default.createElement(Text_1.default, { variant: "inputLabel", className: classes.hint },
-                react_1.default.createElement(FontAwesomeIcon_1.default, null, "question-circle"),
-                "Hint"))),
+                react_1.default.createElement(FontAwesomeIcon_1.default, null, "info-circle")))),
         react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.inputFrame, 'inputFrame') },
             icon && (react_1.default.createElement(FontAwesomeIcon_1.default, { className: (0, clsx_1.default)(classes.icon, 'icon'), onClick: allIconProps.onClick }, icon)),
             extraContent,
@@ -108,8 +107,10 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         minWidth: 100,
         width: '100%',
         gridAutoRows: 'max-content',
-        gridTemplateColumns: ({ info }) => (info ? '1fr minmax(0px, max-content)' : '1fr'),
-        gridTemplateAreas: ({ error }) => `"input-label input-hint" "input-frame input-frame"${error ? ' "input-error input-error"' : ''}`,
+        gridTemplateColumns: ({ info }) => (info ? 'max-content max-content 1fr' : '1fr'),
+        gridTemplateAreas: ({ error, info }) => info
+            ? `"input-label input-hint spacer" "input-frame input-frame input-frame"${error ? ' "input-error input-error input-error"' : ''}`
+            : `"input-label input-label" "input-frame input-frame"${error ? ' "input-error input-error"' : ''}`,
         gap: ({ compact }) => (compact ? 0 : 8),
     },
     error: {
@@ -129,14 +130,18 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         display: 'grid',
     },
     hint: {
+        width: 16,
+        height: 16,
         cursor: 'help',
         transition: 'color .2s ease',
         color: theme.components.input.label.hint,
         '& i': {
             cursor: 'help',
+            fontSize: 16,
             marginRight: 8,
             transition: 'color .2s ease',
             color: theme.components.input.label.hint,
+            '&:hover': { color: theme.palette.grey[700] },
         },
     },
     inputFrame: {
