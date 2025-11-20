@@ -193,14 +193,11 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     display: 'grid',
   },
   hint: {
-    width: 16,
-    height: 16,
     cursor: 'help',
     transition: 'color .2s ease',
     color: theme.components.input.label.hint,
     '& i': {
       cursor: 'help',
-      fontSize: 16,
       marginRight: 8,
       transition: 'color .2s ease',
       color: theme.components.input.label.hint,
