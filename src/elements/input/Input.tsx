@@ -3,11 +3,11 @@ import clsx from 'clsx'
 import { mergeRight } from 'ramda'
 import React, { PropsWithChildren, ReactNode, useCallback, useMemo, useRef } from 'react'
 import FontAwesomeIcon from '../../components/FontAwesomeIcon'
-import { topMiddle } from '../../elements/menu/defaults'
 import Tooltip from '../../elements/tooltip'
 import useToggler from '../../hooks/useToggler'
 import Theme from '../../theme-manager/themes/model'
 import Text from '../Text'
+import { TooltipProps } from '../tooltip/Tooltip'
 
 export interface InputIconProps {
   onClick?: () => void
@@ -26,6 +26,7 @@ export interface InputProps
   info?: string | ReactNode
   disabled?: boolean
   error?: string
+  tooltipProps?: TooltipProps
   onChange?: (e: any) => void
 }
 
@@ -48,6 +49,7 @@ const Input = ({
   onChange,
   disabled = false,
   error = '',
+  tooltipProps = undefined,
   ...rest
 }: PropsWithChildren<InputProps>) => {
   const maskRef = useRef<HTMLParagraphElement>()
@@ -102,13 +104,7 @@ const Input = ({
         </Text>
       )}
       {info && (
-        <Tooltip
-          message={info || label || placeholder}
-          align={topMiddle.align}
-          offset={topMiddle.offset}
-          origin="right center"
-          className={classes.info}
-        >
+        <Tooltip message={info || label || placeholder} className={classes.info} {...tooltipProps}>
           <Text variant="inputLabel" className={classes.hint}>
             <FontAwesomeIcon>info-circle</FontAwesomeIcon>
           </Text>

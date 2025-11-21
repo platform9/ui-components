@@ -42,7 +42,6 @@ const clsx_1 = __importDefault(require("clsx"));
 const ramda_1 = require("ramda");
 const react_1 = __importStar(require("react"));
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
-const defaults_1 = require("../../elements/menu/defaults");
 const tooltip_1 = __importDefault(require("../../elements/tooltip"));
 const useToggler_1 = __importDefault(require("../../hooks/useToggler"));
 const Text_1 = __importDefault(require("../Text"));
@@ -50,7 +49,7 @@ const defaultIconProps = {
     placement: 'start',
 };
 const Input = (_a) => {
-    var { className = undefined, compact = false, variant = 'light', mask = undefined, icon = undefined, iconProps = undefined, placeholder = '', label = '', info = '', children, value, onChange, disabled = false, error = '' } = _a, rest = __rest(_a, ["className", "compact", "variant", "mask", "icon", "iconProps", "placeholder", "label", "info", "children", "value", "onChange", "disabled", "error"]);
+    var { className = undefined, compact = false, variant = 'light', mask = undefined, icon = undefined, iconProps = undefined, placeholder = '', label = '', info = '', children, value, onChange, disabled = false, error = '', tooltipProps = undefined } = _a, rest = __rest(_a, ["className", "compact", "variant", "mask", "icon", "iconProps", "placeholder", "label", "info", "children", "value", "onChange", "disabled", "error", "tooltipProps"]);
     const maskRef = (0, react_1.useRef)();
     const width = (0, react_1.useMemo)(() => {
         var _a, _b;
@@ -89,7 +88,7 @@ const Input = (_a) => {
     }
     return (react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.wrapper, className) },
         label && (react_1.default.createElement(Text_1.default, { variant: "inputLabel", className: (0, clsx_1.default)(classes.label, 'label') }, label)),
-        info && (react_1.default.createElement(tooltip_1.default, { message: info || label || placeholder, align: defaults_1.topMiddle.align, offset: defaults_1.topMiddle.offset, origin: "right center", className: classes.info },
+        info && (react_1.default.createElement(tooltip_1.default, Object.assign({ message: info || label || placeholder, className: classes.info }, tooltipProps),
             react_1.default.createElement(Text_1.default, { variant: "inputLabel", className: classes.hint },
                 react_1.default.createElement(FontAwesomeIcon_1.default, null, "info-circle")))),
         react_1.default.createElement("div", { className: (0, clsx_1.default)(classes.inputFrame, 'inputFrame') },
