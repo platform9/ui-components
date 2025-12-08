@@ -123,7 +123,6 @@ const useStyles = makeStyles<Theme, { disabled?: boolean }>((theme) => ({
     backgroundColor: ({ disabled }) =>
       disabled ? theme.palette.grey[50] : theme.palette.common.white,
     borderRadius: '4px',
-    cursor: ({ disabled }) => (disabled ? 'not-allowed' : 'pointer'),
   },
   button: {
     display: 'flex',
@@ -134,6 +133,7 @@ const useStyles = makeStyles<Theme, { disabled?: boolean }>((theme) => ({
       disabled ? theme.palette.grey[50] : theme.palette.common.white,
     '&:hover': {
       backgroundColor: ({ disabled }) => (disabled ? 'transparent' : theme.palette.grey[50]),
+      cursor: 'pointer',
     },
     borderRadius: '4px',
   },
