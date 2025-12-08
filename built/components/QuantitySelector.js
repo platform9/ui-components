@@ -58,7 +58,6 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         transition: 'all .2s ease',
         backgroundColor: ({ disabled }) => disabled ? theme.palette.grey[50] : theme.palette.common.white,
         borderRadius: '4px',
-        cursor: ({ disabled }) => (disabled ? 'not-allowed' : 'pointer'),
     },
     button: {
         display: 'flex',
@@ -68,6 +67,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         backgroundColor: ({ disabled }) => disabled ? theme.palette.grey[50] : theme.palette.common.white,
         '&:hover': {
             backgroundColor: ({ disabled }) => (disabled ? 'transparent' : theme.palette.grey[50]),
+            cursor: 'pointer',
         },
         borderRadius: '4px',
     },
