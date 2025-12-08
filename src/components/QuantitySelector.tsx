@@ -31,14 +31,20 @@ export default function QuantitySelector({
   const classes = useStyles({ disabled })
   const [inputValue, setInputValue] = React.useState(value)
 
+  // Derived states
+  const isMinReached = inputValue <= min
+  const isMaxReached = max !== undefined && inputValue >= max
+
   const decrement = () => {
-    const newValue = inputValue - 1 < min ? inputValue : inputValue - 1
+    if (disabled || isMinReached) return
+    const newValue = inputValue - 1
     onChange(newValue)
     setInputValue(newValue)
   }
 
   const increment = () => {
-    const newValue = max && inputValue + 1 > max ? max : inputValue + 1
+    if (disabled || isMaxReached) return
+    const newValue = inputValue + 1
     onChange(newValue)
     setInputValue(newValue)
   }
@@ -52,11 +58,20 @@ export default function QuantitySelector({
     <div className={clsx(classes.quantitySelector, className)} data-testid="quantity-selector">
       <button
         type="button"
-        className={clsx(classes.button, 'button')}
+        disabled={disabled || isMinReached}
+        className={clsx(classes.button, {
+          [classes.disabledButton]: disabled || isMinReached,
+        })}
         onClick={decrement}
         data-testid="decrement-btn"
       >
-        <FontAwesomeIcon size={iconSize} className={classes.icon}>
+        <FontAwesomeIcon
+          size={iconSize}
+          solid
+          className={clsx(classes.icon, {
+            [classes.disabledIcon]: disabled || isMinReached,
+          })}
+        >
           minus
         </FontAwesomeIcon>
       </button>
@@ -76,11 +91,20 @@ export default function QuantitySelector({
       />
       <button
         type="button"
-        className={clsx(classes.button, 'button')}
+        disabled={disabled || isMaxReached}
+        className={clsx(classes.button, {
+          [classes.disabledButton]: disabled || isMaxReached,
+        })}
         onClick={increment}
         data-testid="increment-btn"
       >
-        <FontAwesomeIcon size={iconSize} className={classes.icon}>
+        <FontAwesomeIcon
+          size={iconSize}
+          solid
+          className={clsx(classes.icon, {
+            [classes.disabledIcon]: disabled || isMaxReached,
+          })}
+        >
           plus
         </FontAwesomeIcon>
       </button>
@@ -109,11 +133,20 @@ const useStyles = makeStyles<Theme, { disabled?: boolean }>((theme) => ({
     backgroundColor: ({ disabled }) =>
       disabled ? theme.palette.grey[50] : theme.palette.common.white,
     '&:hover': {
-      backgroundColor: ({ disabled }) =>
-        disabled ? 'transparent' : theme.components.selectableCard.activeBackground,
+      backgroundColor: ({ disabled }) => (disabled ? 'transparent' : theme.palette.grey[50]),
     },
     borderRadius: '4px',
   },
+
+  // Disabled button styling
+  disabledButton: {
+    backgroundColor: `${theme.palette.grey[50]} !important`,
+    cursor: 'not-allowed',
+    '&:hover': {
+      backgroundColor: `${theme.palette.grey[50]} !important`,
+    },
+  },
+
   input: {
     minWidth: '32px',
     maxWidth: '70px',
@@ -139,6 +172,11 @@ const useStyles = makeStyles<Theme, { disabled?: boolean }>((theme) => ({
     },
   },
   icon: {
-    color: ({ disabled }) => (disabled ? theme.palette.grey[300] : theme.palette.grey[900]),
+    color: ({ disabled }) => (disabled ? theme.palette.grey[300] : theme.palette.blue[400]),
+  },
+
+  // Disabled icon styling
+  disabledIcon: {
+    color: `${theme.palette.grey[300]} !important`,
   },
 }))
