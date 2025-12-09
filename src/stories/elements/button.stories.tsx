@@ -1,8 +1,8 @@
 import React from 'react'
-import { Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
 import Button from '../../elements/button'
- 
+
 const STATES = [
   { label: 'Default', props: {} },
   { label: 'Disabled', props: { disabled: true } },
@@ -16,7 +16,7 @@ const PROP_VARIATIONS = [
   { label: 'With tooltip', props: { info: 'Tooltip text' } },
 ]
 
-const renderStates = (baseArgs) =>
+const renderStates = (baseArgs: any) =>
   PROP_VARIATIONS.map((variation) => (
     <div key={variation.label} style={{ marginBottom: 16 }}>
       <div style={{ marginBottom: 4, fontWeight: 600 }}>{variation.label}</div>
@@ -31,44 +31,7 @@ const renderStates = (baseArgs) =>
     </div>
   ))
 
-export const Primary = (args) => {
-  const baseArgs = { ...args, variant: 'primary' }
-  return <>{renderStates(baseArgs)}</>
-}
-Primary.args = {
-  size: 'large',
-  variant: 'primary',
-  children: 'Click Me',
-}
-
-export const Secondary = (args) => {
-  const baseArgs = { ...args, variant: 'secondary' }
-  return <>{renderStates(baseArgs)}</>
-}
-Secondary.args = {
-  ...Primary.args,
-  variant: 'secondary',
-}
-
-export const Tertiary = (args) => {
-  const baseArgs = { ...args, variant: 'tertiary' }
-  return <>{renderStates(baseArgs)}</>
-}
-Tertiary.args = {
-  ...Primary.args,
-  variant: 'tertiary',
-}
-
-export const CTA = (args) => {
-  const baseArgs = { ...args, variant: 'cta' }
-  return <>{renderStates(baseArgs)}</>
-}
-CTA.args = {
-  ...Primary.args,
-  variant: 'cta',
-}
-
-const ButtonStories: Meta = {
+const meta: Meta<typeof Button> = {
   title: 'Elements/Button',
   component: Button,
   argTypes: {
@@ -159,4 +122,90 @@ const ButtonStories: Meta = {
     },
   },
 }
-export default ButtonStories
+
+export default meta
+
+type Story = StoryObj<typeof Button>
+
+const baseArgs = {
+  size: 'large',
+  variant: 'primary',
+  children: 'Click Me',
+  disabled: false,
+  loading: false,
+}
+
+export const Primary: Story = {
+  args: {
+    ...baseArgs,
+    variant: 'primary',
+  },
+}
+
+export const Secondary: Story = {
+  args: {
+    ...baseArgs,
+    variant: 'secondary',
+  },
+}
+
+export const Tertiary: Story = {
+  args: {
+    ...baseArgs,
+    variant: 'tertiary',
+  },
+}
+
+export const CTA: Story = {
+  args: {
+    ...baseArgs,
+    variant: 'cta',
+  },
+}
+
+export const Disabled: Story = {
+  args: {
+    ...baseArgs,
+    variant: 'primary',
+    disabled: true,
+  },
+}
+
+export const Loading: Story = {
+  args: {
+    ...baseArgs,
+    variant: 'primary',
+    loading: true,
+  },
+}
+
+export const WithLeftIcon: Story = {
+  args: {
+    ...baseArgs,
+    variant: 'primary',
+    icon: 'plus',
+  },
+}
+
+export const WithRightIcon: Story = {
+  args: {
+    ...baseArgs,
+    variant: 'primary',
+    rightIcon: 'angle-right',
+  },
+}
+
+export const WithTooltip: Story = {
+  args: {
+    ...baseArgs,
+    variant: 'primary',
+    info: 'Tooltip text',
+  },
+}
+
+export const Gallery: Story = {
+  args: {
+    ...baseArgs,
+  },
+  render: (args) => <>{renderStates(args)}</>,
+}
