@@ -2,116 +2,70 @@ import React from 'react'
 import { Meta } from '@storybook/react'
 
 import Button from '../../elements/button'
-import Text from '../../elements/Text'
-import Card from '../../elements/card'
-import { Row, Column } from '../containers'
+ 
+const STATES = [
+  { label: 'Default', props: {} },
+  { label: 'Disabled', props: { disabled: true } },
+  { label: 'Loading', props: { loading: true } },
+]
 
-export const DefaultButton = (args) => (
-  <Card>
-    <Row>
-      <Column>
-        <Text variant="caption1">Primary</Text>
-        <Button {...args}>Click Me</Button>
-      </Column>{' '}
-      <Column>
-        <Text variant="caption1">Secondary</Text>
-        <Button {...args} variant="secondary">
-          Click Me
-        </Button>
-      </Column>
-      <Column>
-        <Text variant="caption1">Tertiary</Text>
-        <Button {...args} variant="tertiary">
-          Click Me
-        </Button>
-      </Column>
-      <Column>
-        <Text variant="caption1">CTA</Text>
-        <Button {...args} variant="cta">
-          Click Me
-        </Button>
-      </Column>
-    </Row>
-    <Row>
-      <Column>
-        <Text variant="caption1">Primary Disabled</Text>
-        <Button {...args} disabled>
-          Click Me
-        </Button>
-      </Column>{' '}
-      <Column>
-        <Text variant="caption1">Secondary Disabled</Text>
-        <Button {...args} disabled variant="secondary">
-          Click Me
-        </Button>
-      </Column>
-      <Column>
-        <Text variant="caption1">Tertiary Disabled</Text>
-        <Button {...args} disabled variant="tertiary">
-          Click Me
-        </Button>
-      </Column>
-      <Column>
-        <Text variant="caption1">CTA Disabled</Text>
-        <Button {...args} disabled variant="cta">
-          Click Me
-        </Button>
-      </Column>
-    </Row>
-    <Row>
-      <Column>
-        <Text variant="caption1">Primary Loading</Text>
-        <Button {...args} loading>
-          Click Me
-        </Button>
-      </Column>{' '}
-      <Column>
-        <Text variant="caption1">Secondary Loading</Text>
-        <Button {...args} loading variant="secondary">
-          Click Me
-        </Button>
-      </Column>
-      <Column>
-        <Text variant="caption1">Tertiary Loading</Text>
-        <Button {...args} loading variant="tertiary">
-          Click Me
-        </Button>
-      </Column>
-      <Column>
-        <Text variant="caption1">CTA Loading</Text>
-        <Button {...args} loading variant="cta">
-          Click Me
-        </Button>
-      </Column>
-    </Row>
-  </Card>
-)
-DefaultButton.parameters = {
-  docs: {
-    source: {
-      code: `
-import Button from 'core/elements/button'
+const PROP_VARIATIONS = [
+  { label: 'Base', props: {} },
+  { label: 'With left icon', props: { icon: 'plus' } },
+  { label: 'With right icon', props: { rightIcon: 'angle-right' } },
+  { label: 'With tooltip', props: { info: 'Tooltip text' } },
+]
 
-const ButtonGroup = () => (
-  <>
-    <Button size="large">
-      Click Me
-    </Button>
-    <Button size="large" variant="secondary">
-      Click Me
-    </Button>
-    <Button size="large" variant="secondary">
-      Click Me
-    </Button>
-  </>
-)
-`,
-    },
-  },
+const renderStates = (baseArgs) =>
+  PROP_VARIATIONS.map((variation) => (
+    <div key={variation.label} style={{ marginBottom: 16 }}>
+      <div style={{ marginBottom: 4, fontWeight: 600 }}>{variation.label}</div>
+      {STATES.map((state) => (
+        <div key={state.label} style={{ marginBottom: 4 }}>
+          <span style={{ marginRight: 8 }}>{state.label}</span>
+          <Button {...baseArgs} {...variation.props} {...state.props}>
+            {baseArgs.children}
+          </Button>
+        </div>
+      ))}
+    </div>
+  ))
+
+export const Primary = (args) => {
+  const baseArgs = { ...args, variant: 'primary' }
+  return <>{renderStates(baseArgs)}</>
 }
-DefaultButton.args = {
+Primary.args = {
   size: 'large',
   variant: 'primary',
+  children: 'Click Me',
+}
+
+export const Secondary = (args) => {
+  const baseArgs = { ...args, variant: 'secondary' }
+  return <>{renderStates(baseArgs)}</>
+}
+Secondary.args = {
+  ...Primary.args,
+  variant: 'secondary',
+}
+
+export const Tertiary = (args) => {
+  const baseArgs = { ...args, variant: 'tertiary' }
+  return <>{renderStates(baseArgs)}</>
+}
+Tertiary.args = {
+  ...Primary.args,
+  variant: 'tertiary',
+}
+
+export const CTA = (args) => {
+  const baseArgs = { ...args, variant: 'cta' }
+  return <>{renderStates(baseArgs)}</>
+}
+CTA.args = {
+  ...Primary.args,
+  variant: 'cta',
 }
 
 const ButtonStories: Meta = {
@@ -119,7 +73,7 @@ const ButtonStories: Meta = {
   component: Button,
   argTypes: {
     variant: {
-      options: ['primary', 'secondary', 'table'],
+      options: ['primary', 'secondary', 'tertiary', 'cta'],
       control: { type: 'select' },
       description: 'Defines the buttons state',
       table: {
@@ -150,6 +104,57 @@ const ButtonStories: Meta = {
       table: {
         defaultValue: { summary: false },
         type: { summary: 'boolean' },
+      },
+    },
+    children: {
+      control: { type: 'text' },
+      description: 'Button label content',
+      table: {
+        type: { summary: 'ReactNode' },
+      },
+    },
+    icon: {
+      control: { type: 'text' },
+      description: 'FontAwesome icon shown on the left',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    rightIcon: {
+      control: { type: 'text' },
+      description: 'FontAwesome icon shown on the right',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    info: {
+      control: { type: 'text' },
+      description: 'Tooltip content displayed on hover',
+      table: {
+        type: { summary: 'string | ReactNode' },
+      },
+    },
+    solidIcon: {
+      control: { type: 'boolean' },
+      description: 'Whether the icon uses the solid style',
+      table: {
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+    },
+    iconBrand: {
+      control: { type: 'boolean' },
+      description: 'Whether the icon uses the brand style',
+      table: {
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+    },
+    onClick: {
+      action: 'clicked',
+      description: 'Click handler for the button',
+      table: {
+        type: { summary: '(event) => void' },
       },
     },
   },
