@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-globals */
 import React from 'react'
-import { Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { makeStyles } from '@material-ui/styles'
 import Theme from '../../theme-manager/themes/model'
 import StackedAreaChart from 'src/components/graphs/StackedAreaChart'
@@ -76,8 +76,69 @@ const chartKeys = [
 
 const exampleAxis = 'time'
 
-export const StackedChart = (args) => {
-  return <StackedAreaChart values={exampleData} keys={chartKeys} xAxis={exampleAxis} responsive />
+const meta: Meta<typeof StackedAreaChart> = {
+  title: 'Elements/Chart',
+  component: StackedAreaChart,
+  argTypes: {
+    responsive: {
+      control: { type: 'boolean' },
+      description: 'Whether the chart should expand to fill its container width',
+      table: {
+        defaultValue: { summary: true },
+        type: { summary: 'boolean' },
+      },
+    },
+    verticalAxisLines: {
+      control: { type: 'boolean' },
+      description: 'Toggles vertical grid lines',
+      table: {
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+    },
+    horizontalAxisLines: {
+      control: { type: 'boolean' },
+      description: 'Toggles horizontal grid lines',
+      table: {
+        defaultValue: { summary: true },
+        type: { summary: 'boolean' },
+      },
+    },
+  },
+}
+
+export default meta
+
+type Story = StoryObj<typeof StackedAreaChart>
+
+const baseArgs = {
+  values: exampleData,
+  keys: chartKeys,
+  xAxis: exampleAxis,
+  responsive: true,
+}
+
+export const StackedChart: Story = {
+  args: {
+    ...baseArgs,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  import StackedAreaChart from 'core/components/graphs/StackedAreaChart'
+
+  const AreaChart = () => (
+    <StackedAreaChart<'time', IRequiredAreaChartTypes>
+      values={exampleData}
+      keys={chartKeys}
+      xAxis="time"
+    />
+  )
+`,
+      },
+    },
+  },
 }
 
 const singleChartData = [
@@ -112,51 +173,17 @@ const moneyFormatter = new Intl.NumberFormat('en-US', {
   currency: 'USD',
 })
 
-export const SimpleAreaChart = (args) => {
-  return (
+export const SimpleAreaChart: Story = {
+  render: () => (
     <SingleAreaChart
       values={singleChartData}
       dataKey="price"
       xAxis="time"
       legendLabelFn={() => '30-day price history'}
-      tooltipFormatterFn={(value: number, key) => {
+      tooltipFormatterFn={(value: number) => {
         const dollarFormat = moneyFormatter.format(value)
         return [dollarFormat, 'Price']
       }}
     />
-  )
+  ),
 }
-
-StackedChart.parameters = {
-  docs: {
-    source: {
-      code: `
-  import StackedAreaChart from 'core/components/graphs/StackedAreaChart'
-
-  const AreaChart = () => (
-    <StackedAreaChart<'time', IRequiredAreaChartTypes>
-      values={exampleData}
-      keys={chartKeys}
-      xAxis="time"
-    />
-  )
-`,
-    },
-  },
-}
-
-StackedChart.args = {
-  // size: 'large',
-}
-
-const ChartStories: Meta = {
-  title: 'Elements/Chart',
-  component: StackedAreaChart,
-  argTypes: {
-    onBeforePageChange: {
-      action: 'beforePageChange',
-    },
-  },
-}
-
-export default ChartStories

@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-globals */
 import React, { useCallback, useState, useEffect, useMemo, Reducer, useReducer } from 'react'
-import { Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import data, { Movie } from '../data/movies-list'
 import { equals, reverse, sort, uniq, without } from 'ramda'
 import {
@@ -194,7 +194,7 @@ const itemActionsReducer: Reducer<
   }
 }
 
-export const UncontrolledGrid = (args: Partial<GridProps<Movie, GlobalFilters, Filters>>) => {
+const UncontrolledGridTemplate = (args: Partial<GridProps<Movie, GlobalFilters, Filters>>) => {
   const [items, dispatch] = useReducer(itemActionsReducer, data)
   const batchActions = useMemo<GridBatchActionSpec<Movie>[]>(
     () => [
@@ -244,7 +244,7 @@ async function awaitSeconds<T>(seconds = 1): Promise<void> {
 }
 
 const rowsPerPage = 10
-export const AsyncGrid = (args: Partial<GridProps<Movie, GlobalFilters, Filters>>) => {
+const AsyncGridTemplate = (args: Partial<GridProps<Movie, GlobalFilters, Filters>>) => {
   const [loadingCount, setLoadingCount] = useState(0)
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [pageSize, setPageSize] = useState<number>(rowsPerPage)
@@ -425,7 +425,7 @@ export const AsyncGrid = (args: Partial<GridProps<Movie, GlobalFilters, Filters>
   )
 }
 
-export const ExpandableRowGrid = (args: Partial<GridProps<Movie, GlobalFilters, Filters>>) => {
+const ExpandableRowGridTemplate = (args: Partial<GridProps<Movie, GlobalFilters, Filters>>) => {
   const classes = useStyles()
   const [items, dispatch] = useReducer(itemActionsReducer, data)
   const batchActions = useMemo<GridBatchActionSpec<Movie>[]>(
@@ -490,32 +490,39 @@ export const ExpandableRowGrid = (args: Partial<GridProps<Movie, GlobalFilters, 
   )
 }
 
-UncontrolledGrid.parameters = {
-  docs: {
-    source: {
-      code: `
+const meta: Meta<typeof Grid> = {
+  title: 'Elements/Grid',
+  component: Grid,
+}
+
+export default meta
+
+type Story = StoryObj<typeof Grid>
+
+export const UncontrolledGrid: Story = {
+  args: {
+    size: 'large',
+  },
+  render: (args) => <UncontrolledGridTemplate {...args} />,
+  parameters: {
+    docs: {
+      source: {
+        code: `
   import Grid from 'core/elements/grid'
 
   const DefaultGrid = () => (
     <Grid columns={columns} data={data} />
   )
 `,
+      },
     },
   },
 }
 
-UncontrolledGrid.args = {
-  size: 'large',
+export const AsyncGrid: Story = {
+  render: (args) => <AsyncGridTemplate {...args} />,
 }
 
-const GridStories: Meta = {
-  title: 'Elements/Grid',
-  component: Grid,
-  argTypes: {
-    onBeforePageChange: {
-      action: 'beforePageChange',
-    },
-  },
+export const ExpandableRowGrid: Story = {
+  render: (args) => <ExpandableRowGridTemplate {...args} />,
 }
-
-export default GridStories
