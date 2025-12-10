@@ -11,6 +11,13 @@ module.exports = {
   framework: '@storybook/react',
   webpackFinal: async (config) => {
     config.resolve.modules.push(path.resolve(__dirname, '../'))
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      [path.resolve(__dirname, '../src/elements/header/portals')]: path.resolve(
+        __dirname,
+        './mocks/header-portals.js',
+      ),
+    }
     return config
   },
   // core: {

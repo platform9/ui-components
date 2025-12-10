@@ -3,10 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 import DocumentMeta from '../../components/DocumentMeta'
 import { HeaderTitlePortal } from '../../elements/header/portals'
 
-// Mock the portal to render inline for storybook
-jest.mock('../../elements/header/portals', () => ({
-    HeaderTitlePortal: ({ children }) => <div className="mock-portal-target">{children}</div>
-}))
 
 type DocumentMetaProps = React.ComponentProps<typeof DocumentMeta>
 
