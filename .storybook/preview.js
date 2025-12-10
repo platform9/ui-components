@@ -15,6 +15,16 @@ import {
 } from '@storybook/addon-docs'
 import '../static/fontawesome/css/all.min.css'
 
+// Add portal roots if they don't exist
+const portalRoots = ['modal-portal-root', 'tooltip-portal-root', 'row-menu-portal-root']
+portalRoots.forEach((id) => {
+  if (!document.getElementById(id)) {
+    const el = document.createElement('div')
+    el.id = id
+    document.body.appendChild(el)
+  }
+})
+
 const DelayedRender = ({ children, delay = 100 }) => {
   const [timeoutEnded, setTimeoutEnded] = useState(false)
   // Set up the timeout.
