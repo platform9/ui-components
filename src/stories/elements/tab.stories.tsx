@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
+import { MemoryRouter } from 'react-router'
 
 import Tabs from '../../elements/tabs'
 import Tab from '../../elements/tabs/Tab'
@@ -52,7 +53,11 @@ const StatefulTabs = (args) => {
 }
 
 export const TabsPreview: Story = {
-  render: (args) => <StatefulTabs {...args} />,
+  render: (args) => (
+    <MemoryRouter>
+      <StatefulTabs {...args} />
+    </MemoryRouter>
+  ),
   parameters: {
     docs: {
       source: {
