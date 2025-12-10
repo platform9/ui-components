@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, RenderOptions } from '@testing-library/react'
 import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
 
 import store, { themeActions } from './store'
 import ThemeManager from './theme-manager/ThemeManager'
@@ -11,7 +12,9 @@ type AllProvidersProps = {
 
 const AllProviders: React.FC<AllProvidersProps> = ({ children }) => (
   <Provider store={store}>
-    <ThemeManager themeActions={themeActions}>{children}</ThemeManager>
+    <ThemeManager themeActions={themeActions}>
+      <BrowserRouter>{children}</BrowserRouter>
+    </ThemeManager>
   </Provider>
 )
 
