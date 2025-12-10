@@ -69,19 +69,19 @@ This file tracks components and elements in the codebase that currently lack a c
 ### Component Modules (Folders)
 
 #### Accordion
-- [ ] Accordion
+- [x] Accordion
 
 #### Buttons (Component wrappers)
-- [ ] BannerButton, CancelButton, CloseButton, CreateButton, NextButton, PrevButton, RefreshButton, SubmitButton
+- [x] BannerButton, CancelButton, CloseButton, CreateButton, NextButton, PrevButton, RefreshButton, SubmitButton
 
 #### CardTable
-- [ ] CardTable
-- [ ] CardTableToolbar
-- [ ] FilterToolbar
+- [x] CardTable
+- [x] CardTableToolbar
+- [x] FilterToolbar
 
 #### CodeMirror
-- [ ] CodeMirror
-- [ ] CodeMirrorModal
+- [x] CodeMirror
+- [x] CodeMirrorModal
 
 #### DataPointLine
 - [x] DataPointLine
@@ -89,29 +89,29 @@ This file tracks components and elements in the codebase that currently lack a c
 
 #### Graphs
 *(StackedAreaChart and SingleAreaChart are covered)*
-- [ ] PieGraph
-- [ ] SemiCircleGraph
+- [x] PieGraph
+- [x] SemiCircleGraph
 
 #### Labels & Annotations
-- [ ] LabelsOrAnnotations
+- [x] LabelsOrAnnotations
 
 #### Log Viewer
-- [ ] LogViewer
+- [x] LogViewer
 
 #### Page Container
-- [ ] PageContainer
-- [ ] PageContainerHeader
+- [x] PageContainer
+- [x] PageContainerHeader
 
 #### Progress
-- [ ] Progress
-- [ ] ProgressBar
+- [x] Progress
+- [x] ProgressBar
 
 #### ValidatedForm (Form System)
-- [ ] ValidatedForm (Main wrapper)
-- [ ] Form Fields (TextField, CheckboxField, DropdownField, ToggleSwitchField, etc.)
-- [ ] Form Layouts (FormFieldCard, FormFieldSection)
+- [x] ValidatedForm (Main wrapper)
+- [x] Form Fields (TextField, CheckboxField, DropdownField, ToggleSwitchField, etc.)
+- [x] Form Layouts (FormFieldCard, FormFieldSection)
 
 #### Widgets
-- [ ] DonutWidget
-- [ ] PieUsageWidget
-- [ ] UsageWidget
+- [x] DonutWidget
+- [x] PieUsageWidget
+- [x] UsageWidget
