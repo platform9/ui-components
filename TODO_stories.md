@@ -5,20 +5,26 @@ This file tracks components and elements in the codebase that currently lack a c
 ## `src/elements`
 
 ### Root-level Elements
-- [ ] Divider (`src/elements/Divider.tsx`)
-- [ ] ImageDrop (`src/elements/ImageDrop.tsx`)
-- [ ] MultiValuesField (`src/elements/MultiValuesField.tsx`)
-- [ ] Spacer (`src/elements/Spacer.tsx`)
-- [ ] Text (`src/elements/Text.tsx`)
+- [x] Divider (`src/elements/Divider.tsx`)
+- [x] ImageDrop (`src/elements/ImageDrop.tsx`)
+- [x] MultiValuesField (`src/elements/MultiValuesField.tsx`)
+- [x] Spacer (`src/elements/Spacer.tsx`)
+- [x] Text (`src/elements/Text.tsx`)
+- [x] MultiToggleSwitch (`src/elements/MultiToggleSwitch.tsx`)
+- [x] ToggleSwitch (`src/elements/ToggleSwitch.tsx`)
 
 ### Element Modules (Folders/Barrels)
-- [ ] **Breadcrumbs** (`src/elements/breadcrumbs/`)
-- [ ] **Card** (`src/elements/card/` - Card, CardBody, CardFooter, CardHeader)
-- [ ] **Modal** (`src/elements/modal/` - Modal, ModalForm)
-- [ ] **Sidebar** (`src/elements/sidebar/` - Sidebar, NavPane, NavItem)
-- [ ] **Tooltip** (`src/elements/tooltip/`)
-- [ ] **Header** (`src/elements/header/`)
-- [ ] **Menu** (`src/elements/menu/` - Menu, MenuItem, ListMenu, PortalMenu)
+- [x] **Badge** (`src/elements/badge/` - Badge, Badges)
+- [x] **Button** (`src/elements/button/` - Button, CardButton, CopyButton, IconButton)
+- [x] **Dropdown** (`src/elements/dropdown/` - AsyncDropdown, Dropdown, DropdownInput, DropdownItem, DropdownLabel, DropdownMenu, DropdownToggle, MultiDownshift, MultiDropdown)
+- [x] **Grid** (`src/elements/grid/` - ControlledGrid, Grid, GridColumnsPopover, GridEmptyContent, GridHeader, GridPagination, GridRow, GridRowMenu, GridSearchFilter, GridTableHeading, GridToolbar)
+- [x] **Breadcrumbs** (`src/elements/breadcrumbs/`)
+- [x] **Card** (`src/elements/card/` - Card, CardBody, CardFooter, CardHeader, CardHeaderWithLink)
+- [x] **Modal** (`src/elements/modal/` - Modal, ModalForm)
+- [x] **Sidebar** (`src/elements/sidebar/` - Sidebar, NavPane, NavItem)
+- [x] **Tooltip** (`src/elements/tooltip/`)
+- [x] **Header** (`src/elements/header/`)
+- [x] **Menu** (`src/elements/menu/` - Menu, MenuItem, ListMenu, PortalMenu)
 
 ---
 
@@ -76,6 +82,10 @@ This file tracks components and elements in the codebase that currently lack a c
 #### CodeMirror
 - [ ] CodeMirror
 - [ ] CodeMirrorModal
+
+#### DataPointLine
+- [x] DataPointLine
+- [x] DataPoint
 
 #### Graphs
 *(StackedAreaChart and SingleAreaChart are covered)*

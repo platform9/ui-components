@@ -21,6 +21,10 @@ module.exports = {
   },
   babel: async (options) => ({
     ...options,
-    plugins: [['@babel/plugin-proposal-class-properties', { loose: true }]],
+    plugins: [
+      ['@babel/plugin-proposal-decorators', { version: 'legacy' }],
+      ['@babel/plugin-proposal-class-properties', { loose: true }],
+      ...(options.plugins || []),
+    ],
   }),
 }
