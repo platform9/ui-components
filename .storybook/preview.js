@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { MemoryRouter } from 'react-router-dom'
 import store, { themeActions } from '../src/store'
 import { Provider } from 'react-redux'
 import defaultTheme from './default-theme'
@@ -44,13 +45,15 @@ const DelayedRender = ({ children, delay = 100 }) => {
 
 export const decorators = [
   (Story) => (
-    <Provider store={store}>
-      <ThemeManager themeActions={themeActions}>
-        <DelayedRender delay={100}>
-          <Story />
-        </DelayedRender>
-      </ThemeManager>
-    </Provider>
+    <MemoryRouter>
+      <Provider store={store}>
+        <ThemeManager themeActions={themeActions}>
+          <DelayedRender delay={100}>
+            <Story />
+          </DelayedRender>
+        </ThemeManager>
+      </Provider>
+    </MemoryRouter>
   ),
 ]
 
