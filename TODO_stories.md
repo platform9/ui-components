@@ -31,40 +31,40 @@ This file tracks components and elements in the codebase that currently lack a c
 ## `src/components`
 
 ### Top-level Components
-- [ ] Alert
-- [ ] AutocompleteBase
-- [ ] Avatar
-- [ ] BulletList
-- [ ] Checkbox (Component version)
-- [ ] CodeBlock
-- [ ] ConfirmationDialog
-- [ ] CopyToClipboard
-- [ ] DisplayKeyValues
-- [ ] DisplayLabels
-- [ ] DocumentMeta
-- [ ] DropdownButton & DropdownButtons
-- [ ] ExternalLink
-- [ ] FilterSpec
-- [ ] FontAwesomeIcon
-- [ ] HelpContainer
-- [ ] InfoPanel
-- [ ] InfoTooltip
-- [ ] KeyValues
-- [ ] MultiSelect
-- [ ] NoContentMessage
-- [ ] PasswordValidationDisplay
-- [ ] PollingData
-- [ ] PresetField
-- [ ] QuantitySelector
-- [ ] SearchBar
-- [ ] SelectableCard
-- [ ] SimpleLink
-- [ ] SingleSelect
-- [ ] SubmitButton
-- [ ] Timeline
-- [ ] image-fallback
-- [ ] numbered-steps
-- [ ] passive-header-link
+- [x] Alert
+- [x] AutocompleteBase
+- [x] Avatar
+- [x] BulletList
+- [x] Checkbox (Component version)
+- [x] CodeBlock
+- [x] ConfirmationDialog
+- [x] CopyToClipboard
+- [x] DisplayKeyValues
+- [x] DisplayLabels
+- [x] DocumentMeta
+- [x] DropdownButton & DropdownButtons
+- [x] ExternalLink
+- [x] FilterSpec
+- [x] FontAwesomeIcon
+- [x] HelpContainer
+- [x] InfoPanel
+- [x] InfoTooltip
+- [x] KeyValues
+- [x] MultiSelect
+- [x] NoContentMessage
+- [x] PasswordValidationDisplay
+- [x] PollingData
+- [x] PresetField
+- [x] QuantitySelector
+- [x] SearchBar
+- [x] SelectableCard
+- [x] SimpleLink
+- [x] SingleSelect
+- [x] SubmitButton
+- [x] Timeline
+- [x] image-fallback
+- [x] numbered-steps
+- [x] passive-header-link
 
 ### Component Modules (Folders)
 
