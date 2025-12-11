@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import SingleSelect from '../../components/SingleSelect'
+import ValidatedForm from '../../components/validatedForm/ValidatedForm'
 
 type SingleSelectProps = React.ComponentProps<typeof SingleSelect>
 
@@ -62,16 +63,18 @@ const Wrapper = (args: SingleSelectProps) => {
     const [value, setValue] = useState(args.value)
     
     return (
-        <div style={{ maxWidth: 400 }}>
-            <SingleSelect 
-                {...args}
-                value={value}
-                onChange={(val) => {
-                    setValue(val)
-                    args.onChange?.(val)
-                }}
-            />
-        </div>
+        <ValidatedForm>
+            <div style={{ maxWidth: 400 }}>
+                <SingleSelect 
+                    {...args}
+                    value={value}
+                    onChange={(val) => {
+                        setValue(val)
+                        args.onChange?.(val)
+                    }}
+                />
+            </div>
+        </ValidatedForm>
     )
 }
 
