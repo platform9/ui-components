@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
+import ReactDOM from 'react-dom'
 
 import Header from '../../elements/header/Header'
-import { HeaderTitlePortal, HeaderPrimaryActionPortal, HeaderDefaultToolsPortal } from '../../elements/header/portals'
 import FrameContext, { IFrameContextRefs } from '../../providers/frame-provider'
 import Button from '../../elements/button/Button'
 import Text from '../../elements/Text'
@@ -35,7 +35,7 @@ const meta: Meta<typeof Header> = {
       (Story) => (
           <MockFrameProvider>
               <div style={{ border: '1px solid #ccc' }}>
-                <Story />
+                  <Story />
               </div>
           </MockFrameProvider>
       )
@@ -45,6 +45,22 @@ const meta: Meta<typeof Header> = {
 export default meta
 
 type Story = StoryObj<typeof Header>
+
+const HeaderTitlePortal = ({ children }) => {
+  const { headerTitleContainer } = useContext(FrameContext)
+  if (!headerTitleContainer) return null
+  return ReactDOM.createPortal(children, headerTitleContainer)
+}
+const HeaderPrimaryActionPortal = ({ children }) => {
+  const { headerPrimaryActionContainer } = useContext(FrameContext)
+  if (!headerPrimaryActionContainer) return null
+  return ReactDOM.createPortal(children, headerPrimaryActionContainer)
+}
+const HeaderDefaultToolsPortal = ({ children }) => {
+  const { headerSharedToolsContainer } = useContext(FrameContext)
+  if (!headerSharedToolsContainer) return null
+  return ReactDOM.createPortal(children, headerSharedToolsContainer)
+}
 
 const HeaderContent = () => (
     <>
@@ -61,13 +77,24 @@ const HeaderContent = () => (
 )
 
 export const Default: Story = {
-  render: () => (
+  render: function DefaultStory() {
+    const { headerTitleContainer, headerPrimaryActionContainer, headerSharedToolsContainer } = useContext(FrameContext);
+    const [isReady, setIsReady] = useState(false);
+
+    useEffect(() => {
+      if (headerTitleContainer && headerPrimaryActionContainer && headerSharedToolsContainer) {
+        setIsReady(true);
+      }
+    }, [headerTitleContainer, headerPrimaryActionContainer, headerSharedToolsContainer]);
+
+    return (
       <>
         <Header />
-        {/* Render content into portals after Header mounts and sets refs */}
         <HeaderContent />
+        {/* {isReady ? <HeaderContent /> : null} */}
       </>
-  ),
+    );
+  },
 }
 
 export const Empty: Story = {
