@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import QuantitySelector from '../../components/QuantitySelector'
+import ValidatedForm from '../../components/validatedForm/ValidatedForm'
 
 type QuantitySelectorProps = React.ComponentProps<typeof QuantitySelector>
 
@@ -46,14 +47,16 @@ const baseArgs: QuantitySelectorProps = {
 const Wrapper = (args: QuantitySelectorProps) => {
     const [val, setVal] = useState(args.value || 0)
     return (
-        <QuantitySelector 
-            {...args}
-            value={val}
-            onChange={(v) => {
-                setVal(v)
-                args.onChange?.(v)
-            }}
-        />
+        <ValidatedForm>
+            <QuantitySelector 
+                {...args}
+                value={val}
+                onChange={(v) => {
+                    setVal(v)
+                    args.onChange?.(v)
+                }}
+            />
+        </ValidatedForm>
     )
 }
 
