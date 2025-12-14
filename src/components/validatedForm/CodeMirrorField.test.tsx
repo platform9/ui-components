@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '../../test-utils'
+import { render, screen } from '../../test-utils'
 import CodeMirrorField from './CodeMirrorField'
 import ValidatedForm from './ValidatedForm'
 
@@ -28,11 +28,14 @@ beforeAll(() => {
 })
 
 describe('CodeMirrorField', () => {
-    it('renders correctly', () => {
-        render(
+    it('renders label and underlying CodeMirror container', () => {
+        const { container } = render(
             <ValidatedForm>
-                <CodeMirrorField id="test-codemirror" />
+                <CodeMirrorField id="test-codemirror" label="Config" value="foo" />
             </ValidatedForm>
         )
+
+        expect(screen.getByText('Config')).toBeInTheDocument()
+        expect(container.querySelector('.CodeMirror')).not.toBeNull()
     })
 })
