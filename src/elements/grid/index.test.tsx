@@ -1,9 +1,9 @@
 import React from 'react'
-import { render } from '../../test-utils'
+import { render, screen } from '../../test-utils'
 import Grid from './index'
 
 describe('Grid (index)', () => {
-    it('renders correctly', () => {
+    it('shows the default empty state when there is no data', () => {
         render(
             <Grid
                 columns={[]}
@@ -11,5 +11,7 @@ describe('Grid (index)', () => {
                 uniqueIdentifier="id"
             />
         )
+
+        expect(screen.getByText('No data found')).toBeInTheDocument()
     })
 })
