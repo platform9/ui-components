@@ -2,9 +2,10 @@ import React from 'react'
 import { render, screen } from '../../../test-utils'
 import userEvent from '@testing-library/user-event'
 import getGridRedirectButton from './getGridRedirectButton'
-import { Router } from 'react-router-dom'
-import { createMemoryHistory } from 'history'
 import { GridContext } from '../Grid'
+
+const { Router } = require('react-router-dom')
+const { createMemoryHistory } = require('history')
 
 describe('getGridRedirectButton', () => {
     it('redirects to computed route using the first selected item', async () => {
