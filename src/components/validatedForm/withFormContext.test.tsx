@@ -1,20 +1,28 @@
 import React from 'react'
-import { render } from '../../test-utils'
+import { fireEvent, render, screen } from '../../test-utils'
 import withFormContext from './withFormContext'
 import ValidatedForm from './ValidatedForm'
 
 describe('withFormContext', () => {
-    it('renders correctly', () => {
+    it('propagates value changes through ValidatedForm context', () => {
         // Create a simple component wrapped with withFormContext
         const SimpleInput = ({ value, onChange, ...props }: any) => (
-            <input value={value || ''} onChange={(e) => onChange?.(e.target.value)} {...props} />
+            <input
+                aria-label="simple-input"
+                value={value || ''}
+                onChange={(e) => onChange?.(e.target.value)}
+                {...props}
+            />
         )
         const WrappedInput = withFormContext(SimpleInput)
 
         render(
-            <ValidatedForm>
+            <ValidatedForm elevated={false}>
                 <WrappedInput id="test-input" />
             </ValidatedForm>
         )
+
+        fireEvent.change(screen.getByLabelText('simple-input'), { target: { value: 'abc' } })
+        expect((screen.getByLabelText('simple-input') as HTMLInputElement).value).toBe('abc')
     })
 })
