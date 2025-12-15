@@ -40,3 +40,30 @@ To see the Storybook just run:
 ### yarn storybook
    
 
+## Project Structure
+
+- **`src/elements/`** – low-level, reusable building blocks (buttons, inputs, grid, badge, card, tooltip, etc.).
+- **`src/components/`** – higher-level, opinionated components that compose elements into PF9-specific UX patterns.
+- **`src/theme-manager/`** – theming primitives and helpers (PF9 color palette, typography, component-level theme config).
+- **`src/providers/`, `src/containers/`, `src/hooks/`, `src/utils/`** – supporting building blocks used by elements/components.
+
+When published, the compiled code lives under the `built/` folder with a similar structure (`built/elements`, `built/components`, etc.).
+
+## Testing
+
+This project uses **Create React App**'s Jest setup with **React Testing Library**:
+
+- Run the test watcher:
+  - `yarn test`
+- Recommended conventions:
+  - Unit tests live next to the code as `*.test.tsx` / `*.test.ts`.
+  - Use Testing Library to assert on rendered output and behavior (not implementation details).
+
+Suggested focus areas:
+
+- **Elements** – verify visual states and basic behavior of primitives:
+  - Buttons, inputs, toggles, dropdowns, badges, tooltips, grid cells/rows, etc.
+- **Components** – verify composition and higher-level workflows:
+  - Validated forms, steppers, card/table composites, widgets, dialogs, etc.
+
+Storybook stories in `src/stories/` can be used as a reference for realistic props and states when designing tests.

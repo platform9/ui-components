@@ -5438,6 +5438,11 @@ coa@^2.0.2:
     chalk "^2.4.1"
     q "^1.1.2"
 
+codemirror@^5.48.0:
+  version "5.65.20"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.65.20.tgz#8aa77c2dbfeb2df9b0828bf8e7d64fdd566eeff0"
+  integrity sha512-i5dLDDxwkFCbhjvL2pNjShsojoL3XHyDwsGv1jqETUoW+lzpBKKqNTUWgQwVAOa0tUm4BwekT455ujafi8payA==
+
 collapse-white-space@^1.0.2:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/collapse-white-space/-/collapse-white-space-1.0.6.tgz#e63629c0016665792060dbbeb79c42239d2c5287"

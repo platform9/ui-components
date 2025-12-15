@@ -56,6 +56,7 @@
     "@material-ui/core": "^4.2.1",
     "@material-ui/icons": "^4.2.1",
     "@material-ui/styles": "^4.2.1",
+    "codemirror": "^5.48.0",
     "downshift": "6.1.7",
     "fuse.js": "3.4.5",
     "moize": "^6.1.5",
@@ -73,7 +74,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "tsc -p tsconfig.json",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
+    "test:watch": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "NODE_PATH=src start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"

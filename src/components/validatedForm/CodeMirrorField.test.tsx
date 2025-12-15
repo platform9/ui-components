@@ -1,0 +1,41 @@
+import React from 'react'
+import { render, screen } from '../../test-utils'
+import CodeMirrorField from './CodeMirrorField'
+import ValidatedForm from './ValidatedForm'
+
+// Mock Range.getBoundingClientRect which is required by CodeMirror
+beforeAll(() => {
+    document.createRange = () => {
+        const range = new Range()
+        range.getBoundingClientRect = jest.fn(() => ({
+            x: 0,
+            y: 0,
+            width: 0,
+            height: 0,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            toJSON: () => { },
+        }))
+        range.getClientRects = jest.fn(() => ({
+            item: () => null,
+            length: 0,
+            [Symbol.iterator]: jest.fn(),
+        }))
+        return range
+    }
+})
+
+describe('CodeMirrorField', () => {
+    it('renders label and underlying CodeMirror container', () => {
+        const { container } = render(
+            <ValidatedForm>
+                <CodeMirrorField id="test-codemirror" label="Config" value="foo" />
+            </ValidatedForm>
+        )
+
+        expect(screen.getByText('Config')).toBeInTheDocument()
+        expect(container.querySelector('.CodeMirror')).not.toBeNull()
+    })
+})

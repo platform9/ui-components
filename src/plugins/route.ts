@@ -77,7 +77,7 @@ export class Route<T extends OptionalGenericKVP = null> {
     pathname = window.location.pathname,
   ): Route<T> | null {
     if (!pathname) {
-      pathname = `${location.pathname}${location.hash}`
+      pathname = `${window.location.pathname}${window.location.hash}`
     }
     return Route.find(pathname)
   }
@@ -114,7 +114,7 @@ export function createUrlWithQueryString(url: URL | string, params?: GenericKVP)
   // nice utility to reconstruct urls from objects / models
   // replace pathname variables (e.g. '/:id') with params when applicable
   if (url.pathname.includes(':')) {
-    const matches = url.pathname.match(/:([0-9_a-z]+)/gi) || []
+    const matches: string[] = url.pathname.match(/:([0-9_a-z]+)/gi) || []
     matches.forEach((match) => {
       const key = match.replace(':', '')
 

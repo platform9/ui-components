@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { MemoryRouter } from 'react-router-dom'
 import store, { themeActions } from '../src/store'
 import { Provider } from 'react-redux'
 import defaultTheme from './default-theme'
@@ -14,6 +15,16 @@ import {
   PRIMARY_STORY,
 } from '@storybook/addon-docs'
 import '../static/fontawesome/css/all.min.css'
+
+// Add portal roots if they don't exist
+const portalRoots = ['modal-portal-root', 'tooltip-portal-root', 'row-menu-portal-root']
+portalRoots.forEach((id) => {
+  if (!document.getElementById(id)) {
+    const el = document.createElement('div')
+    el.id = id
+    document.body.appendChild(el)
+  }
+})
 
 const DelayedRender = ({ children, delay = 100 }) => {
   const [timeoutEnded, setTimeoutEnded] = useState(false)
@@ -34,13 +45,15 @@ const DelayedRender = ({ children, delay = 100 }) => {
 
 export const decorators = [
   (Story) => (
-    <Provider store={store}>
-      <ThemeManager themeActions={themeActions}>
-        <DelayedRender delay={100}>
-          <Story />
-        </DelayedRender>
-      </ThemeManager>
-    </Provider>
+    <MemoryRouter>
+      <Provider store={store}>
+        <ThemeManager themeActions={themeActions}>
+          <DelayedRender delay={100}>
+            <Story />
+          </DelayedRender>
+        </ThemeManager>
+      </Provider>
+    </MemoryRouter>
   ),
 ]
 

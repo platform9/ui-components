@@ -1,125 +1,42 @@
 import React from 'react'
-import { Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
 import Button from '../../elements/button'
-import Text from '../../elements/Text'
-import Card from '../../elements/card'
-import { Row, Column } from '../containers'
 
-export const DefaultButton = (args) => (
-  <Card>
-    <Row>
-      <Column>
-        <Text variant="caption1">Primary</Text>
-        <Button {...args}>Click Me</Button>
-      </Column>{' '}
-      <Column>
-        <Text variant="caption1">Secondary</Text>
-        <Button {...args} variant="secondary">
-          Click Me
-        </Button>
-      </Column>
-      <Column>
-        <Text variant="caption1">Tertiary</Text>
-        <Button {...args} variant="tertiary">
-          Click Me
-        </Button>
-      </Column>
-      <Column>
-        <Text variant="caption1">CTA</Text>
-        <Button {...args} variant="cta">
-          Click Me
-        </Button>
-      </Column>
-    </Row>
-    <Row>
-      <Column>
-        <Text variant="caption1">Primary Disabled</Text>
-        <Button {...args} disabled>
-          Click Me
-        </Button>
-      </Column>{' '}
-      <Column>
-        <Text variant="caption1">Secondary Disabled</Text>
-        <Button {...args} disabled variant="secondary">
-          Click Me
-        </Button>
-      </Column>
-      <Column>
-        <Text variant="caption1">Tertiary Disabled</Text>
-        <Button {...args} disabled variant="tertiary">
-          Click Me
-        </Button>
-      </Column>
-      <Column>
-        <Text variant="caption1">CTA Disabled</Text>
-        <Button {...args} disabled variant="cta">
-          Click Me
-        </Button>
-      </Column>
-    </Row>
-    <Row>
-      <Column>
-        <Text variant="caption1">Primary Loading</Text>
-        <Button {...args} loading>
-          Click Me
-        </Button>
-      </Column>{' '}
-      <Column>
-        <Text variant="caption1">Secondary Loading</Text>
-        <Button {...args} loading variant="secondary">
-          Click Me
-        </Button>
-      </Column>
-      <Column>
-        <Text variant="caption1">Tertiary Loading</Text>
-        <Button {...args} loading variant="tertiary">
-          Click Me
-        </Button>
-      </Column>
-      <Column>
-        <Text variant="caption1">CTA Loading</Text>
-        <Button {...args} loading variant="cta">
-          Click Me
-        </Button>
-      </Column>
-    </Row>
-  </Card>
-)
-DefaultButton.parameters = {
-  docs: {
-    source: {
-      code: `
-import Button from 'core/elements/button'
+const STATES = [
+  { label: 'Default', props: {} },
+  { label: 'Disabled', props: { disabled: true } },
+  { label: 'Loading', props: { loading: true } },
+]
 
-const ButtonGroup = () => (
-  <>
-    <Button size="large">
-      Click Me
-    </Button>
-    <Button size="large" variant="secondary">
-      Click Me
-    </Button>
-    <Button size="large" variant="secondary">
-      Click Me
-    </Button>
-  </>
-)
-`,
-    },
-  },
-}
-DefaultButton.args = {
-  size: 'large',
-  variant: 'primary',
-}
+const PROP_VARIATIONS = [
+  { label: 'Base', props: {} },
+  { label: 'With left icon', props: { icon: 'plus' } },
+  { label: 'With right icon', props: { rightIcon: 'angle-right' } },
+  { label: 'With tooltip', props: { info: 'Tooltip text' } },
+]
 
-const ButtonStories: Meta = {
+const renderStates = (baseArgs: any) =>
+  PROP_VARIATIONS.map((variation) => (
+    <div key={variation.label} style={{ marginBottom: 16 }}>
+      <div style={{ marginBottom: 4, fontWeight: 600 }}>{variation.label}</div>
+      {STATES.map((state) => (
+        <div key={state.label} style={{ marginBottom: 4 }}>
+          <span style={{ marginRight: 8 }}>{state.label}</span>
+          <Button {...baseArgs} {...variation.props} {...state.props}>
+            {baseArgs.children}
+          </Button>
+        </div>
+      ))}
+    </div>
+  ))
+
+const meta: Meta<typeof Button> = {
   title: 'Elements/Button',
   component: Button,
   argTypes: {
     variant: {
-      options: ['primary', 'secondary', 'table'],
+      options: ['primary', 'secondary', 'tertiary', 'cta'],
       control: { type: 'select' },
       description: 'Defines the buttons state',
       table: {
@@ -152,6 +69,143 @@ const ButtonStories: Meta = {
         type: { summary: 'boolean' },
       },
     },
+    children: {
+      control: { type: 'text' },
+      description: 'Button label content',
+      table: {
+        type: { summary: 'ReactNode' },
+      },
+    },
+    icon: {
+      control: { type: 'text' },
+      description: 'FontAwesome icon shown on the left',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    rightIcon: {
+      control: { type: 'text' },
+      description: 'FontAwesome icon shown on the right',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    info: {
+      control: { type: 'text' },
+      description: 'Tooltip content displayed on hover',
+      table: {
+        type: { summary: 'string | ReactNode' },
+      },
+    },
+    solidIcon: {
+      control: { type: 'boolean' },
+      description: 'Whether the icon uses the solid style',
+      table: {
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+    },
+    iconBrand: {
+      control: { type: 'boolean' },
+      description: 'Whether the icon uses the brand style',
+      table: {
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+    },
+    onClick: {
+      action: 'clicked',
+      description: 'Click handler for the button',
+      table: {
+        type: { summary: '(event) => void' },
+      },
+    },
   },
 }
-export default ButtonStories
+
+export default meta
+
+type Story = StoryObj<typeof Button>
+
+const baseArgs = {
+  size: 'large',
+  variant: 'primary',
+  children: 'Click Me',
+  disabled: false,
+  loading: false,
+}
+
+export const Primary: Story = {
+  args: {
+    ...baseArgs,
+    variant: 'primary',
+  },
+}
+
+export const Secondary: Story = {
+  args: {
+    ...baseArgs,
+    variant: 'secondary',
+  },
+}
+
+export const Tertiary: Story = {
+  args: {
+    ...baseArgs,
+    variant: 'tertiary',
+  },
+}
+
+export const CTA: Story = {
+  args: {
+    ...baseArgs,
+    variant: 'cta',
+  },
+}
+
+export const Disabled: Story = {
+  args: {
+    ...baseArgs,
+    variant: 'primary',
+    disabled: true,
+  },
+}
+
+export const Loading: Story = {
+  args: {
+    ...baseArgs,
+    variant: 'primary',
+    loading: true,
+  },
+}
+
+export const WithLeftIcon: Story = {
+  args: {
+    ...baseArgs,
+    variant: 'primary',
+    icon: 'plus',
+  },
+}
+
+export const WithRightIcon: Story = {
+  args: {
+    ...baseArgs,
+    variant: 'primary',
+    rightIcon: 'angle-right',
+  },
+}
+
+export const WithTooltip: Story = {
+  args: {
+    ...baseArgs,
+    variant: 'primary',
+    info: 'Tooltip text',
+  },
+}
+
+export const Gallery: Story = {
+  args: {
+    ...baseArgs,
+  },
+  render: (args) => <>{renderStates(args)}</>,
+}
