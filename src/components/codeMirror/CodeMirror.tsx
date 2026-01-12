@@ -23,6 +23,7 @@ require('codemirror/mode/xml/xml')
 require('codemirror/addon/display/autorefresh')
 require('codemirror/addon/search/searchcursor')
 require('codemirror/addon/mode/simple')
+require('codemirror/addon/display/placeholder')
 
 const defaultOptions = {
   lineNumbers: true,
@@ -37,6 +38,7 @@ const defaultOptions = {
     'Alt-F': 'findPersistent',
   },
   fixedGutter: false,
+  placeholder: '',
 }
 
 export type AlignVertical = 'top' | 'middle' | 'bottom'

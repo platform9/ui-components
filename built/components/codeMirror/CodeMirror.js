@@ -59,6 +59,7 @@ require('codemirror/mode/xml/xml');
 require('codemirror/addon/display/autorefresh');
 require('codemirror/addon/search/searchcursor');
 require('codemirror/addon/mode/simple');
+require('codemirror/addon/display/placeholder');
 const defaultOptions = {
     lineNumbers: true,
     mode: 'yaml',
@@ -72,6 +73,7 @@ const defaultOptions = {
         'Alt-F': 'findPersistent',
     },
     fixedGutter: false,
+    placeholder: '',
 };
 // These styles are to match CodeMirrors. We need to find a good way
 // to re-define their styles so we can use common variables
