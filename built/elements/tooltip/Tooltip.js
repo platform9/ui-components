@@ -15,9 +15,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
-const Tooltip_1 = __importDefault(require("@material-ui/core/Tooltip"));
+const Tooltip_1 = __importDefault(require("@mui/material/Tooltip"));
 const clsx_1 = __importDefault(require("clsx"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 // Map Align to MUI placement string
 function mapAlignToPlacement(align) {
     if (!align)
@@ -61,11 +61,17 @@ const Tooltip = (_a) => {
     const tooltipClass = (0, clsx_1.default)(classes.muiTooltip, customClassName);
     return (react_1.default.createElement(Tooltip_1.default, Object.assign({ title: tooltipContent || '', placement: placement, classes: { tooltip: tooltipClass }, PopperProps: offset
             ? {
-                modifiers: {
-                    offset: { enabled: true, offset: `${offset.horizontal},${offset.vertical}` },
-                },
+                modifiers: [
+                    {
+                        name: 'offset',
+                        options: {
+                            offset: [offset.horizontal, offset.vertical],
+                            enabled: true,
+                        },
+                    },
+                ],
             }
-            : undefined, interactive: true }, rest),
+            : undefined }, rest),
         react_1.default.createElement("div", { className: (0, clsx_1.default)(className, 'tooltip-container') }, children)));
 };
 exports.default = Tooltip;

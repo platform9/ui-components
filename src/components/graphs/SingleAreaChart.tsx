@@ -9,7 +9,7 @@ import {
   Tooltip,
   Legend,
 } from 'recharts'
-import { useTheme } from '@material-ui/styles'
+import { useTheme } from '@mui/styles'
 import Text from '../../elements/Text'
 
 interface Props {

@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react'
-import { styled } from '@material-ui/styles'
+import { styled } from '@mui/styles'
 import Theme from '../../theme-manager/themes/model'
 import { GridCellWidth } from '../../elements/grid/hooks/useGridRows'
 import { switchCase } from '../../utils/fp'

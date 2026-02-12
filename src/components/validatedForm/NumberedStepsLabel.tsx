@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import Theme from '../../theme-manager/themes/model'
 import Text, { TextVariant } from '../../elements/Text'
 import clsx from 'clsx'

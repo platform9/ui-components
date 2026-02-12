@@ -1,0 +1,11 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import SelectableCard from '../../components/SelectableCard';
+type SelectableCardProps = React.ComponentProps<typeof SelectableCard>;
+declare const meta: Meta<SelectableCardProps>;
+export default meta;
+type Story = StoryObj<SelectableCardProps>;
+export declare const Default: Story;
+export declare const Active: Story;
+export declare const Disabled: Story;
+export declare const Gallery: Story;

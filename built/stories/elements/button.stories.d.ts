@@ -1,18 +1,15 @@
-/// <reference types="react" />
-import { Meta } from '@storybook/react';
-export declare const DefaultButton: {
-    (args: any): JSX.Element;
-    parameters: {
-        docs: {
-            source: {
-                code: string;
-            };
-        };
-    };
-    args: {
-        size: string;
-        variant: string;
-    };
-};
-declare const ButtonStories: Meta;
-export default ButtonStories;
+import type { Meta, StoryObj } from '@storybook/react';
+import Button from '../../elements/button';
+declare const meta: Meta<typeof Button>;
+export default meta;
+type Story = StoryObj<typeof Button>;
+export declare const Primary: Story;
+export declare const Secondary: Story;
+export declare const Tertiary: Story;
+export declare const CTA: Story;
+export declare const Disabled: Story;
+export declare const Loading: Story;
+export declare const WithLeftIcon: Story;
+export declare const WithRightIcon: Story;
+export declare const WithTooltip: Story;
+export declare const Gallery: Story;

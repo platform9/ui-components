@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 // Libs
 const react_1 = __importDefault(require("react"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const Text_1 = __importDefault(require("../elements/Text"));
 const test_helpers_1 = __importDefault(require("../utils/test-helpers"));
 const CardBody_1 = __importDefault(require("../elements/card/CardBody"));

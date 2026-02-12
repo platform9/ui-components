@@ -1,0 +1,10 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import PieUsageWidget from '../../../components/widgets/PieUsageWidget';
+type PieUsageWidgetProps = React.ComponentProps<typeof PieUsageWidget>;
+declare const meta: Meta<PieUsageWidgetProps>;
+export default meta;
+type Story = StoryObj<PieUsageWidgetProps>;
+export declare const Default: Story;
+export declare const LowUsage: Story;
+export declare const HighUsage: Story;

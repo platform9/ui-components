@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import { emptyArr, ensureArray, isNilOrEmpty } from '../../../utils/fp'
 import { equals } from 'ramda'
 import MultiDropdown, { MultiDropdownProps } from '../../dropdown/MultiDropdown'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import Theme from '../../../theme-manager/themes/model'
 import ClearFiltersSection from './ClearFiltersSection'
 

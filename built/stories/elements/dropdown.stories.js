@@ -26,7 +26,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ControlledDropdown = exports.DefaultDropdown = void 0;
+exports.Gallery = exports.Searchable = exports.Controlled = exports.Default = void 0;
 const react_1 = __importStar(require("react"));
 const DropdownButtons_1 = __importDefault(require("src/components/DropdownButtons"));
 const dropdown_1 = __importDefault(require("../../elements/dropdown"));
@@ -43,32 +43,7 @@ const dropdownButtons = [
     { label: 'Delete', icon: 'trash', disabled: true },
     { label: 'Copy', icon: 'copy' },
 ];
-const DefaultDropdown = (args) => {
-    return (react_1.default.createElement(containers_1.ThemedContainer, null,
-        react_1.default.createElement(containers_1.Row, null,
-            react_1.default.createElement(containers_1.Column, null,
-                react_1.default.createElement(dropdown_1.default, Object.assign({}, args, { label: "Default", items: items })))),
-        react_1.default.createElement(containers_1.Row, null,
-            react_1.default.createElement(containers_1.Column, null,
-                react_1.default.createElement(MultiDropdown_1.default, Object.assign({}, args, { label: "Multi item", items: items })))),
-        react_1.default.createElement(containers_1.Row, null,
-            react_1.default.createElement(containers_1.Column, null,
-                react_1.default.createElement(DropdownButtons_1.default, { label: "Dropdown Buttons", buttons: dropdownButtons })))));
-};
-exports.DefaultDropdown = DefaultDropdown;
-const ControlledDropdown = (args) => {
-    const [value, setValue] = (0, react_1.useState)(movies_list_1.default[2]);
-    const [multiValue, setMultiValue] = (0, react_1.useState)([movies_list_1.default[0], movies_list_1.default[2], movies_list_1.default[4]]);
-    return (react_1.default.createElement(containers_1.ThemedContainer, null,
-        react_1.default.createElement(containers_1.Row, null,
-            react_1.default.createElement(containers_1.Column, null,
-                react_1.default.createElement(dropdown_1.default, Object.assign({}, args, { value: value, onChange: setValue, label: "Default", items: items })))),
-        react_1.default.createElement(containers_1.Row, null,
-            react_1.default.createElement(containers_1.Column, null,
-                react_1.default.createElement(MultiDropdown_1.default, Object.assign({}, args, { values: multiValue, onChange: setMultiValue, label: "Multi item", items: items }))))));
-};
-exports.ControlledDropdown = ControlledDropdown;
-exports.default = {
+const meta = {
     title: 'Elements/Dropdown',
     component: dropdown_1.default,
     subcomponents: {
@@ -79,26 +54,99 @@ exports.default = {
             control: { type: 'text' },
             defaultValue: 'Select a movie',
             table: {
-                defaultValue: { summary: 'Default Dropdown' },
+                defaultValue: { summary: 'Select a movie' },
                 type: { summary: 'string' },
             },
         },
         enableSearch: {
-            description: 'Defines wether to allow searching items by text',
-            defaultValue: false,
+            control: { type: 'boolean' },
+            description: 'Defines whether to allow searching items by text',
+            table: {
+                defaultValue: { summary: false },
+                type: { summary: 'boolean' },
+            },
         },
         noCheckboxes: {
-            description: 'Defines wether to show checkboxes on a multiselect dropdown',
-            defaultValue: false,
+            control: { type: 'boolean' },
+            description: 'Defines whether to show checkboxes on a multiselect dropdown',
+            table: {
+                defaultValue: { summary: false },
+                type: { summary: 'boolean' },
+            },
         },
         disabled: {
+            control: { type: 'boolean' },
             description: 'Defines if you can interact with the dropdown',
-            defaultValue: false,
+            table: {
+                defaultValue: { summary: false },
+                type: { summary: 'boolean' },
+            },
         },
         loading: {
+            control: { type: 'boolean' },
             description: 'Shows a loading state while working',
-            defaultValue: false,
+            table: {
+                defaultValue: { summary: false },
+                type: { summary: 'boolean' },
+            },
         },
     },
+};
+exports.default = meta;
+const baseArgs = {
+    placeholder: 'Select a movie',
+    enableSearch: false,
+    disabled: false,
+    loading: false,
+};
+const ControlledDropdownStory = (args) => {
+    const [value, setValue] = (0, react_1.useState)(movies_list_1.default[2]);
+    const [multiValue, setMultiValue] = (0, react_1.useState)([movies_list_1.default[0], movies_list_1.default[2], movies_list_1.default[4]]);
+    const handleMultiChange = (selectedValues) => {
+        const moviesOnly = selectedValues.filter((selected) => typeof selected === 'object' && selected !== null);
+        setMultiValue(moviesOnly);
+    };
+    return (react_1.default.createElement(containers_1.ThemedContainer, null,
+        react_1.default.createElement(containers_1.Row, null,
+            react_1.default.createElement(containers_1.Column, null,
+                react_1.default.createElement(dropdown_1.default, Object.assign({}, args, { value: value, onChange: setValue, label: "Default", items: items })))),
+        react_1.default.createElement(containers_1.Row, null,
+            react_1.default.createElement(containers_1.Column, null,
+                react_1.default.createElement(MultiDropdown_1.default, Object.assign({}, args, { value: multiValue, onChange: handleMultiChange, label: "Multi item", items: items }))))));
+};
+exports.Default = {
+    args: Object.assign({}, baseArgs),
+    render: (args) => (react_1.default.createElement(containers_1.ThemedContainer, null,
+        react_1.default.createElement(containers_1.Row, null,
+            react_1.default.createElement(containers_1.Column, null,
+                react_1.default.createElement(dropdown_1.default, Object.assign({}, args, { label: "Default", items: items })))),
+        react_1.default.createElement(containers_1.Row, null,
+            react_1.default.createElement(containers_1.Column, null,
+                react_1.default.createElement(MultiDropdown_1.default, Object.assign({}, args, { label: "Multi item", items: items })))),
+        react_1.default.createElement(containers_1.Row, null,
+            react_1.default.createElement(containers_1.Column, null,
+                react_1.default.createElement(DropdownButtons_1.default, { label: "Dropdown Buttons", buttons: dropdownButtons }))))),
+};
+exports.Controlled = {
+    args: Object.assign({}, baseArgs),
+    render: (args) => react_1.default.createElement(ControlledDropdownStory, Object.assign({}, args)),
+};
+exports.Searchable = {
+    args: Object.assign(Object.assign({}, baseArgs), { enableSearch: true }),
+    render: (args) => (react_1.default.createElement(containers_1.ThemedContainer, null,
+        react_1.default.createElement(containers_1.Row, null,
+            react_1.default.createElement(containers_1.Column, null,
+                react_1.default.createElement(dropdown_1.default, Object.assign({}, args, { label: "Searchable", items: items })))))),
+};
+exports.Gallery = {
+    args: Object.assign({}, baseArgs),
+    render: (args) => (react_1.default.createElement(containers_1.ThemedContainer, null,
+        react_1.default.createElement(containers_1.Row, null,
+            react_1.default.createElement(containers_1.Column, null,
+                react_1.default.createElement(dropdown_1.default, Object.assign({}, args, { label: "Default", items: items }))),
+            react_1.default.createElement(containers_1.Column, null,
+                react_1.default.createElement(dropdown_1.default, Object.assign({}, args, { label: "Disabled", disabled: true, items: items }))),
+            react_1.default.createElement(containers_1.Column, null,
+                react_1.default.createElement(dropdown_1.default, Object.assign({}, args, { label: "With search", enableSearch: true, items: items })))))),
 };
 //# sourceMappingURL=dropdown.stories.js.map

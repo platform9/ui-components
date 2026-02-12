@@ -28,7 +28,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const Text_1 = __importDefault(require("../elements/Text"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const react_dropzone_1 = require("react-dropzone");
 const FontAwesomeIcon_1 = __importDefault(require("../components/FontAwesomeIcon"));
 const withFormContext_1 = __importDefault(require("../components/validatedForm/withFormContext"));

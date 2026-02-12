@@ -1,12 +1,12 @@
 import React, { forwardRef, useCallback, ComponentType, PropsWithChildren } from 'react'
-import { Link } from '@material-ui/core'
-import useReactRouter from 'use-react-router'
-import { makeStyles } from '@material-ui/styles'
+import { Link } from '@mui/material'
+import { makeStyles } from '@mui/styles'
 import clsx from 'clsx'
 import FontAwesomeIcon from './FontAwesomeIcon'
 import Theme from '../theme-manager/themes/model'
 import Text, { TextVariant } from '../elements/Text'
 import generateTestId from '../utils/test-helpers'
+import useReactRouter from 'use-react-router'
 
 type ISimpleLinkVariant = 'error' | 'primary' | 'secondary'
 
@@ -61,7 +61,7 @@ const useStyles = makeStyles<
 // work around this issue: https://github.com/ReactTraining/react-router/issues/4683
 // We need to use `forwardRef` as a workaround of an issue with material-ui Tooltip https://github.com/gregnb/mui-datatables/issues/595
 const SimpleLink: ComponentType<PropsWithChildren<Props>> = forwardRef<
-  HTMLElement,
+  HTMLAnchorElement,
   PropsWithChildren<Props>
 >(
   (

@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import React, { useState } from 'react'
 import { topMiddle } from '../../elements/menu/defaults'
 import Tooltip, { TooltipProps } from '../../elements/tooltip/Tooltip'

@@ -28,7 +28,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Row = exports.Column = exports.ThemedContainer = exports.Container = void 0;
 const react_1 = __importStar(require("react"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const card_1 = __importDefault(require("../elements/card"));
 // import { useCustomTheme } from '../themes/ThemeManager'
 const dropdown_1 = __importDefault(require("../elements/dropdown"));

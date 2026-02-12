@@ -1,6 +1,5 @@
-import { makeStyles } from '@material-ui/styles'
+import { styled } from '@mui/material/styles'
 import clsx from 'clsx'
-import Theme from '../theme-manager/themes/model'
 import React from 'react'
 
 interface SpacerProps {
@@ -8,16 +7,10 @@ interface SpacerProps {
   height?: number
 }
 
-interface StyleProps {
-  height: number
-}
-const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
-  spacer: {
-    height: ({ height }) => height,
-  },
+const StyledSpacer = styled('div')<{ height: number }>(({ height }) => ({
+  height,
 }))
 
 export default function Spacer({ className, height = 16 }: SpacerProps) {
-  const classes = useStyles({ height })
-  return <div className={clsx(classes.spacer, className)}></div>
+  return <StyledSpacer height={height} className={className} />
 }

@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, useEffect, useCallback, useRef } from 'react'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import Theme from '../../theme-manager/themes/model'
 import clsx from 'clsx'
 import { MenuPlacementProps } from './model'

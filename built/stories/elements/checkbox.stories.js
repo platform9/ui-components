@@ -26,44 +26,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DefaultCheckbox = void 0;
+exports.Gallery = exports.Indeterminate = exports.Disabled = exports.Default = void 0;
 const react_1 = __importStar(require("react"));
 const Checkbox_1 = __importDefault(require("../../elements/input/Checkbox"));
 const card_1 = __importDefault(require("../../elements/card"));
 const containers_1 = require("../containers");
-const DefaultCheckbox = (args) => {
-    const [checked, setChecked] = (0, react_1.useState)(false);
-    return (react_1.default.createElement(card_1.default, null,
-        react_1.default.createElement(containers_1.Column, null,
-            react_1.default.createElement(Checkbox_1.default, Object.assign({}, args, { checked: checked || args.checked, label: "Text Here", onChange: (checked) => setChecked(checked) })))));
-};
-exports.DefaultCheckbox = DefaultCheckbox;
-exports.DefaultCheckbox.parameters = {
-    docs: {
-        source: {
-            code: `
-import Checkbox from 'core/elements/input/checkbox'
-
-const MyComponent = () => {
-  const [checked, setChecked] = useState(false)
-  return (
-    <Checkbox
-      label="Text Here"
-      checked={checked}
-      onChange={(checked) => setChecked(checked)}
-    />
-  )
-}
-`,
-        },
-    },
-};
-exports.DefaultCheckbox.args = {
-    checked: false,
-    disabled: false,
-    indeterminate: false,
-};
-const CheckboxStories = {
+const meta = {
     title: 'Elements/Checkbox',
     component: Checkbox_1.default,
     argTypes: {
@@ -91,7 +59,83 @@ const CheckboxStories = {
                 type: { summary: 'boolean' },
             },
         },
+        label: {
+            control: { type: 'text' },
+            description: 'Label displayed next to the checkbox',
+            table: {
+                type: { summary: 'string | ReactNode' },
+            },
+        },
+        info: {
+            control: { type: 'text' },
+            description: 'Optional tooltip content shown when hovering the checkbox',
+            table: {
+                type: { summary: 'string | ReactNode' },
+            },
+        },
+        textWeight: {
+            options: ['heavy', 'light'],
+            control: { type: 'radio' },
+            description: 'Typography weight used for the label text',
+            table: {
+                defaultValue: { summary: 'heavy' },
+                type: { summary: '"heavy" | "light"' },
+            },
+        },
     },
 };
-exports.default = CheckboxStories;
+exports.default = meta;
+const baseArgs = {
+    checked: false,
+    disabled: false,
+    indeterminate: false,
+    label: 'Text Here',
+};
+const StatefulCheckbox = (args) => {
+    const [checked, setChecked] = (0, react_1.useState)(false);
+    return (react_1.default.createElement(card_1.default, null,
+        react_1.default.createElement(containers_1.Column, null,
+            react_1.default.createElement(Checkbox_1.default, Object.assign({}, args, { checked: checked || args.checked, onChange: (nextChecked) => setChecked(nextChecked) })))));
+};
+exports.Default = {
+    args: Object.assign({}, baseArgs),
+    render: (args) => react_1.default.createElement(StatefulCheckbox, Object.assign({}, args)),
+    parameters: {
+        docs: {
+            source: {
+                code: `
+import Checkbox from 'core/elements/input/checkbox'
+
+const MyComponent = () => {
+  const [checked, setChecked] = useState(false)
+  return (
+    <Checkbox
+      label="Text Here"
+      checked={checked}
+      onChange={(checked) => setChecked(checked)}
+    />
+  )
+}
+`,
+            },
+        },
+    },
+};
+exports.Disabled = {
+    args: Object.assign(Object.assign({}, baseArgs), { disabled: true }),
+    render: (args) => react_1.default.createElement(StatefulCheckbox, Object.assign({}, args)),
+};
+exports.Indeterminate = {
+    args: Object.assign(Object.assign({}, baseArgs), { indeterminate: true }),
+    render: (args) => react_1.default.createElement(StatefulCheckbox, Object.assign({}, args)),
+};
+exports.Gallery = {
+    args: Object.assign({}, baseArgs),
+    render: (args) => (react_1.default.createElement(card_1.default, null,
+        react_1.default.createElement(containers_1.Column, null,
+            react_1.default.createElement(Checkbox_1.default, Object.assign({}, args, { label: "Default", checked: false })),
+            react_1.default.createElement(Checkbox_1.default, Object.assign({}, args, { label: "Checked", checked: true })),
+            react_1.default.createElement(Checkbox_1.default, Object.assign({}, args, { label: "Disabled", disabled: true, checked: false })),
+            react_1.default.createElement(Checkbox_1.default, Object.assign({}, args, { label: "Indeterminate", indeterminate: true, checked: false }))))),
+};
 //# sourceMappingURL=checkbox.stories.js.map

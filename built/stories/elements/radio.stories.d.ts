@@ -1,18 +1,8 @@
-/// <reference types="react" />
-import { Meta } from '@storybook/react';
-export declare const DefaultRadio: {
-    (args: any): JSX.Element;
-    parameters: {
-        docs: {
-            source: {
-                code: string;
-            };
-        };
-    };
-    args: {
-        checked: boolean;
-        disabled: boolean;
-    };
-};
-declare const RadioStories: Meta;
-export default RadioStories;
+import type { Meta, StoryObj } from '@storybook/react';
+import Radio from '../../elements/input/Radio';
+declare const meta: Meta<typeof Radio>;
+export default meta;
+type Story = StoryObj<typeof Radio>;
+export declare const Default: Story;
+export declare const Disabled: Story;
+export declare const Gallery: Story;

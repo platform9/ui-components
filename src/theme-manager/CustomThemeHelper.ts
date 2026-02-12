@@ -14,7 +14,7 @@ interface CustomComponentStyles {
 interface ColorPaletteOptions<T> {
   primary: keyof T
   secondary: keyof T
-  type: 'light' | 'dark'
+  mode: 'light' | 'dark'
   themeKey: 'default' | 'light' | 'dark' | 'ultra-dark' | 'custom'
 }
 
@@ -22,7 +22,7 @@ const defaultColorPaletteOptions = {
   primary: 'blue',
   secondary: 'pink',
   themeKey: 'default' as const,
-  type: 'light' as const,
+  mode: 'light' as const,
 }
 
 interface TypographyOptions {
@@ -61,13 +61,13 @@ export default class CustomThemeHelper {
   setColorPaletteOptions({
     primary = defaultColorPaletteOptions.primary,
     secondary = defaultColorPaletteOptions.secondary,
-    type = defaultColorPaletteOptions.type,
+    mode = defaultColorPaletteOptions.mode,
     themeKey = defaultColorPaletteOptions.themeKey,
   }) {
     this.colorPaletteOptions = mergeDeepRight(this.colorPaletteOptions, {
       primary,
       secondary,
-      type,
+      mode,
       themeKey,
     })
   }

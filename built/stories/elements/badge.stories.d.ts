@@ -1,17 +1,11 @@
-/// <reference types="react" />
-import { Meta } from '@storybook/react';
-export declare const DefaultBadge: {
-    (args: any): JSX.Element;
-    parameters: {
-        docs: {
-            source: {
-                code: string;
-            };
-        };
-    };
-    args: {
-        variant: string;
-    };
-};
-declare const BadgeStories: Meta;
-export default BadgeStories;
+import type { Meta, StoryObj } from '@storybook/react';
+import Badge from '../../elements/badge';
+declare const meta: Meta<typeof Badge>;
+export default meta;
+type Story = StoryObj<typeof Badge>;
+export declare const Default: Story;
+export declare const Primary: Story;
+export declare const WithAdditionalText: Story;
+export declare const TruncatedText: Story;
+export declare const WithTooltip: Story;
+export declare const Gallery: Story;

@@ -6,11 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const Menu_1 = __importDefault(require("../../elements/menu/Menu"));
 const useToggler_1 = __importDefault(require("../../hooks/useToggler"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const Text_1 = __importDefault(require("../../elements/Text"));
 const Checkbox_1 = __importDefault(require("../../elements/input/Checkbox"));
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
-const styles_2 = require("@material-ui/styles");
+const styles_2 = require("@mui/styles");
 const menuOffset = {
     vertical: 0,
     horizontal: -100,

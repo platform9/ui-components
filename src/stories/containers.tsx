@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, useCallback, useMemo } from 'react'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import Theme from '../theme-manager/themes/model'
 import Card from '../elements/card'
 // import { useCustomTheme } from '../themes/ThemeManager'

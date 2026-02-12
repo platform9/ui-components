@@ -260,7 +260,7 @@ const components = {
 };
 const ultraDarkTheme = {
     theme: (0, helpers_1.generateTheme)({
-        palette: { colors: colors_1.default, primary: 'blue', secondary: 'pink', type: 'dark', themeKey: 'ultra-dark' },
+        palette: { colors: colors_1.default, primary: 'blue', secondary: 'pink', mode: 'dark', themeKey: 'ultra-dark' },
         typography: {
             fontFamily: '"Eina04"',
             fontSize: 14,

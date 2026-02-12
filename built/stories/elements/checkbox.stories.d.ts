@@ -1,19 +1,9 @@
-/// <reference types="react" />
-import { Meta } from '@storybook/react';
-export declare const DefaultCheckbox: {
-    (args: any): JSX.Element;
-    parameters: {
-        docs: {
-            source: {
-                code: string;
-            };
-        };
-    };
-    args: {
-        checked: boolean;
-        disabled: boolean;
-        indeterminate: boolean;
-    };
-};
-declare const CheckboxStories: Meta;
-export default CheckboxStories;
+import type { Meta, StoryObj } from '@storybook/react';
+import Checkbox from '../../elements/input/Checkbox';
+declare const meta: Meta<typeof Checkbox>;
+export default meta;
+type Story = StoryObj<typeof Checkbox>;
+export declare const Default: Story;
+export declare const Disabled: Story;
+export declare const Indeterminate: Story;
+export declare const Gallery: Story;

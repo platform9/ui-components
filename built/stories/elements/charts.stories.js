@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SimpleAreaChart = exports.StackedChart = void 0;
 /* eslint-disable no-restricted-globals */
 const react_1 = __importDefault(require("react"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const StackedAreaChart_1 = __importDefault(require("src/components/graphs/StackedAreaChart"));
 const SingleAreaChart_1 = __importDefault(require("src/components/graphs/SingleAreaChart"));
 const useStyles = (0, styles_1.makeStyles)((theme) => ({
@@ -75,10 +75,63 @@ const chartKeys = [
     },
 ];
 const exampleAxis = 'time';
-const StackedChart = (args) => {
-    return react_1.default.createElement(StackedAreaChart_1.default, { values: exampleData, keys: chartKeys, xAxis: exampleAxis, responsive: true });
+const meta = {
+    title: 'Elements/Chart',
+    component: StackedAreaChart_1.default,
+    argTypes: {
+        responsive: {
+            control: { type: 'boolean' },
+            description: 'Whether the chart should expand to fill its container width',
+            table: {
+                defaultValue: { summary: true },
+                type: { summary: 'boolean' },
+            },
+        },
+        verticalAxisLines: {
+            control: { type: 'boolean' },
+            description: 'Toggles vertical grid lines',
+            table: {
+                defaultValue: { summary: false },
+                type: { summary: 'boolean' },
+            },
+        },
+        horizontalAxisLines: {
+            control: { type: 'boolean' },
+            description: 'Toggles horizontal grid lines',
+            table: {
+                defaultValue: { summary: true },
+                type: { summary: 'boolean' },
+            },
+        },
+    },
 };
-exports.StackedChart = StackedChart;
+exports.default = meta;
+const baseArgs = {
+    values: exampleData,
+    keys: chartKeys,
+    xAxis: exampleAxis,
+    responsive: true,
+};
+exports.StackedChart = {
+    args: Object.assign({}, baseArgs),
+    parameters: {
+        docs: {
+            source: {
+                code: `
+  import StackedAreaChart from 'core/components/graphs/StackedAreaChart'
+
+  const AreaChart = () => (
+    <StackedAreaChart<'time', IRequiredAreaChartTypes>
+      values={exampleData}
+      keys={chartKeys}
+      xAxis="time"
+    />
+  )
+`,
+            },
+        },
+    },
+};
 const singleChartData = [
     {
         time: '8:00 PM',
@@ -109,41 +162,10 @@ const moneyFormatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
 });
-const SimpleAreaChart = (args) => {
-    return (react_1.default.createElement(SingleAreaChart_1.default, { values: singleChartData, dataKey: "price", xAxis: "time", legendLabelFn: () => '30-day price history', tooltipFormatterFn: (value, key) => {
+exports.SimpleAreaChart = {
+    render: () => (react_1.default.createElement(SingleAreaChart_1.default, { values: singleChartData, dataKey: "price", xAxis: "time", legendLabelFn: () => '30-day price history', tooltipFormatterFn: (value) => {
             const dollarFormat = moneyFormatter.format(value);
             return [dollarFormat, 'Price'];
-        } }));
+        } })),
 };
-exports.SimpleAreaChart = SimpleAreaChart;
-exports.StackedChart.parameters = {
-    docs: {
-        source: {
-            code: `
-  import StackedAreaChart from 'core/components/graphs/StackedAreaChart'
-
-  const AreaChart = () => (
-    <StackedAreaChart<'time', IRequiredAreaChartTypes>
-      values={exampleData}
-      keys={chartKeys}
-      xAxis="time"
-    />
-  )
-`,
-        },
-    },
-};
-exports.StackedChart.args = {
-// size: 'large',
-};
-const ChartStories = {
-    title: 'Elements/Chart',
-    component: StackedAreaChart_1.default,
-    argTypes: {
-        onBeforePageChange: {
-            action: 'beforePageChange',
-        },
-    },
-};
-exports.default = ChartStories;
 //# sourceMappingURL=charts.stories.js.map

@@ -8,9 +8,9 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from 'recharts'
-import { makeStyles, useTheme } from '@material-ui/styles'
+import { makeStyles, useTheme } from '@mui/styles'
 import Theme from '../../theme-manager/themes/model'
-// import { useTheme } from '@material-ui/styles'
+// import { useTheme } from '@mui/styles'
 import { pathStr } from '../../utils/fp'
 import { useSelector } from 'react-redux'
 import { themeSelector } from '../../theme-manager/selector'
@@ -145,7 +145,7 @@ function StackedAreaChart<Axis extends string, Types extends string>({
           />
         ))}
       </AreaChart>
-    )
+    );
   }
 
   return responsive ? (

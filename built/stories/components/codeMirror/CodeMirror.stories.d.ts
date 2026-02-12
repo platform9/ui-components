@@ -1,0 +1,10 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import CodeMirror from '../../../components/codeMirror/CodeMirror';
+type CodeMirrorProps = React.ComponentProps<typeof CodeMirror>;
+declare const meta: Meta<CodeMirrorProps>;
+export default meta;
+type Story = StoryObj<CodeMirrorProps>;
+export declare const Default: Story;
+export declare const WithTools: Story;
+export declare const WithError: Story;

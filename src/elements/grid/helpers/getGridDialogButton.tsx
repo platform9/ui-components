@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@material-ui/styles'
+import { ThemeProvider } from '@mui/material/styles'
 import React, { FC, useCallback, useMemo } from 'react'
 import { useGridContext } from '../../../elements/grid/Grid'
 import useToggler from '../../../hooks/useToggler'

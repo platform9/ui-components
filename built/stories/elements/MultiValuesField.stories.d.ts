@@ -1,0 +1,10 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import MultiValuesField from '../../elements/MultiValuesField';
+declare const meta: Meta<React.ComponentProps<typeof MultiValuesField>>;
+export default meta;
+type Story = StoryObj<React.ComponentProps<typeof MultiValuesField>>;
+export declare const Default: Story;
+export declare const Empty: Story;
+export declare const WithInfo: Story;
+export declare const Gallery: Story;

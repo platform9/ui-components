@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ButtonProps as MuiButtonProps } from '@material-ui/core';
+import { ButtonProps as MuiButtonProps } from '@mui/material';
 export interface ButtonProps extends Omit<MuiButtonProps, 'variant' | 'color' | 'background'> {
     variant?: 'primary' | 'secondary' | 'tertiary' | 'cta';
     size?: 'small' | 'medium' | 'large';

@@ -1,0 +1,10 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import QuantitySelector from '../../components/QuantitySelector';
+type QuantitySelectorProps = React.ComponentProps<typeof QuantitySelector>;
+declare const meta: Meta<QuantitySelectorProps>;
+export default meta;
+type Story = StoryObj<QuantitySelectorProps>;
+export declare const Default: Story;
+export declare const Disabled: Story;
+export declare const LargeIcons: Story;

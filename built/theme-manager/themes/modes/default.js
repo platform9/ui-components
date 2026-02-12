@@ -262,7 +262,7 @@ exports.components = {
 };
 const defaultTheme = {
     theme: (0, helpers_1.generateTheme)({
-        palette: { colors: colors_1.default, primary: 'blue', secondary: 'pink', themeKey: 'default', type: 'light' },
+        palette: { colors: colors_1.default, primary: 'blue', secondary: 'pink', themeKey: 'default', mode: 'light' },
         typography: {
             fontFamily: '"Eina04"',
             fontSize: 14,

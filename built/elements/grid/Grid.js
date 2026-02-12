@@ -38,7 +38,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useGridContext = exports.GridContext = void 0;
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const clsx_1 = __importDefault(require("clsx"));
 const react_1 = __importStar(require("react"));
 const Progress_1 = __importDefault(require("../../components/progress/Progress"));

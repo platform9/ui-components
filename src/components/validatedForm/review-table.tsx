@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import Text from '../../elements/Text'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import { identity } from 'ramda'
 import Theme from '../../theme-manager/themes/model'
 import clsx from 'clsx'

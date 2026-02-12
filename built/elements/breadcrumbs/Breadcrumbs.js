@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const use_react_router_1 = __importDefault(require("use-react-router"));
 const clsx_1 = __importDefault(require("clsx"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const usePluginRouter_1 = __importDefault(require("../../hooks/usePluginRouter"));
 const route_1 = require("../../plugins/route");
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));

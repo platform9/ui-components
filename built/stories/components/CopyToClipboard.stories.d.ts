@@ -1,0 +1,11 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import CopyToClipboard from '../../components/CopyToClipboard';
+type CopyToClipboardProps = React.ComponentProps<typeof CopyToClipboard>;
+declare const meta: Meta<CopyToClipboardProps>;
+export default meta;
+type Story = StoryObj<CopyToClipboardProps>;
+export declare const Default: Story;
+export declare const InlineCode: Story;
+export declare const BlockWithHeader: Story;
+export declare const PlainText: Story;

@@ -33,7 +33,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ValidatedFormProvider = exports.ValidatedFormConsumer = exports.ValidatedFormContext = void 0;
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const fp_1 = require("../../utils/fp");
 const clsx_1 = __importDefault(require("clsx"));
 const FormFieldSection_1 = __importDefault(require("../../components/validatedForm/FormFieldSection"));

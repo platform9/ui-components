@@ -1,6 +1,6 @@
 import React, { FC, useCallback } from 'react'
 import Radio from '../../elements/input/Radio'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import { withInfoTooltip } from '../../components/InfoTooltip'
 import { compose } from '../../utils/fp'
 import withFormContext from '../../components/validatedForm/withFormContext'

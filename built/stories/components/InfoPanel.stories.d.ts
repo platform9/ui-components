@@ -1,0 +1,10 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import InfoPanel from '../../components/InfoPanel';
+type InfoPanelProps = React.ComponentProps<typeof InfoPanel>;
+declare const meta: Meta<InfoPanelProps>;
+export default meta;
+type Story = StoryObj<InfoPanelProps>;
+export declare const Default: Story;
+export declare const CustomBody: Story;
+export declare const ArrayItems: Story;

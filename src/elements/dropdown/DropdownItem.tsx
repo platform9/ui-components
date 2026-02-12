@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import Theme from '../../theme-manager/themes/model'
 import Checkbox from '../../elements/input/Checkbox'
 import generateTestId from '../../utils/test-helpers'

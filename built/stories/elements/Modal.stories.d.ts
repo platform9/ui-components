@@ -1,0 +1,11 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import Modal from '../../elements/modal/Modal';
+type ModalComponentProps = React.ComponentProps<typeof Modal>;
+declare const meta: Meta<ModalComponentProps>;
+export default meta;
+type Story = StoryObj<ModalComponentProps>;
+export declare const Drawer: Story;
+export declare const Dialog: Story;
+export declare const WithEntityName: Story;
+export declare const CustomContent: Story;

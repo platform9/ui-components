@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const recharts_1 = require("recharts");
-const styles_1 = require("@material-ui/styles");
-// import { useTheme } from '@material-ui/styles'
+const styles_1 = require("@mui/styles");
+// import { useTheme } from '@mui/styles'
 const fp_1 = require("../../utils/fp");
 const react_redux_1 = require("react-redux");
 const selector_1 = require("../../theme-manager/selector");

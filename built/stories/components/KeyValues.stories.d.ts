@@ -1,0 +1,10 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import KeyValues from '../../components/KeyValues';
+type KeyValuesProps = React.ComponentProps<typeof KeyValues>;
+declare const meta: Meta<KeyValuesProps>;
+export default meta;
+type Story = StoryObj<KeyValuesProps>;
+export declare const Default: Story;
+export declare const PreFilled: Story;
+export declare const SingleValue: Story;

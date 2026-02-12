@@ -40,7 +40,7 @@ const containers_1 = require("../containers");
 const dropdown_1 = __importDefault(require("../../elements/dropdown"));
 const GridDefaultActionButton_1 = __importDefault(require("../../elements/grid/buttons/GridDefaultActionButton"));
 const Button_1 = __importDefault(require("../../elements/button/Button"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const useStyles = (0, styles_1.makeStyles)((theme) => ({
     expandedRow: {
         padding: '32px',
@@ -182,7 +182,7 @@ const itemActionsReducer = (items, { type, payload: { selectedItems } }) => {
             return (0, ramda_1.without)(selectedItems, items);
     }
 };
-const UncontrolledGrid = (args) => {
+const UncontrolledGridTemplate = (args) => {
     const [items, dispatch] = (0, react_1.useReducer)(itemActionsReducer, movies_list_1.default);
     const batchActions = (0, react_1.useMemo)(() => [
         {
@@ -199,7 +199,6 @@ const UncontrolledGrid = (args) => {
     return (react_1.default.createElement(containers_1.ThemedContainer, null,
         react_1.default.createElement(grid_1.default, Object.assign({}, args, { extraToolbarContent: react_1.default.createElement(GridDefaultActionButton_1.default, { onClick: () => alert('Add Dialog placeholder') }, "Add Movie"), label: "Label", uniqueIdentifier: "id", columns: columns, data: items, globalFilters: globalFilters, filters: filters, multiSelection: true, batchActions: batchActions, rowMenuItems: rowMenuItems, onRefresh: () => dispatch({ type: 'refresh', payload: {} }) }))));
 };
-exports.UncontrolledGrid = UncontrolledGrid;
 async function awaitSeconds(seconds = 1) {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -208,7 +207,7 @@ async function awaitSeconds(seconds = 1) {
     });
 }
 const rowsPerPage = 10;
-const AsyncGrid = (args) => {
+const AsyncGridTemplate = (args) => {
     const [loadingCount, setLoadingCount] = (0, react_1.useState)(0);
     const [currentPage, setCurrentPage] = (0, react_1.useState)(1);
     const [pageSize, setPageSize] = (0, react_1.useState)(rowsPerPage);
@@ -329,8 +328,7 @@ const AsyncGrid = (args) => {
     return (react_1.default.createElement(containers_1.ThemedContainer, null,
         react_1.default.createElement(grid_1.default, Object.assign({}, args, { extraToolbarContent: react_1.default.createElement(GridDefaultActionButton_1.default, { onClick: () => alert('Add Dialog placeholder') }, "Add Movie"), label: "Label", totalItems: items.length, rowsPerPage: rowsPerPage, loading: loading, controlledPagination: true, controlledSorting: true, onPageChange: handlePageChange, onSortChange: handleSortBy, uniqueIdentifier: "id", columns: columns, data: parsedData, globalFilters: asyncGlobalFilters, filters: asyncFilters, batchActions: batchActions, rowMenuItems: rowMenuItems, onRefresh: handleRefresh, multiSelection: true }))));
 };
-exports.AsyncGrid = AsyncGrid;
-const ExpandableRowGrid = (args) => {
+const ExpandableRowGridTemplate = (args) => {
     const classes = useStyles();
     const [items, dispatch] = (0, react_1.useReducer)(itemActionsReducer, movies_list_1.default);
     const batchActions = (0, react_1.useMemo)(() => [
@@ -365,31 +363,34 @@ const ExpandableRowGrid = (args) => {
                 react_1.default.createElement("div", null,
                     react_1.default.createElement(Button_1.default, { onClick: onRowExpand }, "Shrink Row")))), expandedByDefault: (item) => (item === null || item === void 0 ? void 0 : item.title) === 'Beetlejuice' }))));
 };
-exports.ExpandableRowGrid = ExpandableRowGrid;
-exports.UncontrolledGrid.parameters = {
-    docs: {
-        source: {
-            code: `
+const meta = {
+    title: 'Elements/Grid',
+    component: grid_1.default,
+};
+exports.default = meta;
+exports.UncontrolledGrid = {
+    args: {
+        size: 'large',
+    },
+    render: (args) => react_1.default.createElement(UncontrolledGridTemplate, Object.assign({}, args)),
+    parameters: {
+        docs: {
+            source: {
+                code: `
   import Grid from 'core/elements/grid'
 
   const DefaultGrid = () => (
     <Grid columns={columns} data={data} />
   )
 `,
+            },
         },
     },
 };
-exports.UncontrolledGrid.args = {
-    size: 'large',
+exports.AsyncGrid = {
+    render: (args) => react_1.default.createElement(AsyncGridTemplate, Object.assign({}, args)),
 };
-const GridStories = {
-    title: 'Elements/Grid',
-    component: grid_1.default,
-    argTypes: {
-        onBeforePageChange: {
-            action: 'beforePageChange',
-        },
-    },
+exports.ExpandableRowGrid = {
+    render: (args) => react_1.default.createElement(ExpandableRowGridTemplate, Object.assign({}, args)),
 };
-exports.default = GridStories;
 //# sourceMappingURL=grid.stories.js.map

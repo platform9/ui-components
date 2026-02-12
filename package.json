@@ -53,9 +53,11 @@
     "react-router-dom": "5.0.1"
   },
   "dependencies": {
-    "@material-ui/core": "^4.2.1",
-    "@material-ui/icons": "^4.2.1",
-    "@material-ui/styles": "^4.2.1",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.0",
+    "@mui/material": "^5.15.0",
+    "@mui/styles": "^5.15.0",
     "codemirror": "^5.48.0",
     "downshift": "6.1.7",
     "fuse.js": "3.4.5",

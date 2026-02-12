@@ -1,17 +1,6 @@
-/// <reference types="react" />
-import { Meta } from '@storybook/react';
-export declare const TabsPreview: {
-    (args: any): JSX.Element;
-    parameters: {
-        docs: {
-            source: {
-                code: string;
-            };
-        };
-    };
-    args: {
-        variant: string;
-    };
-};
-declare const TabStories: Meta;
-export default TabStories;
+import type { Meta, StoryObj } from '@storybook/react';
+import Tabs from '../../elements/tabs';
+declare const meta: Meta<typeof Tabs>;
+export default meta;
+type Story = StoryObj<typeof Tabs>;
+export declare const TabsPreview: Story;

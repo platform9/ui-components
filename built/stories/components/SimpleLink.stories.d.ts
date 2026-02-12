@@ -1,0 +1,13 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import SimpleLink from '../../components/SimpleLink';
+type SimpleLinkProps = React.ComponentProps<typeof SimpleLink>;
+declare const meta: Meta<SimpleLinkProps>;
+export default meta;
+type Story = StoryObj<SimpleLinkProps>;
+export declare const Default: Story;
+export declare const InternalLink: Story;
+export declare const WithIconLeft: Story;
+export declare const WithIconRight: Story;
+export declare const ErrorVariant: Story;
+export declare const CustomContent: Story;

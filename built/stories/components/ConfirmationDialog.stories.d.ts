@@ -1,0 +1,11 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import ConfirmationDialog from '../../components/ConfirmationDialog';
+type ConfirmationDialogProps = React.ComponentProps<typeof ConfirmationDialog>;
+declare const meta: Meta<ConfirmationDialogProps>;
+export default meta;
+type Story = StoryObj<ConfirmationDialogProps>;
+export declare const Default: Story;
+export declare const Loading: Story;
+export declare const WithError: Story;
+export declare const CustomFooter: Story;

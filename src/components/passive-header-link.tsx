@@ -1,7 +1,7 @@
 import React from 'react'
 import SimpleLink from '../components/SimpleLink'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import Theme from '../theme-manager/themes/model'
 
 const useStyles = makeStyles((theme: Theme) => ({

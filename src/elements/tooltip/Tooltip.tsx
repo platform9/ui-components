@@ -1,7 +1,7 @@
 import React, { ReactNode, PropsWithChildren } from 'react'
-import MUITooltip from '@material-ui/core/Tooltip'
+import MUITooltip from '@mui/material/Tooltip'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import Theme from 'src/theme-manager/themes/model'
 
 export interface Align {
@@ -69,13 +69,18 @@ const Tooltip: React.FC<PropsWithChildren<TooltipProps & { className?: string }>
       PopperProps={
         offset
           ? {
-              modifiers: {
-                offset: { enabled: true, offset: `${offset.horizontal},${offset.vertical}` },
-              },
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [offset.horizontal, offset.vertical],
+                    enabled: true,
+                  },
+                },
+              ],
             }
           : undefined
       }
-      interactive
       {...rest}
     >
       <div className={clsx(className, 'tooltip-container')}>{children}</div>

@@ -1,0 +1,11 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import BulletList from '../../components/BulletList';
+type BulletListProps = React.ComponentProps<typeof BulletList>;
+declare const meta: Meta<BulletListProps>;
+export default meta;
+type Story = StoryObj<BulletListProps>;
+export declare const Default: Story;
+export declare const Dashed: Story;
+export declare const CustomContent: Story;
+export declare const Gallery: Story;

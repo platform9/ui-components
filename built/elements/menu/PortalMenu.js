@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const react_dom_1 = __importDefault(require("react-dom"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const clsx_1 = __importDefault(require("clsx"));
 const defaults_1 = require("./defaults");
 const helpers_1 = require("./helpers");

@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/styles'
+import { styled } from '@mui/material/styles'
 import clsx from 'clsx'
 import Text from '../elements/Text'
 import generateTestId from '../utils/test-helpers'
@@ -13,51 +13,53 @@ interface Props {
   className?: string
 }
 
-interface StyleProps extends Props {
+interface StyledProps {
+  diameter: number
+  fontSize: number
   readOnly: boolean
 }
 
-const useStyles = makeStyles<Theme, Partial<StyleProps>>((theme: Theme) => ({
-  avatar: {
-    borderRadius: '50%',
-    border: `1px solid ${theme.components.iconButton.border}`,
-    backgroundColor: theme.components.iconButton.background,
-    color: theme.components.iconButton.color,
-    transition: 'all .2s ease',
+const StyledAvatar = styled(Text)<StyledProps>(({ theme, diameter, fontSize, readOnly }) => ({
+  borderRadius: '50%',
+  border: `1px solid ${(theme as Theme).components.iconButton.border}`,
+  backgroundColor: (theme as Theme).components.iconButton.background,
+  color: (theme as Theme).components.iconButton.color,
+  transition: 'all .2s ease',
 
-    '&:not(.read-only):hover, &.read-only': {
-      backgroundColor: theme.components.iconButton.activeBackground,
-      borderColor: theme.components.iconButton.activeBorder,
-      color: theme.components.iconButton.activeColor,
-    },
-    display: 'inline-flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    textTransform: 'uppercase',
-    fontWeight: 'bold',
-    overflow: 'hidden',
-    lineHeight: ({ fontSize }) => fontSize,
-    height: ({ diameter }) => diameter,
-    width: ({ diameter }) => diameter,
-    fontSize: ({ fontSize }) => fontSize,
-    cursor: ({ readOnly }) => (!readOnly ? 'pointer' : 'default'),
+  '&:not(.read-only):hover, &.read-only': {
+    backgroundColor: (theme as Theme).components.iconButton.activeBackground,
+    borderColor: (theme as Theme).components.iconButton.activeBorder,
+    color: (theme as Theme).components.iconButton.activeColor,
   },
+  display: 'inline-flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textTransform: 'uppercase',
+  fontWeight: 'bold',
+  overflow: 'hidden',
+  lineHeight: fontSize,
+  height: diameter,
+  width: diameter,
+  fontSize: fontSize,
+  cursor: readOnly ? 'default' : 'pointer',
 }))
 
 const Avatar = ({ displayName = '', diameter = 48, fontSize = 18, onClick, className }: Props) => {
   const readOnly = !onClick
-  const { avatar } = useStyles({ diameter, fontSize, readOnly })
 
   return (
-    <Text
+    <StyledAvatar
       component="div"
       variant="body1"
       data-testid={generateTestId('user', 'menu')}
-      className={clsx(avatar, className, { 'read-only': readOnly })}
+      className={clsx(className, { 'read-only': readOnly })}
       onClick={onClick}
+      diameter={diameter}
+      fontSize={fontSize}
+      readOnly={readOnly}
     >
       {displayName.charAt(0)}
-    </Text>
+    </StyledAvatar>
   )
 }
 

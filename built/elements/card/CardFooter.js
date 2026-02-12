@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const clsx_1 = __importDefault(require("clsx"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 function CardFooter({ children, className = undefined }) {
     const classes = useStyles({});
     return react_1.default.createElement("footer", { className: (0, clsx_1.default)('card-footer', classes.footer, className) }, children);

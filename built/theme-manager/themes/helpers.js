@@ -29,7 +29,7 @@ function generateComponentColors({ components = [] }, defaultComponentStyles) {
     return newComponentStyles;
 }
 exports.generateComponentColors = generateComponentColors;
-function generateColorPalette({ primary, secondary, type, themeKey, colors, }) {
+function generateColorPalette({ primary, secondary, mode, themeKey, colors, }) {
     const returnColors = {
         primary: addMuiThemeColorVars(colors[primary]),
         secondary: addMuiThemeColorVars(colors[secondary]),
@@ -37,7 +37,7 @@ function generateColorPalette({ primary, secondary, type, themeKey, colors, }) {
     Object.entries(colors).forEach(([key, value]) => {
         returnColors[key] = addMuiThemeColorVars(value);
     });
-    return Object.assign({ type,
+    return Object.assign({ mode,
         themeKey, contrastThreshold: 3, tonalOffset: 0.2, text: {
             primary: 'rgba(0, 0, 0, 0.87)',
             secondary: 'rgba(0, 0, 0, 0.54)',

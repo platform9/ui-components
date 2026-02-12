@@ -20,7 +20,7 @@ import Dropdown from '../../elements/dropdown'
 import GridDefaultActionButton from '../../elements/grid/buttons/GridDefaultActionButton'
 import { GridRowMenuItemSpec } from '../../elements/grid/hooks/useGridRowMenu'
 import Button from '../../elements/button/Button'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import Theme from '../../theme-manager/themes/model'
 
 const useStyles = makeStyles<Theme>((theme: Theme) => ({

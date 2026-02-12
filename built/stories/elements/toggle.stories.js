@@ -26,43 +26,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DefaultToggleSwitch = void 0;
+exports.Gallery = exports.Disabled = exports.Active = exports.Default = void 0;
 const react_1 = __importStar(require("react"));
 const ToggleSwitch_1 = __importDefault(require("../../elements/ToggleSwitch"));
 const card_1 = __importDefault(require("../../elements/card"));
 const containers_1 = require("../containers");
-const DefaultToggleSwitch = (args) => {
-    const [active, setActive] = (0, react_1.useState)(false);
-    return (react_1.default.createElement(card_1.default, null,
-        react_1.default.createElement(containers_1.Column, null,
-            react_1.default.createElement(ToggleSwitch_1.default, Object.assign({}, args, { active: active || args.active, label: "Text Here", onClick: (active) => setActive(active) })))));
-};
-exports.DefaultToggleSwitch = DefaultToggleSwitch;
-exports.DefaultToggleSwitch.parameters = {
-    docs: {
-        source: {
-            code: `
-import ToggleSwitch from 'core/elements/toggle'
-
-const MyComponent = () => {
-  const [active, setActive] = useState(false)
-  return (
-    <ToggleSwitch
-      label="Text Here"
-      active={active}
-      onClick={(active) => setActive(active)}
-    />
-  )
-}
-`,
-        },
-    },
-};
-exports.DefaultToggleSwitch.args = {
-    active: false,
-    disabled: false,
-};
-const ToggleSwitchStories = {
+const meta = {
     title: 'Elements/ToggleSwitch',
     component: ToggleSwitch_1.default,
     argTypes: {
@@ -82,7 +51,65 @@ const ToggleSwitchStories = {
                 type: { summary: 'boolean' },
             },
         },
+        label: {
+            control: { type: 'text' },
+            description: 'Label rendered next to the switch',
+            table: {
+                type: { summary: 'string' },
+            },
+        },
     },
 };
-exports.default = ToggleSwitchStories;
+exports.default = meta;
+const baseArgs = {
+    active: false,
+    disabled: false,
+    label: 'Text Here',
+};
+const StatefulToggle = (args) => {
+    const [active, setActive] = (0, react_1.useState)(false);
+    return (react_1.default.createElement(card_1.default, null,
+        react_1.default.createElement(containers_1.Column, null,
+            react_1.default.createElement(ToggleSwitch_1.default, Object.assign({}, args, { active: active || args.active, onClick: (nextActive) => setActive(nextActive) })))));
+};
+exports.Default = {
+    args: Object.assign({}, baseArgs),
+    render: (args) => react_1.default.createElement(StatefulToggle, Object.assign({}, args)),
+    parameters: {
+        docs: {
+            source: {
+                code: `
+import ToggleSwitch from 'core/elements/toggle'
+
+const MyComponent = () => {
+  const [active, setActive] = useState(false)
+  return (
+    <ToggleSwitch
+      label="Text Here"
+      active={active}
+      onClick={(active) => setActive(active)}
+    />
+  )
+}
+`,
+            },
+        },
+    },
+};
+exports.Active = {
+    args: Object.assign(Object.assign({}, baseArgs), { active: true }),
+    render: (args) => react_1.default.createElement(StatefulToggle, Object.assign({}, args)),
+};
+exports.Disabled = {
+    args: Object.assign(Object.assign({}, baseArgs), { disabled: true }),
+    render: (args) => react_1.default.createElement(StatefulToggle, Object.assign({}, args)),
+};
+exports.Gallery = {
+    args: Object.assign({}, baseArgs),
+    render: (args) => (react_1.default.createElement(card_1.default, null,
+        react_1.default.createElement(containers_1.Column, null,
+            react_1.default.createElement(ToggleSwitch_1.default, Object.assign({}, args, { label: "Default", active: false, onClick: () => { } })),
+            react_1.default.createElement(ToggleSwitch_1.default, Object.assign({}, args, { label: "Active", active: true, onClick: () => { } })),
+            react_1.default.createElement(ToggleSwitch_1.default, Object.assign({}, args, { label: "Disabled", disabled: true, active: false, onClick: () => { } }))))),
+};
 //# sourceMappingURL=toggle.stories.js.map

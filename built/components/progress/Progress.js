@@ -38,8 +38,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
-const styles_1 = require("@material-ui/styles");
-const styles_2 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
+const styles_2 = require("@mui/styles");
 const misc_1 = require("../../utils/misc");
 const clsx_1 = __importDefault(require("clsx"));
 const constants_1 = require("../../constants");
@@ -85,7 +85,7 @@ function Progress(_a) {
         });
     }, [props.loading]);
     const LoadingImageComponent = renderLoadingImage
-        ? getLoadingImage(inline, loadingImage, theme.palette.type)
+        ? getLoadingImage(inline, loadingImage, theme.palette.mode)
         : react_1.default.Fragment;
     const shouldRenderStatus = loading;
     const shouldNotRenderContent = !children || (!renderContentOnMount && !state.loadedOnce);

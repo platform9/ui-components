@@ -1,0 +1,10 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import PasswordValidationDisplay from '../../components/PasswordValidationDisplay';
+type PasswordValidationDisplayProps = React.ComponentProps<typeof PasswordValidationDisplay>;
+declare const meta: Meta<PasswordValidationDisplayProps>;
+export default meta;
+type Story = StoryObj<PasswordValidationDisplayProps>;
+export declare const Default: Story;
+export declare const PartialMatch: Story;
+export declare const FullMatch: Story;

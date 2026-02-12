@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import React, { FunctionComponent, useRef, useState } from 'react'
 import Theme from 'src/theme-manager/themes/model'
 import Button from './Button'

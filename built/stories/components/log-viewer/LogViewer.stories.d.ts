@@ -1,0 +1,11 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import LogViewer from '../../../components/log-viewer';
+type LogViewerProps = React.ComponentProps<typeof LogViewer>;
+declare const meta: Meta<LogViewerProps>;
+export default meta;
+type Story = StoryObj<LogViewerProps>;
+export declare const Default: Story;
+export declare const LargeText: Story;
+export declare const NoLineNumbers: Story;
+export declare const WithStringInput: Story;

@@ -6,34 +6,34 @@ import QuantitySelector from './QuantitySelector'
 import ValidatedForm from './validatedForm/ValidatedForm'
 
 const WrappedQuantitySelector = (props) => (
-    // @ts-ignore
-    <ValidatedForm>
-        <QuantitySelector {...props} />
-    </ValidatedForm>
+  // @ts-ignore
+  <ValidatedForm>
+    <QuantitySelector {...props} />
+  </ValidatedForm>
 )
 
 describe('QuantitySelector', () => {
-    it('renders with initial value', () => {
-        const { getByTestId } = render(<WrappedQuantitySelector onChange={() => { }} value={5} />)
-        const input = getByTestId('quantity-input-field') as HTMLInputElement
-        expect(input.value).toBe('5')
-    })
+  it('renders with initial value', () => {
+    const { getByTestId } = render(<WrappedQuantitySelector onChange={() => {}} value={5} />)
+    const input = getByTestId('quantity-input-field') as HTMLInputElement
+    expect(input.value).toBe('5')
+  })
 
-    it('increments value', () => {
-        const handleChange = jest.fn()
-        const { getByTestId } = render(<WrappedQuantitySelector onChange={handleChange} value={5} />)
+  it('increments value', () => {
+    const handleChange = jest.fn()
+    const { getByTestId } = render(<WrappedQuantitySelector onChange={handleChange} value={5} />)
 
-        fireEvent.click(getByTestId('increment-btn'))
+    fireEvent.click(getByTestId('increment-btn'))
 
-        expect(handleChange).toHaveBeenCalledWith(6)
-    })
+    expect(handleChange).toHaveBeenCalledWith(6)
+  })
 
-    it('decrements value', () => {
-        const handleChange = jest.fn()
-        const { getByTestId } = render(<WrappedQuantitySelector onChange={handleChange} value={5} />)
+  it('decrements value', () => {
+    const handleChange = jest.fn()
+    const { getByTestId } = render(<WrappedQuantitySelector onChange={handleChange} value={5} />)
 
-        fireEvent.click(getByTestId('decrement-btn'))
+    fireEvent.click(getByTestId('decrement-btn'))
 
-        expect(handleChange).toHaveBeenCalledWith(4)
-    })
+    expect(handleChange).toHaveBeenCalledWith(4)
+  })
 })

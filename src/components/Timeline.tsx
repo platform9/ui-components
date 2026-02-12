@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles'
+import makeStyles from '@mui/styles/makeStyles';
 import Theme from '../theme-manager/themes/model'
 import Text from '../elements/Text'
 import React from 'react'

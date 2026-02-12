@@ -28,7 +28,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const use_react_router_1 = __importDefault(require("use-react-router"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const TabContext_1 = require("./TabContext");
 const TabPreview_1 = __importDefault(require("./TabPreview"));
 function Tabs({ route, routeKey = 'tab', activeTab, setActiveTab, onClick, children, previewInHeader, HeaderTitlePortal, }) {

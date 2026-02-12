@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import clsx from 'clsx'
 import React, { createRef, useCallback, useEffect, useState } from 'react'
 import { Controlled as BaseCodeMirror, ICodeMirror } from 'react-codemirror2'

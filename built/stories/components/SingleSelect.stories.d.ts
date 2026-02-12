@@ -1,0 +1,10 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import SingleSelect from '../../components/SingleSelect';
+type SingleSelectProps = React.ComponentProps<typeof SingleSelect>;
+declare const meta: Meta<SingleSelectProps>;
+export default meta;
+type Story = StoryObj<SingleSelectProps>;
+export declare const Default: Story;
+export declare const PreSelected: Story;
+export declare const WithError: Story;

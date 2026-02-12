@@ -27,78 +27,75 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/material/styles");
 const Text_1 = __importDefault(require("../elements/Text"));
 const clsx_1 = __importDefault(require("clsx"));
 const test_helpers_1 = __importDefault(require("../utils/test-helpers"));
-function ToggleSwitch({ onClick, active = false, disabled = false, label = '', className = '', }) {
-    const classes = useStyles({ active, disabled });
-    const handleClick = (0, react_1.useCallback)(() => {
-        onClick(!active);
-    }, [onClick]);
-    return (react_1.default.createElement("div", { "data-testid": (0, test_helpers_1.default)(label, 'toggle'), className: (0, clsx_1.default)(classes.toggleSwitch, className), onClick: !disabled ? handleClick : undefined, role: "toggle-switch-control" },
-        react_1.default.createElement("div", { "data-testid": (0, test_helpers_1.default)('toggle', 'switch'), className: classes.switchContainer, role: "switch", "aria-checked": active },
-            react_1.default.createElement("div", { className: classes.switchHandle }),
-            react_1.default.createElement("div", { className: classes.switchTrack })),
-        !!label && (react_1.default.createElement(Text_1.default, { className: (0, clsx_1.default)(classes.switchLabel, { disabled }), variant: "caption1", role: "switch-label" }, label))));
-}
-exports.default = ToggleSwitch;
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
-    toggleSwitch: {
-        display: 'grid',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 'max-content',
-        gridAutoFlow: 'column',
-        gap: 8,
-        cursor: ({ disabled }) => (disabled ? 'not-allowed' : 'pointer'),
-    },
-    switchContainer: {
-        position: 'relative',
-        height: 16,
-        display: 'grid',
-        alignItems: 'center',
-    },
-    switchHandle: {
+const StyledToggleSwitch = (0, styles_1.styled)('div')(({ theme, disabled }) => ({
+    display: 'grid',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 'max-content',
+    gridAutoFlow: 'column',
+    gap: 8,
+    cursor: disabled ? 'not-allowed' : 'pointer',
+}));
+const StyledSwitchContainer = (0, styles_1.styled)('div')({
+    position: 'relative',
+    height: 16,
+    display: 'grid',
+    alignItems: 'center',
+});
+const StyledSwitchHandle = (0, styles_1.styled)('div')(({ theme, active, disabled }) => {
+    const key = disabled
+        ? 'disabledHandle'
+        : active
+            ? 'activeHandle'
+            : 'inactiveHandle';
+    return {
         position: 'absolute',
         borderRadius: 16,
         width: 16,
         height: 16,
-        boxShadow: ({ disabled }) => (disabled ? 'unset' : '0 0 12px 0 rgba(13, 13, 40, 0.15)'),
-        backgroundColor: ({ active, disabled }) => {
-            const key = disabled
-                ? 'disabledHandle'
-                : active
-                    ? 'activeHandle'
-                    : 'inactiveHandle';
-            return theme.components.toggleSwitch[key];
-        },
-        left: ({ active }) => (active ? 'calc(100% - 16px)' : 0),
+        boxShadow: disabled ? 'unset' : '0 0 12px 0 rgba(13, 13, 40, 0.15)',
+        backgroundColor: theme.components.toggleSwitch[key],
+        left: active ? 'calc(100% - 16px)' : 0,
         transition: 'left .2s ease, background-color .2s ease',
-    },
-    switchTrack: {
+    };
+});
+const StyledSwitchTrack = (0, styles_1.styled)('div')(({ theme, active, disabled }) => {
+    const key = disabled
+        ? 'disabledTrack'
+        : active
+            ? 'activeTrack'
+            : 'inactiveTrack';
+    return {
         width: 32,
         height: 12,
         borderRadius: 18,
-        backgroundColor: ({ active, disabled }) => {
-            const key = disabled
-                ? 'disabledTrack'
-                : active
-                    ? 'activeTrack'
-                    : 'inactiveTrack';
-            return theme.components.toggleSwitch[key];
-        },
+        backgroundColor: theme.components.toggleSwitch[key],
         transition: 'background-color .2s ease',
+    };
+});
+const StyledSwitchLabel = (0, styles_1.styled)(Text_1.default)(({ theme, disabled }) => ({
+    color: theme.components.toggleSwitch.label,
+    transition: 'color .2s ease',
+    '&.disabled': {
+        color: theme.components.toggleSwitch.disabledLabel,
     },
-    switchLabel: {
-        color: theme.components.toggleSwitch.label,
-        transition: 'color .2s ease',
-        '&.disabled': {
-            color: theme.components.toggleSwitch.disabledLabel,
-        },
-        '&:not(.disabled):hover': {
-            color: theme.components.toggleSwitch.hoverLabel,
-        },
+    '&:not(.disabled):hover': {
+        color: theme.components.toggleSwitch.hoverLabel,
     },
 }));
+function ToggleSwitch({ onClick, active = false, disabled = false, label = '', className = '', }) {
+    const handleClick = (0, react_1.useCallback)(() => {
+        onClick(!active);
+    }, [onClick]);
+    return (react_1.default.createElement(StyledToggleSwitch, { "data-testid": (0, test_helpers_1.default)(label, 'toggle'), className: className, onClick: !disabled ? handleClick : undefined, role: "toggle-switch-control", disabled: disabled },
+        react_1.default.createElement(StyledSwitchContainer, { "data-testid": (0, test_helpers_1.default)('toggle', 'switch'), role: "switch", "aria-checked": active },
+            react_1.default.createElement(StyledSwitchHandle, { active: active, disabled: disabled }),
+            react_1.default.createElement(StyledSwitchTrack, { active: active, disabled: disabled })),
+        !!label && (react_1.default.createElement(StyledSwitchLabel, { className: (0, clsx_1.default)({ disabled }), variant: "caption1", role: "switch-label", disabled: disabled }, label))));
+}
+exports.default = ToggleSwitch;
 //# sourceMappingURL=ToggleSwitch.js.map

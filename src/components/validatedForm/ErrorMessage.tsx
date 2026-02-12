@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import Theme from '../../theme-manager/themes/model'
 import FontAwesomeIcon from '../FontAwesomeIcon'
 import clsx from 'clsx'

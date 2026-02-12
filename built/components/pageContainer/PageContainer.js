@@ -40,7 +40,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PageContext = void 0;
 const react_1 = __importStar(require("react"));
 const prop_types_1 = __importDefault(require("prop-types"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const clsx_1 = __importDefault(require("clsx"));
 const extraHeaderRef = react_1.default.createRef();
 exports.PageContext = react_1.default.createContext({

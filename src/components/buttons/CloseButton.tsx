@@ -1,29 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { makeStyles } from '@material-ui/styles'
 import IconButton from '../../elements/button/IconButton'
 import Tooltip from '../../elements/tooltip'
+import { styled } from '@mui/styles'
 
-const useStyles = makeStyles((theme) => ({
-  link: {
-    display: 'block',
-  },
-}))
+const StyledLink = styled(Link)({
+  display: 'block',
+})
 
 const CloseButton = ({ tooltip = 'Cancel', ...props }) => {
-  const classes = useStyles({})
-  const icon = <IconButton icon="times-circle" {...props} />
+  const icon = <IconButton icon="times-circle" {...props} size="lg" />
 
   return (
     <Tooltip message={tooltip}>
-      {props.to ? (
-        <Link className={classes.link} to={props.to}>
-          {icon}
-        </Link>
-      ) : (
-        icon
-      )}
+      {props.to ? <StyledLink to={props.to}>{icon}</StyledLink> : icon}
     </Tooltip>
   )
 }

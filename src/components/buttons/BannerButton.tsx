@@ -1,6 +1,6 @@
 import React from 'react'
 import Theme from '../../theme-manager/themes/model'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import Button from '../../elements/button'
 
 const useStyles = makeStyles((theme: Theme) => ({

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const constants_1 = require("./constants");
 exports.default = (0, styles_1.makeStyles)((theme) => ({
     dropdownWrapper: {

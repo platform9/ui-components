@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createGridBadgesArrayCell = void 0;
 const react_1 = __importDefault(require("react"));
 const Badge_1 = __importDefault(require("../../../elements/badge/Badge"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const TooltipListBody_1 = __importDefault(require("../../../elements/tooltip/TooltipListBody"));
 function GridBadgesArrayCell({ value: items = [], badgeVariant = 'default', maxItems = 3, }) {
     const classes = useStyles({});

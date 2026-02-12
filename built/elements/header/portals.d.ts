@@ -1,13 +1,14 @@
 import React from 'react';
-export declare function SidebarCustomPanePortal({ children }: {
+declare const SidebarCustomPanePortal: ({ children }: {
     children: any;
-}): React.ReactPortal;
-export declare function HeaderTitlePortal({ children }: {
+}) => React.ReactPortal;
+declare const HeaderTitlePortal: ({ children }: {
     children: any;
-}): React.ReactPortal;
-export declare function HeaderPrimaryActionPortal({ children }: {
+}) => React.ReactPortal;
+declare const HeaderPrimaryActionPortal: ({ children }: {
     children: any;
-}): React.ReactPortal;
-export declare function HeaderDefaultToolsPortal({ children }: {
+}) => React.ReactPortal;
+declare const HeaderDefaultToolsPortal: ({ children }: {
     children: any;
-}): React.ReactPortal;
+}) => React.ReactPortal;
+export { SidebarCustomPanePortal, HeaderTitlePortal, HeaderPrimaryActionPortal, HeaderDefaultToolsPortal, };

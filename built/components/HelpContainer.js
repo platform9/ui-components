@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const FontAwesomeIcon_1 = __importDefault(require("../components/FontAwesomeIcon"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const SimpleLink_1 = __importDefault(require("./SimpleLink"));
 const tooltip_1 = __importDefault(require("../elements/tooltip"));
 const colorMap = {

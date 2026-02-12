@@ -1,5 +1,5 @@
 import React, { ReactNode, FC, PropsWithChildren, useCallback } from 'react'
-import { makeStyles, ThemeProvider } from '@material-ui/styles'
+import { ThemeProvider } from '@mui/material/styles'
 import Theme, { TypographyModel } from '../../theme-manager/themes/model'
 import { GridFilteringProps } from './hooks/useGridFiltering'
 import FontAwesomeIcon from '../../components/FontAwesomeIcon'
@@ -15,6 +15,7 @@ import { useCustomTheme } from '../../theme-manager/ThemeManager'
 import useToggler from '../../hooks/useToggler'
 import { ensureArray } from '../../utils/fp'
 import { equals } from 'ramda'
+import { makeStyles } from '@mui/styles'
 
 interface GridToolbarProps<
   T,
@@ -45,17 +46,19 @@ const useStyles = makeStyles<
     justifyContent: 'space-between',
     color: ({ selectedCount }) =>
       selectedCount
-        ? theme.components.table.activeToolbarColor
-        : theme.components.table.toolbarColor,
+        ? (theme as any).components.table.activeToolbarColor
+        : (theme as any).components.table.toolbarColor,
     backgroundColor: ({ selectedCount }) =>
-      selectedCount ? theme.components.table.activeToolbar : theme.components.table.toolbar,
+      selectedCount
+        ? (theme as any).components.table.activeToolbar
+        : (theme as any).components.table.toolbar,
     transitionTimingFunction: 'ease-in',
     transition: 'background-color .2s ease',
     border: 0,
     borderRadius: '4px 4px 0 0',
     padding: '8px 16px 8px 24px',
     minHeight: 56,
-    borderBottom: `1px solid ${theme.components.table.border}`,
+    borderBottom: `1px solid ${(theme as any).components.table.border}`,
     boxSizing: 'border-box',
     '&:last-child td': {
       borderBottom: 0,
@@ -71,10 +74,10 @@ const useStyles = makeStyles<
   },
   clearBtn: {
     cursor: 'pointer',
-    color: theme.components.table.toolbarPassiveColor,
+    color: (theme as any).components.table.toolbarPassiveColor,
   },
   verticalLine: {
-    borderLeft: `1px solid ${theme.components.typography.default}`,
+    borderLeft: `1px solid ${(theme as any).components.typography.default}`,
     width: 1,
     height: 34,
     margin: theme.spacing(0, 1),
@@ -108,7 +111,7 @@ const useStyles = makeStyles<
     borderRadius: 4,
     gap: 8,
     '&:hover': {
-      backgroundColor: theme.components.table.hoverBackground,
+      backgroundColor: (theme as any).components.table.hoverBackground,
     },
   },
   extraContent: {
@@ -123,7 +126,7 @@ const useStyles = makeStyles<
     height: ({ filtersOpen }) => (filtersOpen ? 'max-content' : 0),
     overflow: ({ filtersOpen }) => (filtersOpen ? 'visible' : 'hidden'),
     padding: ({ filtersOpen }) => (filtersOpen ? '16px' : '0px'),
-    background: theme.components.table.hoverBackground,
+    background: (theme as any).components.table.hoverBackground,
     display: 'grid',
     gap: 16,
   },
@@ -142,8 +145,8 @@ const useStyles = makeStyles<
     gap: 8,
     alignItems: 'center',
     padding: '4px 12px',
-    background: theme.components.table.background,
-    border: `1px solid ${theme.components.table.border}`,
+    background: (theme as any).components.table.background,
+    border: `1px solid ${(theme as any).components.table.border}`,
   },
   activeFilterText: {
     fontSize: 12,

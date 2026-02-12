@@ -1,4 +1,4 @@
-import { withStyles } from '@material-ui/styles'
+import { withStyles } from '@mui/styles'
 import { assocPathStr, dissocPathStr, pathEqStr, pathStr } from '../../utils/fp'
 import clsx from 'clsx'
 import FormFieldSection from '../../components/validatedForm/FormFieldSection'

@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-disable max-len */
 const react_1 = __importDefault(require("react"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const spinLogoPaths = {
     dark: {
         color: '#1C8CC9',

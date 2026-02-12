@@ -1,11 +1,17 @@
-import { ThemeProvider } from '@material-ui/styles'
-import { createTheme } from '@material-ui/core/styles'
+import { createTheme, ThemeProvider, Theme, StyledEngineProvider, adaptV4Theme } from '@mui/material/styles';
 
 import React, { PropsWithChildren, useContext, useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import AppTheme from '../theme-manager/themes/model'
 import { themeSelector } from './selector'
 import * as CSS from 'csstype'
+
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
+
 
 const CustomThemeContext = React.createContext<{
   theme: AppTheme
@@ -44,7 +50,7 @@ export default function ThemeManager({ themeActions, children }: PropsWithChildr
 
   // TODO: Our current theme (AppTheme) is not extending the MUI theme correctly
   // Until we fix it we have to trick the TS engine to swallow this
-  const theme = useMemo(() => createTheme(jsonTheme as unknown), [jsonTheme]) as AppTheme
+  const theme = useMemo(() => createTheme(adaptV4Theme(jsonTheme as unknown)), [jsonTheme]) as AppTheme
 
   // // Rendering the app before the theme is loaded will have issues because `withStyles`
   // // requires the `theme` object to exist.
@@ -53,10 +59,12 @@ export default function ThemeManager({ themeActions, children }: PropsWithChildr
   }
 
   return (
-    <ThemeProvider theme={theme as AppTheme}>
-      <CustomThemeProvider value={{ theme, setCustomTheme }}>{children}</CustomThemeProvider>
-    </ThemeProvider>
-  )
+    <StyledEngineProvider injectFirst>
+      (<ThemeProvider theme={theme as AppTheme}>
+        <CustomThemeProvider value={{ theme, setCustomTheme }}>{children}</CustomThemeProvider>
+      </ThemeProvider>)
+    </StyledEngineProvider>
+  );
 }
 
 export function useCustomTheme(): [AppTheme, (theme: AppTheme, updateUserPrefs?: boolean) => void] {

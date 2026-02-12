@@ -41,7 +41,7 @@ const react_1 = __importStar(require("react"));
 const fp_1 = require("../../../utils/fp");
 const ramda_1 = require("ramda");
 const MultiDropdown_1 = __importDefault(require("../../dropdown/MultiDropdown"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const ClearFiltersSection_1 = __importDefault(require("./ClearFiltersSection"));
 const useStyles = (0, styles_1.makeStyles)((theme) => ({
     clearFilters: {

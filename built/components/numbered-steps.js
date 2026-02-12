@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const Text_1 = __importDefault(require("../elements/Text"));
 const useStyles = (0, styles_1.makeStyles)((theme) => ({
     column: {
@@ -19,7 +19,7 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
     step: {
         color: theme.palette.secondary.contrastText,
         marginRight: theme.spacing(2),
-        flex: `0 0 ${theme.spacing(5)}px`,
+        flex: `0 0 ${theme.spacing(5)}`,
         width: theme.spacing(5),
         height: theme.spacing(5),
         fontSize: 18,

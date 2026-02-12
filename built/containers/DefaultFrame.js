@@ -29,7 +29,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const clsx_1 = __importDefault(require("clsx"));
 const ramda_1 = require("ramda");
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const Header_1 = __importDefault(require("../elements/header/Header"));
 const frame_provider_1 = __importDefault(require("../providers/frame-provider"));
 const sidebarPane = 'default';

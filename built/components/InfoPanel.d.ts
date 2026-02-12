@@ -27,12 +27,5 @@ export declare const DetailRow: FC<{
  * Ex. getFieldsForCard(fields, cluster)
  */
 export declare function getFieldsForCard<T>(fields: Array<IDetailFields<T>>, item: T): FieldsForCardsProps;
-declare const InfoPanel: React.ComponentType<Pick<InfoPanelProps, "title" | "className" | "customBody" | "items"> & import("@material-ui/styles").StyledComponentProps<"card" | "row" | "root" | "title" | "half" | "cardContent"> & object>;
-interface InfoPanelProps {
-    title: string;
-    classes?: any;
-    items?: any;
-    customBody?: JSX.Element | React.ReactNode;
-    className?: string;
-}
+declare const InfoPanel: React.JSXElementConstructor<Omit<React.JSX.LibraryManagedAttributes<C, React.ComponentProps<C>>, "classes"> & import("@mui/styles").StyledComponentProps<"card" | "title" | "root" | "row" | "half" | "cardContent"> & object>;
 export default InfoPanel;

@@ -1,0 +1,10 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { NavItemProps } from '../../elements/sidebar/NavItem';
+declare const meta: Meta<NavItemProps>;
+export default meta;
+type Story = StoryObj<NavItemProps>;
+export declare const Default: Story;
+export declare const Active: Story;
+export declare const Collapsed: Story;
+export declare const Disabled: Story;
+export declare const External: Story;
