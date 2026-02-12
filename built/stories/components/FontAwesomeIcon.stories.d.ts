@@ -1,0 +1,13 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import FontAwesomeIcon from '../../components/FontAwesomeIcon';
+type FontAwesomeIconProps = React.ComponentProps<typeof FontAwesomeIcon>;
+declare const meta: Meta<FontAwesomeIconProps>;
+export default meta;
+type Story = StoryObj<FontAwesomeIconProps>;
+export declare const Default: Story;
+export declare const Solid: Story;
+export declare const Regular: Story;
+export declare const Brands: Story;
+export declare const Spinning: Story;
+export declare const Gallery: Story;

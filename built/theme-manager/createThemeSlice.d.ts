@@ -25,24 +25,9 @@ declare const createThemeSlice: (theme?: ThemeReducer) => {
     customThemeKey: "theme";
     themeReducer: import("redux").Reducer<ThemeReducer, import("redux").AnyAction>;
     themeActions: import("@reduxjs/toolkit").CaseReducerActions<{
-        updateGlobalTheme: (state: import("immer/dist/internal").WritableDraft<ThemeReducer>, { payload }: {
-            payload: any;
-            type: string;
-        }) => {
-            global: any;
-            theme: import("immer/dist/internal").WritableDraft<Theme>;
-            components: import("immer/dist/internal").WritableDraft<Components>;
-        };
-        updateThemeComponent: (state: import("immer/dist/internal").WritableDraft<ThemeReducer>, { payload }: PayloadAction<UpdateComponentAction>) => {
-            components: Components;
-            theme: import("immer/dist/internal").WritableDraft<Theme>;
-            global?: import("immer/dist/internal").WritableDraft<ThemeConfig>;
-        };
-        updateTheme: (state: import("immer/dist/internal").WritableDraft<ThemeReducer>, { payload }: PayloadAction<Partial<ThemeReducer>>) => {
-            theme: Theme | import("immer/dist/internal").WritableDraft<Theme>;
-            components: Components | import("immer/dist/internal").WritableDraft<Components>;
-            global?: ThemeConfig | import("immer/dist/internal").WritableDraft<ThemeConfig>;
-        };
+        updateGlobalTheme: (state: import("immer/dist/internal").WritableDraft<ThemeReducer>, { payload }: PayloadAction<ThemeConfig>) => ThemeReducer;
+        updateThemeComponent: (state: import("immer/dist/internal").WritableDraft<ThemeReducer>, { payload }: PayloadAction<UpdateComponentAction>) => ThemeReducer;
+        updateTheme: (state: import("immer/dist/internal").WritableDraft<ThemeReducer>, { payload }: PayloadAction<Partial<ThemeReducer>>) => ThemeReducer;
         clearTheme: () => any;
     }, "theme">;
 };

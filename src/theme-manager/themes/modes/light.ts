@@ -268,7 +268,7 @@ const components: Components = {
 
 const serenityLightTheme = {
   theme: generateTheme({
-    palette: { colors, primary: 'blue', secondary: 'pink', type: 'light', themeKey: 'light' },
+    palette: { colors, primary: 'blue', secondary: 'pink', mode: 'light', themeKey: 'light' },
     typography: {
       fontFamily: '"Eina04"',
       fontSize: 14,

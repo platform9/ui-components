@@ -1,0 +1,10 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import CodeBlock from '../../components/CodeBlock';
+type CodeBlockProps = React.ComponentProps<typeof CodeBlock>;
+declare const meta: Meta<CodeBlockProps>;
+export default meta;
+type Story = StoryObj<CodeBlockProps>;
+export declare const Default: Story;
+export declare const LongContent: Story;
+export declare const Gallery: Story;

@@ -26,7 +26,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const constants_1 = require("../../constants");
 const ramda_1 = require("ramda");
 const react_1 = __importStar(require("react"));

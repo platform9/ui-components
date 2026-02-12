@@ -38,7 +38,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const SemiCircleGraph_1 = __importDefault(require("../../components/graphs/SemiCircleGraph"));
 const Text_1 = __importDefault(require("../../elements/Text"));
 const card_1 = __importDefault(require("../../elements/card"));

@@ -1,0 +1,11 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import Progress from '../../../components/progress/Progress';
+type ProgressProps = React.ComponentProps<typeof Progress>;
+declare const meta: Meta<ProgressProps>;
+export default meta;
+type Story = StoryObj<ProgressProps>;
+export declare const Default: Story;
+export declare const Overlay: Story;
+export declare const Inline: Story;
+export declare const NoImage: Story;

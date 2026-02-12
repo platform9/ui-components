@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const clsx_1 = __importDefault(require("clsx"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const Text_1 = __importDefault(require("../elements/Text"));
 const useStyles = (0, styles_1.makeStyles)((theme) => {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;

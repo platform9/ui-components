@@ -1,0 +1,11 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import CardTable from '../../../components/cardTable/CardTable';
+type CardTableProps = React.ComponentProps<typeof CardTable>;
+declare const meta: Meta<CardTableProps>;
+export default meta;
+type Story = StoryObj<CardTableProps>;
+export declare const Default: Story;
+export declare const Loading: Story;
+export declare const Empty: Story;
+export declare const WithSorting: Story;

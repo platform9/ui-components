@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import Theme from '../theme-manager/themes/model'
 import Text from '../elements/Text'
 
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   step: {
     color: theme.palette.secondary.contrastText,
     marginRight: theme.spacing(2),
-    flex: `0 0 ${theme.spacing(5)}px`,
+    flex: `0 0 ${theme.spacing(5)}`,
     width: theme.spacing(5),
     height: theme.spacing(5),
     fontSize: 18,

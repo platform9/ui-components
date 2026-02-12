@@ -38,8 +38,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.filterSpecPropType = void 0;
-const core_1 = require("@material-ui/core");
-const styles_1 = require("@material-ui/styles");
+const material_1 = require("@mui/material");
+const styles_1 = require("@mui/styles");
 const SearchBar_1 = __importDefault(require("../../components/SearchBar"));
 const react_1 = __importStar(require("react"));
 const AsyncDropdown_1 = __importDefault(require("../../elements/dropdown/AsyncDropdown"));
@@ -112,7 +112,7 @@ const CardTableToolbar = ({ title, sorting = [], orderDirection, orderBy, filter
         react_1.default.createElement(FontAwesomeIcon_1.default, { className: classes.button, solid: true, size: "lg", "aria-label": "Change direction", onClick: onDirectionSwitch }, orderDirection === 'asc' ? 'arrow-down' : 'arrow-up'))), [orderDirection, onDirectionSwitch]);
     const refreshButton = (0, react_1.useMemo)(() => onRefresh && (react_1.default.createElement(tooltip_1.default, { message: "Refresh" },
         react_1.default.createElement(FontAwesomeIcon_1.default, { className: classes.button, solid: true, size: "lg", "aria-label": "Refresh list", onClick: onRefresh }, 'sync'))), [onRefresh]);
-    return (react_1.default.createElement(core_1.Toolbar, { className: classes.root },
+    return (react_1.default.createElement(material_1.Toolbar, { className: classes.root },
         title && (react_1.default.createElement("div", null,
             react_1.default.createElement("div", { className: classes.title },
                 react_1.default.createElement(Text_1.default, { variant: "subtitle2" }, title)),

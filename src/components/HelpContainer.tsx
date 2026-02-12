@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import FontAwesomeIcon from '../components/FontAwesomeIcon'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import SimpleLink from './SimpleLink'
 import Theme from '../theme-manager/themes/model'
 import Tooltip from '../elements/tooltip'

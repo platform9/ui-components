@@ -27,14 +27,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
-const styles_1 = require("@material-ui/styles");
-const Box_1 = __importDefault(require("@material-ui/core/Box"));
-const FormControl_1 = __importDefault(require("@material-ui/core/FormControl"));
-const InputAdornment_1 = __importDefault(require("@material-ui/core/InputAdornment"));
-const OutlinedInput_1 = __importDefault(require("@material-ui/core/OutlinedInput"));
-const Search_1 = __importDefault(require("@material-ui/icons/Search"));
+const styles_1 = require("@mui/styles");
+const Box_1 = __importDefault(require("@mui/material/Box"));
+const FormControl_1 = __importDefault(require("@mui/material/FormControl"));
+const InputAdornment_1 = __importDefault(require("@mui/material/InputAdornment"));
+const OutlinedInput_1 = __importDefault(require("@mui/material/OutlinedInput"));
+const Search_1 = __importDefault(require("@mui/icons-material/Search"));
 const fuse_js_1 = __importDefault(require("fuse.js"));
-const core_1 = require("@material-ui/core");
+const material_1 = require("@mui/material");
 const clsx_1 = __importDefault(require("clsx"));
 const Text_1 = __importDefault(require("../elements/Text"));
 const radio_fields_1 = __importDefault(require("./validatedForm/radio-fields"));
@@ -109,7 +109,7 @@ const SingleSelect = react_1.default.forwardRef(({ id, label, hasError, required
             react_1.default.createElement(SearchField, { classes: classes, term: term, onSearchChange: setTerm, onHitEnter: onHitEnter }),
             react_1.default.createElement(Box_1.default, { className: classes.options, style: { height: maxOptions ? getOptionsHeight(maxOptions) : 'initial' } },
                 react_1.default.createElement(radio_fields_1.default, { id: id, key: id, options: sortedOptions, value: value, onChange: onChange })),
-            errorMessage && react_1.default.createElement(core_1.FormHelperText, null, errorMessage))));
+            errorMessage && react_1.default.createElement(material_1.FormHelperText, null, errorMessage))));
 });
 const SearchField = ({ classes, term, onSearchChange, onHitEnter }) => {
     const handleKeyDown = (event) => {

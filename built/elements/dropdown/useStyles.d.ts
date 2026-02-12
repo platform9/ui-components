@@ -4,5 +4,5 @@ interface DropdownStylesProps {
     disabled?: boolean;
     error?: string;
 }
-declare const _default: (props: DropdownStylesProps) => import("@material-ui/styles").ClassNameMap<string>;
+declare const _default: (props: DropdownStylesProps) => import("@mui/styles").ClassNameMap<string>;
 export default _default;

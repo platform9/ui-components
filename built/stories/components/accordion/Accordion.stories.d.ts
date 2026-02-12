@@ -1,0 +1,11 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import Accordion from '../../../components/accordion/Accordion';
+type AccordionProps = React.ComponentProps<typeof Accordion>;
+declare const meta: Meta<AccordionProps>;
+export default meta;
+type Story = StoryObj<AccordionProps>;
+export declare const Default: Story;
+export declare const Controlled: Story;
+export declare const CustomTitle: Story;
+export declare const CustomIcon: Story;

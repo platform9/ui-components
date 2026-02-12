@@ -1,5 +1,5 @@
-import { Toolbar } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
+import { Toolbar } from '@mui/material'
+import { makeStyles } from '@mui/styles'
 import SearchBar from '../../components/SearchBar'
 import React, { useMemo } from 'react'
 import Picklist from '../../elements/dropdown/AsyncDropdown'

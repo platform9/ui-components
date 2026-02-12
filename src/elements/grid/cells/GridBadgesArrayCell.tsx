@@ -2,7 +2,7 @@ import React from 'react'
 import { GridCellProps } from '../../../elements/grid/hooks/useGridRows'
 import { ArrayElement } from './GridArrayCell'
 import Badge, { BadgeVariant } from '../../../elements/badge/Badge'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import Theme from '../../../theme-manager/themes/model'
 import TooltipListBody from '../../../elements/tooltip/TooltipListBody'
 

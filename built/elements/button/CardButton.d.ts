@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { ButtonProps } from '@material-ui/core';
+import { ButtonProps } from '@mui/material';
 interface Props extends Omit<ButtonProps, 'variant' | 'size'> {
     disabled?: boolean;
     icon?: string;

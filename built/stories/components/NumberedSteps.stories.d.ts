@@ -1,0 +1,10 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import NumberedSteps from '../../components/numbered-steps';
+type NumberedStepsProps = React.ComponentProps<typeof NumberedSteps>;
+declare const meta: Meta<NumberedStepsProps>;
+export default meta;
+type Story = StoryObj<NumberedStepsProps>;
+export declare const Default: Story;
+export declare const WithChildren: Story;
+export declare const JSXDescription: Story;

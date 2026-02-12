@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { PieChart, Pie, Cell } from 'recharts'
-import { useTheme } from '@material-ui/styles'
+import { useTheme } from '@mui/styles'
 import Theme from '../../theme-manager/themes/model'
 
 export interface PieDataEntry {
@@ -65,7 +65,7 @@ const PieGraph = ({
       </Pie>
       {percent !== undefined && (
         <text
-          style={{ ...theme.typography.h4 }}
+          style={{ ...(theme.typography.h4 as React.CSSProperties) }}
           x={radius + 5}
           y={radius}
           fill={theme.components.card.text}

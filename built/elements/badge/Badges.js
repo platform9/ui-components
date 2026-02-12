@@ -27,7 +27,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const Badge_1 = __importDefault(require("./Badge"));
 const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 const misc_1 = require("../../utils/misc");

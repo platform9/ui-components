@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import clsx from 'clsx'
 import { mergeRight } from 'ramda'
 import React, { PropsWithChildren, ReactNode, useCallback, useMemo, useRef } from 'react'

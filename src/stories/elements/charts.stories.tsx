@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import Theme from '../../theme-manager/themes/model'
 import StackedAreaChart from 'src/components/graphs/StackedAreaChart'
 import SingleAreaChart from 'src/components/graphs/SingleAreaChart'

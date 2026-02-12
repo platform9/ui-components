@@ -28,8 +28,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IconInfo = void 0;
 const react_1 = __importStar(require("react"));
-const styles_1 = require("@material-ui/styles");
-const core_1 = require("@material-ui/core");
+const styles_1 = require("@mui/styles");
+const material_1 = require("@mui/material");
 const clsx_1 = __importDefault(require("clsx"));
 const FontAwesomeIcon_1 = __importDefault(require("../FontAwesomeIcon"));
 const Text_1 = __importDefault(require("../../elements/Text"));
@@ -109,7 +109,7 @@ const Info = ({ children, error = false, className = undefined, title = '', expa
                     setExpanded(!isExpanded);
                 } },
                 react_1.default.createElement(FontAwesomeIcon_1.default, { className: classes.icon }, `angle-${isExpanded ? 'up' : 'down'}`)))),
-        title && isExpanded && react_1.default.createElement(core_1.Divider, { className: classes.divider }),
+        title && isExpanded && react_1.default.createElement(material_1.Divider, { className: classes.divider }),
         (!title || isExpanded) && children));
 };
 const IconInfo = ({ icon, title, children, className = '', iconClass = '', spacer = true }) => {

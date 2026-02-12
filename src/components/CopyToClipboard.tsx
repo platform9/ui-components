@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import React, { FunctionComponent, useRef, useState } from 'react'
 // import useParams from '../hooks/useParams'
 import clsx from 'clsx'

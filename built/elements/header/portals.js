@@ -7,32 +7,37 @@ exports.HeaderDefaultToolsPortal = exports.HeaderPrimaryActionPortal = exports.H
 const react_1 = __importDefault(require("react"));
 const react_dom_1 = __importDefault(require("react-dom"));
 const frame_provider_1 = __importDefault(require("../../providers/frame-provider"));
-function SidebarCustomPanePortal({ children }) {
+// Note: These components are defined as constants and exported in a single
+// block at the end of the file. This pattern is used to prevent circular
+// dependency issues that can arise when these portals are imported into
+// other components that are also part of the header module.
+// For more context, see: https://railsware.com/blog/how-to-analyze-circular-dependencies-in-es6/
+const SidebarCustomPanePortal = ({ children }) => {
     const { sidebarPaneContainer } = react_1.default.useContext(frame_provider_1.default);
     if (!sidebarPaneContainer)
         return null;
     return react_dom_1.default.createPortal(children, sidebarPaneContainer);
-}
+};
 exports.SidebarCustomPanePortal = SidebarCustomPanePortal;
-function HeaderTitlePortal({ children }) {
+const HeaderTitlePortal = ({ children }) => {
     const { headerTitleContainer } = react_1.default.useContext(frame_provider_1.default);
     if (!headerTitleContainer)
         return null;
     return react_dom_1.default.createPortal(children, headerTitleContainer);
-}
+};
 exports.HeaderTitlePortal = HeaderTitlePortal;
-function HeaderPrimaryActionPortal({ children }) {
+const HeaderPrimaryActionPortal = ({ children }) => {
     const { headerPrimaryActionContainer } = react_1.default.useContext(frame_provider_1.default);
     if (!headerPrimaryActionContainer)
         return null;
     return react_dom_1.default.createPortal(children, headerPrimaryActionContainer);
-}
+};
 exports.HeaderPrimaryActionPortal = HeaderPrimaryActionPortal;
-function HeaderDefaultToolsPortal({ children }) {
+const HeaderDefaultToolsPortal = ({ children }) => {
     const { headerSharedToolsContainer } = react_1.default.useContext(frame_provider_1.default);
     if (!headerSharedToolsContainer)
         return null;
     return react_dom_1.default.createPortal(children, headerSharedToolsContainer);
-}
+};
 exports.HeaderDefaultToolsPortal = HeaderDefaultToolsPortal;
 //# sourceMappingURL=portals.js.map

@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import Theme from '../../theme-manager/themes/model'
 // import { PreferencesState, preferencesStoreKey } from 'core/session/preferencesReducers'
 import { prop } from 'ramda'

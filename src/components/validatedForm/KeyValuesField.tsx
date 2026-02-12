@@ -1,6 +1,6 @@
 import React from 'react'
 import { withInfoTooltip } from '../../components/InfoTooltip'
-import { FormControl, FormHelperText } from '@material-ui/core'
+import { FormControl, FormHelperText } from '@mui/material'
 import { compose } from '../../utils/fp'
 import Text from '../../elements/Text'
 import KeyValues, { EntryShape } from '../../components/KeyValues'

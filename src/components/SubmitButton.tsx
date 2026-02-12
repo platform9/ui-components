@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren } from 'react'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 
 import Button from '../elements/button'
 import Theme from '../theme-manager/themes/model'

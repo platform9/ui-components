@@ -3,7 +3,7 @@ import Theme from '../../theme-manager/themes/model';
 type DropdownInputProps = {
     className?: string;
 };
-declare const _default: import("@material-ui/styles").StyledComponent<Pick<DropdownInputProps & React.RefAttributes<HTMLInputElement>, keyof React.RefAttributes<HTMLInputElement>> & import("@material-ui/styles").StyledComponentProps<"root"> & Pick<Pick<DropdownInputProps & React.RefAttributes<HTMLInputElement>, "key" | "className">, "key"> & {
+declare const _default: import("@mui/styles").StyledComponent<Omit<React.JSX.LibraryManagedAttributes<Component, React.ComponentProps<Component>>, "classes" | "className"> & import("@mui/styles").StyledComponentProps<"root"> & Omit<Pick<DropdownInputProps & React.RefAttributes<HTMLInputElement>, "key" | "className">, "theme" | "className"> & {
     className?: string;
     theme?: Theme;
 }>;

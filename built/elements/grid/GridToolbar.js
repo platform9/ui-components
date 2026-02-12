@@ -38,7 +38,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/material/styles");
 const FontAwesomeIcon_1 = __importDefault(require("../../components/FontAwesomeIcon"));
 const Text_1 = __importDefault(require("../../elements/Text"));
 const dark_1 = __importDefault(require("../../theme-manager/themes/modes/dark"));
@@ -50,7 +50,8 @@ const ThemeManager_1 = require("../../theme-manager/ThemeManager");
 const useToggler_1 = __importDefault(require("../../hooks/useToggler"));
 const fp_1 = require("../../utils/fp");
 const ramda_1 = require("ramda");
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const styles_2 = require("@mui/styles");
+const useStyles = (0, styles_2.makeStyles)((theme) => ({
     gridToolbar: {
         display: 'grid',
         gridAutoFlow: 'column',
@@ -59,7 +60,9 @@ const useStyles = (0, styles_1.makeStyles)((theme) => ({
         color: ({ selectedCount }) => selectedCount
             ? theme.components.table.activeToolbarColor
             : theme.components.table.toolbarColor,
-        backgroundColor: ({ selectedCount }) => selectedCount ? theme.components.table.activeToolbar : theme.components.table.toolbar,
+        backgroundColor: ({ selectedCount }) => selectedCount
+            ? theme.components.table.activeToolbar
+            : theme.components.table.toolbar,
         transitionTimingFunction: 'ease-in',
         transition: 'background-color .2s ease',
         border: 0,

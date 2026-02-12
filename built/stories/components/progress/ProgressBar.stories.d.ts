@@ -1,0 +1,13 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import ProgressBar from '../../../components/progress/ProgressBar';
+type ProgressBarProps = React.ComponentProps<typeof ProgressBar>;
+declare const meta: Meta<ProgressBarProps>;
+export default meta;
+type Story = StoryObj<ProgressBarProps>;
+export declare const Default: Story;
+export declare const Animated: Story;
+export declare const HealthVariant: Story;
+export declare const CriticalHealth: Story;
+export declare const ContainedLabel: Story;
+export declare const CustomColor: Story;

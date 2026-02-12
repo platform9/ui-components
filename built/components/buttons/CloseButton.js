@@ -17,19 +17,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const prop_types_1 = __importDefault(require("prop-types"));
 const react_router_dom_1 = require("react-router-dom");
-const styles_1 = require("@material-ui/styles");
 const IconButton_1 = __importDefault(require("../../elements/button/IconButton"));
 const tooltip_1 = __importDefault(require("../../elements/tooltip"));
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
-    link: {
-        display: 'block',
-    },
-}));
+const styles_1 = require("@mui/styles");
+const StyledLink = (0, styles_1.styled)(react_router_dom_1.Link)({
+    display: 'block',
+});
 const CloseButton = (_a) => {
     var { tooltip = 'Cancel' } = _a, props = __rest(_a, ["tooltip"]);
-    const classes = useStyles({});
-    const icon = react_1.default.createElement(IconButton_1.default, Object.assign({ icon: "times-circle" }, props));
-    return (react_1.default.createElement(tooltip_1.default, { message: tooltip }, props.to ? (react_1.default.createElement(react_router_dom_1.Link, { className: classes.link, to: props.to }, icon)) : (icon)));
+    const icon = react_1.default.createElement(IconButton_1.default, Object.assign({ icon: "times-circle" }, props, { size: "lg" }));
+    return (react_1.default.createElement(tooltip_1.default, { message: tooltip }, props.to ? react_1.default.createElement(StyledLink, { to: props.to }, icon) : icon));
 };
 CloseButton.propTypes = {
     to: prop_types_1.default.string,

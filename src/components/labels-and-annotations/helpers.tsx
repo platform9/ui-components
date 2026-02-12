@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled } from '@material-ui/styles'
+import { styled } from '@mui/styles'
 import { BadgesProps, RenderLabelParams, LabelParams, AnnotationProps, LabelProps } from './model'
 import Text from '../../elements/Text'
 import { GridCellProps } from '../../elements/grid/hooks/useGridRows'

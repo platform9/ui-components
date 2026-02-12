@@ -1,0 +1,10 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import DataPoint from '../../../components/dataPointLine/DataPoint';
+type DataPointProps = React.ComponentProps<typeof DataPoint>;
+declare const meta: Meta<DataPointProps>;
+export default meta;
+type Story = StoryObj<DataPointProps>;
+export declare const Default: Story;
+export declare const CustomColor: Story;
+export declare const CustomDescription: Story;

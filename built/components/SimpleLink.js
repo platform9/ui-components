@@ -38,13 +38,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
-const core_1 = require("@material-ui/core");
-const use_react_router_1 = __importDefault(require("use-react-router"));
-const styles_1 = require("@material-ui/styles");
+const material_1 = require("@mui/material");
+const styles_1 = require("@mui/styles");
 const clsx_1 = __importDefault(require("clsx"));
 const FontAwesomeIcon_1 = __importDefault(require("./FontAwesomeIcon"));
 const Text_1 = __importDefault(require("../elements/Text"));
 const test_helpers_1 = __importDefault(require("../utils/test-helpers"));
+const use_react_router_1 = __importDefault(require("use-react-router"));
 const getColor = (variant, theme) => {
     if (variant === 'error') {
         return theme.components.graph.error;
@@ -95,7 +95,7 @@ const SimpleLink = (0, react_1.forwardRef)((_a, ref) => {
         }
         // Any path that starts with http should be treated as an external link
     }, [src, history, onClick]);
-    return (react_1.default.createElement(core_1.Link, Object.assign({ className: (0, clsx_1.default)(className, classes.root), ref: ref, href: src || null, onClick: handleClick, "data-testid": (0, test_helpers_1.default)(children) }, rest),
+    return (react_1.default.createElement(material_1.Link, Object.assign({ className: (0, clsx_1.default)(className, classes.root), ref: ref, href: src || null, onClick: handleClick, "data-testid": (0, test_helpers_1.default)(children) }, rest),
         !!icon && iconPosition === 'left' && (react_1.default.createElement(FontAwesomeIcon_1.default, { className: (0, clsx_1.default)(classes.icon, 'icon') }, icon)),
         textVariant ? (react_1.default.createElement(Text_1.default, { variant: textVariant, lineClamp: lineClamp, component: "span", className: (0, clsx_1.default)('simple-link-text', classes.text) }, children || src)) : (children || src),
         !!icon && iconPosition === 'right' && (react_1.default.createElement(FontAwesomeIcon_1.default, { className: (0, clsx_1.default)(classes.icon, 'icon') }, icon))));

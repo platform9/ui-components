@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState, useEffect } from 'react'
 import { debounce } from '../../utils/async'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import Theme from '../../theme-manager/themes/model'
 import Input from '../../elements/input/Input'
 
@@ -58,16 +58,6 @@ export default function GridSearchFilter({ value: initialValue, onChange }: Grid
 
   return (
     //TODO: Add two icons here after Input is updated
-    <Input
-      compact
-      icon="search"
-      placeholder="Search"
-      className={classes.searchBar}
-      value={value !== undefined ? value : ''}
-      onChange={handleOnChange}
-      type="search"
-    />
-
     // <TextField
     //   variant="outlined"
     //   placeholder="Search"
@@ -92,5 +82,14 @@ export default function GridSearchFilter({ value: initialValue, onChange }: Grid
     //     ),
     //   }}
     // />
-  )
+    <Input
+      compact
+      icon="search"
+      placeholder="Search"
+      className={classes.searchBar}
+      value={value !== undefined ? value : ''}
+      onChange={handleOnChange}
+      type="search"
+    />
+  );
 }

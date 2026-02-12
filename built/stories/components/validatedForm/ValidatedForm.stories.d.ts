@@ -1,0 +1,10 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import ValidatedForm from '../../../components/validatedForm/ValidatedForm';
+type ValidatedFormProps = React.ComponentProps<typeof ValidatedForm>;
+declare const meta: Meta<ValidatedFormProps>;
+export default meta;
+type Story = StoryObj<ValidatedFormProps>;
+export declare const Default: Story;
+export declare const Elevated: Story;
+export declare const NotElevated: Story;

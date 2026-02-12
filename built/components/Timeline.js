@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const styles_1 = require("@material-ui/core/styles");
+const makeStyles_1 = __importDefault(require("@mui/styles/makeStyles"));
 const Text_1 = __importDefault(require("../elements/Text"));
 const react_1 = __importDefault(require("react"));
 const colorHelpers_1 = require("../utils/colorHelpers");
@@ -27,7 +27,7 @@ function Timeline({ items, activeStep = 0, className }) {
         react_1.default.createElement("i", { className: classes.arrow })));
 }
 exports.default = Timeline;
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
+const useStyles = (0, makeStyles_1.default)((theme) => ({
     timelineContainer: {
         display: 'flex',
         position: 'relative',

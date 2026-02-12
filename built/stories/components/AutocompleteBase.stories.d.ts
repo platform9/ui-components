@@ -1,0 +1,10 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import AutocompleteBase from '../../components/AutocompleteBase';
+type AutocompleteBaseProps = React.ComponentProps<typeof AutocompleteBase>;
+declare const meta: Meta<AutocompleteBaseProps>;
+export default meta;
+type Story = StoryObj<AutocompleteBaseProps>;
+export declare const Default: Story;
+export declare const PreFilled: Story;
+export declare const Gallery: Story;

@@ -11,34 +11,23 @@ interface IColor {
     '800'?: string;
     '900'?: string;
 }
-interface IMuiBaseColors {
-    light?: string;
-    main: string;
-    dark?: string;
-}
-type IMuiColor = IColor & IMuiBaseColors;
 export interface ThemeColors<T = IColor> {
     [key: string]: T;
 }
 export interface IPalette<T> {
     primary: keyof T;
     secondary: keyof T;
-    type: IColorPalette['type'];
     themeKey: 'default' | 'light' | 'dark' | 'ultra-dark' | 'custom';
     colors: T;
-}
-interface IColorPalette {
-    primary: IMuiColor;
-    secondary: IMuiColor;
-    type: 'light' | 'dark';
+    mode: 'light' | 'dark';
 }
 export declare function generateComponentColors({ components }: {
     components?: any[];
 }, defaultComponentStyles: Components): Components;
-export declare function generateColorPalette<T extends ThemeColors>({ primary, secondary, type, themeKey, colors, }: {
+export declare function generateColorPalette<T extends ThemeColors>({ primary, secondary, mode, themeKey, colors, }: {
     primary: keyof T;
     secondary: keyof T;
-    type: IColorPalette['type'];
+    mode: 'light' | 'dark';
     themeKey: IPalette<T>['themeKey'];
     colors: T;
 }): {
@@ -72,8 +61,8 @@ export declare function generateColorPalette<T extends ThemeColors>({ primary, s
         '800'?: string;
         '900'?: string;
     };
-    type: "light" | "dark";
-    themeKey: "light" | "dark" | "default" | "ultra-dark" | "custom";
+    mode: "light" | "dark";
+    themeKey: "default" | "light" | "dark" | "ultra-dark" | "custom";
     contrastThreshold: number;
     tonalOffset: number;
     text: {

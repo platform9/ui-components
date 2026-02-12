@@ -1,6 +1,6 @@
 import React from 'react'
 import { propSatisfies } from 'ramda'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import Theme from '../theme-manager/themes/model'
 import MenuItem from '../elements/menu/MenuItem'
 import Alert from '../components/Alert'

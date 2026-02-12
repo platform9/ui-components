@@ -1,5 +1,10 @@
-/// <reference types="react" />
-import { Meta } from '@storybook/react';
-export declare const DefaultStepper: (args: any) => JSX.Element;
-declare const StepperStories: Meta;
-export default StepperStories;
+import type { Meta, StoryObj } from '@storybook/react';
+import Stepper from '../../components/stepper/Stepper';
+declare const meta: Meta<typeof Stepper>;
+export default meta;
+type Story = StoryObj<typeof Stepper>;
+export declare const Default: Story;
+export declare const FirstStep: Story;
+export declare const CustomLineColor: Story;
+export declare const CustomLabelVariant: Story;
+export declare const Gallery: Story;

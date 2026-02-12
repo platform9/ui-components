@@ -26,43 +26,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DefaultRadio = void 0;
+exports.Gallery = exports.Disabled = exports.Default = void 0;
 const react_1 = __importStar(require("react"));
 const Radio_1 = __importDefault(require("../../elements/input/Radio"));
 const card_1 = __importDefault(require("../../elements/card"));
 const containers_1 = require("../containers");
-const DefaultRadio = (args) => {
-    const [checked, setChecked] = (0, react_1.useState)(false);
-    return (react_1.default.createElement(card_1.default, null,
-        react_1.default.createElement(containers_1.Column, null,
-            react_1.default.createElement(Radio_1.default, Object.assign({}, args, { checked: checked || args.checked, label: "Text Here", onChange: (checked) => setChecked(checked) })))));
-};
-exports.DefaultRadio = DefaultRadio;
-exports.DefaultRadio.parameters = {
-    docs: {
-        source: {
-            code: `
-import Radio from 'core/elements/input/radio'
-
-const MyComponent = () => {
-  const [checked, setChecked] = useState(false)
-  return (
-    <Radio
-      label="Text Here"
-      checked={checked}
-      onChange={(checked) => setChecked(checked)}
-    />
-  )
-}
-`,
-        },
-    },
-};
-exports.DefaultRadio.args = {
-    checked: false,
-    disabled: false,
-};
-const RadioStories = {
+const meta = {
     title: 'Elements/Radio',
     component: Radio_1.default,
     argTypes: {
@@ -82,7 +51,68 @@ const RadioStories = {
                 type: { summary: 'boolean' },
             },
         },
+        label: {
+            control: { type: 'text' },
+            description: 'Label displayed next to the radio button',
+            table: {
+                type: { summary: 'string | ReactNode' },
+            },
+        },
+        info: {
+            control: { type: 'text' },
+            description: 'Optional tooltip content shown when hovering the radio',
+            table: {
+                type: { summary: 'string | ReactNode' },
+            },
+        },
     },
 };
-exports.default = RadioStories;
+exports.default = meta;
+const baseArgs = {
+    checked: false,
+    disabled: false,
+    label: 'Text Here',
+};
+const StatefulRadio = (args) => {
+    const [checked, setChecked] = (0, react_1.useState)(false);
+    return (react_1.default.createElement(card_1.default, null,
+        react_1.default.createElement(containers_1.Column, null,
+            react_1.default.createElement(Radio_1.default, Object.assign({}, args, { checked: checked || args.checked, onChange: (nextChecked) => setChecked(nextChecked) })))));
+};
+exports.Default = {
+    args: Object.assign({}, baseArgs),
+    render: (args) => react_1.default.createElement(StatefulRadio, Object.assign({}, args)),
+    parameters: {
+        docs: {
+            source: {
+                code: `
+import Radio from 'core/elements/input/radio'
+
+const MyComponent = () => {
+  const [checked, setChecked] = useState(false)
+  return (
+    <Radio
+      label="Text Here"
+      checked={checked}
+      onChange={(checked) => setChecked(checked)}
+    />
+  )
+}
+`,
+            },
+        },
+    },
+};
+exports.Disabled = {
+    args: Object.assign(Object.assign({}, baseArgs), { disabled: true }),
+    render: (args) => react_1.default.createElement(StatefulRadio, Object.assign({}, args)),
+};
+exports.Gallery = {
+    args: Object.assign({}, baseArgs),
+    render: (args) => (react_1.default.createElement(card_1.default, null,
+        react_1.default.createElement(containers_1.Column, null,
+            react_1.default.createElement(Radio_1.default, Object.assign({}, args, { label: "Default", checked: false })),
+            react_1.default.createElement(Radio_1.default, Object.assign({}, args, { label: "Checked", checked: true })),
+            react_1.default.createElement(Radio_1.default, Object.assign({}, args, { label: "Disabled", disabled: true, checked: false }))))),
+};
 //# sourceMappingURL=radio.stories.js.map

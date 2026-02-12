@@ -1,6 +1,6 @@
 import React from 'react'
 import PieGraph, { PieDataEntry } from '../../components/graphs/PieGraph'
-import { makeStyles, useTheme } from '@material-ui/styles'
+import { makeStyles, useTheme } from '@mui/styles'
 
 import Text from '../../elements/Text'
 import { formattedName } from '../../utils/formatters'

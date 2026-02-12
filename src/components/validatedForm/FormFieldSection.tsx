@@ -1,5 +1,5 @@
 import React, { useMemo, PropsWithChildren, ReactNode } from 'react'
-import { makeStyles, styled } from '@material-ui/styles'
+import { makeStyles, styled } from '@mui/styles'
 import { isNumeric } from '../../utils/misc'
 import generateTestId from '../../utils/test-helpers'
 import clsx from 'clsx'

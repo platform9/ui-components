@@ -7,7 +7,7 @@ exports.FormFieldCard = exports.useStyles = void 0;
 const react_1 = __importDefault(require("react"));
 const Text_1 = __importDefault(require("../../elements/Text"));
 const card_1 = __importDefault(require("../../elements/card"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const clsx_1 = __importDefault(require("clsx"));
 const test_helpers_1 = __importDefault(require("../../utils/test-helpers"));
 const CardHeader_1 = __importDefault(require("../../elements/card/CardHeader"));

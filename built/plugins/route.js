@@ -39,7 +39,7 @@ class Route {
     }
     static getCurrentRoute(pathname = window.location.pathname) {
         if (!pathname) {
-            pathname = `${location.pathname}${location.hash}`;
+            pathname = `${window.location.pathname}${window.location.hash}`;
         }
         return Route.find(pathname);
     }

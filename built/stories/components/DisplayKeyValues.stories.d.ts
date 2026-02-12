@@ -1,0 +1,10 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import DisplayKeyValues from '../../components/DisplayKeyValues';
+type DisplayKeyValuesProps = React.ComponentProps<typeof DisplayKeyValues>;
+declare const meta: Meta<DisplayKeyValuesProps>;
+export default meta;
+type Story = StoryObj<DisplayKeyValuesProps>;
+export declare const Default: Story;
+export declare const LeftAlignedKeys: Story;
+export declare const LongValues: Story;

@@ -268,7 +268,7 @@ export const components: Components = {
 
 const defaultTheme = {
   theme: generateTheme({
-    palette: { colors, primary: 'blue', secondary: 'pink', themeKey: 'default', type: 'light' },
+    palette: { colors, primary: 'blue', secondary: 'pink', themeKey: 'default', mode: 'light' },
     typography: {
       fontFamily: '"Eina04"',
       fontSize: 14,

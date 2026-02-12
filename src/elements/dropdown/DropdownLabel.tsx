@@ -1,4 +1,4 @@
-import { styled } from '@material-ui/styles'
+import { styled } from '@mui/styles'
 
 export default styled('label')({
   fontWeight: 'bold',

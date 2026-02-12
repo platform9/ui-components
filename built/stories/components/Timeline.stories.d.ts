@@ -1,0 +1,10 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import Timeline from '../../components/Timeline';
+type TimelineProps = React.ComponentProps<typeof Timeline>;
+declare const meta: Meta<TimelineProps>;
+export default meta;
+type Story = StoryObj<TimelineProps>;
+export declare const Default: Story;
+export declare const MidProgress: Story;
+export declare const Completed: Story;

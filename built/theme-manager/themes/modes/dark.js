@@ -260,7 +260,7 @@ const components = {
 };
 const darkTheme = {
     theme: (0, helpers_1.generateTheme)({
-        palette: { colors: colors_1.default, primary: 'blue', secondary: 'pink', type: 'dark', themeKey: 'dark' },
+        palette: { colors: colors_1.default, primary: 'blue', secondary: 'pink', mode: 'dark', themeKey: 'dark' },
         typography: {
             fontFamily: '"Eina04"',
             fontSize: 14,

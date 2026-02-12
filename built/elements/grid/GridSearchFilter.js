@@ -28,7 +28,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const async_1 = require("../../utils/async");
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const Input_1 = __importDefault(require("../../elements/input/Input"));
 const useStyles = (0, styles_1.makeStyles)((theme) => ({
     searchBar: {
@@ -76,7 +76,6 @@ function GridSearchFilter({ value: initialValue, onChange }) {
     }, []);
     return (
     //TODO: Add two icons here after Input is updated
-    react_1.default.createElement(Input_1.default, { compact: true, icon: "search", placeholder: "Search", className: classes.searchBar, value: value !== undefined ? value : '', onChange: handleOnChange, type: "search" })
     // <TextField
     //   variant="outlined"
     //   placeholder="Search"
@@ -101,7 +100,7 @@ function GridSearchFilter({ value: initialValue, onChange }) {
     //     ),
     //   }}
     // />
-    );
+    react_1.default.createElement(Input_1.default, { compact: true, icon: "search", placeholder: "Search", className: classes.searchBar, value: value !== undefined ? value : '', onChange: handleOnChange, type: "search" }));
 }
 exports.default = GridSearchFilter;
 //# sourceMappingURL=GridSearchFilter.js.map

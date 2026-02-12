@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/styles'
+import { styled } from '@mui/material/styles'
 import Theme from '../theme-manager/themes/model'
 import Text from '../elements/Text'
 
@@ -13,6 +13,27 @@ interface AlertProps {
   maxWidth?: string
 }
 
+interface StyledAlertProps {
+  variant: AlertProps['variant']
+  maxWidth?: string
+}
+
+const StyledAlert = styled('article')<StyledAlertProps>(
+  ({ theme, variant = 'primary', maxWidth }) => ({
+    backgroundColor: (theme as Theme).components.alert[variant].background,
+    maxWidth: maxWidth ?? 'unset',
+    borderTop: `1px solid ${(theme as Theme).components.alert[variant].border}`,
+    width: '100%',
+    boxSizing: 'border-box',
+    padding: 8,
+    wordBreak: 'break-word',
+  }),
+)
+
+const AlertTitle = styled('h5')({
+  marginBottom: 10,
+})
+
 export default function Alert({
   variant = 'primary',
   title,
@@ -22,36 +43,16 @@ export default function Alert({
   children,
   maxWidth,
 }: PropsWithChildren<AlertProps>) {
-  const classes = useStyles({ variant, maxWidth })
   const msgComponent =
     typeof message === 'string' ? <Text variant="body2">{message}</Text> : message
   return (
-    <article id={id} className={clsx(classes.alert, className)}>
-      {title && (
-        <Text className={classes.alertTitle} variant="caption1" component="h5">
-          {title}
-        </Text>
-      )}
+    <StyledAlert id={id} className={className} variant={variant} maxWidth={maxWidth}>
+      {title && <AlertTitle>{title}</AlertTitle>}
       {msgComponent}
       {children}
-    </article>
+    </StyledAlert>
   )
 }
-
-const useStyles = makeStyles<Theme, Partial<AlertProps>>((theme) => ({
-  alert: {
-    backgroundColor: ({ variant }) => theme.components.alert[variant].background,
-    width: '100%',
-    maxWidth: ({ maxWidth }) => (maxWidth ? maxWidth : 'unset'),
-    boxSizing: 'border-box',
-    padding: 8,
-    borderTop: ({ variant }) => `1px solid ${theme.components.alert[variant].border}`,
-    wordBreak: 'break-word',
-  },
-  alertTitle: {
-    marginBottom: 10,
-  },
-}))
 
 /*
 @todo check with design if we want to use icons in the alert

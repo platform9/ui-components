@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import clsx from 'clsx'
 import React, { PropsWithChildren, ReactNode } from 'react'
 import Theme from '../../theme-manager/themes/model'

@@ -12,7 +12,7 @@ const defaultColorPaletteOptions = {
     primary: 'blue',
     secondary: 'pink',
     themeKey: 'default',
-    type: 'light',
+    mode: 'light',
 };
 const defaultTypographyOptions = {
     fontFamily: '"Eina04"',
@@ -29,11 +29,11 @@ class CustomThemeHelper {
         this.typographyDefinition = (0, ramda_1.mergeRight)(typography_1.default, typographyDefinition);
         this.components = (0, helpers_1.generatePf9ComponentColors)(this.colorsDefinition);
     }
-    setColorPaletteOptions({ primary = defaultColorPaletteOptions.primary, secondary = defaultColorPaletteOptions.secondary, type = defaultColorPaletteOptions.type, themeKey = defaultColorPaletteOptions.themeKey, }) {
+    setColorPaletteOptions({ primary = defaultColorPaletteOptions.primary, secondary = defaultColorPaletteOptions.secondary, mode = defaultColorPaletteOptions.mode, themeKey = defaultColorPaletteOptions.themeKey, }) {
         this.colorPaletteOptions = (0, ramda_1.mergeDeepRight)(this.colorPaletteOptions, {
             primary,
             secondary,
-            type,
+            mode,
             themeKey,
         });
     }

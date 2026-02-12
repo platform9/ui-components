@@ -17,7 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PieLegend = void 0;
 const react_1 = __importDefault(require("react"));
 const PieGraph_1 = __importDefault(require("../../components/graphs/PieGraph"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const Text_1 = __importDefault(require("../../elements/Text"));
 const formatters_1 = require("../../utils/formatters");
 const tooltip_1 = __importDefault(require("../../elements/tooltip"));

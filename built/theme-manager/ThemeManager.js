@@ -24,8 +24,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.withCustomTheme = exports.useCustomTheme = exports.loadingStyles = exports.CustomThemeProvider = exports.CustomThemeConsumer = void 0;
-const styles_1 = require("@material-ui/styles");
-const styles_2 = require("@material-ui/core/styles");
+const styles_1 = require("@mui/material/styles");
 const react_1 = __importStar(require("react"));
 const react_redux_1 = require("react-redux");
 const selector_1 = require("./selector");
@@ -51,14 +50,17 @@ function ThemeManager({ themeActions, children }) {
     }, [jsonTheme]);
     // TODO: Our current theme (AppTheme) is not extending the MUI theme correctly
     // Until we fix it we have to trick the TS engine to swallow this
-    const theme = (0, react_1.useMemo)(() => (0, styles_2.createTheme)(jsonTheme), [jsonTheme]);
+    const theme = (0, react_1.useMemo)(() => (0, styles_1.createTheme)((0, styles_1.adaptV4Theme)(jsonTheme)), [jsonTheme]);
     // // Rendering the app before the theme is loaded will have issues because `withStyles`
     // // requires the `theme` object to exist.
     if (!jsonTheme) {
         return react_1.default.createElement("h2", { style: exports.loadingStyles }, "Loading theme...");
     }
-    return (react_1.default.createElement(styles_1.ThemeProvider, { theme: theme },
-        react_1.default.createElement(exports.CustomThemeProvider, { value: { theme, setCustomTheme } }, children)));
+    return (react_1.default.createElement(styles_1.StyledEngineProvider, { injectFirst: true },
+        "(",
+        react_1.default.createElement(styles_1.ThemeProvider, { theme: theme },
+            react_1.default.createElement(exports.CustomThemeProvider, { value: { theme, setCustomTheme } }, children)),
+        ")"));
 }
 exports.default = ThemeManager;
 function useCustomTheme() {

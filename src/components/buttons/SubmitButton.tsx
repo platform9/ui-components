@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles } from '@material-ui/styles'
+import { withStyles } from '@mui/styles'
 import Button from '../../elements/button'
 import generateTestId from '../../utils/test-helpers'
 

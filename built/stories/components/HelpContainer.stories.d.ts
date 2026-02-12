@@ -1,0 +1,10 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import HelpContainer from '../../components/HelpContainer';
+type HelpContainerProps = React.ComponentProps<typeof HelpContainer>;
+declare const meta: Meta<HelpContainerProps>;
+export default meta;
+type Story = StoryObj<HelpContainerProps>;
+export declare const Default: Story;
+export declare const WithLink: Story;
+export declare const CustomIcon: Story;

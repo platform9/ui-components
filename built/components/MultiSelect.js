@@ -38,22 +38,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
-const styles_1 = require("@material-ui/styles");
-const Box_1 = __importDefault(require("@material-ui/core/Box"));
-const FormControl_1 = __importDefault(require("@material-ui/core/FormControl"));
-const InputAdornment_1 = __importDefault(require("@material-ui/core/InputAdornment"));
-const OutlinedInput_1 = __importDefault(require("@material-ui/core/OutlinedInput"));
-const FormControlLabel_1 = __importDefault(require("@material-ui/core/FormControlLabel"));
-const Checkbox_1 = __importDefault(require("@material-ui/core/Checkbox"));
-const CheckBoxOutlineBlank_1 = __importDefault(require("@material-ui/icons/CheckBoxOutlineBlank"));
-const CheckBox_1 = __importDefault(require("@material-ui/icons/CheckBox"));
-const Search_1 = __importDefault(require("@material-ui/icons/Search"));
+const styles_1 = require("@mui/styles");
+const Box_1 = __importDefault(require("@mui/material/Box"));
+const FormControl_1 = __importDefault(require("@mui/material/FormControl"));
+const InputAdornment_1 = __importDefault(require("@mui/material/InputAdornment"));
+const OutlinedInput_1 = __importDefault(require("@mui/material/OutlinedInput"));
+const FormControlLabel_1 = __importDefault(require("@mui/material/FormControlLabel"));
+const Checkbox_1 = __importDefault(require("@mui/material/Checkbox"));
+const CheckBoxOutlineBlank_1 = __importDefault(require("@mui/icons-material/CheckBoxOutlineBlank"));
+const CheckBox_1 = __importDefault(require("@mui/icons-material/CheckBox"));
+const Search_1 = __importDefault(require("@mui/icons-material/Search"));
 const fuse_js_1 = __importDefault(require("fuse.js"));
-const core_1 = require("@material-ui/core");
+const material_1 = require("@mui/material");
 const fp_1 = require("../utils/fp");
 const clsx_1 = __importDefault(require("clsx"));
 const Text_1 = __importDefault(require("../elements/Text"));
-const icons_1 = require("@material-ui/icons");
+const icons_material_1 = require("@mui/icons-material");
 const test_helpers_1 = __importDefault(require("../utils/test-helpers"));
 const Progress_1 = __importDefault(require("../components/progress/Progress"));
 const withTooltip_1 = __importDefault(require("../elements/tooltip/withTooltip"));
@@ -161,14 +161,14 @@ exports.default = (0, withTooltip_1.default)(function MultiSelect({ id, label, h
         }
     };
     const controls = showSelectDeselectAllOption ? (react_1.default.createElement("div", { className: classes.controls },
-        showSelectDeselectAllOption && (react_1.default.createElement(Checkbox_1.default, { color: "primary", className: classes.selectDeselectCheckbox, icon: react_1.default.createElement(CheckBoxOutlineBlank_1.default, { className: classes.checkboxSize }), checked: selectedValues.length > 0, checkedIcon: react_1.default.createElement(icons_1.IndeterminateCheckBox, { className: classes.checkboxSize }), onChange: handleSelectDeselectChange })),
+        showSelectDeselectAllOption && (react_1.default.createElement(Checkbox_1.default, { color: "primary", className: classes.selectDeselectCheckbox, icon: react_1.default.createElement(CheckBoxOutlineBlank_1.default, { className: classes.checkboxSize }), checked: selectedValues.length > 0, checkedIcon: react_1.default.createElement(icons_material_1.IndeterminateCheckBox, { className: classes.checkboxSize }), onChange: handleSelectDeselectChange })),
         react_1.default.createElement(SearchField, { classes: classes, term: term, onSearchChange: setTerm, onHitEnter: onHitEnter }))) : (react_1.default.createElement(SearchField, { classes: classes, term: term, onSearchChange: setTerm, onHitEnter: onHitEnter }));
     return (react_1.default.createElement(Progress_1.default, { loading: loading, className: (0, clsx_1.default)('MuiFormControl-root', className) },
         react_1.default.createElement(FormControl_1.default, { className: classes.container, id: id, error: hasError, style: { maxHeight: maxHeight || 350 } },
             label && (react_1.default.createElement(Text_1.default, { className: classes.label, variant: "caption1" }, required ? `${label} *` : label)),
             controls,
             react_1.default.createElement(Box_1.default, { className: classes.options, style: { height: maxOptions ? getOptionsHeight(maxOptions) : 'initial' } }, sortedOptions.map((option) => (react_1.default.createElement(Option, { classes: classes, key: option.value, label: option.label, value: option.value, checked: selectedValues === null || selectedValues === void 0 ? void 0 : selectedValues.includes(option.value), onChange: () => toggleOption(option.value) })))),
-            errorMessage && react_1.default.createElement(core_1.FormHelperText, null, errorMessage))));
+            errorMessage && react_1.default.createElement(material_1.FormHelperText, null, errorMessage))));
 });
 const SearchField = ({ classes, term, onSearchChange, onHitEnter }) => {
     const handleKeyDown = (event) => {

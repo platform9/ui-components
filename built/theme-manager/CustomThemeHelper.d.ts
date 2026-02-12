@@ -11,10 +11,10 @@ export default class CustomThemeHelper {
     private typographyDefinition;
     private components;
     constructor(colorsDefinition?: ThemeColors, typographyDefinition?: Typography);
-    setColorPaletteOptions({ primary, secondary, type, themeKey, }: {
+    setColorPaletteOptions({ primary, secondary, mode, themeKey, }: {
         primary?: string;
         secondary?: string;
-        type?: "light";
+        mode?: "light";
         themeKey?: "default";
     }): void;
     setTypography({ fontFamily, fontSize, fontWeightLight, fontWeightRegular, fontWeightMedium, }: {

@@ -59,7 +59,7 @@ const getTitleFromPropsList = (propsList: IPropsList[]) => {
   const innermostTemplate = getInnermostProperty(propsList, 'titleTemplate', 'Platform9 - %s')
   if (innermostTemplate && innermostTitle) {
     // eslint-disable-next-line
-    return innermostTemplate.replace(/\%s/g, innermostTitle)
+    return innermostTemplate.replace(/\%s/g, innermostTitle);
   }
   return innermostTitle
 }

@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import clsx from 'clsx'
 import React, { FC, PropsWithChildren, ReactNode, useContext, useMemo } from 'react'
 import Progress from '../../components/progress/Progress'

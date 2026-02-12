@@ -1,6 +1,11 @@
+import { Theme } from '@mui/material/styles';
 import React, { PropsWithChildren } from 'react';
 import AppTheme from '../theme-manager/themes/model';
 import * as CSS from 'csstype';
+declare module '@mui/styles/defaultTheme' {
+    interface DefaultTheme extends Theme {
+    }
+}
 export declare const CustomThemeConsumer: React.Consumer<{
     theme: AppTheme;
     setCustomTheme: (theme: AppTheme) => void;

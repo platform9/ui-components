@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react'
 import useReactRouter from 'use-react-router'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import Theme from '../../theme-manager/themes/model'
 import usePluginRouter from '../../hooks/usePluginRouter'
 import { Route as Router } from '../../plugins/route'

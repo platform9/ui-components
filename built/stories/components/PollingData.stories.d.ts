@@ -1,0 +1,10 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import PollingData from '../../components/PollingData';
+type PollingDataProps = React.ComponentProps<typeof PollingData>;
+declare const meta: Meta<PollingDataProps>;
+export default meta;
+type Story = StoryObj<PollingDataProps>;
+export declare const Default: Story;
+export declare const Loading: Story;
+export declare const Paused: Story;

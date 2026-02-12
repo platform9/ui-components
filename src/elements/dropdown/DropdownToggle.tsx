@@ -1,4 +1,4 @@
-import { styled } from '@material-ui/styles'
+import { styled } from '@mui/styles'
 import Theme from '../../theme-manager/themes/model'
 
 export default styled('button')<Theme>(({ theme }) => ({

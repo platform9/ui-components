@@ -34,7 +34,6 @@ const createThemeSlice = (theme = exports.defaultThemeState) => {
             updateThemeComponent: (state, { payload }) => {
                 return Object.assign(Object.assign({}, state), { components: (0, helpers_1.generateComponentColors)(payload, state.components) });
             },
-            // @ts-ignore
             updateTheme: (state, { payload }) => {
                 return (0, ramda_1.mergeLeft)(payload, state);
             },

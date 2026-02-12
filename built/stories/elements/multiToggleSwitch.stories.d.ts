@@ -1,21 +1,8 @@
-/// <reference types="react" />
-import { Meta } from '@storybook/react';
-export declare const DefaultMultiToggleSwitch: {
-    (args: any): JSX.Element;
-    parameters: {
-        docs: {
-            source: {
-                code: string;
-            };
-        };
-    };
-    args: {
-        options: {
-            label: string;
-            value: string;
-        }[];
-        activeOptionColor: string;
-    };
-};
-declare const ToggleSwitchStories: Meta;
-export default ToggleSwitchStories;
+import type { Meta, StoryObj } from '@storybook/react';
+import MultiToggleSwitch from '../../elements/MultiToggleSwitch';
+declare const meta: Meta<typeof MultiToggleSwitch>;
+export default meta;
+type Story = StoryObj<typeof MultiToggleSwitch>;
+export declare const Default: Story;
+export declare const CustomColors: Story;
+export declare const Gallery: Story;

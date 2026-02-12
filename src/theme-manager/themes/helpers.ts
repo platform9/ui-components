@@ -45,9 +45,9 @@ function addMuiThemeColorVars(color = {} as IColor) {
 export interface IPalette<T> {
   primary: keyof T
   secondary: keyof T
-  type: IColorPalette['type']
   themeKey: 'default' | 'light' | 'dark' | 'ultra-dark' | 'custom'
   colors: T
+  mode: 'light' | 'dark'
 }
 
 interface IColorPalette {
@@ -75,13 +75,13 @@ export function generateComponentColors({ components = [] }, defaultComponentSty
 export function generateColorPalette<T extends ThemeColors>({
   primary,
   secondary,
-  type,
+  mode,
   themeKey,
   colors,
 }: {
   primary: keyof T
   secondary: keyof T
-  type: IColorPalette['type']
+  mode: 'light' | 'dark'
   themeKey: IPalette<T>['themeKey']
   colors: T
 }) {
@@ -93,7 +93,7 @@ export function generateColorPalette<T extends ThemeColors>({
     returnColors[key] = addMuiThemeColorVars(value)
   })
   return {
-    type,
+    mode,
     themeKey,
     contrastThreshold: 3,
     tonalOffset: 0.2,

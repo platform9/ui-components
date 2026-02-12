@@ -267,7 +267,7 @@ const components: Components = {
 
 const ultraDarkTheme = {
   theme: generateTheme({
-    palette: { colors, primary: 'blue', secondary: 'pink', type: 'dark', themeKey: 'ultra-dark' },
+    palette: { colors, primary: 'blue', secondary: 'pink', mode: 'dark', themeKey: 'ultra-dark' },
     typography: {
       fontFamily: '"Eina04"',
       fontSize: 14,

@@ -1,0 +1,11 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import PieGraph from '../../../components/graphs/PieGraph';
+type PieGraphProps = React.ComponentProps<typeof PieGraph>;
+declare const meta: Meta<PieGraphProps>;
+export default meta;
+type Story = StoryObj<PieGraphProps>;
+export declare const Default: Story;
+export declare const WithCenterText: Story;
+export declare const Empty: Story;
+export declare const Donut: Story;

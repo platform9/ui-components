@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { prop, partition } from 'ramda'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import ListMenu from '../menu/ListMenu'
 import MenuItem from '../menu/MenuItem'
 import { topMiddle, bottomRight } from '../menu/defaults'

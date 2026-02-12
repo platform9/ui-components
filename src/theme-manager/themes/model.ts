@@ -1,4 +1,4 @@
-import { Theme as DefaultTheme } from '@material-ui/core'
+import { Theme as DefaultTheme } from '@mui/material/styles'
 
 interface AppTheme {
   components: Components
@@ -36,6 +36,7 @@ interface Palette {
   common: Common
   type: string
   themeKey: string
+  mode: string
   primary: Record<string, string>
   secondary: Record<string, string>
   grey: Record<string, string>

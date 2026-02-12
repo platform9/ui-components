@@ -29,7 +29,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Orientation = void 0;
 const react_1 = __importStar(require("react"));
 const Radio_1 = __importDefault(require("../../elements/input/Radio"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const InfoTooltip_1 = require("../../components/InfoTooltip");
 const fp_1 = require("../../utils/fp");
 const withFormContext_1 = __importDefault(require("../../components/validatedForm/withFormContext"));

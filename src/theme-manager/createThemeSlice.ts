@@ -53,17 +53,19 @@ const createThemeSlice = (theme: ThemeReducer = defaultThemeState) => {
     actions: themeActions,
   } = createSlice({
     name: themeKey,
-    initialState: theme,
+    initialState: theme as ThemeReducer,
     reducers: {
-      updateGlobalTheme: (state, { payload }) => {
-        return { ...state, global: payload }
+      updateGlobalTheme: (state, { payload }: PayloadAction<ThemeConfig>) => {
+        return { ...state, global: payload } as ThemeReducer
       },
       updateThemeComponent: (state, { payload }: PayloadAction<UpdateComponentAction>) => {
-        return { ...state, components: generateComponentColors(payload, state.components) }
+        return {
+          ...state,
+          components: generateComponentColors(payload, state.components),
+        } as ThemeReducer
       },
-      // @ts-ignore
       updateTheme: (state, { payload }: PayloadAction<Partial<ThemeReducer>>) => {
-        return mergeLeft(payload, state)
+        return mergeLeft(payload, state) as ThemeReducer
       },
       clearTheme: () => {
         return defaultTheme as any

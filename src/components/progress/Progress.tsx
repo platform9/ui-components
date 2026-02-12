@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, useEffect, useState } from 'react'
-import { useTheme } from '@material-ui/styles'
-import { makeStyles } from '@material-ui/styles'
+import { useTheme } from '@mui/styles'
+import { makeStyles } from '@mui/styles'
 import Theme from '../../theme-manager/themes/model'
 import { memoize } from '../../utils/misc'
 import clsx from 'clsx'
@@ -78,7 +78,7 @@ export default function Progress({ children, ...props }: PropsWithChildren<Progr
   }, [props.loading])
 
   const LoadingImageComponent = renderLoadingImage
-    ? getLoadingImage(inline, loadingImage, theme.palette.type)
+    ? getLoadingImage(inline, loadingImage, theme.palette.mode)
     : React.Fragment
 
   const shouldRenderStatus = loading

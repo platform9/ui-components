@@ -26,7 +26,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const react_1 = __importStar(require("react"));
 const use_react_router_1 = __importDefault(require("use-react-router"));
 const AsyncDropdown_1 = __importDefault(require("../elements/dropdown/AsyncDropdown"));

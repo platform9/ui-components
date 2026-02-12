@@ -15,7 +15,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const fp_1 = require("../../utils/fp");
 exports.default = (0, styles_1.styled)((_a) => {
     var { sortingDisabled, width, children } = _a, props = __rest(_a, ["sortingDisabled", "width", "children"]);

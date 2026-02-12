@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import typography from '../theme-manager/themes/base/typography'
 
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import clsx from 'clsx'
 import Theme from '../theme-manager/themes/model'
 

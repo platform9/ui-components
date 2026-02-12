@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const SimpleLink_1 = __importDefault(require("../components/SimpleLink"));
 const clsx_1 = __importDefault(require("clsx"));
-const styles_1 = require("@material-ui/styles");
+const styles_1 = require("@mui/styles");
 const useStyles = (0, styles_1.makeStyles)((theme) => ({
     root: {
         display: 'grid',

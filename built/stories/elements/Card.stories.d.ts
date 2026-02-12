@@ -1,0 +1,12 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import Card from '../../elements/card/Card';
+type CardComponentProps = React.ComponentProps<typeof Card>;
+declare const meta: Meta<CardComponentProps>;
+export default meta;
+type Story = StoryObj<CardComponentProps>;
+export declare const Default: Story;
+export declare const WithFooter: Story;
+export declare const WithCustomHeader: Story;
+export declare const CustomBodyAndFooter: Story;
+export declare const Gallery: Story;

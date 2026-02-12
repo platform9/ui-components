@@ -1,8 +1,8 @@
 import React from 'react'
 import FontAwesomeIcon from '../components/FontAwesomeIcon'
-import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox'
-import { Checkbox as BaseCheckbox } from '@material-ui/core'
-import { withStyles } from '@material-ui/styles'
+import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox'
+import { Checkbox as BaseCheckbox } from '@mui/material'
+import { withStyles } from '@mui/styles'
 import generateTestId from '../utils/test-helpers'
 
 const styles = (theme) => ({

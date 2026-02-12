@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { makeStyles, withStyles } from '@material-ui/styles'
+import { makeStyles, withStyles } from '@mui/styles'
 import Text from '../elements/Text'
 import clsx from 'clsx'
 import { path } from 'ramda'
